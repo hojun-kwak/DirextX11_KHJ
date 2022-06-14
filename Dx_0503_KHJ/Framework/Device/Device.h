@@ -45,7 +45,7 @@ public:
 		return _renderTargetView;
 	}
 
-	void Clear();
+	void Clear(float R, float G, float B);
 	void Present();
 
 private:

@@ -47,6 +47,17 @@ void SolaSystemScene::Update()
 		_texture1->GetPos().y -= 0.1f;
 	}
 
+	if (GetAsyncKeyState(VK_ADD))
+	{
+		_texture1->GetScale().x += 0.001f;
+		_texture1->GetScale().y += 0.001f;
+	}
+	if (GetAsyncKeyState(VK_SUBTRACT))
+	{
+		_texture1->GetScale().x -= 0.001f;
+		_texture1->GetScale().y -= 0.001f;
+	}
+
 	// 내부에 worldBuffer를 가지고 있기때문에 지속적으로 업데이트 해줘야함
 	_texture1->Update();
 	_texture2->Update();

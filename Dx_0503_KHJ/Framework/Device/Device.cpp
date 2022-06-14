@@ -74,11 +74,11 @@ void Device::CreateBackBuffer()
     _deviceContext->RSSetViewports(1, &vp);
 }
 
-void Device::Clear()
+void Device::Clear(float R, float G, float B)
 {
-    FLOAT myColorR = 184.0f / 255.0f;
-    FLOAT myColorG = 248.0f / 255.0f;
-    FLOAT myColorB = 251.0f / 255.0f;
+    FLOAT myColorR = R / 255.0f;
+    FLOAT myColorG = G / 255.0f;
+    FLOAT myColorB = B / 255.0f;
     FLOAT clearColor[4] = { myColorR,myColorG,myColorB , 1.0f };
 
     _deviceContext->ClearRenderTargetView(_renderTargetView.Get(), clearColor);

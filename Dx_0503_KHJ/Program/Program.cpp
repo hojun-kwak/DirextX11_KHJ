@@ -45,7 +45,7 @@ void Program::Update()
 
 void Program::Render()
 {
-	Device::GetInstance()->Clear();
+	Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
 
 	_viewBuffer->SetVSBuffer(1);
 	_projectionBuffer->SetVSBuffer(2);
