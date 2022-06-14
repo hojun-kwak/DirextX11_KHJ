@@ -1,0 +1,25 @@
+#pragma once
+
+class MatrixBuffer : public ConstantBuffer
+{
+	struct Data
+	{
+		XMMATRIX _matrix;
+	};
+public:
+	MatrixBuffer()
+		: ConstantBuffer(&_data, sizeof(Data))
+	{
+		// 4*4 단위 행렬로 초기화
+		_data._matrix = XMMatrixIdentity();
+	}
+
+	// GPU가 알게 전치행렬로 바꿈
+	void SetMatrix(XMMATRIX matrix)
+	{
+		_data._matrix = XMMatrixTranspose(matrix);
+	}
+
+private:
+	Data _data;
+};
