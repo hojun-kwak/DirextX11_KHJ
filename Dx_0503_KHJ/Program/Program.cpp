@@ -29,6 +29,8 @@ Program::Program()
 
 	_viewBuffer->Update();
 
+	Timer::GetInstance()->SetFPS(60);
+
 }
 
 Program::~Program()
@@ -41,6 +43,7 @@ void Program::Update()
 	_viewBuffer->Update();
 
 	_scene->Update();
+	int temp = Timer::GetInstance()->GetFPS();
 }
 
 void Program::Render()

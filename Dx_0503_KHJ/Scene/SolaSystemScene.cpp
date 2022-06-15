@@ -26,25 +26,28 @@ void SolaSystemScene::Update()
 {
 	// DeltaTime : 1 Tick당 걸리는 시간
 	//_texture1->GetPos().x -= 0.01f;
-	_texture1->GetAnlgle() += 0.0001f;
-	_texture2->GetAnlgle() += 0.0005f;
-	_texture3->GetAnlgle() += 0.001f;
+	if (KEY_PRESS(VK_SPACE))
+	{
+		_texture1->GetAnlgle() += 1.0f * DELTA_TIME;
+		_texture2->GetAnlgle() += 5.0f * DELTA_TIME;
+		_texture3->GetAnlgle() += 3.0f * DELTA_TIME;
+	}
 
 	if (GetAsyncKeyState(VK_LEFT))
 	{
-		_texture1->GetPos().x -= 0.1f;
+		_texture1->GetPos().x -= 1.0f + DELTA_TIME;
 	}
 	if (GetAsyncKeyState(VK_RIGHT))
 	{
-		_texture1->GetPos().x += 0.1f;
+		_texture1->GetPos().x += 1.0f + DELTA_TIME;
 	}
 	if (GetAsyncKeyState(VK_UP))
 	{
-		_texture1->GetPos().y += 0.1f;
+		_texture1->GetPos().y += 1.0f + DELTA_TIME;
 	}
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		_texture1->GetPos().y -= 0.1f;
+		_texture1->GetPos().y -= 1.0f + DELTA_TIME;
 	}
 
 	if (GetAsyncKeyState(VK_ADD))

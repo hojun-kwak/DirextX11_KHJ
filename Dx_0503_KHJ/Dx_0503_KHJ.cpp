@@ -95,6 +95,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 클래스 분할
     Device::Create(hWnd);
+    Timer::Create();
+    InputManager::Create();
     shared_ptr<Program> program = make_shared<Program>();
 
     //InitDevice();
@@ -115,6 +117,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // Update();
             //Render();
+            Timer::GetInstance()->Update();
+            InputManager::GetInstance()->Update();
             program->Update();
             program->Render();
             
@@ -122,6 +126,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 삭제
+    InputManager::Delete();
+    Timer::Delete();
     Device::Delete();
     return (int) msg.wParam;
 }
