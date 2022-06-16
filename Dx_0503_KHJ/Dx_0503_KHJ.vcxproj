@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Math\Vector2.h" />
     <ClInclude Include="Framework\Render\ConstantBuffer.h" />
     <ClInclude Include="Framework\Device\Device.h" />
     <ClInclude Include="Dx_0503_KHJ.h" />
@@ -148,6 +149,11 @@
     <ClInclude Include="Framework\Render\PixelShader.h" />
     <ClInclude Include="Framework\Render\VertexLayOuts.h" />
     <ClInclude Include="Framework\Render\IndexBuffer.h" />
+    <ClInclude Include="Framework\Texture\BlendState.h" />
+    <ClInclude Include="Framework\Texture\RasterizerState.h" />
+    <ClInclude Include="Framework\Texture\StateManager.h" />
+    <ClInclude Include="Framework\Utillity\InputManager.h" />
+    <ClInclude Include="Framework\Utillity\Timer.h" />
     <ClInclude Include="Program\Program.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Framework\Texture\SamplerState.h" />
@@ -163,15 +169,21 @@
     <ClInclude Include="TypeDef.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Math\Vector2.cpp" />
     <ClCompile Include="Framework\Render\ConstantBuffer.cpp" />
     <ClCompile Include="Framework\Device\Device.cpp" />
     <ClCompile Include="Dx_0503_KHJ.cpp" />
+    <ClCompile Include="Framework\Texture\BlendState.cpp" />
+    <ClCompile Include="Framework\Texture\RasterizerState.cpp" />
     <ClCompile Include="Framework\Texture\SamplerState.cpp" />
     <ClCompile Include="Framework\Texture\SRV.cpp" />
     <ClCompile Include="Framework\Render\PixelShader.cpp" />
     <ClCompile Include="Framework\Render\VertexBuffer.cpp" />
     <ClCompile Include="Framework\Render\VertexShader.cpp" />
     <ClCompile Include="Framework\Render\IndexBuffer.cpp" />
+    <ClCompile Include="Framework\Texture\StateManager.cpp" />
+    <ClCompile Include="Framework\Utillity\InputManager.cpp" />
+    <ClCompile Include="Framework\Utillity\Timer.cpp" />
     <ClCompile Include="Object\Texture.cpp" />
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />

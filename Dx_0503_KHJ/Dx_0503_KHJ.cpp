@@ -98,7 +98,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Timer::Create();
     InputManager::Create();
     shared_ptr<Program> program = make_shared<Program>();
-
+    StateManager::Create();
     //InitDevice();
 
     // 기본 메시지 루프입니다:
@@ -125,7 +125,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
-    // 삭제
+    // 삭제.
+    StateManager::Delete();
     InputManager::Delete();
     Timer::Delete();
     Device::Delete();
@@ -172,8 +173,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
+   RECT rc = { 0,0,WIN_WIDTH,WIN_HEIGHT };
+   AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, false);
+
    hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+       0, 0, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr);
+      /*CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);*/
+
+   SetMenu(hWnd, nullptr);
 
    if (!hWnd)
    {
@@ -217,6 +224,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+    case WM_MOUSEMOVE:
+    {
+        MOUSE_POS._x = (float)LOWORD(lParam) - WIN_WIDTH * 0.5f;
+        MOUSE_POS._y = -((float)HIWORD(lParam) - WIN_HEIGHT * 0.5f);
+    }
+    break;
     case WM_PAINT:
         {
             PAINTSTRUCT ps;

@@ -40,6 +40,9 @@ using namespace std;
 // Device
 #include "Framework/Device/Device.h"
 
+// Math
+#include "Framework/Math/Vector2.h"
+
 // Render
 #include "Framework/Render/VertexLayOuts.h"
 #include "Framework/Render/ConstantBuffer.h"
@@ -56,6 +59,9 @@ using namespace std;
 // Texture
 #include "Framework/Texture/SRV.h"
 #include "Framework/Texture/SamplerState.h"
+#include "Framework/Texture/BlendState.h"
+#include "Framework/Texture/RasterizerState.h"
+#include "Framework/Texture/StateManager.h"
 
 // Obj
 #include "Object/Texture.h"

@@ -44,6 +44,7 @@ public:
 	bool Down(UINT key) { return _mapState[key] == DOWN; }
 	bool Up(UINT key) { return _mapState[key] == UP; }
 	bool Press(UINT key) { return _mapState[key] == PRESS; }
+	Vector2& GetMousePos() { return _mousePos; }
 
 private:
 	static InputManager* _instance;
@@ -51,5 +52,7 @@ private:
 	byte _curState[KEYMAX];
 	byte _oldState[KEYMAX];
 	byte _mapState[KEYMAX];
+
+	Vector2 _mousePos = { 0.0f,0.0f };
 };
 

@@ -3,19 +3,22 @@
 
 SolaSystemScene::SolaSystemScene()
 {
-	_texture1 = make_shared<Texture>(L"Resource/sun.png");
+	_sun = make_shared<Texture>(L"Resource/sun.png");
 
-	_texture2 = make_shared<Texture>(L"Resource/earth.png");
-	_texture2->SetParent(_texture1->GetMatrix());
-	_texture2->GetPos().x = 400;
-	_texture2->GetScale() = { 0.8f ,0.8f };
+	_earth = make_shared<Texture>(L"Resource/earth.png");
+	_earth->SetParent(_sun->GetMatrix());
+	_earth->GetPos().x = 400;
+	_earth->GetScale() = { 0.8f ,0.8f };
 
-	_texture3 = make_shared<Texture>(L"Resource/moon.png");
-	_texture3->SetParent(_texture2->GetMatrix());
-	/*_texture3->SetParent(_texture2->GetMatrix() * temp);
-	_texture3->SetParent(_texture2->)*/
-	_texture3->GetPos().x = 200;
-	_texture3->GetScale() = { 0.5f ,0.5f };
+	_moon = make_shared<Texture>(L"Resource/moon.png");
+	_moon->SetParent(_earth->GetMatrix());
+	/*_moon->SetParent(_earth->GetMatrix() * temp);
+	_moon->SetParent(_earth->)*/
+	_moon->GetPos().x = 200;
+	_moon->GetScale() = { 0.5f ,0.5f };
+
+	_samplerState = make_shared<SamplerState>();
+	_blendState = make_shared<BlendState>();
 }
 
 SolaSystemScene::~SolaSystemScene()
@@ -25,54 +28,57 @@ SolaSystemScene::~SolaSystemScene()
 void SolaSystemScene::Update()
 {
 	// DeltaTime : 1 Tick당 걸리는 시간
-	//_texture1->GetPos().x -= 0.01f;
+	//_sun->GetPos().x -= 0.01f;
+	_sun->GetPos().x = MOUSE_POS._x;
+	_sun->GetPos().y = MOUSE_POS._y;
+
 	if (KEY_PRESS(VK_SPACE))
 	{
-		_texture1->GetAnlgle() += 1.0f * DELTA_TIME;
-		_texture2->GetAnlgle() += 5.0f * DELTA_TIME;
-		_texture3->GetAnlgle() += 3.0f * DELTA_TIME;
+		_sun->GetAnlgle() += 1.0f * DELTA_TIME;
+		_earth->GetAnlgle() += 5.0f * DELTA_TIME;
+		_moon->GetAnlgle() += 3.0f * DELTA_TIME;
 	}
 
 	if (GetAsyncKeyState(VK_LEFT))
 	{
-		_texture1->GetPos().x -= 1.0f + DELTA_TIME;
+		_sun->GetPos().x -= 1.0f + DELTA_TIME;
 	}
 	if (GetAsyncKeyState(VK_RIGHT))
 	{
-		_texture1->GetPos().x += 1.0f + DELTA_TIME;
+		_sun->GetPos().x += 1.0f + DELTA_TIME;
 	}
 	if (GetAsyncKeyState(VK_UP))
 	{
-		_texture1->GetPos().y += 1.0f + DELTA_TIME;
+		_sun->GetPos().y += 1.0f + DELTA_TIME;
 	}
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		_texture1->GetPos().y -= 1.0f + DELTA_TIME;
+		_sun->GetPos().y -= 1.0f + DELTA_TIME;
 	}
 
 	if (GetAsyncKeyState(VK_ADD))
 	{
-		_texture1->GetScale().x += 0.001f;
-		_texture1->GetScale().y += 0.001f;
+		_sun->GetScale().x += 0.1f + DELTA_TIME;
+		_sun->GetScale().y += 0.1f + DELTA_TIME;
 	}
 	if (GetAsyncKeyState(VK_SUBTRACT))
 	{
-		_texture1->GetScale().x -= 0.001f;
-		_texture1->GetScale().y -= 0.001f;
+		_sun->GetScale().x -= 0.1f + DELTA_TIME;
+		_sun->GetScale().y -= 0.1f + DELTA_TIME;
 	}
 
 	// 내부에 worldBuffer를 가지고 있기때문에 지속적으로 업데이트 해줘야함
-	_texture1->Update();
-	_texture2->Update();
-	_texture3->Update();
+	_sun->Update();
+	_earth->Update();
+	_moon->Update();
 }
 
 void SolaSystemScene::Render()
 {
-	//AdditiveBlendState->SetState();
+	_blendState->Additive();
+	_blendState->SetState();
 
-	//AlphaBlendState->SetState();
-	_texture1->Render();
-	_texture2->Render();
-	_texture3->Render();
+	_sun->Render();
+	_earth->Render();
+	_moon->Render();
 }

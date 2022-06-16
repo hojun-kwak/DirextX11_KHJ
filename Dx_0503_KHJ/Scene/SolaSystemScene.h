@@ -9,8 +9,11 @@ public:
 	virtual void Render() override;
 
 private:
-	shared_ptr<Texture> _texture1;
-	shared_ptr<Texture> _texture2;
-	shared_ptr<Texture> _texture3;
+	shared_ptr<Texture> _sun;
+	shared_ptr<Texture> _earth;
+	shared_ptr<Texture> _moon;
+
+	shared_ptr<SamplerState> _samplerState;
+	shared_ptr<BlendState> _blendState;
 };
 
