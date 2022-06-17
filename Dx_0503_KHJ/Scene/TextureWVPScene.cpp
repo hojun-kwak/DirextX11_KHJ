@@ -43,50 +43,50 @@ void TextureWVPScene::Update()
 	_viewBuffer->SetMatrix(cameraMatrix);*/
 
 	// pos
-	if (GetAsyncKeyState(VK_LEFT))
-	{
-		_texture->GetPos().x -= 0.1f;
-	}
-	if (GetAsyncKeyState(VK_RIGHT))
-	{
-		_texture->GetPos().x += 0.1f;
-	}
-	if (GetAsyncKeyState(VK_UP))
-	{
-		_texture->GetPos().y += 0.1f;
-	}
-	if (GetAsyncKeyState(VK_DOWN))
-	{
-		_texture->GetPos().y -= 0.1f;
-	}
+	//if (GetAsyncKeyState(VK_LEFT))
+	//{
+	//	_texture->GetPos().x -= 0.1f;
+	//}
+	//if (GetAsyncKeyState(VK_RIGHT))
+	//{
+	//	_texture->GetPos().x += 0.1f;
+	//}
+	//if (GetAsyncKeyState(VK_UP))
+	//{
+	//	_texture->GetPos().y += 0.1f;
+	//}
+	//if (GetAsyncKeyState(VK_DOWN))
+	//{
+	//	_texture->GetPos().y -= 0.1f;
+	//}
 
-	// scale
-	if (GetAsyncKeyState(VK_NUMPAD8)) // x
-	{
-		_texture->GetScale().x -= 0.001f;
-	}
-	if (GetAsyncKeyState(VK_NUMPAD2)) // x
-	{
-		_texture->GetScale().x += 0.001f;
-	}
-	if (GetAsyncKeyState(VK_NUMPAD4)) // y
-	{
-		_texture->GetScale().y -= 0.001f;
-	}
-	if (GetAsyncKeyState(VK_NUMPAD6)) // y
-	{
-		_texture->GetScale().y += 0.001f;
-	}
+	//// scale
+	//if (GetAsyncKeyState(VK_NUMPAD8)) // x
+	//{
+	//	_texture->GetScale().x -= 0.001f;
+	//}
+	//if (GetAsyncKeyState(VK_NUMPAD2)) // x
+	//{
+	//	_texture->GetScale().x += 0.001f;
+	//}
+	//if (GetAsyncKeyState(VK_NUMPAD4)) // y
+	//{
+	//	_texture->GetScale().y -= 0.001f;
+	//}
+	//if (GetAsyncKeyState(VK_NUMPAD6)) // y
+	//{
+	//	_texture->GetScale().y += 0.001f;
+	//}
 
-	// rocation
-	if (GetAsyncKeyState(0x5A)) // z
-	{
-		_texture->GetAnlgle() += 0.001f;
-	}
-	if (GetAsyncKeyState(0x58)) // x
-	{
-		_texture->GetAnlgle() -= 0.001f;
-	}
+	//// rocation
+	//if (GetAsyncKeyState(0x5A)) // z
+	//{
+	//	_texture->GetAnlgle() += 0.001f;
+	//}
+	//if (GetAsyncKeyState(0x58)) // x
+	//{
+	//	_texture->GetAnlgle() -= 0.001f;
+	//}
 
 
 

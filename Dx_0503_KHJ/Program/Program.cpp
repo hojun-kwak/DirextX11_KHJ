@@ -4,10 +4,11 @@
 #include "../Scene/TextureScene.h"
 #include "../Scene/TextureWVPScene.h"
 #include "../Scene/SolaSystemScene.h"
+#include "../Scene/DunGridScene.h"
 
 Program::Program()
 {
-	_scene = make_shared<SolaSystemScene>();
+	_scene = make_shared<DunGridScene>();
 
 	_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();

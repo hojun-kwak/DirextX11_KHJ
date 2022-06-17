@@ -16,8 +16,7 @@ Texture::Texture(wstring file)
     _vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), stride, count);
     _indexBuffer = make_shared<IndexBuffer>(_indicies.data(), _indicies.size());
 
-    _worldBuffer = make_shared<MatrixBuffer>();
-    
+    _transform = make_shared<Transform>();
 }
 
 Texture::~Texture()
@@ -59,27 +58,12 @@ void Texture::CreateVerties()
 
 void Texture::Update()
 {
-    XMMATRIX s = XMMatrixScaling(_scale.x, _scale.y, 1);
-    XMMATRIX r = XMMatrixRotationZ(_angle);
-    XMMATRIX t = XMMatrixTranslation(_pos.x, _pos.y, 0);
-    _srtMatrix = s * r * t;
-
-    
-
-    /*if (_parentMatrix != nullptr)
-        _worldBuffer->SetMatrix(_srtMatrix * (*_parentMatrix));
-    else
-        _worldBuffer->SetMatrix(_srtMatrix);*/
-
-    if(_parentMatrix != nullptr)
-        _srtMatrix *= (*_parentMatrix);
-    _worldBuffer->SetMatrix(_srtMatrix);
-    _worldBuffer->Update();
+    _transform->UpdateWorldBuffer();
 }
 
 void Texture::Render()
 {
-    _worldBuffer->SetVSBuffer(0);
+    _transform->SetWorldBuffer(0);
 
     _vertexBuffer->IASet(0);
     _indexBuffer->IASet();

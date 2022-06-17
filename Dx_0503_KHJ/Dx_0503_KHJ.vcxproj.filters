@@ -96,6 +96,12 @@
     <ClInclude Include="Framework\Utillity\Timer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Component\Transform.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\DunGridScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -161,6 +167,12 @@
     <ClCompile Include="Framework\Utillity\Timer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Component\Transform.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\DunGridScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -184,6 +196,18 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\sun.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\ezreal.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\mousePointer.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\mysticShot.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\kar_98k.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

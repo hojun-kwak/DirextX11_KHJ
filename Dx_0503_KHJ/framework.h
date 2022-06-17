@@ -63,6 +63,9 @@ using namespace std;
 #include "Framework/Texture/RasterizerState.h"
 #include "Framework/Texture/StateManager.h"
 
+// Component
+#include "Framework/Component/Transform.h"
+
 // Obj
 #include "Object/Texture.h"
 
