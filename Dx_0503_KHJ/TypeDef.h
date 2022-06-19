@@ -18,3 +18,5 @@
 #define ADDITIVE_STATE		StateManager::GetInstance()->GetAdditiveState()
 #define BLEND_STATE			StateManager::GetInstance()->GetBlendState()
 #define CULL_MODE_STATE		StateManager::GetInstance()->GetRasterizerState()
+
+#define PI 3.141592

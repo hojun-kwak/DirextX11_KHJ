@@ -12,6 +12,8 @@ public:
 	Vector2& operator-=(const Vector2& value);
 	Vector2 operator*(const float& value);
 
+	XMFLOAT2 operator-(const XMFLOAT2& value);
+
 	bool operator==(const Vector2 value);
 	bool operator!=(const Vector2 value);
 
@@ -23,10 +25,13 @@ public:
 	Vector2 NormalVector();
 	void Normallize();
 
-	float Dot(const Vector2& value);
+	float Dot(const Vector2& value) const;
 	float Shadow(const Vector2& floor);
 
 	float Cross(const Vector2& value);
+
+	float Angle() const;
+	float Angle(const Vector2& value) const;
 
 	void YAxisSymmetry();
 	int Manhattan(const Vector2& value) const;
