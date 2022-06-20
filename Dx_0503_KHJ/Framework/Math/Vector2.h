@@ -12,8 +12,6 @@ public:
 	Vector2& operator-=(const Vector2& value);
 	Vector2 operator*(const float& value);
 
-	XMFLOAT2 operator-(const XMFLOAT2& value);
-
 	bool operator==(const Vector2 value);
 	bool operator!=(const Vector2 value);
 

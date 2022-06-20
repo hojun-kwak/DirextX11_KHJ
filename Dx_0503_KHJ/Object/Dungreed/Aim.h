@@ -5,6 +5,8 @@ public:
 	Aim();
 	~Aim();
 
+	shared_ptr<Transform> GetTransfom() { return _texture->GetTransform(); }
+
 	void Update();
 	void Render();
 

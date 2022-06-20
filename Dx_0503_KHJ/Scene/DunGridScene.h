@@ -12,8 +12,7 @@ public:
 
 private:
 	shared_ptr<Player> _player;
-	shared_ptr<Bullet> _skill;
 	shared_ptr<Aim> _aim;
-	
+		
 };
 

@@ -5,6 +5,7 @@ Bullet::Bullet()
 {
 	_texture = make_shared<Texture>(L"Resource/mysticShot.png");
 	_texture->GetTransform()->GetScale() = { 0.3f, 0.3f };
+
 }
 
 Bullet::~Bullet()
@@ -13,7 +14,7 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	if (!_isActive)
+	if (_isActive == false)
 		return;
 
 	_texture->GetTransform()->GetPos() += _direction * 300.0f * DELTA_TIME;
@@ -23,7 +24,7 @@ void Bullet::Update()
 
 void Bullet::Render()
 {
-	if (!_isActive)
+	if (_isActive == false)
 		return;
 
 	_texture->Render();

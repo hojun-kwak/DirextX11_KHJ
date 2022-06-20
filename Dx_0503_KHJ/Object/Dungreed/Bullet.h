@@ -16,5 +16,6 @@ public:
 private:
 	shared_ptr<Texture> _texture;
 	Vector2 _direction;
+	// 왼쪽이냐 아래냐 따라 총알의 앵글을 움직여 볼까??
 };
 

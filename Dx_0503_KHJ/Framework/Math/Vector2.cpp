@@ -37,11 +37,6 @@ Vector2 Vector2::operator*(const float& value)
 	return Vector2(_x * value, _y * value);
 }
 
-XMFLOAT2 Vector2::operator-(const XMFLOAT2& value)
-{
-	return XMFLOAT2(_x - value.x, _y - value.y);
-}
-
 bool Vector2::operator==(const Vector2 value)
 {
 	if ((this->_x == value._x) &&

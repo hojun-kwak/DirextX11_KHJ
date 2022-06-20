@@ -9,12 +9,17 @@ Player::Player()
 	_gunTrans = make_shared<Transform>();
 	_gunTrans->SetParent(_texture->GetTransform()->GetMatrix());
 	_gunTrans->GetPos() = { 50.0f,50.0f };
-	_gunTrans->GetScale() = { 0.8f,0.8f };
 
 	_gun = make_shared<Gun>();
 	_gun->SetPlayer(_gunTrans);
 
-	_bullet = make_shared<Bullet>();
+	//_bullet = make_shared<Bullet>();
+	for (int i = 0; i < _objpooling; i++)
+	{
+		shared_ptr<Bullet> temp = make_shared<Bullet>();
+		temp->_isActive = false;
+		_bullets.emplace_back(temp);
+	}
 
 }
 
@@ -28,12 +33,21 @@ void Player::Update()
 	Aimming();
 	Fire();
 
+	if (KEY_PRESS(VK_ADD))
+	{
+		Reset();
+	}
+
 	_texture->Update();
 
 	_gunTrans->UpdateWorldBuffer();
 
 	_gun->Update();
-	_bullet->Update();
+	//_bullet->Update();
+	for (auto& bullet : _bullets)
+	{
+		bullet->Update();
+	}
 }
 
 void Player::Render()
@@ -41,7 +55,9 @@ void Player::Render()
 	_texture->Render();
 
 	_gun->Render();
-	_bullet->Render();
+	//_bullet->Render();
+	for (auto& bullet : _bullets)
+		bullet->Render();
 }
 
 void Player::Move()
@@ -61,6 +77,7 @@ void Player::Aimming()
 	Vector2 v = MOUSE_POS - _gunTrans->GetWorldPos();
 	float angle = v.Angle();
 	_gunTrans->GetAnlgle() = angle;
+
 }
 
 void Player::Fire()
@@ -69,8 +86,26 @@ void Player::Fire()
 	{
 		Vector2 v = MOUSE_POS - _gunTrans->GetWorldPos();
 		v.Normallize();
-		_bullet->SetDirection(v);
-		_bullet->SetPosition(_gunTrans->GetWorldPos());
-		_bullet->_isActive = true;
+		//_bullet->SetDirection(v);
+		/*_bullet->SetPosition(_gunTrans->GetWorldPos());
+		_bullet->_isActive = true;*/
+		for (auto& bullet : _bullets)
+		{
+			if (bullet->_isActive == false)
+			{
+				bullet->SetDirection(v);
+				bullet->SetPosition(_gunTrans->GetWorldPos());
+				bullet->_isActive = true;
+				break;
+			}
+		}
+	}
+}
+
+void Player::Reset()
+{
+	for (auto& bullet : _bullets)
+	{
+		bullet->_isActive = false;
 	}
 }
