@@ -69,6 +69,12 @@ using namespace std;
 // Obj
 #include "Object/Texture.h"
 
+// Dungreed
+#include "Object/Dungreed/Player.h"
+#include "Object/Dungreed/Gun.h"
+#include "Object/Dungreed/Bullet.h"
+#include "Object/Dungreed/Aim.h"
+
 // Scene
 #include "Scene/Scene.h"
 

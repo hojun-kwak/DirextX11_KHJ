@@ -151,6 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Dungreed\Aim.h" />
+    <ClInclude Include="Object\Dungreed\Bullet.h" />
+    <ClInclude Include="Object\Dungreed\Gun.h" />
+    <ClInclude Include="Object\Dungreed\Player.h" />
     <ClInclude Include="Scene\DunGridScene.h" />
     <ClInclude Include="Framework\Math\Vector2.h" />
     <ClInclude Include="Framework\Render\ConstantBuffer.h" />
@@ -182,6 +186,10 @@
     <ClInclude Include="TypeDef.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Dungreed\Aim.cpp" />
+    <ClCompile Include="Object\Dungreed\Bullet.cpp" />
+    <ClCompile Include="Object\Dungreed\Gun.cpp" />
+    <ClCompile Include="Object\Dungreed\Player.cpp" />
     <ClCompile Include="Scene\DunGridScene.cpp" />
     <ClCompile Include="Framework\Math\Vector2.cpp" />
     <ClCompile Include="Framework\Render\ConstantBuffer.cpp" />

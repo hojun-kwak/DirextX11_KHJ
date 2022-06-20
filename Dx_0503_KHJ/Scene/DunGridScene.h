@@ -12,15 +12,17 @@ public:
 
 
 private:
-	shared_ptr<Texture> _Character;
-	shared_ptr<Texture> _Gun;
-	shared_ptr<Texture> _Skill;
+	//shared_ptr<Texture> _Character;
+	//shared_ptr<Texture> _Gun;
+	//shared_ptr<Texture> _Skill;
+
+	shared_ptr<Player> _player;
+	//shared_ptr<Gun> _gun;
+	shared_ptr<Bullet> _skill;
+
 	shared_ptr<Texture> _MousePointer;
 
 	bool skillActive = false;
-
-	shared_ptr<SamplerState> _samplerState;
-	shared_ptr<BlendState> _blendState;
 	
 };
 

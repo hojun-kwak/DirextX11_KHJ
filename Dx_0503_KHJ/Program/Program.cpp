@@ -13,7 +13,11 @@ Program::Program()
 	_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();
 
-	XMMATRIX projection = XMMatrixOrthographicLH(WIN_WIDTH, WIN_HEIGHT, 0.0f, 1.0f);
+	// 좌표계가 정가운데가 0,0
+	//XMMATRIX projection = XMMatrixOrthographicLH(WIN_WIDTH, WIN_HEIGHT, 0.0f, 1.0f);
+
+	// 좌표계 왼쪽 아래부터 0,0
+	XMMATRIX projection = XMMatrixOrthographicOffCenterLH(0, WIN_WIDTH, 0, WIN_HEIGHT, 0, 1.0f);
 	_projectionBuffer->SetMatrix(projection);
 	// 쉐이더에서 업데이트할용도 한번만
 	_projectionBuffer->Update();
@@ -50,6 +54,8 @@ void Program::Update()
 void Program::Render()
 {
 	Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
+
+	ALPHA_STATE->SetState();
 
 	_viewBuffer->SetVSBuffer(1);
 	_projectionBuffer->SetVSBuffer(2);
