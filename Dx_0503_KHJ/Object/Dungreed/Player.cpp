@@ -14,6 +14,8 @@ Player::Player()
 	_gun = make_shared<Gun>();
 	_gun->SetPlayer(_gunTrans);
 
+	_bullet = make_shared<Bullet>();
+
 }
 
 Player::~Player()
@@ -24,12 +26,14 @@ void Player::Update()
 {
 	Move();
 	Aimming();
+	Fire();
 
 	_texture->Update();
 
 	_gunTrans->UpdateWorldBuffer();
 
 	_gun->Update();
+	_bullet->Update();
 }
 
 void Player::Render()
@@ -37,6 +41,7 @@ void Player::Render()
 	_texture->Render();
 
 	_gun->Render();
+	_bullet->Render();
 }
 
 void Player::Move()
@@ -56,4 +61,16 @@ void Player::Aimming()
 	Vector2 v = MOUSE_POS - _gunTrans->GetWorldPos();
 	float angle = v.Angle();
 	_gunTrans->GetAnlgle() = angle;
+}
+
+void Player::Fire()
+{
+	if (KEY_DOWN(VK_LBUTTON))
+	{
+		Vector2 v = MOUSE_POS - _gunTrans->GetWorldPos();
+		v.Normallize();
+		_bullet->SetDirection(v);
+		_bullet->SetPosition(_gunTrans->GetWorldPos());
+		_bullet->_isActive = true;
+	}
 }
