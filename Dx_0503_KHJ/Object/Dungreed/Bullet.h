@@ -11,6 +11,7 @@ public:
 	shared_ptr<Transform> GetTransfom() { return _texture->GetTransform(); }
 	void SetDirection(Vector2 dir);
 	void SetPosition(Vector2 pos) { _texture->GetTransform()->GetPos() = pos; }
+	void SetAngle(float angle) { _texture->GetTransform()->GetAnlgle() = angle; }
 	bool _isActive = false;
 
 private:

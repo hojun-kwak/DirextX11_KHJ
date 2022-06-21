@@ -96,6 +96,7 @@ void Player::Fire()
 				bullet->SetDirection(v);
 				bullet->SetPosition(_gunTrans->GetWorldPos());
 				bullet->_isActive = true;
+				bullet->SetAngle(_gunTrans->GetAnlgle());
 				break;
 			}
 		}
