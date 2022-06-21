@@ -61,10 +61,6 @@ using namespace std;
 #include "Framework/Utillity/InputManager.h"
 #include "Framework/Utillity/Timer.h"
 
-// Collider
-#include "Framework/Collider/Collider.h"
-#include "Framework/Collider/RectCollider.h"
-
 // Texture
 #include "Framework/Texture/SRV.h"
 #include "Framework/Texture/SamplerState.h"
@@ -74,6 +70,10 @@ using namespace std;
 
 // Component
 #include "Framework/Component/Transform.h"
+
+// Collider
+#include "Framework/Collider/Collider.h"
+#include "Framework/Collider/RectCollider.h"
 
 // Obj
 #include "Object/Texture.h"

@@ -22,7 +22,7 @@ public:
 
 	const XMMATRIX& GetMatrix() { return _srtMatrix; }
 	// 주소값 반환
-	void SetParent(shared_ptr<Transform> matrix) { _parentMatrix = matrix; }
+	void SetParent(shared_ptr<Transform> transform) { _parentMatrix = transform; }
 
 	void UpdateWorldBuffer();
 	// world에 나오기위한 조건

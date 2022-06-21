@@ -97,7 +97,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Device::Create(hWnd);
 
     ImGui::CreateContext();
-    ImGui::StyleColorsDark();
+    //ImGui::StyleColorsDark();
+    ImGui::StyleColorsLight();
     ImGui_ImplWin32_Init(hWnd);
     ImGui_ImplDX11_Init(DEVICE.Get(), DEVICE_CONTEXT.Get());
 

@@ -20,7 +20,7 @@ Program::Program()
 	XMMATRIX projection = XMMatrixOrthographicOffCenterLH(0, WIN_WIDTH, 0, WIN_HEIGHT, 0, 1.0f);
 	_projectionBuffer->SetMatrix(projection);
 	// 쉐이더에서 업데이트할용도 한번만
-	_projectionBuffer->Update();
+	//_projectionBuffer->Update();
 
 	// world 한번 움직이게
 	/*_worldPos = { 100.0f, 0.0f };
@@ -32,7 +32,7 @@ Program::Program()
 	XMMATRIX _cameraMatrix = XMMatrixTranslation(_cameraPos.x, _cameraPos.y, 0);
 	_viewBuffer->SetMatrix(_cameraMatrix);*/
 
-	_viewBuffer->Update();
+	//_viewBuffer->Update();
 
 	//Timer::GetInstance()->SetFPS(60);
 
@@ -52,7 +52,17 @@ void Program::Update()
 
 void Program::Render()
 {
-	Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
+	
+	//Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
+
+	if (KEY_PRESS(VK_UP))
+	{
+		Device::GetInstance()->Clear(150.0f, 2.0f, 251.0f);
+	}
+	if (KEY_PRESS(VK_DOWN))
+	{
+		Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
+	}
 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();

@@ -24,6 +24,7 @@ void Transform::UpdateWorldBuffer()
 
     if (_parentMatrix != nullptr)
         _srtMatrix *= _parentMatrix->GetMatrix();
+
     _worldBuffer->SetMatrix(_srtMatrix);
     _worldBuffer->Update();
 }
