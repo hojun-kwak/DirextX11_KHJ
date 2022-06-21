@@ -151,10 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Collider\Collider.h" />
     <ClInclude Include="Object\Dungreed\Aim.h" />
     <ClInclude Include="Object\Dungreed\Bullet.h" />
     <ClInclude Include="Object\Dungreed\Gun.h" />
     <ClInclude Include="Object\Dungreed\Player.h" />
+    <ClInclude Include="Framework\Collider\RectCollider.h" />
     <ClInclude Include="Scene\DunGridScene.h" />
     <ClInclude Include="Framework\Math\Vector2.h" />
     <ClInclude Include="Framework\Render\ConstantBuffer.h" />
@@ -186,10 +188,12 @@
     <ClInclude Include="TypeDef.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Collider\Collider.cpp" />
     <ClCompile Include="Object\Dungreed\Aim.cpp" />
     <ClCompile Include="Object\Dungreed\Bullet.cpp" />
     <ClCompile Include="Object\Dungreed\Gun.cpp" />
     <ClCompile Include="Object\Dungreed\Player.cpp" />
+    <ClCompile Include="Framework\Collider\RectCollider.cpp" />
     <ClCompile Include="Scene\DunGridScene.cpp" />
     <ClCompile Include="Framework\Math\Vector2.cpp" />
     <ClCompile Include="Framework\Render\ConstantBuffer.cpp" />
@@ -276,6 +280,9 @@
   <ItemGroup>
     <ProjectReference Include="..\DirectXTex\DirectXTex_Desktop_2019_Win10.vcxproj">
       <Project>{371b9fa9-4c90-4ac6-a123-aced756d6c77}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ImGui\ImGui.vcxproj">
+      <Project>{fa712d6c-4449-44c9-9fb4-b667391c6b95}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

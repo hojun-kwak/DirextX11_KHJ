@@ -10,7 +10,7 @@ public:
 
 	void SetPlayer(shared_ptr<Transform> transform)
 	{
-		_texture->GetTransform()->SetParent(transform->GetMatrix());
+		_texture->GetTransform()->SetParent(transform);
 	}
 
 private:

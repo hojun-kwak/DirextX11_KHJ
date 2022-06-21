@@ -6,12 +6,12 @@ SolaSystemScene::SolaSystemScene()
 	_sun = make_shared<Texture>(L"Resource/sun.png");
 
 	_earth = make_shared<Texture>(L"Resource/earth.png");
-	_earth->GetTransform()->SetParent(_sun->GetTransform()->GetMatrix());
+	_earth->GetTransform()->SetParent(_sun->GetTransform());
 	_earth->GetTransform()->GetPos()._x = 400;
 	_earth->GetTransform()->GetScale() = { 0.8f ,0.8f };
 
 	_moon = make_shared<Texture>(L"Resource/moon.png");
-	_moon->GetTransform()->SetParent(_earth->GetTransform()->GetMatrix());
+	_moon->GetTransform()->SetParent(_earth->GetTransform());
 	/*_moon->SetParent(_earth->GetMatrix() * temp);
 	_moon->SetParent(_earth->)*/
 	_moon->GetTransform()->GetPos()._x = 200;

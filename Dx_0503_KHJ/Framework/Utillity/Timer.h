@@ -29,8 +29,9 @@ public:
 	void Update();
 
 	double GetDetatime() { return (double)_timeTickElased; }
-	int GetFPS() { return (int)_lockFPS; }
+	int GetFPS() { return _frameRate; }
 	void SetFPS(double fps) { _lockFPS = fps; }
+	double GetRunTime() { return _runTime; }
 
 private:
 	static Timer* _instance;

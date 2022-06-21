@@ -20,6 +20,15 @@ void Bullet::Update()
 	_texture->GetTransform()->GetPos() += _direction * 300.0f * DELTA_TIME;
 
 	_texture->Update();
+	
+	// 3초가 지나면 사라짐
+	_runTime += DELTA_TIME;
+
+	if (_runTime > _destroyTime)
+	{
+		_isActive = false;
+		_runTime = 0;
+	}
 }
 
 void Bullet::Render()
@@ -33,4 +42,5 @@ void Bullet::Render()
 void Bullet::SetDirection(Vector2 dir)
 {
 	_direction = dir;
+	_texture->GetTransform()->GetAnlgle() = dir.Angle();
 }

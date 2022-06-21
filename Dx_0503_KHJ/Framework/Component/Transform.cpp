@@ -23,7 +23,7 @@ void Transform::UpdateWorldBuffer()
         _worldBuffer->SetMatrix(_srtMatrix);*/
 
     if (_parentMatrix != nullptr)
-        _srtMatrix *= (*_parentMatrix);
+        _srtMatrix *= _parentMatrix->GetMatrix();
     _worldBuffer->SetMatrix(_srtMatrix);
     _worldBuffer->Update();
 }

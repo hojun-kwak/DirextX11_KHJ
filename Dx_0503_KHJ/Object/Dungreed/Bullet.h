@@ -18,5 +18,8 @@ private:
 	shared_ptr<Texture> _texture;
 	Vector2 _direction;
 	// 왼쪽이냐 아래냐 따라 총알의 앵글을 움직여 볼까??
+
+	float _runTime = 0.0f;
+	float _destroyTime = 3.0f;
 };
 

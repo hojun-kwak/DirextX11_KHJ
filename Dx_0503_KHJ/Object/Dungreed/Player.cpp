@@ -7,13 +7,15 @@ Player::Player()
 	_texture->GetTransform()->GetPos() = { 200.0f, 200.0f };
 
 	_gunTrans = make_shared<Transform>();
-	_gunTrans->SetParent(_texture->GetTransform()->GetMatrix());
+	_gunTrans->SetParent(_texture->GetTransform());
 	_gunTrans->GetPos() = { 50.0f,50.0f };
 
 	_gun = make_shared<Gun>();
 	_gun->SetPlayer(_gunTrans);
 
 	//_bullet = make_shared<Bullet>();
+
+	_bullets.reserve(_objpooling);
 	for (int i = 0; i < _objpooling; i++)
 	{
 		shared_ptr<Bullet> temp = make_shared<Bullet>();
@@ -96,7 +98,7 @@ void Player::Fire()
 				bullet->SetDirection(v);
 				bullet->SetPosition(_gunTrans->GetWorldPos());
 				bullet->_isActive = true;
-				bullet->SetAngle(_gunTrans->GetAnlgle());
+				//bullet->SetAngle(_gunTrans->GetAnlgle());
 				break;
 			}
 		}

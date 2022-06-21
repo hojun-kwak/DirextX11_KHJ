@@ -20,9 +20,9 @@ public:
 		return worldPos;
 	}
 
-	XMMATRIX* GetMatrix() { return &_srtMatrix; }
+	const XMMATRIX& GetMatrix() { return _srtMatrix; }
 	// 주소값 반환
-	void SetParent(XMMATRIX* matrix) { _parentMatrix = matrix; }
+	void SetParent(shared_ptr<Transform> matrix) { _parentMatrix = matrix; }
 
 	void UpdateWorldBuffer();
 	// world에 나오기위한 조건
@@ -35,7 +35,7 @@ private:
 
 	XMMATRIX _srtMatrix;
 
-	XMMATRIX* _parentMatrix = nullptr;
+	shared_ptr<Transform> _parentMatrix = nullptr;
 	// 매번 바뀌기때를 대비해 주소값(포인터)로
 	shared_ptr<MatrixBuffer> _worldBuffer;
 	// texture_SRT * World를 곱한값이 worldBuffer

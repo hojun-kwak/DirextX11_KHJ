@@ -45,9 +45,8 @@ void Timer::Update()
 	// 1초마다 갱신해야되는 정보
 	if (_oneSecCount >= 1)
 	{
+		_frameRate = _frameCount;
 		_oneSecCount = 0;
 		_frameCount = 0;
-
-		_frameRate = _frameCount;
 	}
 }

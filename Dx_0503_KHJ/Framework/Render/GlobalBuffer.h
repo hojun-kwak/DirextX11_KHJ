@@ -23,3 +23,22 @@ public:
 private:
 	Data _data;
 };
+
+// 색깔넘기는 용
+class ColorBuffer : public ConstantBuffer
+{
+public:
+	struct Data
+	{
+		XMFLOAT4 color;
+	};
+
+	ColorBuffer()
+		: ConstantBuffer(&_data, sizeof(Data))
+	{
+		_data.color = { 1,1,1,1 };
+	};
+
+private:
+	Data _data;
+};

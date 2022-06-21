@@ -34,7 +34,7 @@ Program::Program()
 
 	_viewBuffer->Update();
 
-	Timer::GetInstance()->SetFPS(60);
+	//Timer::GetInstance()->SetFPS(60);
 
 }
 
@@ -48,12 +48,17 @@ void Program::Update()
 	_viewBuffer->Update();
 
 	_scene->Update();
-	int temp = Timer::GetInstance()->GetFPS();
 }
 
 void Program::Render()
 {
 	Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
+
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+
+	ImGui::Text("FPS : %d", Timer::GetInstance()->GetFPS());
 
 	ALPHA_STATE->SetState();
 
@@ -61,6 +66,9 @@ void Program::Render()
 	_projectionBuffer->SetVSBuffer(2);
 
 	_scene->Render();
+
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
 	Device::GetInstance()->Present();
 }
