@@ -20,3 +20,9 @@
 #define CULL_MODE_STATE		StateManager::GetInstance()->GetRasterizerState()
 
 #define PI 3.141592
+
+#define RED XMFLOAT4(1,0,0,1)
+#define GREEN XMFLOAT4(0,1,0,1)
+#define BLUE XMFLOAT4(0,0,1,1)
+#define WHITE XMFLOAT4(1,1,1,1)
+#define BLACK XMFLOAT4(0,0,0,1)

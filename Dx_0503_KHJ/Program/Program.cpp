@@ -5,10 +5,11 @@
 #include "../Scene/TextureWVPScene.h"
 #include "../Scene/SolaSystemScene.h"
 #include "../Scene/DunGridScene.h"
+#include "../Scene/ColliderScene.h"
 
 Program::Program()
 {
-	_scene = make_shared<DunGridScene>();
+	_scene = make_shared<ColliderScene>();
 
 	_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();
@@ -53,29 +54,32 @@ void Program::Update()
 void Program::Render()
 {
 	
-	//Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
+	Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
 
-	if (KEY_PRESS(VK_UP))
+	/*if (KEY_PRESS(VK_UP))
 	{
 		Device::GetInstance()->Clear(150.0f, 2.0f, 251.0f);
 	}
 	if (KEY_PRESS(VK_DOWN))
 	{
 		Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
-	}
+	}*/
 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
-
-	ImGui::Text("FPS : %d", Timer::GetInstance()->GetFPS());
 
 	ALPHA_STATE->SetState();
 
 	_viewBuffer->SetVSBuffer(1);
 	_projectionBuffer->SetVSBuffer(2);
 
+	_scene->PreRender();
+
 	_scene->Render();
+
+	ImGui::Text("FPS : %d", Timer::GetInstance()->GetFPS());
+	_scene->PostRender();
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

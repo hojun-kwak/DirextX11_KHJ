@@ -5,14 +5,14 @@ public:
 	Collider();
 	virtual ~Collider();
 
+	virtual void CreateData();
+
 	virtual void Update();
 	virtual void Render();
 
-	virtual void CreateData();
-
 	void SetParent(shared_ptr<Transform> parent) { _parent = parent; }
 
-private:
+protected:
 	Vector2 _center;
 	
 	// Mesh(»À´ë)

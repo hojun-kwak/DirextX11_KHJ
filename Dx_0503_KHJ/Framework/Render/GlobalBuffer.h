@@ -39,6 +39,8 @@ public:
 		_data.color = { 1,1,1,1 };
 	};
 
+	void SetColor(const XMFLOAT4 color) { _data.color = color; }
+
 private:
 	Data _data;
 };
