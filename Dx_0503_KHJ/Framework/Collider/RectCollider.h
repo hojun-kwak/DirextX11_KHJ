@@ -1,6 +1,15 @@
 #pragma once
 class RectCollider
 {
+private:
+	struct ObbDesc
+	{
+		Vector2 _position;
+		Vector2 _direction[2]; // 사각형의 평행한 단위 벡터
+		float _lenght[2]; // 사각형의 평행한 실이
+	};
+
+
 public:
 	RectCollider(const Vector2 halfSize = { 1.0f, 1.0f });
 	~RectCollider();
@@ -10,18 +19,25 @@ public:
 	void Update();
 	void Render();
 
-	Vector2& GetPosition() { return _transform->GetPos(); }
+	const Vector2& GetWorldPosition() { return _transform->GetWorldPos(); }
+	Vector2& GetLocalPosition() { return _transform->GetPos(); }
+	float& GetAngle() { return _transform->GetAnlgle(); }
 
-	bool IsCollision(shared_ptr<RectCollider> rect);
-	bool IsCollision(Vector2 pos);
+	bool IsCollision(shared_ptr<RectCollider> rect, bool obb);
+	bool IsCollision(const Vector2& pos);
 
-	bool _isActive;
 	bool _isCollision = false;
 
 	float Left() { return _center._x - _halfSize._x; }
 	float Right() { return _center._x + _halfSize._x; }
 	float Top() { return _center._y + _halfSize._y; }
 	float Bottom() { return _center._y - _halfSize._y; }
+
+	ObbDesc GetObb();
+	bool AABB(shared_ptr<RectCollider> rect);
+	bool OBB(shared_ptr<RectCollider> rect);
+
+	float SepareateAxis(Vector2 separate, Vector2 e1, Vector2 e2);
 
 	// rect rect
 	// rect 점(mousePoint)
@@ -40,5 +56,6 @@ private:
 
 	shared_ptr<Transform> _parent;
 	shared_ptr<Transform> _transform;
+
 };
 

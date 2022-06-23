@@ -123,6 +123,9 @@
     <ClInclude Include="Scene\ColliderScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -213,6 +216,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\ColliderScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Collider\CircleCollider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -29,6 +29,6 @@ void DunGridScene::Render()
 	_rectCollider->Render();
 
 	// Imgui
-	ImGui::SliderFloat("ColliderPosX", &_rectCollider->GetPosition()._x, 0, 1280);
-	ImGui::SliderFloat("ColliderPosY", &_rectCollider->GetPosition()._y, 0, 720);
+	ImGui::SliderFloat("ColliderPosX", &_rectCollider->GetLocalPosition()._x, 0, 1280);
+	ImGui::SliderFloat("ColliderPosY", &_rectCollider->GetLocalPosition()._y, 0, 720);
 }

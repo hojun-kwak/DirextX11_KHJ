@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Scene\ColliderScene.h" />
     <ClInclude Include="Framework\Collider\Collider.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -193,6 +194,7 @@
     <ClInclude Include="TypeDef.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Collider\CircleCollider.cpp" />
     <ClCompile Include="Scene\ColliderScene.cpp" />
     <ClCompile Include="Framework\Collider\Collider.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
