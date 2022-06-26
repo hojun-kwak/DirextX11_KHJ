@@ -14,5 +14,7 @@ private:
 	shared_ptr<RectCollider> _rectCollider1;
 	shared_ptr<RectCollider> _rectCollider2;
 
+	shared_ptr<Ci
+
 };
 
