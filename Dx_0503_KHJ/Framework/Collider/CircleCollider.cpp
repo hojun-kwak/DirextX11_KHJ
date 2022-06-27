@@ -11,47 +11,59 @@ CircleCollider::~CircleCollider()
 {
 }
 
+void CircleCollider::CreateData()
+{
+	_type = Collider::ColType::CIRCLE;
+
+	VertexPos vertex;
+
+	// 원의 정점
+	for (int i = 0; i < 37; i++)
+	{
+		float theta = PI * 2 / 36;
+		vertex.pos.x = _radius * cosf(theta * i);
+		vertex.pos.y = _radius * sinf(theta * i);
+		vertex.pos.z = 0;
+
+		_vertices.push_back(vertex);
+	}
+
+	Collider::CreateData();
+}
+
 void CircleCollider::Update()
 {
 	Collider::Update();
 }
 
-bool CircleCollider::IsCollision(const Vector2 pos)
+void CircleCollider::Render()
 {
-	if (GetRadius() >= _center.Distance(pos))
+	Collider::Render();
+}
+
+bool CircleCollider::IsCollision(const Vector2& pos)
+{
+	float distance = _transform->GetWorldPos().Distance(pos);
+	float radius = GetRadius();
+	if (distance < GetRadius())
 		return true;
 
 	return false;
 }
 
-bool CircleCollider::IsCollision(shared_ptr<RectCollider> rect, bool isObb)
+bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other, bool isObb)
 {
-	return rect->IsCollision(make_shared<CircleCollider>(*this), isObb);
+	Vector2 t = other->GetWorldPosition();
+	Vector2 t2 = this->GetWorldPosition();
+	Vector2 t3 = t2 - t;
+	float distance = (t3).Length();
+	if (distance < GetRadius() + other->GetRadius())
+		return true;
+
+	return false;
 }
 
-bool CircleCollider::IsCollision(shared_ptr<CircleCollider> circle, bool isObb)
+bool CircleCollider::IsCollision(shared_ptr<RectCollider> other, bool obb)
 {
-	float distance = (_center - circle->_center).Length();
-	float distance2 = GetRadius() + circle->GetRadius();
-
-	return distance2 > distance;
-}
-
-void CircleCollider::CreateData()
-{
-	_type = Collider::ColType::CIRCLE;
-	
-		VertexPos vertex;
-	
-		// 원의 정점
-		for (int i = 0; i < 37; i++)
-		{
-			float theta = PI * 2 / 36;
-			vertex.pos.x = _radius * cosf(theta * i);
-			vertex.pos.y = _radius * sinf(theta * i);
-			vertex.pos.z = 0;
-	
-			_vertices.push_back(vertex);
-		}
-	Collider::CreateData();
+	return other->IsCollision(make_shared<CircleCollider>(*this), obb);
 }

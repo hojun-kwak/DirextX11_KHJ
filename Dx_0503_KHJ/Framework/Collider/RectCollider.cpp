@@ -16,6 +16,11 @@ void RectCollider::Update()
 	Collider::Update();
 }
 
+void RectCollider::Render()
+{
+	Collider::Render();
+}
+
 void RectCollider::CreateData()
 {
 	_type = Collider::ColType::RECT;
@@ -194,7 +199,7 @@ bool RectCollider::OBB(shared_ptr<CircleCollider> circle)
 	return true;
 }
 
-bool RectCollider::IsCollision(const Vector2 pos)
+bool RectCollider::IsCollision(const Vector2& pos)
 {
 	if (pos._x < Left() || pos._x > Right())
 		return false;

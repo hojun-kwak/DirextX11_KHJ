@@ -9,6 +9,8 @@ public:
 	void Render();
 
 	shared_ptr<Transform> GetTransfom() { return _texture->GetTransform(); }
+	shared_ptr<Collider> GetCollider() { return _collider; }
+
 	void SetDirection(Vector2 dir);
 	void SetPosition(Vector2 pos) { _texture->GetTransform()->GetPos() = pos; }
 	void SetAngle(float angle) { _texture->GetTransform()->GetAngle() = angle; }

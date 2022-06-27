@@ -15,9 +15,10 @@ public:
 	virtual ~RectCollider();
 
 	virtual void Update() override;
+	virtual void Render() override;
 	virtual void CreateData() override;
 
-	virtual bool IsCollision(const Vector2 pos) override;
+	virtual bool IsCollision(const Vector2& pos) override;
 	virtual bool IsCollision(shared_ptr<RectCollider> rect, bool isObb) override;
 	virtual bool IsCollision(shared_ptr<CircleCollider> circle, bool isObb) override;
 

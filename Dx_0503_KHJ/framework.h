@@ -84,6 +84,7 @@ using namespace std;
 #include "Object/Dungreed/Gun.h"
 #include "Object/Dungreed/Bullet.h"
 #include "Object/Dungreed/Aim.h"
+#include "Object/Dungreed/Monster.h"
 
 // Scene
 #include "Scene/Scene.h"

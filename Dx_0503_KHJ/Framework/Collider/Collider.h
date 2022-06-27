@@ -17,12 +17,12 @@ public:
 	Collider();
 	virtual ~Collider();
 
-	virtual void Update() abstract;
+	virtual void Update();
 	virtual void Render();
 
 	virtual void CreateData() abstract;
 
-	virtual bool IsCollision(const Vector2 pos) abstract;
+	virtual bool IsCollision(const Vector2& pos) abstract;
 	virtual bool IsCollision(shared_ptr<RectCollider> rect, bool isObb = false) abstract;
 	virtual bool IsCollision(shared_ptr<CircleCollider> circle, bool isObb = false) abstract;
 

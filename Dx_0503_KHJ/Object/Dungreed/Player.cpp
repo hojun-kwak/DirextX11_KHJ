@@ -13,18 +13,20 @@ Player::Player()
 	_gun = make_shared<Gun>();
 	_gun->SetPlayer(_gunTrans);
 
-	//_bullet = make_shared<Bullet>();
+	_bullet = make_shared<Bullet>();
 
-	_bullets.reserve(_objpooling);
+	/*_bullets.reserve(_objpooling);
 	for (int i = 0; i < _objpooling; i++)
 	{
 		shared_ptr<Bullet> temp = make_shared<Bullet>();
 		temp->_isActive = false;
 		_bullets.emplace_back(temp);
-	}
+	}*/
 
 	_collider = make_shared<RectCollider>(Vector2(100, 100));
 	_collider->SetParent(_texture->GetTransform());
+
+	_mons = make_shared<class Monster>();
 
 }
 
@@ -37,6 +39,21 @@ void Player::Update()
 	Move();
 	Aimming();
 	Fire();
+	Attack();
+
+	bool check = _bullet->GetCollider()->IsCollision(_mons->GetCollider());
+
+	if (_bullet->GetCollider()->IsCollision(_mons->GetCollider(), true))
+	{
+		//_mons->GetCollider()->SetRed();
+		_mons->GetRed();
+		//_bullet->_isActive = false;
+	}
+	else
+		_mons->GetCollider()->SetGreen();
+
+	
+
 
 	if (KEY_PRESS(VK_ADD))
 	{
@@ -48,12 +65,13 @@ void Player::Update()
 	_gunTrans->UpdateWorldBuffer();
 
 	_gun->Update();
-	//_bullet->Update();
-	for (auto& bullet : _bullets)
+	_bullet->Update();
+	/*for (auto& bullet : _bullets)
 	{
 		bullet->Update();
-	}
+	}*/
 	_collider->Update();
+	_mons->Update();
 }
 
 void Player::Render()
@@ -61,10 +79,12 @@ void Player::Render()
 	_texture->Render();
 
 	_gun->Render();
-	//_bullet->Render();
-	for (auto& bullet : _bullets)
-		bullet->Render();
+	_bullet->Render();
+	/*for (auto& bullet : _bullets)
+		bullet->Render();*/
+
 	_collider->Render();
+	_mons->Render();
 }
 
 void Player::Move()
@@ -93,27 +113,41 @@ void Player::Fire()
 	{
 		Vector2 v = MOUSE_POS - _gunTrans->GetWorldPos();
 		v.Normallize();
-		//_bullet->SetDirection(v);
-		/*_bullet->SetPosition(_gunTrans->GetWorldPos());
-		_bullet->_isActive = true;*/
-		for (auto& bullet : _bullets)
-		{
-			if (bullet->_isActive == false)
-			{
-				bullet->SetDirection(v);
-				bullet->SetPosition(_gunTrans->GetWorldPos());
-				bullet->_isActive = true;
-				//bullet->SetAngle(_gunTrans->GetAngle());
-				break;
-			}
-		}
+		_bullet->SetDirection(v);
+		_bullet->SetPosition(_gunTrans->GetWorldPos());
+		_bullet->_isActive = true;
+
+		//for (auto& bullet : _bullets)
+		//{
+		//	if (bullet->_isActive == false)
+		//	{
+		//		bullet->SetDirection(v);
+		//		bullet->SetPosition(_gunTrans->GetWorldPos());
+		//		bullet->_isActive = true;
+		//		//bullet->SetAngle(_gunTrans->GetAngle());
+		//		break;
+		//	}
+		//}
 	}
+
+}
+
+void Player::Attack()
+{
+	/*for (auto& bullet : _bullets)
+	{
+		bullet
+	}*/
+	//bool check = _bullet->GetCollider()->IsCollision(_mons->GetCollider(), false);
+
+	
 }
 
 void Player::Reset()
 {
-	for (auto& bullet : _bullets)
+	/*for (auto& bullet : _bullets)
 	{
 		bullet->_isActive = false;
-	}
+	}*/
+	_bullet->_isActive = false;
 }
