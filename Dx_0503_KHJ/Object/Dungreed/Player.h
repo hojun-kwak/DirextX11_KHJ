@@ -24,5 +24,7 @@ private:
 	int _objpooling = 10;
 
 	vector<shared_ptr<class Bullet>> _bullets;
+
+	shared_ptr<Collider> _collider;
 };
 

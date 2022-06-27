@@ -11,7 +11,7 @@ public:
 	shared_ptr<Transform> GetTransfom() { return _texture->GetTransform(); }
 	void SetDirection(Vector2 dir);
 	void SetPosition(Vector2 pos) { _texture->GetTransform()->GetPos() = pos; }
-	void SetAngle(float angle) { _texture->GetTransform()->GetAnlgle() = angle; }
+	void SetAngle(float angle) { _texture->GetTransform()->GetAngle() = angle; }
 	bool _isActive = false;
 
 private:
@@ -21,5 +21,7 @@ private:
 
 	float _runTime = 0.0f;
 	float _destroyTime = 3.0f;
+
+	shared_ptr<Collider> _collider;
 };
 

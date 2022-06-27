@@ -23,6 +23,9 @@ Player::Player()
 		_bullets.emplace_back(temp);
 	}
 
+	_collider = make_shared<RectCollider>(Vector2(100, 100));
+	_collider->SetParent(_texture->GetTransform());
+
 }
 
 Player::~Player()
@@ -50,6 +53,7 @@ void Player::Update()
 	{
 		bullet->Update();
 	}
+	_collider->Update();
 }
 
 void Player::Render()
@@ -60,6 +64,7 @@ void Player::Render()
 	//_bullet->Render();
 	for (auto& bullet : _bullets)
 		bullet->Render();
+	_collider->Render();
 }
 
 void Player::Move()
@@ -78,7 +83,7 @@ void Player::Aimming()
 {
 	Vector2 v = MOUSE_POS - _gunTrans->GetWorldPos();
 	float angle = v.Angle();
-	_gunTrans->GetAnlgle() = angle;
+	_gunTrans->GetAngle() = angle;
 
 }
 
@@ -98,7 +103,7 @@ void Player::Fire()
 				bullet->SetDirection(v);
 				bullet->SetPosition(_gunTrans->GetWorldPos());
 				bullet->_isActive = true;
-				//bullet->SetAngle(_gunTrans->GetAnlgle());
+				//bullet->SetAngle(_gunTrans->GetAngle());
 				break;
 			}
 		}

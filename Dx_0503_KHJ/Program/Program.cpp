@@ -9,7 +9,7 @@
 
 Program::Program()
 {
-	_scene = make_shared<ColliderScene>();
+	_scene = make_shared<DunGridScene>();
 
 	_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();

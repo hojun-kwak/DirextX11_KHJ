@@ -1,8 +1,8 @@
 #include "framework.h"
 #include "CircleCollider.h"
 
-CircleCollider::CircleCollider(const float radius)
-	:_radius(radius)
+CircleCollider::CircleCollider(float radius)
+	: _radius(radius)
 {
 	CreateData();
 }
@@ -11,46 +11,47 @@ CircleCollider::~CircleCollider()
 {
 }
 
-void CircleCollider::CreateData()
-{
-	for (int i = 0; i < 360; i++)
-	{
-		float angle = i * PI / 180;
-
-		float cosSeta = cos(angle) * _radius;
-		float sinSeta = sin(angle) * _radius;
-		_verices.emplace_back(cosSeta, sinSeta);
-	}
-	
-
-	_vertexShader = make_shared<VertexShader>(L"Shaders/ColliderShader/ColliderVertexShader.hlsl");
-	_pixelShader = make_shared<PixelShader>(L"Shaders/ColliderShader/ColliderPixelShader.hlsl");
-
-	_vertexBuffer = make_shared<VertexBuffer>(_verices.data(), sizeof(VertexPos), _verices.size());
-	_colorBuffer = make_shared<ColorBuffer>();
-	_colorBuffer->SetColor(GREEN);
-
-	_transform = make_shared<Transform>();
-	_parent = nullptr;
-}
-
 void CircleCollider::Update()
 {
-	_center = GetLocalPosition();
-	_transform->UpdateWorldBuffer();
-	_colorBuffer->Update();
+	Collider::Update();
 }
 
-void CircleCollider::Render()
+bool CircleCollider::IsCollision(const Vector2 pos)
 {
-	_transform->SetWorldBuffer(0);
-	_colorBuffer->SetPSBuffer(0);
+	if (GetRadius() >= _center.Distance(pos))
+		return true;
 
-	_vertexBuffer->IASet(0);
-	DEVICE_CONTEXT->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
+	return false;
+}
 
-	_vertexShader->Set();
-	_pixelShader->PsSet();
+bool CircleCollider::IsCollision(shared_ptr<RectCollider> rect, bool isObb)
+{
+	return rect->IsCollision(make_shared<CircleCollider>(*this), isObb);
+}
 
-	DEVICE_CONTEXT->Draw(_verices.size(), 0);
+bool CircleCollider::IsCollision(shared_ptr<CircleCollider> circle, bool isObb)
+{
+	float distance = (_center - circle->_center).Length();
+	float distance2 = GetRadius() + circle->GetRadius();
+
+	return distance2 > distance;
+}
+
+void CircleCollider::CreateData()
+{
+	_type = Collider::ColType::CIRCLE;
+	
+		VertexPos vertex;
+	
+		// 원의 정점
+		for (int i = 0; i < 37; i++)
+		{
+			float theta = PI * 2 / 36;
+			vertex.pos.x = _radius * cosf(theta * i);
+			vertex.pos.y = _radius * sinf(theta * i);
+			vertex.pos.z = 0;
+	
+			_vertices.push_back(vertex);
+		}
+	Collider::CreateData();
 }

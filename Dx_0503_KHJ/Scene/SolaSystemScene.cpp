@@ -34,9 +34,9 @@ void SolaSystemScene::Update()
 
 	if (KEY_PRESS(VK_SPACE))
 	{
-		_sun->GetTransform()->GetAnlgle() += 1.0f * DELTA_TIME;
-		_earth->GetTransform()->GetAnlgle() += 5.0f * DELTA_TIME;
-		_moon->GetTransform()->GetAnlgle() += 3.0f * DELTA_TIME;
+		_sun->GetTransform()->GetAngle() += 1.0f * DELTA_TIME;
+		_earth->GetTransform()->GetAngle() += 5.0f * DELTA_TIME;
+		_moon->GetTransform()->GetAngle() += 3.0f * DELTA_TIME;
 	}
 
 	if (GetAsyncKeyState(VK_LEFT))

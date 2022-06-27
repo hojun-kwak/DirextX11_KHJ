@@ -7,7 +7,7 @@ public:
 
 	Vector2& GetPos() { return _pos; }
 	Vector2& GetScale() { return _scale; }
-	float& GetAnlgle() { return _angle; }
+	float& GetAngle() { return _angle; }
 
 	Vector2 GetWorldPos()
 	{
@@ -20,9 +20,17 @@ public:
 		return worldPos;
 	}
 
+	const Vector2& GetWorldScale()
+	{
+		if (_parentMatrix)
+			return Vector2(_scale._x * _parentMatrix->GetScale()._x, _scale._y * _parentMatrix->GetScale()._y);
+		return _scale;
+	}
+
 	const XMMATRIX& GetMatrix() { return _srtMatrix; }
 	// 주소값 반환
 	void SetParent(shared_ptr<Transform> transform) { _parentMatrix = transform; }
+	shared_ptr<Transform> GetParent() { return _parentMatrix; }
 
 	void UpdateWorldBuffer();
 	// world에 나오기위한 조건

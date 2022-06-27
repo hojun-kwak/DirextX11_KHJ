@@ -1,61 +1,50 @@
 #pragma once
-class RectCollider
+class RectCollider : public Collider
 {
 private:
 	struct ObbDesc
 	{
 		Vector2 _position;
-		Vector2 _direction[2]; // 사각형의 평행한 단위 벡터
-		float _lenght[2]; // 사각형의 평행한 실이
+		Vector2 _direction[2];
+
+		float _length[2];
 	};
 
-
 public:
-	RectCollider(const Vector2 halfSize = { 1.0f, 1.0f });
-	~RectCollider();
+	RectCollider(const Vector2& halfSize = { 1.0f,1.0f });
+	virtual ~RectCollider();
 
-	void CreateData();
-	
-	void Update();
-	void Render();
+	virtual void Update() override;
+	virtual void CreateData() override;
 
-	const Vector2& GetWorldPosition() { return _transform->GetWorldPos(); }
-	Vector2& GetLocalPosition() { return _transform->GetPos(); }
-	float& GetAngle() { return _transform->GetAnlgle(); }
+	virtual bool IsCollision(const Vector2 pos) override;
+	virtual bool IsCollision(shared_ptr<RectCollider> rect, bool isObb) override;
+	virtual bool IsCollision(shared_ptr<CircleCollider> circle, bool isObb) override;
 
-	bool IsCollision(shared_ptr<RectCollider> rect, bool obb);
-	bool IsCollision(const Vector2& pos);
+	float Left() { return GetWorldPosition()._x - GetWorldHalfX(); }
+	float Right() { return GetWorldPosition()._x + GetWorldHalfX(); }
+	float Top() { return GetWorldPosition()._y + GetWorldHalfY(); }
+	float Bottom() { return GetWorldPosition()._y - GetWorldHalfY(); }
 
-	bool _isCollision = false;
-
-	float Left() { return _center._x - _halfSize._x; }
-	float Right() { return _center._x + _halfSize._x; }
-	float Top() { return _center._y + _halfSize._y; }
-	float Bottom() { return _center._y - _halfSize._y; }
+	const float& GetWorldHalfX() { return _halfSize._x * GetWorldScale()._x; }
+	const float& GetWorldHalfY() { return _halfSize._y * GetWorldScale()._y; }
 
 	ObbDesc GetObb();
+
 	bool AABB(shared_ptr<RectCollider> rect);
 	bool OBB(shared_ptr<RectCollider> rect);
 
-	float SepareateAxis(Vector2 separate, Vector2 e1, Vector2 e2);
+	bool AABB(shared_ptr<class CircleCollider> circle);
+	bool OBB(shared_ptr<class CircleCollider> circle);
 
-	// rect rect
-	// rect 점(mousePoint)
+
+	float SeoareatAxis(Vector2 separate, Vector2 e1, Vector2 e2);
 
 private:
 	Vector2 _halfSize = { 0,0 };
 	Vector2 _center;
 
-	// Mesh(뼈대)
-	vector<VertexPos> _verices;
-	shared_ptr<VertexBuffer> _vertexBuffer;
 
-	shared_ptr<VertexShader> _vertexShader;
-	shared_ptr<PixelShader> _pixelShader;
-	shared_ptr<ColorBuffer> _colorBuffer;
 
-	shared_ptr<Transform> _parent;
-	shared_ptr<Transform> _transform;
 
 };
-

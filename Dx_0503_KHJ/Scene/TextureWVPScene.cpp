@@ -81,11 +81,11 @@ void TextureWVPScene::Update()
 	//// rocation
 	//if (GetAsyncKeyState(0x5A)) // z
 	//{
-	//	_texture->GetAnlgle() += 0.001f;
+	//	_texture->GetAngle() += 0.001f;
 	//}
 	//if (GetAsyncKeyState(0x58)) // x
 	//{
-	//	_texture->GetAnlgle() -= 0.001f;
+	//	_texture->GetAngle() -= 0.001f;
 	//}
 
 

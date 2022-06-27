@@ -64,7 +64,7 @@ float Vector2::Length() const
 	return sqrtf(_x*_x + _y*_y);
 }
 
-float Vector2::Distance(const Vector2& pos)
+float Vector2::Distance(const Vector2& pos) const
 {
 	float w = pos._x - _x;
 	float h = pos._y - _y;
