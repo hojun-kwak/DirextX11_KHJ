@@ -17,12 +17,21 @@ Monster::~Monster()
 
 void Monster::Update()
 {
+	if (!_monster_isActive)
+		return;
+
 	_texture->Update();
 	_collider->Update();
 }
 
 void Monster::Render()
 {
+	if (!_monster_isActive)
+		return;
+
 	_texture->Render();
 	_collider->Render();
+
+	ImGui::Text("Monster HP : %d", _monsterHp);
+
 }

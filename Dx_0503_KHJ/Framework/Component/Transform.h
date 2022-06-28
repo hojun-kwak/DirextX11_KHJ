@@ -9,6 +9,7 @@ public:
 	Vector2& GetScale() { return _scale; }
 	float& GetAngle() { return _angle; }
 
+	// 원본이 없기 때문에 참조를 붙이면 나중에 쓰레기값이 들어갈수있음 주의
 	Vector2 GetWorldPos()
 	{
 		Vector2 worldPos;

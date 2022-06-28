@@ -7,6 +7,8 @@ DunGridScene::DunGridScene()
 	_aim = make_shared<Aim>();
 	_monster = make_shared<Monster>();
 
+	_player->SetMonster(_monster);
+
 }
 
 DunGridScene::~DunGridScene()

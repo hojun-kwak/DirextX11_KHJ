@@ -27,8 +27,8 @@ public:
 	float Top() { return GetWorldPosition()._y + GetWorldHalfY(); }
 	float Bottom() { return GetWorldPosition()._y - GetWorldHalfY(); }
 
-	const float& GetWorldHalfX() { return _halfSize._x * GetWorldScale()._x; }
-	const float& GetWorldHalfY() { return _halfSize._y * GetWorldScale()._y; }
+	float GetWorldHalfX() { return _halfSize._x * GetWorldScale()._x; }
+	float GetWorldHalfY() { return _halfSize._y * GetWorldScale()._y; }
 
 	ObbDesc GetObb();
 
