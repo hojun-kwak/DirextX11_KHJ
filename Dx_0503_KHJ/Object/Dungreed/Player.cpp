@@ -43,11 +43,14 @@ void Player::Update()
 
 	bool check = _bullet->GetCollider()->IsCollision(_mons->GetCollider());
 
-	if (_bullet->GetCollider()->IsCollision(_mons->GetCollider(), true))
+	if (_bullet->GetCollider()->IsCollision(_mons->GetCollider(), false))
 	{
-		//_mons->GetCollider()->SetRed();
-		_mons->GetRed();
-		//_bullet->_isActive = false;
+		_mons->GetCollider()->SetRed();
+		int a = _mons->_monsterHp;
+		_mons->_monsterHp--;
+
+		//_mons->GetRed();
+		//_bullet->_isActive	= false;
 	}
 	else
 		_mons->GetCollider()->SetGreen();

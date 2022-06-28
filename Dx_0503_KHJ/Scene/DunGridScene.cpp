@@ -28,3 +28,8 @@ void DunGridScene::Render()
 	_monster->Render();
 
 }
+
+void DunGridScene::PostRender()
+{
+	ImGui::SliderInt("Mons HP", &_monster->_monsterHp, 0, 5);
+}

@@ -12,6 +12,7 @@ public:
 	void GetRed() { return _collider->SetRed(); }
 
 	bool _Monster_isActive = true;
+	int _monsterHp = 5;
 
 private:
 	shared_ptr<Texture> _texture;
