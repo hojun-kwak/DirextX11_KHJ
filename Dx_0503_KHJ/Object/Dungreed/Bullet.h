@@ -22,7 +22,7 @@ private:
 	// 왼쪽이냐 아래냐 따라 총알의 앵글을 움직여 볼까??
 
 	float _runTime = 0.0f;
-	float _destroyTime = 3.0f;
+	float _destroyTime = 10.0f;
 
 	shared_ptr<Collider> _collider;
 };

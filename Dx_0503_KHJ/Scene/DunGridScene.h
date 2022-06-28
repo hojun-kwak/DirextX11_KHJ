@@ -17,5 +17,9 @@ private:
 	shared_ptr<Aim> _aim;
 
 	shared_ptr<Monster> _monster;
+
+	unsigned int _monsterCount = 5;
+
+	vector<shared_ptr<Monster>> _monsters;
 };
 

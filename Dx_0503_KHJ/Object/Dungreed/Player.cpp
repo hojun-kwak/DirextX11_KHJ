@@ -37,24 +37,9 @@ void Player::Update()
 	Move();
 	Aimming();
 	Fire();
-	Attack();
+	MonsAttack();
 
-	for (auto& bullet : _bullets)
-	{
-		if (_mons->GetCollider()->IsCollision(bullet->GetCollider(), false) && bullet->_isActive)
-		{
-			bullet->_isActive = false;
-			_mons->_monster_isActive = false;
-			_mons->_monsterHp--;
-			_mons->GetCollider()->SetRed();
-			/*if (_mons->_monsterHp == 0)
-			{
-				_mons->_monster_isActive = false;
-			}*/
-		}
-		else
-			_mons->GetCollider()->SetGreen();
-	}
+	
 
 	
 
@@ -147,15 +132,13 @@ void Player::Fire()
 
 }
 
-void Player::Attack()
+void Player::MonsAttack()
 {
-	/*for (auto& bullet : _bullets)
+	for (auto& bullet : _bullets)
 	{
-		bullet
-	}*/
-	//bool check = _bullet->GetCollider()->IsCollision(_mons->GetCollider(), false);
-
-	
+		for(auto& mons : _mons)
+			mons->MonsAttacked(bullet);
+	}
 }
 
 void Player::Reset()

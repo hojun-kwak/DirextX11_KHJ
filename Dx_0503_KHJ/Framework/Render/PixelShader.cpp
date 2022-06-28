@@ -3,28 +3,29 @@
 
 PixelShader::PixelShader(wstring file)
 {
-
+    CreateBlob(file);
+    CreatePixelShader();
 }
 
 PixelShader::~PixelShader()
 {
 }
 
-//void PixelShader::CreateBlob(wstring file)
-//{
-//    DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
-//
-//    D3DCompileFromFile(file.data(), nullptr, nullptr, "PS", "ps_5_0", flags, 0,
-//        &_blob, nullptr);
-//}
-//
-//void PixelShader::CreatePixelShader()
-//{
-//    DEVICE->CreatePixelShader(_blob->GetBufferPointer(), _blob->GetBufferSize(), nullptr,
-//        &_pixelShader);
-//}
+void PixelShader::CreateBlob(wstring file)
+{
+    DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
 
-void PixelShader::Set()
+    D3DCompileFromFile(file.data(), nullptr, nullptr, "PS", "ps_5_0", flags, 0,
+        &_blob, nullptr);
+}
+
+void PixelShader::CreatePixelShader()
+{
+    DEVICE->CreatePixelShader(_blob->GetBufferPointer(), _blob->GetBufferSize(), nullptr,
+        &_pixelShader);
+}
+
+void PixelShader::PsSet()
 {
     DEVICE_CONTEXT->PSSetShader(_pixelShader.Get(), nullptr, 0);
 }

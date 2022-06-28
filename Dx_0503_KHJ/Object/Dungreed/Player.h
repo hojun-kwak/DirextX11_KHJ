@@ -8,13 +8,13 @@ public:
 	void Update();
 	void Render();
 
-	void SetMonster(shared_ptr<class Monster> mons) { _mons = mons; }
+	void SetMonster(vector<shared_ptr<class Monster>> mons) { _mons = mons; }
 
 private:
 	void Move();
 	void Aimming();
 	void Fire();
-	void Attack();
+	void MonsAttack();
 	void Reset();
 
 
@@ -31,6 +31,6 @@ private:
 
 	shared_ptr<Collider> _collider;
 
-	shared_ptr<class Monster> _mons;
+	vector<shared_ptr<class Monster>> _mons;
 };
 
