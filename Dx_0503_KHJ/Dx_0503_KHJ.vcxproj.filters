@@ -45,9 +45,6 @@
     <ClInclude Include="Framework\Render\VertexShader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Texture.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="TypeDef.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -129,6 +126,18 @@
     <ClInclude Include="Object\Dungreed\Monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Render\ShaderManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Render\Shader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\BagicObj\Quad.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Texture\Texture.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -150,9 +159,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Render\VertexShader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Texture.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Program\Program.cpp">
@@ -225,6 +231,18 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Dungreed\Monster.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Render\ShaderManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Render\Shader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\BagicObj\Quad.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Texture\Texture.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,11 @@
 #pragma once
 
+// 전역함수
+inline void IASetPT(D3D_PRIMITIVE_TOPOLOGY type = D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
+{
+	DEVICE_CONTEXT->IASetPrimitiveTopology(type);
+}
+
 class MatrixBuffer : public ConstantBuffer
 {
 	struct Data

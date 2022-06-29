@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Framework\Collider\CircleCollider.h" />
     <ClInclude Include="Object\Dungreed\Monster.h" />
+    <ClInclude Include="Object\BagicObj\Quad.h" />
     <ClInclude Include="Scene\ColliderScene.h" />
     <ClInclude Include="Framework\Collider\Collider.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -185,18 +186,21 @@
     <ClInclude Include="Framework\Texture\SRV.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SolaSystemScene.h" />
+    <ClInclude Include="Framework\Render\ShaderManager.h" />
+    <ClInclude Include="Framework\Render\Shader.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Framework\Render\VertexBuffer.h" />
     <ClInclude Include="Framework\Render\VertexShader.h" />
-    <ClInclude Include="Object\Texture.h" />
     <ClInclude Include="Scene\TextureScene.h" />
     <ClInclude Include="Scene\TextureWVPScene.h" />
     <ClInclude Include="Framework\Component\Transform.h" />
+    <ClInclude Include="Framework\Texture\Texture.h" />
     <ClInclude Include="TypeDef.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Collider\CircleCollider.cpp" />
     <ClCompile Include="Object\Dungreed\Monster.cpp" />
+    <ClCompile Include="Object\BagicObj\Quad.cpp" />
     <ClCompile Include="Scene\ColliderScene.cpp" />
     <ClCompile Include="Framework\Collider\Collider.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -224,13 +228,15 @@
     <ClCompile Include="Framework\Texture\StateManager.cpp" />
     <ClCompile Include="Framework\Utillity\InputManager.cpp" />
     <ClCompile Include="Framework\Utillity\Timer.cpp" />
-    <ClCompile Include="Object\Texture.cpp" />
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\TextureScene.cpp" />
     <ClCompile Include="Scene\TextureWVPScene.cpp" />
     <ClCompile Include="Scene\SolaSystemScene.cpp" />
     <ClCompile Include="Framework\Component\Transform.cpp" />
+    <ClCompile Include="Framework\Render\ShaderManager.cpp" />
+    <ClCompile Include="Framework\Render\Shader.cpp" />
+    <ClCompile Include="Framework\Texture\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />

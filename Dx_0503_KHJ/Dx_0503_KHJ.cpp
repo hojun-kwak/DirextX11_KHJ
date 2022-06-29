@@ -104,8 +104,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Timer::Create();
     InputManager::Create();
-    shared_ptr<Program> program = make_shared<Program>();
     StateManager::Create();
+    ShaderManager::Create();
+    shared_ptr<Program> program = make_shared<Program>();
     //InitDevice();
 
     // 기본 메시지 루프입니다:
@@ -133,6 +134,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 삭제.
+    ShaderManager::Delete();
     StateManager::Delete();
     InputManager::Delete();
     Timer::Delete();

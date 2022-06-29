@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "Vector2.h"
 
-Vector2 Vector2::operator+(const Vector2& value)
+Vector2 Vector2::operator+(const Vector2& value) const
 {
 	return Vector2(_x + value._x, _y + value._y);
 }
@@ -14,7 +14,7 @@ Vector2& Vector2::operator+=(const Vector2& value)
 	return *this;
 }
 
-Vector2 Vector2::operator-(const Vector2& value)
+Vector2 Vector2::operator-(const Vector2& value) const
 {
 	Vector2 result;
 	result._x = this->_x - value._x;
@@ -32,12 +32,12 @@ Vector2& Vector2::operator-=(const Vector2& value)
 	return *this;
 }
 
-Vector2 Vector2::operator*(const float& value)
+Vector2 Vector2::operator*(const float& value) const
 {
 	return Vector2(_x * value, _y * value);
 }
 
-bool Vector2::operator==(const Vector2 value)
+bool Vector2::operator==(const Vector2 value) const
 {
 	if ((this->_x == value._x) &&
 		(this->_y == value._y))
@@ -47,7 +47,7 @@ bool Vector2::operator==(const Vector2 value)
 	return false;
 }
 
-bool Vector2::operator!=(const Vector2 value)
+bool Vector2::operator!=(const Vector2 value) const
 {
 	return !(this->operator==(value));
 }
@@ -85,7 +85,7 @@ void Vector2::Normallize()
 	_y /= length;
 }
 
-float Vector2::Dot(const Vector2& value) const
+float Vector2::Dot(const Vector2& value)
 {
 	return _x * value._x + _y * value._y;
 }
@@ -102,19 +102,9 @@ float Vector2::Cross(const Vector2& value)
 	return _x*value._y - value._x * _y;
 }
 
-float Vector2::Angle() const
+float Vector2::Angle()
 {
 	return atan2(_y, _x);
-}
-
-float Vector2::Angle(const Vector2& value) const
-{
-	// cos?
-	// ³»Àû = cos(a) x A x B
-	float D = this->Dot(value);
-	float cos = D / (this->Length() * value.Length());
-
-	return acos(cos);
 }
 
 void Vector2::YAxisSymmetry()

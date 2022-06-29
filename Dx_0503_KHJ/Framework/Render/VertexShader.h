@@ -1,19 +1,19 @@
 #pragma once
-class VertexShader
+class VertexShader : public Shader
 {
+	friend class ShaderManager;
+
 public:
 	VertexShader(wstring file);
 	~VertexShader();
 
-	void CreateBlob(wstring file);
 	void CreateInputLayOut();
-	void CreateVertexShader();
 
-	void Set();
+	virtual void Set() override;
 
 private:
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader;
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> _inputLayout; // 서식
-	Microsoft::WRL::ComPtr<ID3DBlob> _vertexBlob;
+	Microsoft::WRL::ComPtr<ID3D11ShaderReflection> _reflection; // 반사
 };
 

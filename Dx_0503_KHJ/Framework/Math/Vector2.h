@@ -6,14 +6,14 @@ public:
 	Vector2(float x, float y) : _x(x), _y(y) {}
 	~Vector2() {}
 
-	Vector2 operator+(const Vector2& value);
+	Vector2 operator+(const Vector2& value) const;
 	Vector2& operator+=(const Vector2& value);
-	Vector2 operator-(const Vector2& value);
+	Vector2 operator-(const Vector2& value) const;
 	Vector2& operator-=(const Vector2& value);
-	Vector2 operator*(const float& value);
+	Vector2 operator*(const float& value) const;
 
-	bool operator==(const Vector2 value);
-	bool operator!=(const Vector2 value);
+	bool operator==(const Vector2 value) const;
+	bool operator!=(const Vector2 value) const;
 
 	bool operator<(const Vector2& value) const;
 
@@ -23,13 +23,12 @@ public:
 	Vector2 NormalVector();
 	void Normallize();
 
-	float Dot(const Vector2& value) const;
+	float Dot(const Vector2& value);
 	float Shadow(const Vector2& floor);
 
 	float Cross(const Vector2& value);
 
-	float Angle() const;
-	float Angle(const Vector2& value) const;
+	float Angle();
 
 	void YAxisSymmetry();
 	int Manhattan(const Vector2& value) const;

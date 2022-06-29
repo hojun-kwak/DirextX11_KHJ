@@ -22,17 +22,19 @@ void Collider::Render()
 	_colorBuffer->SetPSBuffer(0);
 
 	_vertexBuffer->IASet(0);
-	DEVICE_CONTEXT->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
+
+	IASetPT(D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
+	/*DEVICE_CONTEXT->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);*/
 
 	_vertexShader->Set();
-	_pixelShader->PsSet();
+	_pixelShader->Set();
 	DEVICE_CONTEXT->Draw(_vertices.size(), 0);
 }
 
 void Collider::CreateData()
 {
-	_vertexShader = make_shared<VertexShader>(L"Shaders/ColliderShader/ColliderVertexShader.hlsl");
-	_pixelShader = make_shared<PixelShader>(L"Shaders/ColliderShader/ColliderPixelShader.hlsl");
+	_vertexShader = ADD_VS(L"Shaders/ColliderShader/ColliderVertexShader.hlsl");
+	_pixelShader = ADD_PS(L"Shaders/ColliderShader/ColliderPixelShader.hlsl");
 	_vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), sizeof(VertexPos), _vertices.size());
 
 	_colorBuffer = make_shared<ColorBuffer>();
