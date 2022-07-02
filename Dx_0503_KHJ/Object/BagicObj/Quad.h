@@ -5,16 +5,18 @@ public:
 	Quad(wstring file);
 	~Quad();
 
-	void Update();
-	void Render();
+	virtual void Update();
+	virtual void Render();
 
-	void CreateData();
+	virtual void CreateData();
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
-	const Vector2& GetSize() { return _halfSize; }
+	const Vector2& GetHalfSize() { return _halfSize; }
 
-private:
+protected:
+	Quad() {}
+
 	shared_ptr<Transform> _transform;
 
 	//Texture

@@ -43,10 +43,27 @@ public:
 		: ConstantBuffer(&_data, sizeof(Data))
 	{
 		_data.color = { 1,1,1,1 };
-	};
+	}
 
-	void SetColor(const XMFLOAT4 color) { _data.color = color; }
+	void SetColor(const XMFLOAT4& color) { _data.color = color; }
 
 private:
 	Data _data;
+};
+
+class FrameBuffer : public ConstantBuffer
+{
+public:
+	struct Data
+	{
+		XMFLOAT2 maxFrame;
+		XMFLOAT2 curFrame;
+	} data;
+
+	FrameBuffer()
+		: ConstantBuffer(&data, sizeof(Data))
+	{
+		data.maxFrame = { 1.0f,1.0f };
+		data.curFrame = { 1.0f,1.0f };
+	}
 };

@@ -3,11 +3,11 @@
 
 Bullet::Bullet()
 {
-	_texture = make_shared<Texture>(L"Resource/mysticShot.png");
-	_texture->GetTransform()->GetScale() = { 0.3f, 0.3f };
+	_quad = make_shared<Quad>(L"Resource/mysticShot.png");
+	_quad->GetTransform()->GetScale() = { 0.3f, 0.3f };
 
 	_collider = make_shared<CircleCollider>(30);
-	_collider->SetParent(_texture->GetTransform());
+	_collider->SetParent(_quad->GetTransform());
 	//_collider->GetLocalPosition()._x += 20;
 
 }
@@ -21,9 +21,9 @@ void Bullet::Update()
 	if (_isActive == false)
 		return;
 
-	_texture->GetTransform()->GetPos() += _direction * 300.0f * DELTA_TIME;
+	_quad->GetTransform()->GetPos() += _direction * 300.0f * DELTA_TIME;
 
-	_texture->Update();
+	_quad->Update();
 	
 	// 3초가 지나면 사라짐
 	_runTime += DELTA_TIME;
@@ -42,12 +42,12 @@ void Bullet::Render()
 	if (_isActive == false)
 		return;
 
-	_texture->Render();
+	_quad->Render();
 	_collider->Render();
 }
 
 void Bullet::SetDirection(Vector2 dir)
 {
 	_direction = dir;
-	_texture->GetTransform()->GetAngle() = dir.Angle();
+	_quad->GetTransform()->GetAngle() = dir.Angle();
 }

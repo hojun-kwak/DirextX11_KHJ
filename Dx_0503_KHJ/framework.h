@@ -61,9 +61,16 @@ using namespace std;
 #include "Framework/Render/PixelShader.h"
 #include "Framework/Render/ShaderManager.h"
 
+// Component
+#include "Framework/Component/Transform.h"
 // Utillity
 #include "Framework/Utillity/InputManager.h"
 #include "Framework/Utillity/Timer.h"
+
+// Collider
+#include "Framework/Collider/Collider.h"
+#include "Framework/Collider/RectCollider.h"
+#include "Framework/Collider/CircleCollider.h"
 
 // Texture
 #include "Framework/Texture/SRV.h"
@@ -73,17 +80,9 @@ using namespace std;
 #include "Framework/Texture/StateManager.h"
 #include "Framework/Texture/Texture.h"
 
-// Component
-#include "Framework/Component/Transform.h"
-
-// Collider
-#include "Framework/Collider/Collider.h"
-#include "Framework/Collider/RectCollider.h"
-#include "Framework/Collider/CircleCollider.h"
-
-
 // Bagic
 #include "Object/BagicObj/Quad.h"
+#include "Object/BagicObj/Sprite.h"
 
 // Dungreed
 #include "Object/Dungreed/Player.h"

@@ -3,8 +3,8 @@
 
 Aim::Aim()
 {
-	_texture = make_shared<Texture>(L"Resource/mousePointer.png");
-	_texture->GetTransform()->GetScale() = { 0.5f,0.5f };
+	_quad = make_shared<Quad>(L"Resource/mousePointer.png");
+	_quad->GetTransform()->GetScale() = { 0.1f,0.1f };
 }
 
 Aim::~Aim()
@@ -13,11 +13,11 @@ Aim::~Aim()
 
 void Aim::Update()
 {
-	_texture->Update();
-	_texture->GetTransform()->GetPos() = MOUSE_POS;
+	_quad->Update();
+	_quad->GetTransform()->GetPos() = MOUSE_POS;
 }
 
 void Aim::Render()
 {
-	_texture->Render();
+	_quad->Render();
 }

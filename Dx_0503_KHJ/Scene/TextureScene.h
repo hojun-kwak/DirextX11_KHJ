@@ -26,7 +26,7 @@ private:
     shared_ptr<SRV>             _srv;
     shared_ptr<SamplerState>    _sampler;*/
 
-    shared_ptr<Texture> _texture;
+    shared_ptr<Quad> _quad;
     
 };
 

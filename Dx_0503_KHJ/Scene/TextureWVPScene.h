@@ -10,7 +10,7 @@ public:
 	virtual void Render() override;
 
 private:
-	shared_ptr<Texture> _texture;
+	shared_ptr<Quad> _quad;
 
 	shared_ptr<MatrixBuffer> _worldBuffer;
 	XMFLOAT2 _worldPos = { 0.0f, 0.0f };

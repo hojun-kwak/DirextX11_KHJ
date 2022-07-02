@@ -138,6 +138,9 @@
     <ClInclude Include="Framework\Texture\Texture.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\BagicObj\Sprite.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -245,6 +248,9 @@
     <ClCompile Include="Framework\Texture\Texture.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\BagicObj\Sprite.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -285,6 +291,9 @@
     <Image Include="Resource\cs.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\zelda.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />
@@ -292,5 +301,6 @@
     <FxCompile Include="Shaders\TexturePixelShader.hlsl" />
     <FxCompile Include="Shaders\ColliderShader\ColliderVertexShader.hlsl" />
     <FxCompile Include="Shaders\ColliderShader\ColliderPixelShader.hlsl" />
+    <FxCompile Include="Shaders\SpriteShader.hlsl" />
   </ItemGroup>
 </Project>

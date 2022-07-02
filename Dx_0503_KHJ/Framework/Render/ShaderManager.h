@@ -16,7 +16,7 @@ public:
 		if (_instance != nullptr)
 			delete _instance;
 	}
-	static ShaderManager* GetInstace()
+	static ShaderManager* GetInstance()
 	{
 		if (_instance != nullptr)
 			return _instance;

@@ -10,16 +10,17 @@ public:
 
 	void SetMonster(vector<shared_ptr<class Monster>> mons) { _mons = mons; }
 
+	void MonsAttack(vector<shared_ptr<class Monster>> monster);
+
 private:
 	void Move();
 	void Aimming();
 	void Fire();
-	void MonsAttack();
 	void Reset();
 
 
 private:
-	shared_ptr<Texture> _texture;
+	shared_ptr<Quad> _quad;
 	shared_ptr<class Gun> _gun;
 	shared_ptr<Transform> _gunTrans;
 

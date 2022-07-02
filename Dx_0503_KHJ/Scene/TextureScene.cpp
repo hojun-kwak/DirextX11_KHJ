@@ -3,7 +3,7 @@
 
 TextureScene::TextureScene()
 {
-    _texture = make_shared<Texture>(L"Resource/VRising.png");
+    _quad = make_shared<Quad>(L"Resource/VRising.png");
 }
 
 TextureScene::~TextureScene()
@@ -12,10 +12,10 @@ TextureScene::~TextureScene()
 
 void TextureScene::Update()
 {
-    _texture->Render();
+    _quad->Render();
 }
 
 void TextureScene::Render()
 {
-    _texture->Render();
+    _quad->Render();
 }

@@ -11,7 +11,6 @@ public:
 private:
 	void CreateVertexBuffer(void* data);
 
-	vector<VertexUV> _vertices;
 	Microsoft::WRL::ComPtr<ID3D11Buffer> _vertexBuffer;
 
 	UINT _count;

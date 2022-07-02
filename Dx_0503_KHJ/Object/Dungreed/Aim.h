@@ -5,12 +5,12 @@ public:
 	Aim();
 	~Aim();
 
-	shared_ptr<Transform> GetTransfom() { return _texture->GetTransform(); }
+	shared_ptr<Transform> GetTransfom() { return _quad->GetTransform(); }
 
 	void Update();
 	void Render();
 
 private:
-	shared_ptr<Texture> _texture;
+	shared_ptr<Quad> _quad;
 };
 

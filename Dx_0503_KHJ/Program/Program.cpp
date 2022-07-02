@@ -18,8 +18,9 @@ Program::Program()
 	//XMMATRIX projection = XMMatrixOrthographicLH(WIN_WIDTH, WIN_HEIGHT, 0.0f, 1.0f);
 
 	// 좌표계 왼쪽 아래부터 0,0
-	XMMATRIX projection = XMMatrixOrthographicOffCenterLH(0, WIN_WIDTH, 0, WIN_HEIGHT, 0, 1.0f);
+	XMMATRIX projection = XMMatrixOrthographicOffCenterLH(0, WIN_WIDTH, 0, WIN_HEIGHT, 0.0f, 1.0f);
 	_projectionBuffer->SetMatrix(projection);
+
 	// 쉐이더에서 업데이트할용도 한번만
 	//_projectionBuffer->Update();
 

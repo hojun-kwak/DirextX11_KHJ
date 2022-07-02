@@ -21,5 +21,7 @@ private:
 	unsigned int _monsterCount = 5;
 
 	vector<shared_ptr<Monster>> _monsters;
+
+	shared_ptr<Sprite> _zelda;
 };
 

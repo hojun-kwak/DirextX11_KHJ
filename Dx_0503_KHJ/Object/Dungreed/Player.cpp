@@ -3,11 +3,12 @@
 
 Player::Player()
 {
-	_texture = make_shared<Texture>(L"Resource/ezreal.png");
-	_texture->GetTransform()->GetPos() = { 200.0f, 200.0f };
+	_quad = make_shared<Quad>(L"Resource/ezreal.png");
+	_quad->GetTransform()->GetScale() = { 0.5f,0.5f };
+	_quad->GetTransform()->GetPos() = { 200.0f, 200.0f };
 
 	_gunTrans = make_shared<Transform>();
-	_gunTrans->SetParent(_texture->GetTransform());
+	_gunTrans->SetParent(_quad->GetTransform());
 	_gunTrans->GetPos() = { 50.0f,50.0f };
 
 	_gun = make_shared<Gun>();
@@ -24,7 +25,7 @@ Player::Player()
 	}
 
 	_collider = make_shared<RectCollider>(Vector2(100, 100));
-	_collider->SetParent(_texture->GetTransform());
+	_collider->SetParent(_quad->GetTransform());
 
 }
 
@@ -37,11 +38,6 @@ void Player::Update()
 	Move();
 	Aimming();
 	Fire();
-	MonsAttack();
-
-	
-
-	
 
 	//if (_bullet->GetCollider()->IsCollision(_mons->GetCollider(), false))
 	//{
@@ -55,15 +51,12 @@ void Player::Update()
 	//else
 	//	_mons->GetCollider()->SetGreen();
 
-	
-
-
 	if (KEY_PRESS(VK_ADD))
 	{
 		Reset();
 	}
 
-	_texture->Update();
+	_quad->Update();
 
 	_gunTrans->UpdateWorldBuffer();
 
@@ -77,7 +70,7 @@ void Player::Update()
 
 void Player::Render()
 {
-	_texture->Render();
+	_quad->Render();
 
 	_gun->Render();
 	//_bullet->Render();
@@ -90,13 +83,13 @@ void Player::Render()
 void Player::Move()
 {
 	if (KEY_PRESS('W'))
-		_texture->GetTransform()->GetPos()._y += 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos()._y += 100.0f * DELTA_TIME;
 	if(KEY_PRESS('A'))
-		_texture->GetTransform()->GetPos()._x -= 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos()._x -= 100.0f * DELTA_TIME;
 	if(KEY_PRESS('S'))
-		_texture->GetTransform()->GetPos()._y -= 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos()._y -= 100.0f * DELTA_TIME;
 	if(KEY_PRESS('D'))
-		_texture->GetTransform()->GetPos()._x += 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos()._x += 100.0f * DELTA_TIME;
 }
 
 void Player::Aimming()
@@ -132,12 +125,19 @@ void Player::Fire()
 
 }
 
-void Player::MonsAttack()
+void Player::MonsAttack(vector<shared_ptr<class Monster>> monster)
 {
-	for (auto& bullet : _bullets)
+	for (auto & bullet : _bullets)
 	{
-		for(auto& mons : _mons)
-			mons->MonsAttacked(bullet);
+		if (bullet->_isActive == false)
+		{
+			continue;
+		}
+		for (auto& mons : _mons)
+		{
+			if(mons->_monster_isActive == true)
+				mons->MonsAttacked(bullet);
+		}
 	}
 }
 

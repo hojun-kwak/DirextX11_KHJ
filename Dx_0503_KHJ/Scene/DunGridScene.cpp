@@ -7,16 +7,18 @@ DunGridScene::DunGridScene()
 	_aim = make_shared<Aim>();
 	//_monster = make_shared<Monster>();
 
-	float x = 0.0f;
 	_monsters.reserve(_monsterCount);
 	for (int i = 0; i < _monsterCount; i++)
 	{
 		shared_ptr<Monster> temp = make_shared<Monster>();
-		temp->GetTrasform()->GetPos()._x += x;
-		x = (i + 1) * 100;
+		temp->GetTrasform()->GetPos()._x += (i + 1) * 100;
+	
 		_monsters.emplace_back(temp);
 	}
 	_player->SetMonster(_monsters);
+
+	_zelda = make_shared<Sprite>(L"Resource/zelda.png", Vector2(10, 8));
+	_zelda->GetTransform()->GetPos() = Vector2(WIN_WIDTH, WIN_HEIGHT) * 0.5f;
 
 }
 
@@ -28,9 +30,15 @@ void DunGridScene::Update()
 {
 	_player->Update();
 	_aim->Update();
+	_zelda->Update();
 	//_monster->Update();
 	for (auto& mons : _monsters)
+	{
 		mons->Update();
+		if (mons->_monsterHp <= 0)
+			mons->_monster_isActive = false;
+	}
+	_player->MonsAttack(_monsters);
 
 }
 
@@ -42,7 +50,7 @@ void DunGridScene::Render()
 
 	for (auto& mons : _monsters)
 		mons->Render();
-
+	_zelda->Render();
 }
 
 void DunGridScene::PostRender()

@@ -21,7 +21,7 @@ public:
 		return worldPos;
 	}
 
-	const Vector2& GetWorldScale()
+	Vector2 GetWorldScale()
 	{
 		if (_parentMatrix)
 			return Vector2(_scale._x * _parentMatrix->GetScale()._x, _scale._y * _parentMatrix->GetScale()._y);

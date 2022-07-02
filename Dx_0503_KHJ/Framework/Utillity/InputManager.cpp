@@ -35,7 +35,7 @@ void InputManager::Update()
 		}
 
 		// ´­·¶´Ù ¶­À»‹š
-		else if (old == 0 && cur == 1)
+		else if (old == 1 && cur == 0)
 		{
 			_mapState[i] = UP;
 		}

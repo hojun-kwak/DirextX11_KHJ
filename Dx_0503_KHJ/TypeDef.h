@@ -27,5 +27,5 @@
 #define WHITE XMFLOAT4(1,1,1,1)
 #define BLACK XMFLOAT4(0,0,0,1)
 
-#define ADD_VS(k)		ShaderManager::GetInstace()->AddVS(k);
-#define ADD_PS(k)		ShaderManager::GetInstace()->AddPS(k);
+#define ADD_VS(k)		ShaderManager::GetInstance()->AddVS(k);
+#define ADD_PS(k)		ShaderManager::GetInstance()->AddPS(k);

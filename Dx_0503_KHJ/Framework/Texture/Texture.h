@@ -2,14 +2,14 @@
 class Texture
 {
 public:
+	Texture(Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> srv, ScratchImage& image);
+	~Texture();
+
 	static shared_ptr<Texture> Add(wstring file);
 	static void Delete();
 	void Set(UINT slot);
-	const class Vector2 GetSize();
-
+	class Vector2 GetSize();
 private:
-	Texture(Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> srv, ScratchImage image);
-	~Texture();
 
 	wstring _file;
 	ScratchImage _image;

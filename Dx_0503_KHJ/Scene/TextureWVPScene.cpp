@@ -3,7 +3,7 @@
 
 TextureWVPScene::TextureWVPScene()
 {
-	_texture = make_shared<Texture>(L"Resource/VRising.png");
+	_quad = make_shared<Quad>(L"Resource/VRising.png");
 
 	_worldBuffer = make_shared<MatrixBuffer>();
 	_viewBuffer = make_shared<MatrixBuffer>();
@@ -95,7 +95,7 @@ void TextureWVPScene::Update()
 	_viewBuffer->Update();
 
 
-	_texture->Update();
+	_quad->Update();
 }
 
 void TextureWVPScene::Render()
@@ -105,5 +105,5 @@ void TextureWVPScene::Render()
 	_projectionBuffer->SetVSBuffer(2);
 
 
-	_texture->Render();
+	_quad->Render();
 }

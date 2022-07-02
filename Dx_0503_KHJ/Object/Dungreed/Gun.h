@@ -10,10 +10,10 @@ public:
 
 	void SetPlayer(shared_ptr<Transform> transform)
 	{
-		_texture->GetTransform()->SetParent(transform);
+		_quad->GetTransform()->SetParent(transform);
 	}
 
 private:
-	shared_ptr<Texture> _texture;
+	shared_ptr<Quad> _quad;
 };
 
