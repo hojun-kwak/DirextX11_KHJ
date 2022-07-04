@@ -15,8 +15,8 @@ public:
 		Vector2 worldPos;
 		XMFLOAT4X4 matrix;
 		XMStoreFloat4x4(&matrix, _srtMatrix);
-		worldPos._x = matrix._41;
-		worldPos._y = matrix._42;
+		worldPos.x = matrix._41;
+		worldPos.y = matrix._42;
 
 		return worldPos;
 	}
@@ -24,7 +24,7 @@ public:
 	Vector2 GetWorldScale()
 	{
 		if (_parentMatrix)
-			return Vector2(_scale._x * _parentMatrix->GetScale()._x, _scale._y * _parentMatrix->GetScale()._y);
+			return Vector2(_scale.x * _parentMatrix->GetScale().x, _scale.y * _parentMatrix->GetScale().y);
 		return _scale;
 	}
 

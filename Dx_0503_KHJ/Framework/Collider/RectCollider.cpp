@@ -27,19 +27,19 @@ void RectCollider::CreateData()
 
 	VertexPos vertex;
 	//좌측상단
-	vertex.pos = XMFLOAT3(-_halfSize._x, _halfSize._y, 0.0f);
+	vertex.pos = XMFLOAT3(-_halfSize.x, _halfSize.y, 0.0f);
 	_vertices.push_back(vertex);
 	// 우측상단
-	vertex.pos = XMFLOAT3(+_halfSize._x, _halfSize._y, 0.0f);
+	vertex.pos = XMFLOAT3(+_halfSize.x, _halfSize.y, 0.0f);
 	_vertices.push_back(vertex);
 	//우측 하단
-	vertex.pos = XMFLOAT3(+_halfSize._x, -_halfSize._y, 0.0f);
+	vertex.pos = XMFLOAT3(+_halfSize.x, -_halfSize.y, 0.0f);
 	_vertices.push_back(vertex);
 	//좌측 하단
-	vertex.pos = XMFLOAT3(-_halfSize._x, -_halfSize._y, 0.0f);
+	vertex.pos = XMFLOAT3(-_halfSize.x, -_halfSize.y, 0.0f);
 	_vertices.push_back(vertex);
 	//좌측 상단
-	vertex.pos = XMFLOAT3(-_halfSize._x, _halfSize._y, 0.0f);
+	vertex.pos = XMFLOAT3(-_halfSize.x, _halfSize.y, 0.0f);
 	_vertices.push_back(vertex);
 
 	Collider::CreateData();
@@ -146,12 +146,12 @@ bool RectCollider::AABB(shared_ptr<CircleCollider> circle)
 	if (IsCollision(circle->GetWorldPosition()))
 		return true;
 
-	if ((circle->GetWorldPosition()._x > Left() && circle->GetWorldPosition()._x < Right())
-		|| (circle->GetWorldPosition()._y > Top() && circle->GetWorldPosition()._y < Bottom()))
+	if ((circle->GetWorldPosition().x > Left() && circle->GetWorldPosition().x < Right())
+		|| (circle->GetWorldPosition().y > Top() && circle->GetWorldPosition().y < Bottom()))
 	{
-		if (circle->GetWorldPosition()._x < Left() - circle->GetRadius() || circle->GetWorldPosition()._x > Right() + circle->GetRadius())
+		if (circle->GetWorldPosition().x < Left() - circle->GetRadius() || circle->GetWorldPosition().x > Right() + circle->GetRadius())
 			return false;
-		if (circle->GetWorldPosition()._y < Top() - circle->GetRadius() || circle->GetWorldPosition()._y > Bottom() + circle->GetRadius())
+		if (circle->GetWorldPosition().y < Top() - circle->GetRadius() || circle->GetWorldPosition().y > Bottom() + circle->GetRadius())
 			return false;
 
 		return true;
@@ -201,9 +201,9 @@ bool RectCollider::OBB(shared_ptr<CircleCollider> circle)
 
 bool RectCollider::IsCollision(const Vector2& pos)
 {
-	if (pos._x < Left() || pos._x > Right())
+	if (pos.x < Left() || pos.x > Right())
 		return false;
-	if (pos._y > Top() || pos._y < Bottom())
+	if (pos.y > Top() || pos.y < Bottom())
 		return false;
 	return true;
 }

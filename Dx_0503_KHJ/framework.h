@@ -20,7 +20,7 @@
 #include <wrl.h>
 #include <string>
 #include <memory>
-
+#include <functional>
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -63,6 +63,7 @@ using namespace std;
 
 // Component
 #include "Framework/Component/Transform.h"
+
 // Utillity
 #include "Framework/Utillity/InputManager.h"
 #include "Framework/Utillity/Timer.h"
@@ -79,6 +80,9 @@ using namespace std;
 #include "Framework/Texture/RasterizerState.h"
 #include "Framework/Texture/StateManager.h"
 #include "Framework/Texture/Texture.h"
+
+// Animation
+#include "Framework/Animation/Action.h"
 
 // Bagic
 #include "Object/BagicObj/Quad.h"

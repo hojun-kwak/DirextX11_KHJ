@@ -22,13 +22,13 @@ public:
 	virtual bool IsCollision(shared_ptr<RectCollider> rect, bool isObb) override;
 	virtual bool IsCollision(shared_ptr<CircleCollider> circle, bool isObb) override;
 
-	float Left() { return GetWorldPosition()._x - GetWorldHalfX(); }
-	float Right() { return GetWorldPosition()._x + GetWorldHalfX(); }
-	float Top() { return GetWorldPosition()._y + GetWorldHalfY(); }
-	float Bottom() { return GetWorldPosition()._y - GetWorldHalfY(); }
+	float Left() { return GetWorldPosition().x - GetWorldHalfX(); }
+	float Right() { return GetWorldPosition().x + GetWorldHalfX(); }
+	float Top() { return GetWorldPosition().y + GetWorldHalfY(); }
+	float Bottom() { return GetWorldPosition().y - GetWorldHalfY(); }
 
-	float GetWorldHalfX() { return _halfSize._x * GetWorldScale()._x; }
-	float GetWorldHalfY() { return _halfSize._y * GetWorldScale()._y; }
+	float GetWorldHalfX() { return _halfSize.x * GetWorldScale().x; }
+	float GetWorldHalfY() { return _halfSize.y * GetWorldScale().y; }
 
 	ObbDesc GetObb();
 

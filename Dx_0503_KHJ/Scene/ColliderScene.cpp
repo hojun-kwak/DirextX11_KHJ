@@ -43,11 +43,11 @@ void ColliderScene::Render()
 
 void ColliderScene::PostRender()
 {
-	ImGui::SliderFloat("Rect1 PosX", &_rectCollider1->GetLocalPosition()._x, 0, WIN_WIDTH);
-	ImGui::SliderFloat("Rect1 PosY", &_rectCollider1->GetLocalPosition()._y, 0, WIN_HEIGHT);
+	ImGui::SliderFloat("Rect1 PosX", &_rectCollider1->GetLocalPosition().x, 0, WIN_WIDTH);
+	ImGui::SliderFloat("Rect1 PosY", &_rectCollider1->GetLocalPosition().y, 0, WIN_HEIGHT);
 
-	ImGui::SliderFloat("mouse PosY", &MOUSE_POS._x, 0, WIN_HEIGHT);
-	ImGui::SliderFloat("mouse PosY", &MOUSE_POS._y, 0, WIN_HEIGHT);
+	ImGui::SliderFloat("mouse PosY", &MOUSE_POS.x, 0, WIN_HEIGHT);
+	ImGui::SliderFloat("mouse PosY", &MOUSE_POS.y, 0, WIN_HEIGHT);
 
 	ImGui::SliderFloat("Rect1 Angle", &_rectCollider1->GetAngle(), 0, 2 * PI);
 }

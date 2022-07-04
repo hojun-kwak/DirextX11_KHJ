@@ -9,12 +9,14 @@ Sprite::Sprite(wstring file, Vector2 maxFrame)
 
     _texture = Texture::Add(file);
     _halfSize = _texture->GetSize() * 0.5f;
+    _halfSize.x *= (1 / _maxFrame.x);
+    _halfSize.y *= (1 / _maxFrame.y);
 
     _transform = make_shared<Transform>();
 
     _frameBuffer = make_shared<FrameBuffer>();
-    _frameBuffer->data.maxFrame.x = _maxFrame._x;
-    _frameBuffer->data.maxFrame.y = _maxFrame._y;
+    _frameBuffer->data.maxFrame.x = _maxFrame.x;
+    _frameBuffer->data.maxFrame.y = _maxFrame.y;
 
     CreateData();
 
@@ -43,14 +45,14 @@ void Sprite::Render()
 void Sprite::CreateData()
 {
     Vector2 halfSize = _texture->GetSize() * 0.5f;
-    halfSize._x /= _frameBuffer->data.maxFrame.x;
-    halfSize._y /= _frameBuffer->data.maxFrame.y;
+    halfSize.x /= _frameBuffer->data.maxFrame.x;
+    halfSize.y /= _frameBuffer->data.maxFrame.y;
 
     {
-        _vertices.emplace_back(-_halfSize._x, _halfSize._y, 0, 0); // 왼쪽위
-        _vertices.emplace_back(_halfSize._x, _halfSize._y, 1, 0); // 오른쪽 위
-        _vertices.emplace_back(-_halfSize._x, -_halfSize._y, 0, 1); // 왼쪽 아래
-        _vertices.emplace_back(_halfSize._x, -_halfSize._y, 1, 1); // 오른쪽 아래
+        _vertices.emplace_back(-_halfSize.x, _halfSize.y, 0, 0); // 왼쪽위
+        _vertices.emplace_back(_halfSize.x, _halfSize.y, 1, 0); // 오른쪽 위
+        _vertices.emplace_back(-_halfSize.x, -_halfSize.y, 0, 1); // 왼쪽 아래
+        _vertices.emplace_back(_halfSize.x, -_halfSize.y, 1, 1); // 오른쪽 아래
     }
 
     _indicies.push_back(0);
@@ -65,8 +67,8 @@ void Sprite::CreateData()
 Vector2 Sprite::GetHalfFrameSize()
 {
     Vector2 v;
-    v._x = _halfSize._x / _maxFrame._x;
-    v._y = _halfSize._y / _maxFrame._y;
+    v.x = _halfSize.x / _maxFrame.x;
+    v.y = _halfSize.y / _maxFrame.y;
 
     return v;
 }

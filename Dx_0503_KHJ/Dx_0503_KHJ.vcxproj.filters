@@ -141,6 +141,9 @@
     <ClInclude Include="Object\BagicObj\Sprite.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Animation\Action.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -249,6 +252,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\BagicObj\Sprite.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Animation\Action.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

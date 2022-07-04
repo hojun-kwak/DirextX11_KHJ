@@ -23,5 +23,10 @@ private:
 	vector<shared_ptr<Monster>> _monsters;
 
 	shared_ptr<Sprite> _zelda;
+
+	shared_ptr<Action> _action;
+
+	int _curFrameX = 0;
+	int _curFrameY = 0;
 };
 

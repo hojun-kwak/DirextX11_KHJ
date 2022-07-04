@@ -11,6 +11,7 @@ public:
 	virtual void CreateData() override;
 
 	Vector2 GetHalfFrameSize();
+	void SetFrameBuffer(int x, int y) { _frameBuffer->data.curFrame = { (float)x, (float)y }; }
 
 private:
 	Vector2 _maxFrame;

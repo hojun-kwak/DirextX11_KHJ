@@ -83,13 +83,13 @@ void Player::Render()
 void Player::Move()
 {
 	if (KEY_PRESS('W'))
-		_quad->GetTransform()->GetPos()._y += 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos().y += 100.0f * DELTA_TIME;
 	if(KEY_PRESS('A'))
-		_quad->GetTransform()->GetPos()._x -= 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos().x -= 100.0f * DELTA_TIME;
 	if(KEY_PRESS('S'))
-		_quad->GetTransform()->GetPos()._y -= 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos().y -= 100.0f * DELTA_TIME;
 	if(KEY_PRESS('D'))
-		_quad->GetTransform()->GetPos()._x += 100.0f * DELTA_TIME;
+		_quad->GetTransform()->GetPos().x += 100.0f * DELTA_TIME;
 }
 
 void Player::Aimming()

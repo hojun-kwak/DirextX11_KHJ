@@ -27,5 +27,8 @@
 #define WHITE XMFLOAT4(1,1,1,1)
 #define BLACK XMFLOAT4(0,0,0,1)
 
-#define ADD_VS(k)		ShaderManager::GetInstance()->AddVS(k);
-#define ADD_PS(k)		ShaderManager::GetInstance()->AddPS(k);
+#define ADD_VS(k)		ShaderManager::GetInstance()->AddVS(k)
+#define ADD_PS(k)		ShaderManager::GetInstance()->AddPS(k)
+
+// 매개 변수를 보이드로 가질수있는 함수
+typedef function<void()> CallBack;

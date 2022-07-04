@@ -12,9 +12,9 @@ Transform::~Transform()
 
 void Transform::UpdateWorldBuffer()
 {
-    XMMATRIX s = XMMatrixScaling(_scale._x, _scale._y, 1);
+    XMMATRIX s = XMMatrixScaling(_scale.x, _scale.y, 1);
     XMMATRIX r = XMMatrixRotationZ(_angle);
-    XMMATRIX t = XMMatrixTranslation(_pos._x, _pos._y, 0);
+    XMMATRIX t = XMMatrixTranslation(_pos.x, _pos.y, 0);
     _srtMatrix = s * r * t;
 
     /*if (_parentMatrix != nullptr)
@@ -26,7 +26,6 @@ void Transform::UpdateWorldBuffer()
         _srtMatrix *= _parentMatrix->GetMatrix();
 
     _worldBuffer->SetMatrix(_srtMatrix);
-    _worldBuffer->Update();
 }
 
 void Transform::SetWorldBuffer(int slot)

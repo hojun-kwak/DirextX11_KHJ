@@ -50,10 +50,10 @@ void Quad::Render()
 void Quad::CreateData()
 {
     {
-        _vertices.emplace_back(-_halfSize._x, _halfSize._y, 0, 0); // 왼쪽위
-        _vertices.emplace_back(_halfSize._x, _halfSize._y, 1, 0); // 오른쪽 위
-        _vertices.emplace_back(-_halfSize._x, -_halfSize._y, 0, 1); // 왼쪽 아래
-        _vertices.emplace_back(_halfSize._x, -_halfSize._y, 1, 1); // 오른쪽 아래
+        _vertices.emplace_back(-_halfSize.x, _halfSize.y, 0, 0); // 왼쪽위
+        _vertices.emplace_back(_halfSize.x, _halfSize.y, 1, 0); // 오른쪽 위
+        _vertices.emplace_back(-_halfSize.x, -_halfSize.y, 0, 1); // 왼쪽 아래
+        _vertices.emplace_back(_halfSize.x, -_halfSize.y, 1, 1); // 오른쪽 아래
     }
     _indicies.push_back(0);
     _indicies.push_back(1);

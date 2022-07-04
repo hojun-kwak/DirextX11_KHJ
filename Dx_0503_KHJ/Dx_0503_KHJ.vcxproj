@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Animation\Action.h" />
     <ClInclude Include="Framework\Collider\CircleCollider.h" />
     <ClInclude Include="Object\Dungreed\Monster.h" />
     <ClInclude Include="Object\BagicObj\Quad.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="TypeDef.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Animation\Action.cpp" />
     <ClCompile Include="Framework\Collider\CircleCollider.cpp" />
     <ClCompile Include="Object\Dungreed\Monster.cpp" />
     <ClCompile Include="Object\BagicObj\Quad.cpp" />

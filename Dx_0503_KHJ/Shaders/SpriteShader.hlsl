@@ -18,8 +18,8 @@ float4 PS(PixelInput input) : SV_TARGET
 {
 	float2 uv;
 
-	uv.x = input.uv.x / maxFrame.x;
-	uv.y = input.uv.y / maxFrame.y;
+	uv.x = (input.uv.x + curFrame.x) / maxFrame.x;
+	uv.y = input.uv.y / maxFrame.y + (curFrame.y / maxFrame.y);
 
 	float4 result = map.Sample(samp,uv);
 

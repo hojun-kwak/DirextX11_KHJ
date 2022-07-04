@@ -12,7 +12,6 @@ TextureWVPScene::TextureWVPScene()
 	XMMATRIX projection = XMMatrixOrthographicLH(WIN_WIDTH, WIN_HEIGHT, 0.0f, 1.0f);
 	_projectionBuffer->SetMatrix(projection);
 	// 쉐이더에서 업데이트할용도 한번만
-	_projectionBuffer->Update();
 
 	// world 한번 움직이게
 	_worldPos = { 100.0f, 0.0f };
@@ -88,22 +87,12 @@ void TextureWVPScene::Update()
 	//	_texture->GetAngle() -= 0.001f;
 	//}
 
-
-
-
-	_worldBuffer->Update();
-	_viewBuffer->Update();
-
-
 	_quad->Update();
 }
 
 void TextureWVPScene::Render()
 {
 	_worldBuffer->SetVSBuffer(0);
-	_viewBuffer->SetVSBuffer(1);
-	_projectionBuffer->SetVSBuffer(2);
-
 
 	_quad->Render();
 }

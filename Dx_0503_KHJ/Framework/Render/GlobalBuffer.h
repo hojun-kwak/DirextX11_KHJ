@@ -64,6 +64,6 @@ public:
 		: ConstantBuffer(&data, sizeof(Data))
 	{
 		data.maxFrame = { 1.0f,1.0f };
-		data.curFrame = { 1.0f,1.0f };
+		data.curFrame = { 0.0f,0.0f };
 	}
 };

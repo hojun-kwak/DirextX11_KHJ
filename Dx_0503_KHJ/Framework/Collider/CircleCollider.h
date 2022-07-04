@@ -15,7 +15,7 @@ public:
 	virtual bool IsCollision(shared_ptr<RectCollider> rect, bool isObb = false) override;
 	virtual bool IsCollision(shared_ptr<CircleCollider> circle, bool isObb = false) override;
 
-	float GetRadius() { return _radius * _transform->GetWorldScale()._x; }
+	float GetRadius() { return _radius * _transform->GetWorldScale().x; }
 
 private:
 	float _radius;
