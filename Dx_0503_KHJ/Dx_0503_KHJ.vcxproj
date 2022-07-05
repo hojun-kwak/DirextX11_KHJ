@@ -198,6 +198,8 @@
     <ClInclude Include="Framework\Component\Transform.h" />
     <ClInclude Include="Framework\Texture\Texture.h" />
     <ClInclude Include="TypeDef.h" />
+    <ClInclude Include="Object\Zelda\Zelda.h" />
+    <ClInclude Include="Scene\ZeldaScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Animation\Action.cpp" />
@@ -241,6 +243,8 @@
     <ClCompile Include="Framework\Render\Shader.cpp" />
     <ClCompile Include="Framework\Texture\Texture.cpp" />
     <ClCompile Include="Object\BagicObj\Sprite.cpp" />
+    <ClCompile Include="Object\Zelda\Zelda.cpp" />
+    <ClCompile Include="Scene\ZeldaScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />

@@ -12,6 +12,7 @@ public:
 
 	Vector2 GetHalfFrameSize();
 	void SetFrameBuffer(int x, int y) { _frameBuffer->data.curFrame = { (float)x, (float)y }; }
+	void SetClip(Action::Clip clip);
 
 private:
 	Vector2 _maxFrame;

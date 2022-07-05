@@ -22,7 +22,7 @@ public:
 		PINGPONG
 	};
 
-	Action(vector<Clip> clips, Type type = LOOP, float speed = 1.0f);
+	Action(vector<Clip> clips, string name = "", Type type = LOOP, float speed = 0.1f);
 	~Action();
 
 	void Update();
@@ -33,6 +33,7 @@ public:
 	void SetEndEvent(CallBack event) { _endEvent = event; }
 
 	Clip GetCurClip() { return _clips[_curClipNum]; }
+	bool IsPlay() { return _isPlay; }
 
 private:
 	vector<Clip> _clips;
@@ -45,6 +46,8 @@ private:
 	float _speed;
 
 	bool _isReverse = false;
+
+	string _actionName = "";
 
 	CallBack _endEvent = nullptr;
 };

@@ -6,10 +6,11 @@
 #include "../Scene/SolaSystemScene.h"
 #include "../Scene/DunGridScene.h"
 #include "../Scene/ColliderScene.h"
+#include "../Scene/ZeldaScene.h"
 
 Program::Program()
 {
-	_scene = make_shared<DunGridScene>();
+	_scene = make_shared<ZeldaScene>();
 
 	_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();

@@ -22,9 +22,11 @@ private:
 
 	vector<shared_ptr<Monster>> _monsters;
 
-	shared_ptr<Sprite> _zelda;
+	/*shared_ptr<Sprite> _zelda;
 
-	shared_ptr<Action> _action;
+	shared_ptr<Action> _action;*/
+
+	shared_ptr<Zelda> _zelda;
 
 	int _curFrameX = 0;
 	int _curFrameY = 0;

@@ -72,3 +72,9 @@ Vector2 Sprite::GetHalfFrameSize()
 
     return v;
 }
+
+void Sprite::SetClip(Action::Clip clip)
+{
+    _frameBuffer->data.curFrame.x = clip._startPos.x / clip._size.x;
+    _frameBuffer->data.curFrame.y = clip._startPos.y / clip._size.y;
+}
