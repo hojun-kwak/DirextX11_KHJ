@@ -2,7 +2,6 @@
 class Action
 {
 public:
-
 	struct Clip
 	{
 		Vector2 _startPos;
@@ -12,20 +11,20 @@ public:
 		Clip(float x, float y, float w, float h, shared_ptr<Texture> texture)
 			: _startPos({ x,y }), _size({ w,h }), _texture(texture)
 		{}
-
 	};
 
 	enum Type
 	{
 		END,
 		LOOP,
-		PINGPONG
+		PINPONG
 	};
 
 	Action(vector<Clip> clips, string name = "", Type type = LOOP, float speed = 0.1f);
 	~Action();
 
 	void Update();
+
 	void Play();
 	void Pause();
 	void Stop();
@@ -49,6 +48,8 @@ private:
 
 	string _actionName = "";
 
+	// 세팅은 내가 컴파일 전에 세팅
+	// 호출 나중에 니가 알아서
 	CallBack _endEvent = nullptr;
 };
 

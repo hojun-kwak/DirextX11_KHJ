@@ -2,7 +2,10 @@
 #include "Action.h"
 
 Action::Action(vector<Clip> clips, string name, Type type, float speed)
-	:_clips(clips), _repeatType(type), _speed(speed), _actionName(name)
+	: _clips(clips)
+	, _repeatType(type)
+	, _speed(speed)
+	, _actionName(name)
 {
 }
 
@@ -29,16 +32,15 @@ void Action::Update()
 			if (_curClipNum >= _clips.size())
 				Stop();
 		}
-				break;
+		break;
 		case Action::LOOP:
 		{
 			_curClipNum++;
 			if (_curClipNum >= _clips.size())
 				_curClipNum %= _clips.size();
-			// _curClipNum = 0;
 		}
-			break;
-		case Action::PINGPONG:
+		break;
+		case Action::PINPONG:
 		{
 			if (_isReverse)
 			{
@@ -53,7 +55,7 @@ void Action::Update()
 					_isReverse = false;
 			}
 		}
-			break;
+		break;
 		default:
 			break;
 		}
