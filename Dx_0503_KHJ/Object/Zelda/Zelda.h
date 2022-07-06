@@ -35,12 +35,15 @@ public:
 	void SetF_Msg() { _msg = "Front_Run"; }
 	void SetB_Msg() { _msg = "Back_Run"; }
 
+	shared_ptr<Sprite> GetSprite() { return _sprite; }
+
 	//void SetMsg() { _msg = "Right RUN!!!"; }
 	// 
 	// 이렇게 반환해서는 쓸수없는것인가??
 	// define 의 콜백을 void가 아닌 string으로 썻는데??
-	 //string SetMsg(string msg) { return _msg = msg; }
+	 string SetMsg(string msg) { return _msg = msg; }
 	
+	 string _msg = "START";
 
 private:
 	State _aniState = F_IDLE;
@@ -49,6 +52,6 @@ private:
 	vector<shared_ptr<Action>> _actions;
 	//shared_ptr<Action> _action;
 	shared_ptr<Collider> _collider;
-	string _msg = "START";
+	
 };
 

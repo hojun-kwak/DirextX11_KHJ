@@ -13,5 +13,7 @@ public:
 
 private:
 	shared_ptr<Zelda> _zelda;
+
+	Vector2 _movePos = {0.0f, 0.0f};
 };
 

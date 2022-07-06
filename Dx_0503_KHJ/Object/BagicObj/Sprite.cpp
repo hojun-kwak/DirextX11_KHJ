@@ -5,7 +5,7 @@ Sprite::Sprite(wstring file, Vector2 maxFrame)
     : _maxFrame(maxFrame)
 {
     _vertexShader = ADD_VS(L"Shaders/TextureVertexShader.hlsl");
-    _pixelShader = ADD_PS(L"Shaders/SpriteShader.hlsl");
+    _pixelShader = ADD_PS(L"Shaders/ActionShader.hlsl");
 
     _texture = Texture::Add(file);
     _halfSize = _texture->GetSize() * 0.5f;
@@ -17,6 +17,9 @@ Sprite::Sprite(wstring file, Vector2 maxFrame)
     _frameBuffer = make_shared<FrameBuffer>();
     _frameBuffer->data.maxFrame.x = _maxFrame.x;
     _frameBuffer->data.maxFrame.y = _maxFrame.y;
+
+    _actionBuffer = make_shared<ActionBuffer>();
+    _actionBuffer->data.maxSize = _texture->GetSize();
 
     CreateData();
 
@@ -38,6 +41,7 @@ void Sprite::Update()
 void Sprite::Render()
 {
     _frameBuffer->SetPSBuffer(0);
+    _actionBuffer->SetPSBuffer(0);
 
     Quad::Render();
 }
@@ -49,10 +53,10 @@ void Sprite::CreateData()
     halfSize.y /= _frameBuffer->data.maxFrame.y;
 
     {
-        _vertices.emplace_back(-_halfSize.x, _halfSize.y, 0, 0); // 왼쪽위
-        _vertices.emplace_back(_halfSize.x, _halfSize.y, 1, 0); // 오른쪽 위
-        _vertices.emplace_back(-_halfSize.x, -_halfSize.y, 0, 1); // 왼쪽 아래
-        _vertices.emplace_back(_halfSize.x, -_halfSize.y, 1, 1); // 오른쪽 아래
+        _vertices.emplace_back(-halfSize.x, halfSize.y, 0, 0); // 왼쪽위
+        _vertices.emplace_back(_halfSize.x, halfSize.y, 1, 0); // 오른쪽 위
+        _vertices.emplace_back(-halfSize.x, -halfSize.y, 0, 1); // 왼쪽 아래
+        _vertices.emplace_back(halfSize.x, -halfSize.y, 1, 1); // 오른쪽 아래
     }
 
     _indicies.push_back(0);
@@ -71,6 +75,12 @@ Vector2 Sprite::GetHalfFrameSize()
     v.y = _halfSize.y / _maxFrame.y;
 
     return v;
+}
+
+void Sprite::SetClipToActionBuffer(Action::Clip clip)
+{
+    _actionBuffer->data.size = clip._size;
+    _actionBuffer->data.startPos = clip._startPos;
 }
 
 void Sprite::SetClip(Action::Clip clip)

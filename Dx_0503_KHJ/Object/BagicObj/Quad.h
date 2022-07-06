@@ -2,7 +2,7 @@
 class Quad
 {
 public:
-	Quad(wstring file);
+	Quad(wstring file, wstring vs = L"Shaders/TextureVertexShader.hlsl", wstring ps = L"Shaders/TexturePixelShader.hlsl");
 	~Quad();
 
 	virtual void Update();

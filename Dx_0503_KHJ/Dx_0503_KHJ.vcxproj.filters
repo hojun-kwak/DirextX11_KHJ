@@ -150,6 +150,9 @@
     <ClInclude Include="Scene\ZeldaScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\FilterScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -269,6 +272,9 @@
     <ClCompile Include="Scene\ZeldaScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\FilterScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -312,6 +318,9 @@
     <Image Include="Resource\zelda.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\tomboy.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />
@@ -320,5 +329,7 @@
     <FxCompile Include="Shaders\ColliderShader\ColliderVertexShader.hlsl" />
     <FxCompile Include="Shaders\ColliderShader\ColliderPixelShader.hlsl" />
     <FxCompile Include="Shaders\SpriteShader.hlsl" />
+    <FxCompile Include="Shaders\ActionShader.hlsl" />
+    <FxCompile Include="Shaders\FillterShader\FilterShader.hlsl" />
   </ItemGroup>
 </Project>

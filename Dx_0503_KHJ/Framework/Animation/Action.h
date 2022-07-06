@@ -27,12 +27,17 @@ public:
 
 	void Play();
 	void Pause();
+	void Reset();
 	void Stop();
 
 	void SetEndEvent(CallBack event) { _endEvent = event; }
 
+	string SetEvent(CallBackA test) { _endEventA = test; }
+
 	Clip GetCurClip() { return _clips[_curClipNum]; }
 	bool IsPlay() { return _isPlay; }
+
+	Type GetAniType() { return _repeatType; }
 
 private:
 	vector<Clip> _clips;
@@ -51,5 +56,7 @@ private:
 	// 세팅은 내가 컴파일 전에 세팅
 	// 호출 나중에 니가 알아서
 	CallBack _endEvent = nullptr;
+
+	CallBackA _endEventA = nullptr;
 };
 

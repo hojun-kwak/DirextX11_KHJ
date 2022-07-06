@@ -1,10 +1,10 @@
 #include "framework.h"
 #include "Quad.h"
 
-Quad::Quad(wstring file)
+Quad::Quad(wstring file, wstring vs, wstring ps)
 {
-    _vertexShader = ADD_VS(L"Shaders/TextureVertexShader.hlsl");
-    _pixelShader = ADD_PS(L"Shaders/TexturePixelShader.hlsl");
+    _vertexShader = ADD_VS(vs);
+    _pixelShader = ADD_PS(ps);
 
     _texture = Texture::Add(file);
     _halfSize = _texture->GetSize() * 0.5f;

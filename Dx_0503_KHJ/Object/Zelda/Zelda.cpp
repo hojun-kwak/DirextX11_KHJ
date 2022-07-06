@@ -27,7 +27,8 @@ void Zelda::Update()
 		action->Update();
 		if (!action->IsPlay())
 			continue;
-		_sprite->SetClip(action->GetCurClip());
+		//_sprite->SetClip(action->GetCurClip());
+		_sprite->SetClipToActionBuffer(action->GetCurClip());
 	}
 	_collider->Update();
 }
@@ -35,25 +36,35 @@ void Zelda::Update()
 void Zelda::Render()
 {
 	_sprite->Render();
-	_collider->Render();
 }
 
 void Zelda::PostRender()
 {
 	ImGui::Text(_msg.data());
+	// 나중에 안보이게 할때 postRender을 꺼준다.
+	_collider->Render();
 }
 
 void Zelda::SetPosition(float x, float y)
 {
+	_sprite->GetTransform()->GetPos() = { x,y };
 }
 
 void Zelda::SetAnimation(State aniState)
 {
+	if (_actions[aniState]->IsPlay() && _actions[aniState]->GetAniType() == Action::LOOP)
+		return;
+
 	for (auto& action : _actions)
 	{
-		action->Stop();
+		if (action->IsPlay() && _aniState == aniState)
+			continue;
+
+		action->Reset();
 	}
+
 	_actions[aniState]->Play();
+	_aniState = aniState;
 }
 
 void Zelda::CreateData()
@@ -121,7 +132,7 @@ void Zelda::CreateData()
 			clips.emplace_back(0 + w * 9, y, w, h, Texture::Add(L"Resource/zelda.png"));
 		}
 		//_actions.push_back(make_shared<Action>(clips, "F_RUN"));
-		shared_ptr<Action> frontRUN = make_shared<Action>(clips, "F_RUN", Action::END);
+		shared_ptr<Action> frontRUN = make_shared<Action>(clips, "F_RUN", Action::LOOP);
 		frontRUN->SetEndEvent(std::bind(&Zelda::SetF_Msg, this));
 		_actions.push_back(frontRUN);
 		clips.clear();
@@ -141,8 +152,9 @@ void Zelda::CreateData()
 			clips.emplace_back(0 + w * 9, y, w, h, Texture::Add(L"Resource/zelda.png"));
 		}
 		//_actions.push_back(make_shared<Action>(clips, "L_RUN"));
-		shared_ptr<Action> LeftRun = make_shared<Action>(clips, "L_RUN", Action::END);
+		shared_ptr<Action> LeftRun = make_shared<Action>(clips, "L_RUN", Action::LOOP);
 		LeftRun->SetEndEvent(std::bind(&Zelda::SetL_Msg, this));
+		//LeftRun->SetEvent(std::bind(&Zelda::SetMsg, this));
 		_actions.push_back(LeftRun);
 		clips.clear();
 
@@ -161,7 +173,7 @@ void Zelda::CreateData()
 			clips.emplace_back(0 + w * 9, y, w, h, Texture::Add(L"Resource/zelda.png"));
 		}
 		//_actions.push_back(make_shared<Action>(clips, "B_RUN"));
-		shared_ptr<Action> backRun = make_shared<Action>(clips, "B_RUN", Action::END);
+		shared_ptr<Action> backRun = make_shared<Action>(clips, "B_RUN", Action::LOOP);
 		backRun->SetEndEvent(std::bind(&Zelda::SetB_Msg, this));
 		_actions.push_back(backRun);
 		clips.clear();
@@ -181,7 +193,7 @@ void Zelda::CreateData()
 			clips.emplace_back(0 + w * 9, y, w, h, Texture::Add(L"Resource/zelda.png"));
 		}
 		//_actions.push_back(make_shared<Action>(clips, "R_RUN"));
-		shared_ptr<Action> rightRun = make_shared<Action>(clips, "R_RUN", Action::END);
+		shared_ptr<Action> rightRun = make_shared<Action>(clips, "R_RUN", Action::LOOP);
 		rightRun->SetEndEvent(std::bind(&Zelda::SetL_Msg, this));
 		_actions.push_back(rightRun);
 		clips.clear();

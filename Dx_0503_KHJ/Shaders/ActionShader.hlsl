@@ -1,7 +1,9 @@
-cbuffer Frame : register(b0)
+cbuffer Action : register(b0)
 {
-	float2 maxFrame;
-	float2 curFrame;
+	float2 size;
+	float2 startPos;
+	float2 maxSize;
+	float2 padding;
 }
 
 Texture2D map : register(t0); // srv
@@ -18,8 +20,8 @@ float4 PS(PixelInput input) : SV_TARGET
 {
 	float2 uv;
 
-uv.x = input.uv.x / maxFrame.x + (curFrame.x / maxFrame.x); // 置社 0, 置企 1/10
-uv.y = input.uv.y / maxFrame.y + (curFrame.y / maxFrame.y); // 置社 0, 置企 1/8
+	uv.x = input.uv.x / (maxSize.x / size.x) + (startPos.x / maxSize.x);
+	uv.y = input.uv.y / (maxSize.y / size.y) + (startPos.y / maxSize.y);
 
 	float4 result = map.Sample(samp,uv);
 

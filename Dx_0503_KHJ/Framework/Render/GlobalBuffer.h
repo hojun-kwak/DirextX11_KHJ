@@ -54,7 +54,7 @@ private:
 class FrameBuffer : public ConstantBuffer
 {
 public:
-	struct Data
+	struct Data // 16바이트
 	{
 		XMFLOAT2 maxFrame;
 		XMFLOAT2 curFrame;
@@ -65,5 +65,42 @@ public:
 	{
 		data.maxFrame = { 1.0f,1.0f };
 		data.curFrame = { 0.0f,0.0f };
+	}
+};
+
+class ActionBuffer : public ConstantBuffer
+{
+public:
+	struct Data
+	{
+		XMFLOAT2 size;
+		XMFLOAT2 startPos;
+		XMFLOAT2 maxSize;
+		XMFLOAT2 padding; //16바이트의 정수배 만큼 넘겨줘야한다
+	} data;
+
+	ActionBuffer()
+		: ConstantBuffer(&data, sizeof(Data))
+	{
+		data.size = { 1.0f,1.0f };
+		data.startPos = { 0.0f,0.0f };
+		data.maxSize = { 1.0f,1.0f };
+	}
+};
+
+class FilterBuffer : public ConstantBuffer
+{
+public:
+	struct Data
+	{
+		int selected = 0;
+		int value1 = 0;
+		int value2 = 0;
+		int value3 = 0;
+	}data;
+
+	FilterBuffer()
+		: ConstantBuffer(&data, sizeof(Data))
+	{
 	}
 };

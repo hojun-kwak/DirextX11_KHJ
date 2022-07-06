@@ -75,6 +75,12 @@ void Action::Pause()
 	_isPlay = false;
 }
 
+void Action::Reset()
+{
+	_isPlay = false;
+	_curClipNum = 0;
+}
+
 void Action::Stop()
 {
 	_isPlay = false;
