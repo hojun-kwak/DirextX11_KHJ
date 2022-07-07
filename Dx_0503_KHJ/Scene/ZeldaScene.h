@@ -11,6 +11,8 @@ public:
 
 	void PostRender();
 
+	void Move();
+
 private:
 	shared_ptr<Zelda> _zelda;
 

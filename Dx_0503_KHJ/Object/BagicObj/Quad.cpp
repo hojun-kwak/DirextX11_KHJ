@@ -55,6 +55,7 @@ void Quad::CreateData()
         _vertices.emplace_back(-_halfSize.x, -_halfSize.y, 0, 1); // 왼쪽 아래
         _vertices.emplace_back(_halfSize.x, -_halfSize.y, 1, 1); // 오른쪽 아래
     }
+
     _indicies.push_back(0);
     _indicies.push_back(1);
     _indicies.push_back(2);

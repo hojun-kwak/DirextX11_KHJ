@@ -9,8 +9,8 @@ Sprite::Sprite(wstring file, Vector2 maxFrame)
 
     _texture = Texture::Add(file);
     _halfSize = _texture->GetSize() * 0.5f;
-    _halfSize.x *= (1 / _maxFrame.x);
-    _halfSize.y *= (1 / _maxFrame.y);
+    /*_halfSize.x *= (1 / _maxFrame.x);
+    _halfSize.y *= (1 / _maxFrame.y);*/
 
     _transform = make_shared<Transform>();
 
@@ -54,7 +54,7 @@ void Sprite::CreateData()
 
     {
         _vertices.emplace_back(-halfSize.x, halfSize.y, 0, 0); // 왼쪽위
-        _vertices.emplace_back(_halfSize.x, halfSize.y, 1, 0); // 오른쪽 위
+        _vertices.emplace_back(halfSize.x, halfSize.y, 1, 0); // 오른쪽 위
         _vertices.emplace_back(-halfSize.x, -halfSize.y, 0, 1); // 왼쪽 아래
         _vertices.emplace_back(halfSize.x, -halfSize.y, 1, 1); // 오른쪽 아래
     }

@@ -13,5 +13,9 @@ public:
 private:
 	shared_ptr<Quad> _quad;
 	shared_ptr<FilterBuffer> _filterBuffer;
+	shared_ptr<IMGSizeBuffer> _imgSizeBuffer;
+
+	shared_ptr<Quad> _sun;
+	shared_ptr<FilterBuffer> _sunfilterBuffer;
 };
 

@@ -18,7 +18,7 @@ Zelda::~Zelda()
 void Zelda::Update()
 {
 	_sprite->Update();
-	Move();
+	//Move();
 	/*_action->Update();
 	_sprite->SetClip(_action->GetCurClip());*/
 
