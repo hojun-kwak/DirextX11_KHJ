@@ -8,10 +8,11 @@
 #include "../Scene/ColliderScene.h"
 #include "../Scene/ZeldaScene.h"
 #include "../Scene/FilterScene.h"
+#include "../Scene/EffectScene.h"
 
 Program::Program()
 {
-	_scene = make_shared<FilterScene>();
+	_scene = make_shared<EffectScene>();
 
 	_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();

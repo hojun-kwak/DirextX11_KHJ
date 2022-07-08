@@ -151,6 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\BagicObj\EffectManager.h" />
+    <ClInclude Include="Scene\EffectScene.h" />
+    <ClInclude Include="Object\BagicObj\Effect.h" />
     <ClInclude Include="Scene\FilterScene.h" />
     <ClInclude Include="Framework\Animation\Action.h" />
     <ClInclude Include="Framework\Collider\CircleCollider.h" />
@@ -201,8 +204,12 @@
     <ClInclude Include="TypeDef.h" />
     <ClInclude Include="Object\Zelda\Zelda.h" />
     <ClInclude Include="Scene\ZeldaScene.h" />
+    <ClInclude Include="Framework\Utillity\Utillity.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\BagicObj\EffectManager.cpp" />
+    <ClCompile Include="Scene\EffectScene.cpp" />
+    <ClCompile Include="Object\BagicObj\Effect.cpp" />
     <ClCompile Include="Scene\FilterScene.cpp" />
     <ClCompile Include="Framework\Animation\Action.cpp" />
     <ClCompile Include="Framework\Collider\CircleCollider.cpp" />
@@ -247,6 +254,7 @@
     <ClCompile Include="Object\BagicObj\Sprite.cpp" />
     <ClCompile Include="Object\Zelda\Zelda.cpp" />
     <ClCompile Include="Scene\ZeldaScene.cpp" />
+    <ClCompile Include="Framework\Utillity\Utillity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />
@@ -255,6 +263,16 @@
     <Image Include="Dx_0503_KHJ.ico" />
     <Image Include="Resource\cs.png" />
     <Image Include="Resource\earth.png" />
+    <Image Include="Resource\Effects\BlueExplosion.png" />
+    <Image Include="Resource\Effects\explosion.png" />
+    <Image Include="Resource\Effects\fire_8x2.png" />
+    <Image Include="Resource\Effects\GreenExplosion.png" />
+    <Image Include="Resource\Effects\hit2_4x4.png" />
+    <Image Include="Resource\Effects\hit_4x2.png" />
+    <Image Include="Resource\Effects\skill_6x2.png" />
+    <Image Include="Resource\Effects\skill_core_4x4.png" />
+    <Image Include="Resource\Effects\smoke_4x4.png" />
+    <Image Include="Resource\Effects\thunder_core_4x4.png" />
     <Image Include="Resource\ezreal.png" />
     <Image Include="Resource\kar_98k.png" />
     <Image Include="Resource\moon.png" />

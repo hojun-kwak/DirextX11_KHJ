@@ -21,6 +21,9 @@ FilterScene::FilterScene()
 
 	_sunfilterBuffer = make_shared<FilterBuffer>();
 	_sunfilterBuffer->data.selected = 6;
+
+	_effect = make_shared<Effect>(L"Resource/Effects/skill_core_4x4.png", Vector2{ 4,4 }, 0.1f);
+	_effect->Play(Vector2(WIN_WIDTH * 0.5f, WIN_HEIGHT * 0.5f));
 }
 
 FilterScene::~FilterScene()
@@ -31,6 +34,7 @@ void FilterScene::Update()
 {
 	_quad->Update();
 	_sun->Update();
+	_effect->Update();
 }
 
 void FilterScene::Render()
@@ -41,6 +45,8 @@ void FilterScene::Render()
 
 	_sunfilterBuffer->SetPSBuffer(0);
 	_sun->Render();
+
+	_effect->Render();
 }
 
 void FilterScene::PostRender()

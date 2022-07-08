@@ -67,6 +67,7 @@ using namespace std;
 // Utillity
 #include "Framework/Utillity/InputManager.h"
 #include "Framework/Utillity/Timer.h"
+#include "Framework/Utillity/Utillity.h"
 
 // Collider
 #include "Framework/Collider/Collider.h"
@@ -87,6 +88,8 @@ using namespace std;
 // Bagic
 #include "Object/BagicObj/Quad.h"
 #include "Object/BagicObj/Sprite.h"
+#include "Object/BagicObj/Effect.h"
+#include "Object/BagicObj/EffectManager.h"
 
 // Dungreed
 #include "Object/Dungreed/Player.h"
