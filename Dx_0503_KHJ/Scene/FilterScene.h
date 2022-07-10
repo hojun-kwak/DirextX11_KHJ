@@ -17,5 +17,7 @@ private:
 
 	shared_ptr<Quad> _sun;
 	shared_ptr<FilterBuffer> _sunfilterBuffer;
+
+	shared_ptr<Effect> _effect;
 };
 
