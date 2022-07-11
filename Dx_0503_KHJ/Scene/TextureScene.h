@@ -27,6 +27,7 @@ private:
     shared_ptr<SamplerState>    _sampler;*/
 
     shared_ptr<Quad> _quad;
+    shared_ptr<FilterBuffer> _filterBuffer;
     
 };
 

@@ -3,8 +3,7 @@
 
 EffectScene::EffectScene()
 {
-	_effect = make_shared<Effect>(L"Resource/Effects/skill_core_4x4.png", Vector2{ 4,4 }, 0.1f);
-	_effect->Play(CENTER);
+	EffectManager::GetInstance()->Add(L"Resource/Effects/skill_core_4x4.png", Vector2(4, 4), 0.07f);
 }
 
 EffectScene::~EffectScene()
@@ -13,12 +12,14 @@ EffectScene::~EffectScene()
 
 void EffectScene::Update()
 {
-	_effect->Update();
+	if (KEY_DOWN('W'))
+	{
+		EffectManager::GetInstance()->Play("skill_core_4x4", CENTER);
+	}
 }
 
 void EffectScene::Render()
 {
-	_effect->Render();
 }
 
 void EffectScene::PostRender()

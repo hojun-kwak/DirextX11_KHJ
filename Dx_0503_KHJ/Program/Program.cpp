@@ -49,6 +49,8 @@ Program::~Program()
 
 void Program::Update()
 {
+	EffectManager::GetInstance()->Update();
+
 	_scene->Update();
 }
 
@@ -77,6 +79,7 @@ void Program::Render()
 
 	_scene->PreRender();
 
+	EffectManager::GetInstance()->Render();
 	_scene->Render();
 
 	ImGui::Text("FPS : %d", Timer::GetInstance()->GetFPS());

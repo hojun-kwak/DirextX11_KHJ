@@ -385,5 +385,6 @@
     <FxCompile Include="Shaders\SpriteShader.hlsl" />
     <FxCompile Include="Shaders\ActionShader.hlsl" />
     <FxCompile Include="Shaders\FillterShader\FilterShader.hlsl" />
+    <FxCompile Include="Shaders\LeftRightPixelShader.hlsl" />
   </ItemGroup>
 </Project>
