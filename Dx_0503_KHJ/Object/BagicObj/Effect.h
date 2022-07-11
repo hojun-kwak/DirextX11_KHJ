@@ -13,7 +13,7 @@ public:
 
 	void End() { _isActive = false; }
 
-	bool _isActive = true;
+	bool _isActive = false;
 
 private:
 

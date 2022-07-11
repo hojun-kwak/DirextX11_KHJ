@@ -10,13 +10,13 @@ public:
 	}
 	static void Delete()
 	{
-		if (_instace == nullptr)
+		if (_instace != nullptr)
 			delete _instace;
 	}
 
 	static EffectManager* GetInstance()
 	{
-		if (_instace == nullptr)
+		if (_instace != nullptr)
 			return _instace;
 	}
 
