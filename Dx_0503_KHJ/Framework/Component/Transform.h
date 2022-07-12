@@ -35,7 +35,7 @@ public:
 
 	void UpdateWorldBuffer();
 	// world에 나오기위한 조건
-	void SetWorldBuffer(int slot = 0);
+	void SetMatrixBuffer(int slot = 0);
 
 private:
 	Vector2 _pos = { 0.0f, 0.0f };

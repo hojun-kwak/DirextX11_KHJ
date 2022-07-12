@@ -30,7 +30,7 @@ void Quad::Update()
 
 void Quad::Render()
 {
-    _transform->SetWorldBuffer(0);
+    _transform->SetMatrixBuffer(0);
 
     _vertexBuffer->IASet(0);
     _indexBuffer->IASet();

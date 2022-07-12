@@ -17,7 +17,7 @@ void Collider::Update()
 
 void Collider::Render()
 {
-	_transform->SetWorldBuffer(0);
+	_transform->SetMatrixBuffer(0);
 	_colorBuffer->SetPSBuffer(0);
 
 	_vertexBuffer->IASet(0);

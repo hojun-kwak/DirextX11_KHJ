@@ -11,7 +11,7 @@ public:
 private:
 	shared_ptr<Scene> _scene;
 
-	shared_ptr<MatrixBuffer> _viewBuffer;
-	shared_ptr<MatrixBuffer> _projectionBuffer;
+	/*shared_ptr<MatrixBuffer> _viewBuffer;
+	shared_ptr<MatrixBuffer> _projectionBuffer;*/
 };
 

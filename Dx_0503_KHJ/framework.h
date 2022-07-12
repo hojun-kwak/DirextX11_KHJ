@@ -21,6 +21,7 @@
 #include <string>
 #include <memory>
 #include <functional>
+#include <time.h>
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -68,6 +69,9 @@ using namespace std;
 #include "Framework/Utillity/InputManager.h"
 #include "Framework/Utillity/Timer.h"
 #include "Framework/Utillity/Utillity.h"
+
+// Camera
+#include "Framework/Camera/Camera.h"
 
 // Collider
 #include "Framework/Collider/Collider.h"

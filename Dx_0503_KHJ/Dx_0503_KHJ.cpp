@@ -107,6 +107,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     StateManager::Create();
     ShaderManager::Create();
     EffectManager::Create();
+    Camera::Create();
+
+    srand(static_cast<UINT>(time(nullptr)));
     shared_ptr<Program> program = make_shared<Program>();
     //InitDevice();
 
@@ -135,6 +138,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 삭제.
+    Camera::Delete();
     EffectManager::Delete();
     ShaderManager::Delete();
     StateManager::Delete();
