@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\CameraScene.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
     <ClInclude Include="Object\BagicObj\EffectManager.h" />
     <ClInclude Include="Scene\EffectScene.h" />
@@ -208,6 +209,7 @@
     <ClInclude Include="Framework\Utillity\Utillity.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\CameraScene.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Object\BagicObj\EffectManager.cpp" />
     <ClCompile Include="Scene\EffectScene.cpp" />
@@ -277,6 +279,7 @@
     <Image Include="Resource\Effects\thunder_core_4x4.png" />
     <Image Include="Resource\ezreal.png" />
     <Image Include="Resource\kar_98k.png" />
+    <Image Include="Resource\LostArk.png" />
     <Image Include="Resource\moon.png" />
     <Image Include="Resource\mousePointer.png" />
     <Image Include="Resource\mysticShot.png" />

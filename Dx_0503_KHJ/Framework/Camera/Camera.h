@@ -55,7 +55,7 @@ private:
 	Vector2 _leftBottom;
 	Vector2 _rightTop;
 
-	float _duration = 0.0f;
+	float _duration = 1.0f;
 	float _reduceDamping = 1.0f;
 	float _magnitude = 0.0f; // ±Ô¸ð
 

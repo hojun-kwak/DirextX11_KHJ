@@ -85,26 +85,31 @@ void Camera::FreeMode()
 void Camera::FollowMode()
 {
 	Vector2 targetPos = _target->GetPos() - _offset;
+
 	if (targetPos.x < _leftBottom.x)
 		targetPos.x = _leftBottom.x;
 
-	if (targetPos.x > _rightTop.x)
-		targetPos.x = _rightTop.x;
+	if (targetPos.x > _rightTop.x - WIN_WIDTH)
+		targetPos.x = _rightTop.x - WIN_WIDTH;
 
 	if (targetPos.y < _leftBottom.y)
 		targetPos.y = _leftBottom.y;
 
-	if (targetPos.y > _rightTop.y)
-		targetPos.y = _rightTop.y;
+	if (targetPos.y > _rightTop.y - WIN_HEIGHT)
+		targetPos.y = _rightTop.y - WIN_HEIGHT;
 
-	_transform->GetPos() = LERP(_transform->GetPos(), targetPos, DELTA_TIME * _speed);
+	//float distance = _transform->GetPos().Distance(targetPos * -1);
+	//if(distance >= 30.0f)
+
+	_transform->GetPos() = LERP(_transform->GetPos(), (targetPos * -1), DELTA_TIME * _speed);
+
+
 }
 
 void Camera::Shake()
 {
 	if (_duration <= 0.0f)
 	{
-		_transform->GetPos() = _originPos;
 		return;
 	}
 
@@ -122,4 +127,9 @@ void Camera::Shake()
 	float maxT = +_magnitude *((float)rand() / (float)RAND_MAX);
 	//(float)(rand()%45) / 10;
 	_transform->GetPos() = _originPos + Vector2(minT, maxT);
+
+	if (_duration <= 0.0f)
+	{
+		_transform->GetPos() = _originPos;
+	}
 }

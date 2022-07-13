@@ -45,6 +45,8 @@ public:
 	
 	 string _msg = "START";
 
+	 shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
+
 private:
 	State _aniState = F_IDLE;
 

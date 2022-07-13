@@ -9,10 +9,11 @@
 #include "../Scene/ZeldaScene.h"
 #include "../Scene/FilterScene.h"
 #include "../Scene/EffectScene.h"
+#include "../Scene/CameraScene.h"
 
 Program::Program()
 {
-	_scene = make_shared<EffectScene>();
+	_scene = make_shared<CameraScene>();
 
 	/*_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();*/

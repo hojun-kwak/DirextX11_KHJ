@@ -168,6 +168,9 @@
     <ClInclude Include="Framework\Camera\Camera.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\CameraScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -305,6 +308,9 @@
     <ClCompile Include="Framework\Camera\Camera.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\CameraScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -379,6 +385,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\Effects\thunder_core_4x4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\LostArk.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

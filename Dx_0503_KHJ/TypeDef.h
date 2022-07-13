@@ -32,7 +32,8 @@
 #define ADD_VS(k)		ShaderManager::GetInstance()->AddVS(k)
 #define ADD_PS(k)		ShaderManager::GetInstance()->AddPS(k)
 
-#define LERP(s,e,t) { e + (s - e) * t }
+#define LERP(s,e,t) { s + (e - s) * t }
+//#define LERP(s,e,t) { s * (1 - t)+ e * t }
 
 // 매개 변수를 보이드로 가질수있는 함수
 typedef function<void()> CallBack;
