@@ -46,6 +46,7 @@ void CameraScene::Render()
 
 void CameraScene::PostRender()
 {
+	_zelda->PostRender();
 }
 
 void CameraScene::Move()

@@ -113,8 +113,7 @@ void Zelda::CreateData()
 			clips.emplace_back(0 + w, y, w, h, Texture::Add(L"Resource/zelda.png"));
 			clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(L"Resource/zelda.png"));
 		}
-		shared_ptr<Action> rightIDLE = make_shared<Action>(clips, "R_IDLE");
-		_actions.push_back(rightIDLE);
+		_actions.push_back(make_shared<Action>(clips, "R_IDLE"));
 		clips.clear();
 
 		y = 1040 * 0.5f;
