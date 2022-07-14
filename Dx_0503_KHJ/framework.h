@@ -69,6 +69,8 @@ using namespace std;
 #include "Framework/Utillity/InputManager.h"
 #include "Framework/Utillity/Timer.h"
 #include "Framework/Utillity/Utillity.h"
+#include "Framework/Utillity/BinaryWriter.h"
+#include "Framework/Utillity/BinaryReader.h"
 
 // Camera
 #include "Framework/Camera/Camera.h"

@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Utillity\BinaryReader.h" />
+    <ClInclude Include="Framework\Utillity\BinaryWriter.h" />
     <ClInclude Include="Scene\CameraScene.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
     <ClInclude Include="Object\BagicObj\EffectManager.h" />
@@ -209,6 +211,8 @@
     <ClInclude Include="Framework\Utillity\Utillity.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Utillity\BinaryReader.cpp" />
+    <ClCompile Include="Framework\Utillity\BinaryWriter.cpp" />
     <ClCompile Include="Scene\CameraScene.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Object\BagicObj\EffectManager.cpp" />

@@ -18,7 +18,7 @@ Zelda::~Zelda()
 void Zelda::Update()
 {
 	_sprite->Update();
-	//Move();
+	Move();
 	/*_action->Update();
 	_sprite->SetClip(_action->GetCurClip());*/
 
@@ -48,6 +48,7 @@ void Zelda::PostRender()
 void Zelda::SetPosition(float x, float y)
 {
 	_sprite->GetTransform()->GetPos() = { x,y };
+	_zeldaPos = { x,y };
 }
 
 void Zelda::SetAnimation(State aniState)
@@ -207,23 +208,48 @@ void Zelda::CreateData()
 
 void Zelda::Move()
 {
-	if (KEY_PRESS(VK_LEFT))
+	this->SetPosition(_zeldaPos.x, _zeldaPos.y);
 	{
-		_sprite->GetTransform()->GetPos().x -= 100 * DELTA_TIME;
-	}
+		if (KEY_PRESS(VK_UP))
+		{
+			_zeldaPos.y += 150 * DELTA_TIME;
+			this->SetAnimation(Zelda::State::B_RUN);
 
-	if (KEY_PRESS(VK_RIGHT))
-	{
-		_sprite->GetTransform()->GetPos().x += 100 * DELTA_TIME;
-	}
+			return;
+		}
 
-	if (KEY_PRESS(VK_UP))
-	{
-		_sprite->GetTransform()->GetPos().y += 100 * DELTA_TIME;
-	}
+		if (KEY_PRESS(VK_LEFT))
+		{
+			_zeldaPos.x -= 150 * DELTA_TIME;
+			this->SetAnimation(Zelda::State::L_RUN);
 
-	if (KEY_PRESS(VK_DOWN))
+			return;
+		}
+
+		if (KEY_PRESS(VK_DOWN))
+		{
+			_zeldaPos.y -= 150 * DELTA_TIME;
+			this->SetAnimation(Zelda::State::F_RUN);
+
+			return;
+		}
+
+		if (KEY_PRESS(VK_RIGHT))
+		{
+			_zeldaPos.x += 150 * DELTA_TIME;
+			this->SetAnimation(Zelda::State::R_RUN);
+
+			return;
+		}
+	}
 	{
-		_sprite->GetTransform()->GetPos().y -= 100 * DELTA_TIME;
+		if (KEY_UP(VK_LEFT))
+			this->SetAnimation(Zelda::State::L_IDLE);
+		if (KEY_UP(VK_RIGHT))
+			this->SetAnimation(Zelda::State::R_IDLE);
+		if (KEY_UP(VK_UP))
+			this->SetAnimation(Zelda::State::B_IDLE);
+		if (KEY_UP(VK_DOWN))
+			this->SetAnimation(Zelda::State::F_IDLE);
 	}
 }

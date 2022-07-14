@@ -171,6 +171,12 @@
     <ClInclude Include="Scene\CameraScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Utillity\BinaryWriter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utillity\BinaryReader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -309,6 +315,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\CameraScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utillity\BinaryWriter.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utillity\BinaryReader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

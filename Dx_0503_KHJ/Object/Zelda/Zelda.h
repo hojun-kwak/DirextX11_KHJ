@@ -50,6 +50,7 @@ public:
 private:
 	State _aniState = F_IDLE;
 
+	Vector2 _zeldaPos = { 0,0 };
 	shared_ptr<Sprite> _sprite;
 	vector<shared_ptr<Action>> _actions;
 	//shared_ptr<Action> _action;
