@@ -9,15 +9,14 @@ public:
 	virtual void Render() override;
 	virtual void PostRender() override;
 
-	void Move();
+	void SavePos();
+	Vector2 LoadPos();
 
 private:
 	shared_ptr<Quad> _background;
 	shared_ptr<Zelda> _zelda;
 	shared_ptr<Transform> _zeldaFollow;
 
-	Vector2 _movePos = CENTER;
-
-
+	shared_ptr<Button> _button;
 };
 

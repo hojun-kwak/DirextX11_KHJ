@@ -45,6 +45,8 @@ public:
 		return _renderTargetView;
 	}
 
+	Microsoft::WRL::ComPtr<IDXGISwapChain> GetSwapChain() { return _swapChain; }
+
 	void Clear(float R, float G, float B);
 	void Present();
 
