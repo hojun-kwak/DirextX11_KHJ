@@ -10,6 +10,7 @@
 #include "../Scene/FilterScene.h"
 #include "../Scene/EffectScene.h"
 #include "../Scene/CameraScene.h"
+#include "../Scene/2D_PortFolio/MapleScene.h"
 
 Program::Program()
 {

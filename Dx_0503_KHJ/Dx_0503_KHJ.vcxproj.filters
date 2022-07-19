@@ -171,6 +171,12 @@
     <ClInclude Include="Scene\CameraScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\2D_PortFolio\MapleScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Maple\Charater.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -311,6 +317,12 @@
     <ClCompile Include="Scene\CameraScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\2D_PortFolio\MapleScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Maple\Charater.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -388,6 +400,15 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\LostArk.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Maple\ExtraA.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Maple\maple_background.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Maple\red_snail.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
