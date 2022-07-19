@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\UI\Button.h" />
+    <ClInclude Include="Framework\Utillity\DirectWrite.h" />
     <ClInclude Include="Framework\Utillity\BinaryReader.h" />
     <ClInclude Include="Framework\Utillity\BinaryWriter.h" />
     <ClInclude Include="Scene\CameraScene.h" />
@@ -211,6 +213,8 @@
     <ClInclude Include="Framework\Utillity\Utillity.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\UI\Button.cpp" />
+    <ClCompile Include="Framework\Utillity\DirectWrite.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryWriter.cpp" />
     <ClCompile Include="Scene\CameraScene.cpp" />
@@ -289,12 +293,27 @@
     <Image Include="Resource\mysticShot.png" />
     <Image Include="Resource\sun.png" />
     <Image Include="Resource\tomboy.png" />
+    <Image Include="Resource\UI\Button.png" />
     <Image Include="Resource\VRising.png" />
     <Image Include="Resource\zelda.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\ActionShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">PS</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PS</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PS</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shaders\ButtonPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
