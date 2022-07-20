@@ -12,16 +12,3 @@ static std::string WstringToString(wstring wstr)
 	return t;
 }
 
-static std::wstring StringToWstring(string str)
-{
-	std::wstring t;
-	t.reserve(str.length() + 1);
-
-	for (auto c : str)
-	{
-		t.push_back(c);
-	}
-
-	return t;
-}
-

@@ -177,12 +177,6 @@
     <ClInclude Include="Framework\Utillity\BinaryReader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utillity\DirectWrite.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\UI\Button.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -329,12 +323,6 @@
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utillity\DirectWrite.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\UI\Button.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -414,9 +402,6 @@
     <Image Include="Resource\LostArk.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\UI\Button.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />
@@ -428,6 +413,5 @@
     <FxCompile Include="Shaders\ActionShader.hlsl" />
     <FxCompile Include="Shaders\FillterShader\FilterShader.hlsl" />
     <FxCompile Include="Shaders\LeftRightPixelShader.hlsl" />
-    <FxCompile Include="Shaders\ButtonPixelShader.hlsl" />
   </ItemGroup>
 </Project>
