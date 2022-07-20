@@ -20,6 +20,8 @@ public:
 	void SetText(string text);
 
 	void SetState();
+	void SetEvent(CallBack callback) { _callback = callback; }
+	void SetEventParam(CallBackParam callbackparam, int param) { _callbackParam = callbackparam; _param = param; }
 	
 	shared_ptr<RectCollider> GetRectCollider() { return _col; }
 
@@ -33,5 +35,9 @@ private:
 	Vector2 _textPos = { 0,0 };
 
 	shared_ptr<ButtonBuffer> _buttonBuffer;
+	
+	CallBack _callback;
+	CallBackParam _callbackParam;
+	int _param = 0;
 };
 
