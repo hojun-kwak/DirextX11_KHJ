@@ -24,10 +24,7 @@ CameraScene::CameraScene()
 	_button = make_shared<Button>();
 	_button->SetScale(Vector2(0.1f, 0.1f));
 	_button->SetPosition(Vector2{100, WIN_HEIGHT - 100});
-	//_button->SetText("Button");
-	_button->SetText("Save");
-	_button->SetEvent(std::bind(&CameraScene::SavePos, this));
-	_button->SetEventParam(std::bind(&CameraScene::Test, this, placeholders::_1),5);
+	_button->SetText("Button");
 }
 
 CameraScene::~CameraScene()
@@ -67,12 +64,8 @@ void CameraScene::Render()
 void CameraScene::PostRender()
 {
 	_zelda->PostRender();
-	/*if (ImGui::Button("Save",{ 50, 50 }))
-		SavePos();*/
-	/*if (_button->GetRectCollider()->IsCollision(MOUSE_WOLRD_POS))
-	{
+	if (ImGui::Button("Save",{ 50, 50 }))
 		SavePos();
-	}*/
 
 	_button->PostRender();
 }
@@ -89,11 +82,6 @@ void CameraScene::SavePos()
 	writer.Uint(dataes.size() * sizeof(float));
 	writer.Byte(dataes.data(), sizeof(float) * dataes.size());
 	
-}
-
-void CameraScene::Test(int test)
-{
-	int a = test;
 }
 
 Vector2 CameraScene::LoadPos()

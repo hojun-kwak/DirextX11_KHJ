@@ -10,7 +10,6 @@ public:
 	virtual void PostRender() override;
 
 	void SavePos();
-	void Test(int test);
 	Vector2 LoadPos();
 
 private:

@@ -34,14 +34,6 @@ void Button::Update()
 		{
 			_state = CLICK;
 		}
-		if (KEY_UP(VK_LBUTTON))
-		{
-			if (_callback != nullptr)
-				_callback();
-
-			if (_callbackParam != nullptr)
-				_callbackParam(_param);
-		}
 	}
 	else
 	{
@@ -58,9 +50,8 @@ void Button::PostRender()
 	_col->Render();
 
 	{
-		// 글자 사이즈를 바꾸고 싶으면 offset을 수정
 		wstring text = StringToWstring(_text);
-		float offSetX = _quad->GetHalfSize().x * _quad->GetTransform()->GetScale().x * 0.5f + 15.0f;
+		float offSetX = _quad->GetHalfSize().x * _quad->GetTransform()->GetScale().x * 0.5f;
 		float offSetY = _quad->GetHalfSize().y * _quad->GetTransform()->GetScale().y * 0.5f;
 		float sizeX = _quad->GetHalfSize().x * _quad->GetTransform()->GetScale().x;
 		float sizeY = _quad->GetHalfSize().y * _quad->GetTransform()->GetScale().y;
