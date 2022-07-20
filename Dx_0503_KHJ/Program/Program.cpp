@@ -10,10 +10,11 @@
 #include "../Scene/FilterScene.h"
 #include "../Scene/EffectScene.h"
 #include "../Scene/CameraScene.h"
+#include "../Scene/2D_PortFolio/MapleScene.h"
 
 Program::Program()
 {
-	_scene = make_shared<CameraScene>();
+	_scene = make_shared<MapleScene>();
 
 	/*_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();*/

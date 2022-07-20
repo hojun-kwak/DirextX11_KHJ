@@ -154,6 +154,7 @@
     <ClInclude Include="Framework\Utillity\BinaryReader.h" />
     <ClInclude Include="Framework\Utillity\BinaryWriter.h" />
     <ClInclude Include="Framework\Utillity\DirectWrite.h" />
+    <ClInclude Include="Scene\2D_PortFolio\MapleScene.h" />
     <ClInclude Include="Object\UI\Button.h" />
     <ClInclude Include="Scene\CameraScene.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryWriter.cpp" />
     <ClCompile Include="Framework\Utillity\DirectWrite.cpp" />
+    <ClCompile Include="Scene\2D_PortFolio\MapleScene.cpp" />
     <ClCompile Include="Object\UI\Button.cpp" />
     <ClCompile Include="Scene\CameraScene.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />

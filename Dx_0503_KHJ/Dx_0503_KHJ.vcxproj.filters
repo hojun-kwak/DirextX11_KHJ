@@ -183,6 +183,9 @@
     <ClInclude Include="Framework\Utillity\DirectWrite.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\2D_PortFolio\MapleScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -333,6 +336,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Utillity\DirectWrite.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\2D_PortFolio\MapleScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
