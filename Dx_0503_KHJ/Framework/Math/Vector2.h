@@ -33,7 +33,5 @@ public:
 
 	void YAxisSymmetry();
 	int Manhattan(const Vector2& value) const;
-
-	static Vector2 TransformCoord(const Vector2& v, const XMMATRIX& matrix);
 };
 

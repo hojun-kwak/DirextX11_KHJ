@@ -34,10 +34,6 @@ public:
 	void SetLeftBottom(Vector2 value) { _leftBottom = value; }
 	void SetRightTop(Vector2 value) { _rightTop = value; }
 
-	Vector2 GetMouseWorldPos();
-
-	shared_ptr<Transform> GetTransform() { return _moveTransform; }
-
 private:
 	Camera();
 	~Camera();
@@ -48,8 +44,6 @@ private:
 
 private:
 	shared_ptr<Transform> _transform;
-	shared_ptr<Transform> _moveTransform;
-
 	static Camera* _instance; // ╫л╠шео
 
 	float _speed = 200.0f;

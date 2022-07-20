@@ -16,7 +16,7 @@ public:
 		if (_instance != nullptr)
 			delete _instance;
 
-		_instance = nullptr;
+		//_instance = nullptr;
 	}
 
 	static Device* GetInstance()
@@ -44,8 +44,6 @@ public:
 	{
 		return _renderTargetView;
 	}
-
-	Microsoft::WRL::ComPtr<IDXGISwapChain> GetSwapChain() { return _swapChain; }
 
 	void Clear(float R, float G, float B);
 	void Present();

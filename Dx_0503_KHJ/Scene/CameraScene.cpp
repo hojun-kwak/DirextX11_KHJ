@@ -21,10 +21,6 @@ CameraScene::CameraScene()
 	Camera::GetInstance()->SetLeftBottom(LeftBottom);
 	Camera::GetInstance()->SetRightTop(RightTop);
 
-	_button = make_shared<Button>();
-	_button->SetScale(Vector2(0.1f, 0.1f));
-	_button->SetPosition(Vector2{100, WIN_HEIGHT - 100});
-	_button->SetText("Button");
 }
 
 CameraScene::~CameraScene()
@@ -35,24 +31,6 @@ void CameraScene::Update()
 {
 	_background->Update();
 	_zelda->Update();
-
-	float distance = _zelda->GetTransForm()->GetPos().Distance(_zeldaFollow->GetPos());
-	if (distance >= 30.0f)
-	{
-		_zeldaFollow->GetPos() = LERP(_zeldaFollow->GetPos(), _zelda->GetTransForm()->GetPos(), 0.001f);
-	}
-
-	_button->Update();
-
-	Vector2 mP = Camera::GetInstance()->GetMouseWorldPos();
-	if (_button->GetRectCollider()->IsCollision(mP))
-	{
-		_button->GetRectCollider()->SetRed();
-	}
-	else
-	{
-		_button->GetRectCollider()->SetGreen();
-	}
 }
 
 void CameraScene::Render()
@@ -66,8 +44,6 @@ void CameraScene::PostRender()
 	_zelda->PostRender();
 	if (ImGui::Button("Save",{ 50, 50 }))
 		SavePos();
-
-	_button->PostRender();
 }
 
 void CameraScene::SavePos()
@@ -79,7 +55,6 @@ void CameraScene::SavePos()
 	dataes.push_back(_zelda->GetTransForm()->GetPos().y);
 
 	writer.Uint(dataes.size());
-	writer.Uint(dataes.size() * sizeof(float));
 	writer.Byte(dataes.data(), sizeof(float) * dataes.size());
 	
 }
@@ -90,13 +65,11 @@ Vector2 CameraScene::LoadPos()
 	BinaryReader reader(L"Save/Zelda");
 
 	UINT size = reader.Uint();
-	UINT byteSize = reader.Uint();
 	vector<float> dataes;
 	dataes.resize(size);
 
 	void* ptr = (void*)dataes.data();
-	//reader.Byte(&ptr, sizeof(float) * dataes.size());
-	reader.Byte(&ptr, byteSize);
+	reader.Byte(&ptr, sizeof(float) * dataes.size());
 
 	Vector2 tempPos;
 
