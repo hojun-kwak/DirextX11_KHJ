@@ -6,8 +6,10 @@ Camera* Camera::_instance = nullptr;
 Camera::Camera()
 {
 	_transform = make_shared<Transform>();
+	_moveTransform = make_shared<Transform>();
 	_transform->SetMatrixBuffer(1);
 	_projectionBuffer = make_shared<MatrixBuffer>();
+	_offset = { CENTER.x, CENTER.y };
 }
 
 Camera::~Camera()
@@ -25,6 +27,10 @@ void Camera::Update()
 
 	_transform->UpdateWorldBuffer();
 	_transform->SetMatrixBuffer(1);
+
+	_moveTransform->GetPos().x = _transform->GetPos().x * (-1.0f);
+	_moveTransform->GetPos().y = _transform->GetPos().y * (-1.0f);
+	_moveTransform->UpdateWorldBuffer();
 }
 
 void Camera::PostRender()
@@ -38,6 +44,8 @@ void Camera::ShakeStart(float magintude, float duration, float reduceDamping)
 	_magnitude = magintude;
 	_duration = duration;
 	_reduceDamping = reduceDamping;
+
+	_originPos = _transform->GetPos();
 }
 
 void Camera::SetViewPort(UINT width, UINT height)
@@ -132,4 +140,11 @@ void Camera::Shake()
 	{
 		_transform->GetPos() = _originPos;
 	}
+}
+
+Vector2 Camera::GetMouseWorldPos()
+{
+	XMMATRIX inverseView = XMMatrixInverse(nullptr, _transform->GetMatrix());
+
+	return Vector2::TransformCoord(MOUSE_POS, inverseView);
 }

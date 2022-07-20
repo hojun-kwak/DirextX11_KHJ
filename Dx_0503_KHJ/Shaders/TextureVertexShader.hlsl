@@ -19,18 +19,16 @@ struct VertexInput
 	float2 uv : UV;
 };
 
-// ¹Ù²ï ¼­½ÄÀ» °¡Á®¿È
 struct VertexOutput
 {
 	float4 pos : SV_POSITION;
 	float2 uv : UV;
 };
 
-// vertexShader
-// sv = System Value
+// VertexShader
+// SV : System Value
 VertexOutput VS(VertexInput input)
 {
-
 	matrix wvp = mul(world, view);
 	wvp = mul(wvp, projection);
 

@@ -124,3 +124,15 @@ int Vector2::Manhattan(const Vector2& value) const
 {
 	return abs(value.x - x) + abs(value.y - y);
 }
+
+Vector2 Vector2::TransformCoord(const Vector2& v, const XMMATRIX& matrix)
+{
+	XMVECTOR temp = XMLoadFloat2(&v);
+
+	temp = XMVector2TransformCoord(temp, matrix);
+
+	Vector2 result;
+	XMStoreFloat2(&result, temp);
+
+	return result;
+}

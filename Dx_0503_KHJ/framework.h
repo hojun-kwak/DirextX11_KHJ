@@ -37,6 +37,13 @@ using namespace std;
 // 정적 라이브러리 DirectX Tex
 #include "../DirectXTex/DirectXTex.h"
 
+// DirectWrite
+#include <d2d1_1.h>
+#include <dwrite.h>
+
+#pragma comment(lib,"d2d1.lib")
+#pragma comment(lib, "dwrite.lib")
+
 // ImGui
 #include "../ImGui/imgui.h"
 #include "../ImGui/imgui_impl_dx11.h"
@@ -71,6 +78,7 @@ using namespace std;
 #include "Framework/Utillity/Utillity.h"
 #include "Framework/Utillity/BinaryWriter.h"
 #include "Framework/Utillity/BinaryReader.h"
+#include "Framework/Utillity/DirectWrite.h"
 
 // Camera
 #include "Framework/Camera/Camera.h"
@@ -96,6 +104,9 @@ using namespace std;
 #include "Object/BagicObj/Sprite.h"
 #include "Object/BagicObj/Effect.h"
 #include "Object/BagicObj/EffectManager.h"
+
+// UI
+#include "Object/UI/Button.h"
 
 // Dungreed
 #include "Object/Dungreed/Player.h"

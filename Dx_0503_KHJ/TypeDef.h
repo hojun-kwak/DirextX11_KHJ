@@ -14,6 +14,7 @@
 #define KEY_UP(k) InputManager::GetInstance()->Up(k)
 #define KEY_PRESS(k) InputManager::GetInstance()->Press(k)
 #define MOUSE_POS		InputManager::GetInstance()->GetMousePos()
+#define MOUSE_WOLRD_POS Camera::GetInstance()->GetMouseWorldPos()
 
 #define SAMPLER_STATE		StateManager::GetInstance()->GetSamplerState()
 #define ALPHA_STATE			StateManager::GetInstance()->GetAlphaState()
@@ -37,5 +38,6 @@
 
 // 매개 변수를 보이드로 가질수있는 함수
 typedef function<void()> CallBack;
+typedef function<void(int)> CallBackParam;
 
 typedef function<string(string msg)> CallBackA;
