@@ -197,8 +197,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, false);
 
    hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-       0, 0, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr);
-      /*CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);*/
+       //0, 0, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
    SetMenu(hWnd, nullptr);
 
@@ -301,6 +301,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 //    UINT height = rc.bottom - rc.top;
 //
 //    // 컴퓨터 환경에 맞춰 다운그레이드
+//  --> Device
 //    D3D_FEATURE_LEVEL featureLevels[] =
 //    {
 //        D3D_FEATURE_LEVEL_11_0,
@@ -340,6 +341,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 //        &deviceContext
 //    );
 //
+//  --> ConstanBuffer
 //    Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
 //
 //    swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &backBuffer);
@@ -347,6 +349,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 //
 //    deviceContext->OMSetRenderTargets(1, renderTargetView.GetAddressOf(), nullptr);
 //
+// --> Camera
 //    // 카메라 시점
 //    D3D11_VIEWPORT vp;
 //    vp.Width = width;
@@ -423,7 +426,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 //        vertices.push_back(v);
 //    }
 //
-//
+// --> ConstantBuffer
 //    // 실제 vertex를 넘겨줄곳
 //    D3D11_BUFFER_DESC bd = {};
 //    bd.Usage = D3D11_USAGE_DEFAULT;

@@ -16,7 +16,7 @@ public:
 		if (_instance != nullptr)
 			delete _instance;
 
-		_instance = nullptr;
+		//_instance = nullptr;
 	}
 
 	static Device* GetInstance()
