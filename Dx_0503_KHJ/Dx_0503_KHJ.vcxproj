@@ -154,6 +154,7 @@
     <ClInclude Include="Framework\Utillity\BinaryReader.h" />
     <ClInclude Include="Framework\Utillity\BinaryWriter.h" />
     <ClInclude Include="Framework\Utillity\DirectWrite.h" />
+    <ClInclude Include="Object\Maple\MPlayer.h" />
     <ClInclude Include="Scene\2D_PortFolio\MapleScene.h" />
     <ClInclude Include="Object\UI\Button.h" />
     <ClInclude Include="Scene\CameraScene.h" />
@@ -208,6 +209,7 @@
     <ClInclude Include="Scene\TextureWVPScene.h" />
     <ClInclude Include="Framework\Component\Transform.h" />
     <ClInclude Include="Framework\Texture\Texture.h" />
+    <ClInclude Include="Object\Maple\Tiles.h" />
     <ClInclude Include="TypeDef.h" />
     <ClInclude Include="Object\Zelda\Zelda.h" />
     <ClInclude Include="Scene\ZeldaScene.h" />
@@ -217,6 +219,7 @@
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryWriter.cpp" />
     <ClCompile Include="Framework\Utillity\DirectWrite.cpp" />
+    <ClCompile Include="Object\Maple\MPlayer.cpp" />
     <ClCompile Include="Scene\2D_PortFolio\MapleScene.cpp" />
     <ClCompile Include="Object\UI\Button.cpp" />
     <ClCompile Include="Scene\CameraScene.cpp" />
@@ -269,6 +272,7 @@
     <ClCompile Include="Object\Zelda\Zelda.cpp" />
     <ClCompile Include="Scene\ZeldaScene.cpp" />
     <ClCompile Include="Framework\Utillity\Utillity.cpp" />
+    <ClCompile Include="Object\Maple\Tiles.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />
@@ -290,6 +294,12 @@
     <Image Include="Resource\ezreal.png" />
     <Image Include="Resource\kar_98k.png" />
     <Image Include="Resource\LostArk.png" />
+    <Image Include="Resource\Maple\background.png" />
+    <Image Include="Resource\Maple\background2.png" />
+    <Image Include="Resource\Maple\BlueCave_Tile.png" />
+    <Image Include="Resource\Maple\charactorNormal.png" />
+    <Image Include="Resource\Maple\test.png" />
+    <Image Include="Resource\Maple\tiles.png" />
     <Image Include="Resource\moon.png" />
     <Image Include="Resource\mousePointer.png" />
     <Image Include="Resource\mysticShot.png" />

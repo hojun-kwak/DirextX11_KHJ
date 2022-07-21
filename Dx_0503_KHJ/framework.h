@@ -115,6 +115,9 @@ using namespace std;
 #include "Object/Dungreed/Aim.h"
 #include "Object/Dungreed/Monster.h"
 
+// Maple
+#include "Object/Maple/MPlayer.h"
+
 // Zelda
 #include "Object/Zelda/Zelda.h"
 

@@ -12,5 +12,7 @@ public:
 	virtual void PostRender() override;
 
 private:
+	shared_ptr<Quad> _background;
+	shared_ptr<MPlayer> _player;
 };
 
