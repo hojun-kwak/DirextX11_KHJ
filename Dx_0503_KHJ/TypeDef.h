@@ -36,6 +36,7 @@
 #define LERP(s,e,t) { s + (e - s) * t }
 //#define LERP(s,e,t) { s * (1 - t)+ e * t }
 
+
 // 매개 변수를 보이드로 가질수있는 함수
 typedef function<void()> CallBack;
 typedef function<void(int)> CallBackParam;

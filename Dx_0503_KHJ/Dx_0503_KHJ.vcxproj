@@ -154,6 +154,7 @@
     <ClInclude Include="Framework\Utillity\BinaryReader.h" />
     <ClInclude Include="Framework\Utillity\BinaryWriter.h" />
     <ClInclude Include="Framework\Utillity\DirectWrite.h" />
+    <ClInclude Include="Object\Zelda\ItemDataes.h" />
     <ClInclude Include="Object\Maple\MPlayer.h" />
     <ClInclude Include="Scene\2D_PortFolio\MapleScene.h" />
     <ClInclude Include="Object\UI\Button.h" />
@@ -210,15 +211,18 @@
     <ClInclude Include="Framework\Component\Transform.h" />
     <ClInclude Include="Framework\Texture\Texture.h" />
     <ClInclude Include="Object\Maple\Tiles.h" />
+    <ClInclude Include="Framework\Utillity\tinyxml2.h" />
     <ClInclude Include="TypeDef.h" />
     <ClInclude Include="Object\Zelda\Zelda.h" />
     <ClInclude Include="Scene\ZeldaScene.h" />
     <ClInclude Include="Framework\Utillity\Utillity.h" />
+    <ClInclude Include="Scene\XmlLoadScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryWriter.cpp" />
     <ClCompile Include="Framework\Utillity\DirectWrite.cpp" />
+    <ClCompile Include="Object\Zelda\ItemDataes.cpp" />
     <ClCompile Include="Object\Maple\MPlayer.cpp" />
     <ClCompile Include="Scene\2D_PortFolio\MapleScene.cpp" />
     <ClCompile Include="Object\UI\Button.cpp" />
@@ -273,6 +277,8 @@
     <ClCompile Include="Scene\ZeldaScene.cpp" />
     <ClCompile Include="Framework\Utillity\Utillity.cpp" />
     <ClCompile Include="Object\Maple\Tiles.cpp" />
+    <ClCompile Include="Framework\Utillity\tinyxml2.cpp" />
+    <ClCompile Include="Scene\XmlLoadScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />
@@ -445,6 +451,9 @@
     <ProjectReference Include="..\ImGui\ImGui.vcxproj">
       <Project>{fa712d6c-4449-44c9-9fb4-b667391c6b95}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\XML\ItemData.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -192,6 +192,15 @@
     <ClInclude Include="Object\Maple\MPlayer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Utillity\tinyxml2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Zelda\ItemDataes.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\XmlLoadScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -353,6 +362,15 @@
     <ClCompile Include="Object\Maple\MPlayer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Utillity\tinyxml2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Zelda\ItemDataes.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\XmlLoadScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -465,5 +483,8 @@
     <FxCompile Include="Shaders\FillterShader\FilterShader.hlsl" />
     <FxCompile Include="Shaders\LeftRightPixelShader.hlsl" />
     <FxCompile Include="Shaders\ButtonPixelShader.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\XML\ItemData.xml" />
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #include "../Scene/EffectScene.h"
 #include "../Scene/CameraScene.h"
 #include "../Scene/2D_PortFolio/MapleScene.h"
+#include "../Scene/XmlLoadScene.h"
 
 Program::Program()
 {

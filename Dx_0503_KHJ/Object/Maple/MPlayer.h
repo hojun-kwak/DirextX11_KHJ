@@ -14,8 +14,7 @@ public:
 		L_JUMP,
 		R_JUMP,
 
-		CLIMBING_UP,
-		CLIMBING_DOWN
+		CLIMBING
 	};
 	
 	MPlayer();

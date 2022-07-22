@@ -203,7 +203,7 @@ void Zelda::CreateData()
 	for (auto& action : _actions)
 		action->Pause();
 
-	//_actions[State::F_IDLE]->Play();
+	_actions[State::F_IDLE]->Play();
 }
 
 void Zelda::Move()

@@ -14,5 +14,7 @@ public:
 private:
 	shared_ptr<Quad> _background;
 	shared_ptr<MPlayer> _player;
+
+	shared_ptr<Transform> _playerFollow;
 };
 
