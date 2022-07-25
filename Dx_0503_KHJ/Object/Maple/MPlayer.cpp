@@ -3,7 +3,7 @@
 
 MPlayer::MPlayer()
 {
-	_sprite = make_shared<Sprite>(Texture::Add(L"Resource/Maple/charactorNormal.png"), Vector2(4, 6));
+	_sprite = make_shared<Sprite>(MAPLE_1,Vector2(4,5));
 	//_sprite = make_shared<Sprite>(L"Resource/zelda.png", Vector2(10, 8));
 	//_sprite->GetTransform()->GetPos() = Vector2(WIN_WIDTH, WIN_HEIGHT) * 0.5f;
 	_col = make_shared<RectCollider>(_sprite->GetHalfFrameSize());
@@ -19,6 +19,8 @@ MPlayer::~MPlayer()
 void MPlayer::Update()
 {
 	_sprite->Update();
+	Operation();
+
 	for (auto& action : _actions)
 	{
 		action->Update();
@@ -26,6 +28,7 @@ void MPlayer::Update()
 			continue;
 		_sprite->SetClipToActionBuffer(action->GetCurClip());
 	}
+	_col->Update();
 }
 
 void MPlayer::Render()
@@ -40,7 +43,8 @@ void MPlayer::PostRender()
 
 void MPlayer::SetPosition(float x, float y)
 {
-	//_sprite->GetTransform()->GetPos() = { x,y };
+	_sprite->GetTransform()->GetPos() = { x,y };
+	_playerPos = { x,y };
 }
 
 void MPlayer::SetAnimation(State aniState)
@@ -62,88 +66,106 @@ void MPlayer::SetAnimation(State aniState)
 
 void MPlayer::CreateData()
 {
-	// test
-	//_actions.reserve(1);
-	//{
-	//	vector<Action::Clip> clips;
-	//	//692 / 360;
-	//	// 4 * 6
-	//	float w = 1200.0f / 10.0f;
-	//	float h = 1040.0f / 8.0f;
+	float maple_player1_depth = 276.0f;
 
-	//	float y = 0;
-	//	{
-	//		clips.emplace_back(0, y, w, h, Texture::Add(L"Resource/zelda.png"));
-	//		clips.emplace_back(0 + w, y, w, h, Texture::Add(L"Resource/zelda.png"));
-	//		clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(L"Resource/zelda.png"));
-	//	}
-	//	_actions.push_back(make_shared<Action>(clips, "L_IDLE"));
-	//	clips.clear();
-	//}
-
-	_actions.reserve(1);
+	_actions.reserve(7);
 	vector<Action::Clip> clips;
 	float w = 224.0f / 4.0f;
-	float h = 360.0f / 6.0f;
+	float h = maple_player1_depth / 5.0f;
 
 	float y = 0;
 	{
-		clips.emplace_back(0 , y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
+		clips.emplace_back(0, y, w, h, Texture::Add(MAPLE_1));
 	}
-	_actions.push_back(make_shared<Action>(clips, "L_IDLE"));
-	clips.clear();
-
+		_actions.push_back(make_shared<Action>(clips, "L_IDLE"));
+		clips.clear();
 	{
-		clips.emplace_back(0 + w, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
+		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_1));
 	}
 	_actions.push_back(make_shared<Action>(clips, "R_IDLE"));
 	clips.clear();
 
-	/*y = 360.0f * (1.0f / 6.0f);
+	y = maple_player1_depth * (1.0f / 5.0f);
 	{
-		clips.emplace_back(0, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
-		clips.emplace_back(0 + w, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
-		clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
+		clips.emplace_back(0, y, w, h, Texture::Add(MAPLE_1));
+		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_1));
+		clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(MAPLE_1));
 	}
 	shared_ptr<Action> leftRun = make_shared<Action>(clips, "L_RUN", Action::LOOP);
 	_actions.push_back(leftRun);
 	clips.clear();
 
-	y = 360.0f * (2.0f / 6.0f);
+	y = maple_player1_depth * (2.0f / 5.0f);
 	{
-		clips.emplace_back(0, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
-		clips.emplace_back(0 + w, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
-		clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
+		clips.emplace_back(0, y, w, h, Texture::Add(MAPLE_1));
+		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_1));
+		clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(MAPLE_1));
 	}
 	shared_ptr<Action> rightRun = make_shared<Action>(clips, "R_RUN", Action::LOOP);
 	_actions.push_back(rightRun);
-	clips.clear();*/
+	clips.clear();
 
-	y = 360.0f * (3.0f / 6.0f);
+	y = maple_player1_depth * (3.0f / 5.0f);
 	{
-		clips.emplace_back(0, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
+		clips.emplace_back(0, y, w, h, Texture::Add(MAPLE_1));
 	}
 	_actions.push_back(make_shared<Action>(clips, "L_JUMP"));
 	clips.clear();
 
-	y = 360.0f * (4.0f / 6.0f);
 	{
-		clips.emplace_back(0, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
+		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_1));
 	}
 	_actions.push_back(make_shared<Action>(clips, "R_JUMP"));
 	clips.clear();
 
-	/*y = 360.0f * (5.0f / 6.0f);
+	y = maple_player1_depth * (4.0f / 5.0f);
 	{
-		clips.emplace_back(0, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
-		clips.emplace_back(0 + w, y, w, h, Texture::Add(L"Resource/Maple/charactorNormal.png"));
+		clips.emplace_back(0, y, w, h, Texture::Add(MAPLE_1));
+		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_1));
 	}
 	shared_ptr<Action> climbing = make_shared<Action>(clips, "CLIMBING", Action::LOOP);
 	_actions.push_back(climbing);
-	clips.clear();*/
+	clips.clear();
 
 	for (auto& action : _actions)
 		action->Pause();
 
-	_actions[State::R_IDLE]->Play();
+	_actions[State::L_IDLE]->Play();
+}
+
+void MPlayer::Operation()
+{
+	this->SetPosition(_playerPos.x, _playerPos.y);
+	{
+		if (KEY_PRESS(VK_LEFT))
+		{
+			_playerPos.x -= 150.0f * DELTA_TIME;
+			this->SetAnimation(MPlayer::State::L_RUN);
+			return;
+		}
+		if (KEY_PRESS(VK_RIGHT))
+		{
+			_playerPos.x += 150.0f * DELTA_TIME;
+			this->SetAnimation(MPlayer::State::R_RUN);
+			return;
+		}
+		if (KEY_PRESS(VK_DOWN))
+		{
+			_playerPos.y -= 150.0f * DELTA_TIME;
+			this->SetAnimation(MPlayer::State::CLIMBING);
+			return;
+		}
+		if (KEY_PRESS(VK_UP))
+		{
+			_playerPos.y += 150.0f * DELTA_TIME;
+			this->SetAnimation(MPlayer::State::CLIMBING);
+			return;
+		}
+	}
+	{
+		if (KEY_UP(VK_LEFT))
+			this->SetAnimation(MPlayer::State::L_IDLE);
+		if (KEY_UP(VK_RIGHT))
+			this->SetAnimation(MPlayer::State::R_IDLE);
+	}
 }

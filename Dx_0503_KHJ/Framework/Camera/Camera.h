@@ -56,7 +56,7 @@ private:
 	float _zoomSpeed = 1.0f;
 
 	shared_ptr<Transform> _target = nullptr;
-	Vector2 _offset = CENTER;
+	Vector2 _offset;
 
 	Vector2 _leftBottom;
 	Vector2 _rightTop;

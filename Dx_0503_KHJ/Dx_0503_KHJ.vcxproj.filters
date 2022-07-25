@@ -201,6 +201,12 @@
     <ClInclude Include="Scene\XmlLoadScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Maple\Cursors.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Maple\Monsters.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -371,6 +377,12 @@
     <ClCompile Include="Scene\XmlLoadScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Maple\Cursors.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Maple\Monsters.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -469,6 +481,12 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\Maple\test.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Maple\Cursor.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Maple\Red_snail.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

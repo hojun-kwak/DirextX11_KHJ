@@ -1,42 +1,33 @@
 #pragma once
-class MPlayer
+class Cursors
 {
 public:
-
 	enum State
 	{
-		L_IDLE,
-		R_IDLE,
-
-		L_RUN,
-		R_RUN,
-
-		L_JUMP,
-		R_JUMP,
-
-		CLIMBING
+		NONE,
+		CLICK
 	};
-	
-	MPlayer();
-	~MPlayer();
+
+	Cursors();
+	~Cursors();
 
 	void Update();
 	void Render();
 	void PostRender();
 
-	void SetPosition(float x, float y);
+	void SetPosition(Vector2 mousePos);
 	void SetAnimation(State aniState);
 
 	void CreateData();
 
-	void Operation();
+	void ClickEvent();
 
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
 
 private:
-	State _aniState = L_IDLE;
-	
-	Vector2 _playerPos = { 0,0 };
+	State _aniState = NONE;
+
+	Vector2 _mousePos = { 0,0 };
 	shared_ptr<Sprite> _sprite;
 	vector<shared_ptr<Action>> _actions;
 	shared_ptr<Collider> _col;

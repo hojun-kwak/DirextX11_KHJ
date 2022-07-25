@@ -1,8 +1,7 @@
 #pragma once
-class MPlayer
+class Monsters
 {
 public:
-
 	enum State
 	{
 		L_IDLE,
@@ -11,14 +10,12 @@ public:
 		L_RUN,
 		R_RUN,
 
-		L_JUMP,
-		R_JUMP,
-
-		CLIMBING
+		L_DEAD,
+		R_DEAD
 	};
-	
-	MPlayer();
-	~MPlayer();
+
+	Monsters();
+	~Monsters();
 
 	void Update();
 	void Render();
@@ -29,14 +26,17 @@ public:
 
 	void CreateData();
 
-	void Operation();
+	void Move();
 
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
 
+	bool _isActive = false;
+
 private:
 	State _aniState = L_IDLE;
-	
-	Vector2 _playerPos = { 0,0 };
+
+	Vector2 _monsterPos = { 0,0 };
+
 	shared_ptr<Sprite> _sprite;
 	vector<shared_ptr<Action>> _actions;
 	shared_ptr<Collider> _col;

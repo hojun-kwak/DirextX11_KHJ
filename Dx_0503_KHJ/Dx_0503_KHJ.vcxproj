@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Maple\Monsters.h" />
+    <ClInclude Include="Object\Maple\Cursors.h" />
     <ClInclude Include="Framework\Utillity\BinaryReader.h" />
     <ClInclude Include="Framework\Utillity\BinaryWriter.h" />
     <ClInclude Include="Framework\Utillity\DirectWrite.h" />
@@ -219,6 +221,8 @@
     <ClInclude Include="Scene\XmlLoadScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Maple\Monsters.cpp" />
+    <ClCompile Include="Object\Maple\Cursors.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryWriter.cpp" />
     <ClCompile Include="Framework\Utillity\DirectWrite.cpp" />
@@ -304,6 +308,8 @@
     <Image Include="Resource\Maple\background2.png" />
     <Image Include="Resource\Maple\BlueCave_Tile.png" />
     <Image Include="Resource\Maple\charactorNormal.png" />
+    <Image Include="Resource\Maple\Cursor.png" />
+    <Image Include="Resource\Maple\Red_snail.png" />
     <Image Include="Resource\Maple\test.png" />
     <Image Include="Resource\Maple\tiles.png" />
     <Image Include="Resource\moon.png" />

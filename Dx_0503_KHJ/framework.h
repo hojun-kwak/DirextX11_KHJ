@@ -120,6 +120,9 @@ using namespace std;
 
 // Maple
 #include "Object/Maple/MPlayer.h"
+#include "Object/Maple/Tiles.h"
+#include "Object/Maple/Cursors.h"
+#include "Object/Maple/Monsters.h"
 
 // Scene
 #include "Scene/Scene.h"

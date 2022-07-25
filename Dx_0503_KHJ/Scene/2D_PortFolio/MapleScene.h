@@ -16,5 +16,9 @@ private:
 	shared_ptr<MPlayer> _player;
 
 	shared_ptr<Transform> _playerFollow;
+
+	shared_ptr<Monsters> _monsters;
+
+	shared_ptr<Cursors> _cursor;
 };
 
