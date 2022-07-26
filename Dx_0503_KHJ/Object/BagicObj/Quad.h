@@ -11,8 +11,9 @@ public:
 	virtual void CreateData();
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
-	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
 	const Vector2& GetHalfSize() { return _halfSize; }
+	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
+	void SetTexture(shared_ptr<Texture> texture) { _texture = texture; }
 
 protected:
 	Quad() {}

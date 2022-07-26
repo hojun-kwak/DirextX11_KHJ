@@ -14,6 +14,12 @@ public:
 		R_DEAD
 	};
 
+	enum Direction
+	{
+		LEFT,
+		RIGHT
+	};
+
 	Monsters();
 	~Monsters();
 
@@ -34,6 +40,7 @@ public:
 
 private:
 	State _aniState = L_IDLE;
+	Direction _dir = LEFT;
 
 	Vector2 _monsterPos = { 0,0 };
 

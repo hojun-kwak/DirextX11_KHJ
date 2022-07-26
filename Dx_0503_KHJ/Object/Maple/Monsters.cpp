@@ -3,7 +3,7 @@
 
 Monsters::Monsters()
 {
-	_sprite = make_shared<Sprite>(MAPLE_MONSTER, Vector2(3,8));
+	_sprite = make_shared<Sprite>(MAPLE_MONSTER, Vector2(3,6));
 	_col = make_shared<RectCollider>(_sprite->GetHalfFrameSize());
 	_col->SetParent(_sprite->GetTransform());
 
@@ -64,12 +64,12 @@ void Monsters::SetAnimation(State aniState)
 void Monsters::CreateData()
 {
 	// 176 360
-	float maple_monster_depth = 360.0f;
+	float maple_monster_depth = 273.0f;
 
-	_actions.reserve(1);
+	_actions.reserve(2);
 	vector<Action::Clip> clips;
 	float w = 176.0f / 3.0f;
-	float h = maple_monster_depth / 8.0f;
+	float h = maple_monster_depth / 6.0f;
 
 	float y = 0;
 	{
@@ -88,8 +88,33 @@ void Monsters::Move()
 {
 	this->SetPosition(_monsterPos.x, _monsterPos.y);
 
+	if (_dir == Monsters::Direction::LEFT)
 	{
-		_monsterPos.x -= 150.0f * DELTA_TIME;
-		this->SetAnimation(Monsters::State::L_IDLE);
+		if (_monsterPos.x >= -500.0f)
+		{
+			_monsterPos.x -= 100.0f * DELTA_TIME;
+			this->SetAnimation(Monsters::State::L_IDLE);
+			return;
+		}
+		else
+		{
+			_dir = Monsters::Direction::RIGHT;
+			return;
+		}
 	}
+	if (_dir == Monsters::Direction::RIGHT)
+	{
+		if (_monsterPos.x <= +500.0f)
+		{
+			_monsterPos.x += 100.0f * DELTA_TIME;
+			this->SetAnimation(Monsters::State::L_IDLE);
+			return;
+		}
+		else
+		{
+			_dir = Monsters::Direction::LEFT;
+			return;
+		}
+	}
+	
 }

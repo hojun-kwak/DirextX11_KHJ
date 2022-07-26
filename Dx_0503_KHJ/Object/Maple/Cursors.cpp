@@ -17,8 +17,6 @@ Cursors::~Cursors()
 void Cursors::Update()
 {
 	_sprite->Update();
-	_sprite->GetTransform()->GetPos() = MOUSE_WOLRD_POS;
-
 	ClickEvent();
 
 	for (auto& action : _actions)

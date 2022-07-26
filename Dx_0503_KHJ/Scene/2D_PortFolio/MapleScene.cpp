@@ -32,6 +32,13 @@ void MapleScene::Update()
 	_monsters->Update();
 
 	_cursor->Update();
+	_cursor->SetPosition(MOUSE_WOLRD_POS);
+
+	if (KEY_PRESS(VK_NUMPAD1))
+	{
+		
+	}
+
 	float distance = _player->GetTransForm()->GetPos().Distance(_playerFollow->GetPos());
 	if (distance >= 30.0f)
 	{

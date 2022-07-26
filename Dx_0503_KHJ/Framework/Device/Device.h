@@ -42,9 +42,11 @@ public:
 
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> GetRenderTargetView()
 	{
-		return _renderTargetView;
+		return _RenderTargetView;
 	}
 	Microsoft::WRL::ComPtr<IDXGISwapChain> GetSwapChain() { return _swapChain; }
+
+	void SetRenderTarget();
 
 	void Clear(float R, float G, float B);
 	void Present();
@@ -66,6 +68,6 @@ private:
 	// Dx의 인터페이스로써 1개 이상의 표면을 포함할 수 있다.
 	// 각각의 표면(버퍼, 텍스쳐)을 출력하기 전에 데이터를 보관한다.
 
-	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _renderTargetView;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _RenderTargetView;
 	// 후면버퍼메모리를 가리키는 포인터
 };

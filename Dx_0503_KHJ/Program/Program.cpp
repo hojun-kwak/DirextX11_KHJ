@@ -59,7 +59,10 @@ void Program::Update()
 
 void Program::Render()
 {
-	
+	// 傈贸府 开开
+	_scene->PreRender();
+
+	Device::GetInstance()->SetRenderTarget();
 	Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
 
 	/*if (KEY_PRESS(VK_UP))
@@ -81,8 +84,6 @@ void Program::Render()
 	Camera::GetInstance()->SetProjectionBuffer();
 	/*_viewBuffer->SetVSBuffer(1);
 	_projectionBuffer->SetVSBuffer(2);*/
-
-	_scene->PreRender();
 
 	_scene->Render();
 	EffectManager::GetInstance()->Render();

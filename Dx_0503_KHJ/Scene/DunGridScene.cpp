@@ -75,7 +75,6 @@ void DunGridScene::Render()
 	_aim->Render();
 	//_monster->Render();
 	_zelda->Render();
-
 	for (auto& mons : _monsters)
 		mons->Render();
 }

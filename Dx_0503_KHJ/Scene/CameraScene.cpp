@@ -28,6 +28,14 @@ CameraScene::CameraScene()
 	_button->SetText("Save");
 	_button->SetEvent(std::bind(&CameraScene::SavePos, this));
 	_button->SetEventParam(std::bind(&CameraScene::Test, this, placeholders::_1), 5);
+
+	// Render Target
+	_rtv = make_shared<RenderTarget>(WIN_WIDTH, WIN_HEIGHT);
+	_targetTexture = make_shared<Quad>(L"Resource/tomboy.png");
+	shared_ptr<Texture> texture = Texture::Add(L"test", _rtv->GetSRV());
+	_targetTexture->SetTexture(texture);
+	_targetTexture->GetTransform()->GetPos() = CENTER;
+	_targetTexture->GetTransform()->GetScale() *= 1.0f;
 }
 
 CameraScene::~CameraScene()
@@ -47,6 +55,9 @@ void CameraScene::Update()
 
 	_button->Update();
 
+	// Render Target
+	_targetTexture->Update();
+
 	Vector2 mP = Camera::GetInstance()->GetMouseWorldPos();
 	if (_button->GetRectCollider()->IsCollision(mP))
 	{
@@ -62,6 +73,15 @@ void CameraScene::Render()
 {
 	_background->Render();
 	_zelda->Render();
+
+	// Render Target
+	_targetTexture->Render();
+}
+
+void CameraScene::PreRender()
+{
+	// Render Target
+	_rtv->Set();
 }
 
 void CameraScene::PostRender()

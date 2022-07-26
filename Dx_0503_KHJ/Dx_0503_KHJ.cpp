@@ -31,7 +31,7 @@ HWND hWnd;
 //Microsoft::WRL::ComPtr<IDXGISwapChain> swapChain;
 //
 //// 후면버퍼 메모리를 가리키는 포인터
-//Microsoft::WRL::ComPtr<ID3D11RenderTargetView> renderTargetView;
+//Microsoft::WRL::ComPtr<ID3D11RenderTargetView> RenderTargetView;
 //
 //// 렌더링 파이프라인 단계
 //Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer; // 정점보관
@@ -347,9 +347,9 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 //    Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
 //
 //    swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &backBuffer);
-//    device->CreateRenderTargetView(backBuffer.Get(), nullptr, &renderTargetView);
+//    device->CreateRenderTargetView(backBuffer.Get(), nullptr, &RenderTargetView);
 //
-//    deviceContext->OMSetRenderTargets(1, renderTargetView.GetAddressOf(), nullptr);
+//    deviceContext->OMSetRenderTargets(1, RenderTargetView.GetAddressOf(), nullptr);
 //
 // --> Camera
 //    // 카메라 시점
@@ -465,7 +465,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 //    FLOAT myColorB = 251.0f / 255.0f;
 //    FLOAT clearColor[4] = { myColorR,myColorG,myColorB,1.0f };
 //
-//    deviceContext->ClearRenderTargetView(renderTargetView.Get(), clearColor);
+//    deviceContext->ClearRenderTargetView(RenderTargetView.Get(), clearColor);
 //    // 한칸씩 vertex를 넣어준다.
 //    UINT stride = sizeof(Vertex);
 //    UINT offset = 0;

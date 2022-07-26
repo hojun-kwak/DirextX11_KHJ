@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Maple\ObjectPoolingManager.h" />
     <ClInclude Include="Object\Maple\Monsters.h" />
     <ClInclude Include="Object\Maple\Cursors.h" />
     <ClInclude Include="Framework\Utillity\BinaryReader.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Framework\Utillity\DirectWrite.h" />
     <ClInclude Include="Object\Zelda\ItemDataes.h" />
     <ClInclude Include="Object\Maple\MPlayer.h" />
+    <ClInclude Include="Framework\Render\RenderTarget.h" />
     <ClInclude Include="Scene\2D_PortFolio\MapleScene.h" />
     <ClInclude Include="Object\UI\Button.h" />
     <ClInclude Include="Scene\CameraScene.h" />
@@ -221,6 +223,7 @@
     <ClInclude Include="Scene\XmlLoadScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Maple\ObjectPoolingManager.cpp" />
     <ClCompile Include="Object\Maple\Monsters.cpp" />
     <ClCompile Include="Object\Maple\Cursors.cpp" />
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp" />
@@ -228,6 +231,7 @@
     <ClCompile Include="Framework\Utillity\DirectWrite.cpp" />
     <ClCompile Include="Object\Zelda\ItemDataes.cpp" />
     <ClCompile Include="Object\Maple\MPlayer.cpp" />
+    <ClCompile Include="Framework\Render\RenderTarget.cpp" />
     <ClCompile Include="Scene\2D_PortFolio\MapleScene.cpp" />
     <ClCompile Include="Object\UI\Button.cpp" />
     <ClCompile Include="Scene\CameraScene.cpp" />

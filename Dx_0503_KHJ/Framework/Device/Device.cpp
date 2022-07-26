@@ -60,9 +60,14 @@ void Device::CreateBackBuffer()
     Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
 
     _swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &backBuffer);
-    _device->CreateRenderTargetView(backBuffer.Get(), nullptr, &_renderTargetView);
+    _device->CreateRenderTargetView(backBuffer.Get(), nullptr, &_RenderTargetView);
 
-    _deviceContext->OMSetRenderTargets(1, _renderTargetView.GetAddressOf(), nullptr);
+    _deviceContext->OMSetRenderTargets(1, _RenderTargetView.GetAddressOf(), nullptr);
+}
+
+void Device::SetRenderTarget()
+{
+    _deviceContext->OMSetRenderTargets(1, _RenderTargetView.GetAddressOf(), nullptr);
 }
 
 void Device::Clear(float R, float G, float B)
@@ -77,7 +82,7 @@ void Device::Clear(float R, float G, float B)
 
     FLOAT clearColor[4] = { myColorR,myColorG,myColorB , 1.0f };
 
-    _deviceContext->ClearRenderTargetView(_renderTargetView.Get(), clearColor);
+    _deviceContext->ClearRenderTargetView(_RenderTargetView.Get(), clearColor);
 }
 
 void Device::Present()

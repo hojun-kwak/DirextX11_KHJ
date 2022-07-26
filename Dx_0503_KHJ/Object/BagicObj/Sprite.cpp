@@ -59,10 +59,10 @@ void Sprite::CreateData()
         _vertices.emplace_back(halfSize.x, -halfSize.y, 1, 1); // 오른쪽 아래
     }
     //{
-    //    _vertices.emplace_back(-halfSize.x, halfSize.y, 0, 0); // 왼쪽위
-    //    _vertices.emplace_back(halfSize.x, halfSize.y, 1, 0); // 오른쪽 위
-    //    _vertices.emplace_back(-halfSize.x, -halfSize.y, 0, 1); // 왼쪽 아래
-    //    _vertices.emplace_back(halfSize.x, -halfSize.y, 1, 1); // 오른쪽 아래
+    //    _vertices.emplace_back(-halfSize.x, halfSize.y, 1, 0); // 왼쪽위
+    //    _vertices.emplace_back(halfSize.x, halfSize.y, 0, 0); // 오른쪽 위
+    //    _vertices.emplace_back(-halfSize.x, -halfSize.y, 1, 1); // 왼쪽 아래
+    //    _vertices.emplace_back(halfSize.x, -halfSize.y, 0, 1); // 오른쪽 아래
     //}
 
     _indicies.push_back(0);
