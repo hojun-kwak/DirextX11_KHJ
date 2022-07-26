@@ -24,7 +24,6 @@ float4 PS(PixelInput input) : SV_TARGET
 		result = map.Sample(samp, input.uv);
 		return result;
 	}
-	
 	input.uv.x = 1 - input.uv.x;
 
 	result = map.Sample(samp, input.uv);
