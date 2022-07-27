@@ -501,6 +501,9 @@
     <Image Include="Resource\Maple\Red_snail.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Maple\MainTile.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />

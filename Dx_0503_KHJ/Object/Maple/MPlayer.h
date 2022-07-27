@@ -35,7 +35,7 @@ public:
 
 private:
 	State _aniState = L_IDLE;
-	
+
 	Vector2 _playerPos = { 0,0 };
 	shared_ptr<Sprite> _sprite;
 	vector<shared_ptr<Action>> _actions;

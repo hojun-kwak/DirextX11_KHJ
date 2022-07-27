@@ -17,8 +17,12 @@ public:
 
 	void CreateData();
 
+	void SetPosition(Vector2 pos) { pos = _tilePos; }
+
 private:
-	shared_ptr<Sprite> _sprite;
+	Vector2 _tilePos = { 0,0 };
+
+	shared_ptr<Quad> _quad;
 	shared_ptr<Collider> _col;
 
 };

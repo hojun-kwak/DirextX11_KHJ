@@ -39,6 +39,7 @@ void MPlayer::Render()
 void MPlayer::PostRender()
 {
 	_col->Render();
+	ImGui::Text("AniState : %", _aniState);
 }
 
 void MPlayer::SetPosition(float x, float y)
@@ -136,29 +137,35 @@ void MPlayer::CreateData()
 void MPlayer::Operation()
 {
 	this->SetPosition(_playerPos.x, _playerPos.y);
+	State temp = L_IDLE;
+
 	{
 		if (KEY_PRESS(VK_LEFT))
 		{
 			_playerPos.x -= 150.0f * DELTA_TIME;
 			this->SetAnimation(MPlayer::State::L_RUN);
+			temp = L_IDLE;
 			return;
 		}
 		if (KEY_PRESS(VK_RIGHT))
 		{
 			_playerPos.x += 150.0f * DELTA_TIME;
 			this->SetAnimation(MPlayer::State::R_RUN);
+			temp = R_IDLE;
 			return;
 		}
 		if (KEY_PRESS(VK_DOWN))
 		{
 			_playerPos.y -= 150.0f * DELTA_TIME;
 			this->SetAnimation(MPlayer::State::CLIMBING);
+			temp = _aniState;
 			return;
 		}
 		if (KEY_PRESS(VK_UP))
 		{
 			_playerPos.y += 150.0f * DELTA_TIME;
 			this->SetAnimation(MPlayer::State::CLIMBING);
+			temp = _aniState;
 			return;
 		}
 	}
@@ -167,5 +174,9 @@ void MPlayer::Operation()
 			this->SetAnimation(MPlayer::State::L_IDLE);
 		if (KEY_UP(VK_RIGHT))
 			this->SetAnimation(MPlayer::State::R_IDLE);
+		if (KEY_UP(VK_UP))
+			this->SetAnimation(MPlayer::State::L_IDLE);
+		if(KEY_UP(VK_DOWN))
+			this->SetAnimation(MPlayer::State::L_IDLE);
 	}
 }

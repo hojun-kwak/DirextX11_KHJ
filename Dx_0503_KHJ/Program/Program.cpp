@@ -15,7 +15,7 @@
 
 Program::Program()
 {
-	_scene = make_shared<FilterScene>();
+	_scene = make_shared<MapleScene>();
 
 	/*_viewBuffer = make_shared<MatrixBuffer>();
 	_projectionBuffer = make_shared<MatrixBuffer>();*/

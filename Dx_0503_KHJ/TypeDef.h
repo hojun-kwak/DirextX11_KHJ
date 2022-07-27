@@ -37,7 +37,7 @@
 //#define LERP(s,e,t) { s * (1 - t)+ e * t }
 
 #define MAPLE_1 L"Resource/Maple/charactorNormal.png"
-#define MAPLE_TILES L"Resource/Maple/tiles.png"
+#define MAPLE_TILES L"Resource/Maple/MainTile.png"
 #define MAPLE_MONSTER L"Resource/Maple/Red_snail.png"
 
 #define MAPLE_MOUSE_CURSOR L"Resource/Maple/Cursor.png"

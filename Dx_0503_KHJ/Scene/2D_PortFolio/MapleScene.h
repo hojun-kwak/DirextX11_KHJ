@@ -12,7 +12,12 @@ public:
 	virtual void PostRender() override;
 
 private:
+	bool _OnOff = false;
+
 	shared_ptr<Quad> _background;
+
+	shared_ptr<Tiles> _mainTiles;
+
 	shared_ptr<MPlayer> _player;
 
 	shared_ptr<Transform> _playerFollow;

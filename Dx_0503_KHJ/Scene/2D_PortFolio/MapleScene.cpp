@@ -5,6 +5,9 @@ MapleScene::MapleScene()
 {
 	_background = make_shared<Quad>(L"Resource/Maple/background2.png");
 
+	_mainTiles = make_shared<Tiles>();
+	_mainTiles->SetPosition(_background->GetTransform()->GetPos());
+
 	_player = make_shared<MPlayer>();
 
 	_playerFollow = make_shared<Transform>();
@@ -28,16 +31,13 @@ MapleScene::~MapleScene()
 void MapleScene::Update()
 {
 	_background->Update();
+	_mainTiles->Update();
+
 	_player->Update();
 	_monsters->Update();
 
 	_cursor->Update();
 	_cursor->SetPosition(MOUSE_WOLRD_POS);
-
-	if (KEY_PRESS(VK_NUMPAD1))
-	{
-		
-	}
 
 	float distance = _player->GetTransForm()->GetPos().Distance(_playerFollow->GetPos());
 	if (distance >= 30.0f)
@@ -49,6 +49,7 @@ void MapleScene::Update()
 void MapleScene::Render()
 {
 	_background->Render();
+	_mainTiles->Render();
 	_player->Render();
 	_monsters->Render();
 
@@ -57,10 +58,18 @@ void MapleScene::Render()
 
 void MapleScene::PostRender()
 {
-	_player->PostRender();
-	_cursor->PostRender();
-	_monsters->PostRender();
-	if (KEY_PRESS('A'))
+	if (KEY_DOWN(VK_F1))
 	{
+		if (_OnOff == false)
+			_OnOff = true;
+		else
+			_OnOff = false;
+	}
+	if (_OnOff == true)
+	{
+		_mainTiles->PostRender();
+		_player->PostRender();
+		_cursor->PostRender();
+		_monsters->PostRender();
 	}
 }
