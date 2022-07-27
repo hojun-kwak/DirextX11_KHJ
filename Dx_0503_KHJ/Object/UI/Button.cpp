@@ -50,10 +50,10 @@ void Button::PostRender()
 
 	{
 		wstring text = StringToWstring(_text);
-		float offSetX = _quad->GetHalfSize().x * _quad->GetTransform()->GetScale().x * 0.5f + 15.0f;
-		float offSetY = _quad->GetHalfSize().y * _quad->GetTransform()->GetScale().y * 0.5f;
-		float sizeX = _quad->GetHalfSize().x * _quad->GetTransform()->GetScale().x;
-		float sizeY = _quad->GetHalfSize().y * _quad->GetTransform()->GetScale().y;
+		float offSetX = _quad->GetHalfSize().x * 0.5f + 15.0f;
+		float offSetY = _quad->GetHalfSize().y * 0.5f;
+		float sizeX = _quad->GetHalfSize().x;
+		float sizeY = _quad->GetHalfSize().y;
 
 		float left = _textPos.x - sizeX + offSetX;
 		float top = WIN_HEIGHT - _textPos.y - sizeY + offSetY;

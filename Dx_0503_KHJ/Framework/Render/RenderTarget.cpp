@@ -2,6 +2,7 @@
 #include "RenderTarget.h"
 
 RenderTarget::RenderTarget(float width, float height)
+	:_width(width), _height(height)
 {
 	// Create RTV Texture
 	{
@@ -45,6 +46,8 @@ RenderTarget::~RenderTarget()
 
 void RenderTarget::Set()
 {
+	//Camera::GetInstance()->SetViewPort(_width, _height);
+
 	DEVICE_CONTEXT->OMSetRenderTargets(1, _rtv.GetAddressOf(), nullptr);
 
 	float clearColor[4] = { 1,1,1,0.5f };

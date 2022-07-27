@@ -36,7 +36,7 @@ VertexOutput VS(VertexInput input)
 	output.pos = mul(input.pos, wvp);
 
 	// 이부분만 고쳐주면 좌우반전 가능
-	input.uv.x = 1 - input.uv.x;
+	//input.uv.x = 1 - input.uv.x;
 	output.uv = input.uv;
 
 	return output;

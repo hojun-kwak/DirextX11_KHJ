@@ -15,6 +15,7 @@ struct PixelInput
 	float2 uv : UV;
 };
 
+// SV_TARGET : 그릴 곳... 우리한테는 후면버퍼
 float4 PS(PixelInput input) : SV_TARGET
 {
 	float4 result;
@@ -24,6 +25,7 @@ float4 PS(PixelInput input) : SV_TARGET
 		result = map.Sample(samp, input.uv);
 		return result;
 	}
+
 	input.uv.x = 1 - input.uv.x;
 
 	result = map.Sample(samp, input.uv);

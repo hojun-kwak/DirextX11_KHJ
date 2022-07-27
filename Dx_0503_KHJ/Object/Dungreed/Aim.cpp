@@ -14,7 +14,8 @@ Aim::~Aim()
 void Aim::Update()
 {
 	_quad->Update();
-	_quad->GetTransform()->GetPos() = MOUSE_WOLRD_POS;
+	//_quad->GetTransform()->GetPos() = MOUSE_WOLRD_POS;
+	_quad->GetTransform()->GetPos() = MOUSE_POS;
 }
 
 void Aim::Render()

@@ -129,7 +129,7 @@ public:
 		float hovered = 0.0f;
 		float clicked = 0.0f;
 		float padding;
-	} data;
+	}data;
 
 	ButtonBuffer()
 		: ConstantBuffer(&data, sizeof(Data))

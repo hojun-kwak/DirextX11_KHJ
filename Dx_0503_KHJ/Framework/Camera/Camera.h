@@ -55,7 +55,7 @@ private:
 	float _speed = 200.0f;
 	float _zoomSpeed = 1.0f;
 
-	shared_ptr<Transform> _target = nullptr;
+	shared_ptr<Transform> _target;
 	Vector2 _offset;
 
 	Vector2 _leftBottom;

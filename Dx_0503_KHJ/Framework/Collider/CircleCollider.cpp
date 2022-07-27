@@ -45,7 +45,7 @@ bool CircleCollider::IsCollision(const Vector2& pos)
 {
 	float distance = _transform->GetWorldPos().Distance(pos);
 	float radius = GetRadius();
-	if (distance < GetRadius())
+	if (distance < radius)
 		return true;
 
 	return false;

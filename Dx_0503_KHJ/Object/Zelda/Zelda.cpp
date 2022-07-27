@@ -212,7 +212,7 @@ void Zelda::Move()
 	{
 		if (KEY_PRESS(VK_UP))
 		{
-			_zeldaPos.y += 150 * DELTA_TIME;
+			_zeldaPos.y += _speed * DELTA_TIME;
 			this->SetAnimation(Zelda::State::B_RUN);
 
 			return;
@@ -220,7 +220,7 @@ void Zelda::Move()
 
 		if (KEY_PRESS(VK_LEFT))
 		{
-			_zeldaPos.x -= 150 * DELTA_TIME;
+			_zeldaPos.x -= _speed * DELTA_TIME;
 			this->SetAnimation(Zelda::State::L_RUN);
 
 			return;
@@ -228,7 +228,7 @@ void Zelda::Move()
 
 		if (KEY_PRESS(VK_DOWN))
 		{
-			_zeldaPos.y -= 150 * DELTA_TIME;
+			_zeldaPos.y -= _speed * DELTA_TIME;
 			this->SetAnimation(Zelda::State::F_RUN);
 
 			return;
@@ -236,7 +236,7 @@ void Zelda::Move()
 
 		if (KEY_PRESS(VK_RIGHT))
 		{
-			_zeldaPos.x += 150 * DELTA_TIME;
+			_zeldaPos.x += _speed * DELTA_TIME;
 			this->SetAnimation(Zelda::State::R_RUN);
 
 			return;

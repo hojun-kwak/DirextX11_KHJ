@@ -8,13 +8,13 @@ CameraScene::CameraScene()
 
 	_zelda = make_shared<Zelda>();
 
-	Vector2 temp = LoadPos();
-	_zelda->SetPosition(temp.x, temp.y);
-
 	_zeldaFollow = make_shared<Transform>();
+	Vector2 temp = this->LoadPos();
+	_zelda->SetPosition(temp.x, temp.y);
 	_zeldaFollow->GetPos() = _zelda->GetTransForm()->GetPos();
 
-	Camera::GetInstance()->SetTarget(_zelda->GetTransForm());
+
+	Camera::GetInstance()->SetTarget(_zeldaFollow);
 
 	Vector2 LeftBottom = { -_background->GetHalfSize().x, -_background->GetHalfSize().y };
 	Vector2 RightTop = { _background->GetHalfSize().x, _background->GetHalfSize().y };
@@ -24,18 +24,19 @@ CameraScene::CameraScene()
 	_button = make_shared<Button>();
 	_button->SetScale(Vector2(0.1f, 0.1f));
 	_button->SetPosition(Vector2{ 100, WIN_HEIGHT - 100 });
-	//_button->SetText("Button");
 	_button->SetText("Save");
 	_button->SetEvent(std::bind(&CameraScene::SavePos, this));
 	_button->SetEventParam(std::bind(&CameraScene::Test, this, placeholders::_1), 5);
 
 	// Render Target
 	_rtv = make_shared<RenderTarget>(WIN_WIDTH, WIN_HEIGHT);
-	_targetTexture = make_shared<Quad>(L"Resource/tomboy.png");
+	_targetTexture = make_shared<Quad>(L"RTV", _background->GetHalfSize());
 	shared_ptr<Texture> texture = Texture::Add(L"test", _rtv->GetSRV());
 	_targetTexture->SetTexture(texture);
-	_targetTexture->GetTransform()->GetPos() = CENTER;
-	_targetTexture->GetTransform()->GetScale() *= 1.0f;
+	_targetTexture->GetTransform()->GetPos() = { 0,0 };
+	_targetTexture->GetTransform()->GetScale() *= 0.1f;
+
+	_miniPlayer = make_shared<Quad>(L"Resource/cs.png");
 }
 
 CameraScene::~CameraScene()
@@ -57,6 +58,12 @@ void CameraScene::Update()
 
 	// Render Target
 	_targetTexture->Update();
+	_targetTexture->GetTransform()->GetPos() = Camera::GetInstance()->GetTransform()->GetPos()
+		+ Vector2(WIN_WIDTH - _targetTexture->GetHalfSize().x - 300, WIN_HEIGHT - _targetTexture->GetHalfSize().y - 300);
+	Vector2 ratio;
+	{
+		//ratio.x = 
+	}
 
 	Vector2 mP = Camera::GetInstance()->GetMouseWorldPos();
 	if (_button->GetRectCollider()->IsCollision(mP))
@@ -67,6 +74,8 @@ void CameraScene::Update()
 	{
 		_button->GetRectCollider()->SetGreen();
 	}
+
+	_miniPlayer->Update();
 }
 
 void CameraScene::Render()
@@ -82,6 +91,7 @@ void CameraScene::PreRender()
 {
 	// Render Target
 	_rtv->Set();
+	_miniPlayer->Render();	
 }
 
 void CameraScene::PostRender()

@@ -66,6 +66,7 @@ void DunGridScene::Update()
 			mons->_monster_isActive = false;
 	}
 	_player->MonsAttack(_monsters);
+	_aim->GetTransfom()->GetPos() = MOUSE_POS;
 
 }
 

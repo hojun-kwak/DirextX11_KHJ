@@ -19,6 +19,24 @@ Quad::Quad(wstring file, wstring vs, wstring ps)
     _transform = make_shared<Transform>();
 }
 
+Quad::Quad(wstring file, Vector2 halfSize, wstring vs, wstring ps)
+{
+    _vertexShader = ADD_VS(vs);
+    _pixelShader = ADD_PS(ps);
+
+    _texture = Texture::Add(file);
+    _halfSize = halfSize;
+
+    CreateData();
+    UINT stride = sizeof(VertexUV);
+    UINT count = _vertices.size();
+
+    _vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), stride, count);
+    _indexBuffer = make_shared<IndexBuffer>(_indicies.data(), _indicies.size());
+
+    _transform = make_shared<Transform>();
+}
+
 Quad::~Quad()
 {
 }
@@ -63,4 +81,13 @@ void Quad::CreateData()
     _indicies.push_back(2);
     _indicies.push_back(1);
     _indicies.push_back(3);
+}
+
+Vector2 Quad::GetHalfSize()
+{
+    Vector2 temp;
+    temp.x = _halfSize.x * _transform->GetScale().x;
+    temp.y = _halfSize.y * _transform->GetScale().y;
+
+    return temp;
 }

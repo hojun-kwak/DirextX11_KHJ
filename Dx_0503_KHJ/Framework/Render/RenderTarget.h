@@ -14,5 +14,8 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> _srv;
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> _rtvTexture;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _rtv;
+
+	float _width = 0.0f;
+	float _height = 0.0f;
 };
 

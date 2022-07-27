@@ -8,6 +8,7 @@ public:
     // Scene을(를) 통해 상속됨
     virtual void Update() override;
     virtual void Render() override;
+    virtual void PostRender() override;
 
 private:
     // 사각형에 텍스쳐 맵핑하는데 필요한 것들

@@ -55,8 +55,7 @@ bool Collider::IsCollision(shared_ptr<Collider> col, bool isObb)
 
 	case ColType::RECT:
 	{
-		bool check = this->IsCollision(dynamic_pointer_cast<RectCollider>(col), isObb);
-		return check;
+		return this->IsCollision(dynamic_pointer_cast<RectCollider>(col), isObb);
 		break;
 	}
 

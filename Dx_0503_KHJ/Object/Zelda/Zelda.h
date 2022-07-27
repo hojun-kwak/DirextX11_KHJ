@@ -55,6 +55,8 @@ private:
 	vector<shared_ptr<Action>> _actions;
 	//shared_ptr<Action> _action;
 	shared_ptr<Collider> _collider;
+
+	float _speed = 300.0f;
 	
 };
 
