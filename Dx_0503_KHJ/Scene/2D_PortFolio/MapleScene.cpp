@@ -6,7 +6,7 @@ MapleScene::MapleScene()
 	_background = make_shared<Quad>(L"Resource/Maple/background2.png");
 
 	_mainTiles = make_shared<Tiles>();
-	_mainTiles->SetPosition(_background->GetTransform()->GetPos());
+	_mainTiles->SetPosition(Vector2{ 0,0 });
 
 	_player = make_shared<MPlayer>();
 
@@ -22,6 +22,7 @@ MapleScene::MapleScene()
 	Camera::GetInstance()->SetRightTop(RightTop);
 
 	_cursor = make_shared<Cursors>();
+	_cursor->SetPosition(CENTER);
 }
 
 MapleScene::~MapleScene()
@@ -32,6 +33,14 @@ void MapleScene::Update()
 {
 	_background->Update();
 	_mainTiles->Update();
+
+	//_player->SetPositioning(_mainTiles);
+	if (_player->GetCol()->IsCollision(_mainTiles->GetColl(),false))
+	{
+		_player->GetCol()->SetRed();
+	}
+	else
+		_player->GetCol()->SetGreen();
 
 	_player->Update();
 	_monsters->Update();
@@ -44,6 +53,8 @@ void MapleScene::Update()
 	{
 		_playerFollow->GetPos() = LERP(_playerFollow->GetPos(), _player->GetTransForm()->GetPos(), 0.001f);
 	}
+
+	
 }
 
 void MapleScene::Render()
@@ -58,18 +69,13 @@ void MapleScene::Render()
 
 void MapleScene::PostRender()
 {
-	if (KEY_DOWN(VK_F1))
-	{
-		if (_OnOff == false)
-			_OnOff = true;
-		else
-			_OnOff = false;
-	}
-	if (_OnOff == true)
-	{
-		_mainTiles->PostRender();
-		_player->PostRender();
-		_cursor->PostRender();
-		_monsters->PostRender();
-	}
+}
+
+void MapleScene::DebugRender()
+{
+	_mainTiles->DebugRender();
+	_player->DebugRender();
+	_cursor->DebugRender();
+	_monsters->DebugRender();
+	
 }

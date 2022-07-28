@@ -10,6 +10,8 @@ Camera::Camera()
 	_transform->SetMatrixBuffer(1);
 	_projectionBuffer = make_shared<MatrixBuffer>();
 	_offset = { CENTER.x, CENTER.y };
+
+	_uiViewBuffer = make_shared<MatrixBuffer>();
 }
 
 Camera::~Camera()

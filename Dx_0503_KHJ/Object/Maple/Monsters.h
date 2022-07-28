@@ -25,7 +25,7 @@ public:
 
 	void Update();
 	void Render();
-	void PostRender();
+	void DebugRender();
 
 	void SetPosition(float x, float y);
 	void SetAnimation(State aniState);

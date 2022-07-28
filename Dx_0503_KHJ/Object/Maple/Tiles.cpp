@@ -26,7 +26,7 @@ void Tiles::Render()
 	_quad->Render();
 }
 
-void Tiles::PostRender()
+void Tiles::DebugRender()
 {
 	_col->Render();
 }

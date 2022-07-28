@@ -22,7 +22,7 @@ public:
 
 	void Update();
 	void Render();
-	void PostRender();
+	void DebugRender();
 
 	void SetPosition(float x, float y);
 	void SetAnimation(State aniState);
@@ -30,10 +30,15 @@ public:
 	void CreateData();
 
 	void Operation();
+	void Jumpimg();
 
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
+	shared_ptr<Collider> GetCol() { return _col; }
+	void SetPositioning(shared_ptr<class Tiles> tile);
 
 private:
+	bool _jumpPress = false;
+
 	State _aniState = L_IDLE;
 
 	Vector2 _playerPos = { 0,0 };

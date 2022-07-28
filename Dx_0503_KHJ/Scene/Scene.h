@@ -9,6 +9,7 @@ public:
 	virtual void Render() abstract;
 	virtual void PreRender() {}
 	virtual void PostRender() {}
+	virtual void DebugRender() {}
 
 private:
 };

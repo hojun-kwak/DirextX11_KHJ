@@ -60,7 +60,7 @@ RectCollider::ObbDesc RectCollider::GetObb()
 
 	obbDesc._position = GetWorldPosition();
 	obbDesc._length[0] = GetWorldHalfX();
-	obbDesc._length[1] = GetWorldHalfX();
+	obbDesc._length[1] = GetWorldHalfY();
 
 	XMFLOAT4X4 world;
 	XMStoreFloat4x4(&world, _transform->GetMatrix());

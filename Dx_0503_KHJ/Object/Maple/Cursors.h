@@ -13,7 +13,7 @@ public:
 
 	void Update();
 	void Render();
-	void PostRender();
+	void DebugRender();
 
 	void SetPosition(Vector2 mousePos);
 	void SetAnimation(State aniState);

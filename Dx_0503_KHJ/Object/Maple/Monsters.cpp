@@ -33,7 +33,7 @@ void Monsters::Render()
 	_sprite->Render();
 }
 
-void Monsters::PostRender()
+void Monsters::DebugRender()
 {
 	_col->Render();
 }

@@ -109,6 +109,7 @@ using namespace std;
 
 // UI
 #include "Object/UI/Button.h"
+#include "Object/UI/MiniMap.h"
 
 // Dungreed
 #include "Object/Dungreed/Player.h"

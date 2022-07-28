@@ -3,7 +3,7 @@ class Quad
 {
 public:
 	Quad(wstring file, wstring vs = L"Shaders/TextureVertexShader.hlsl", wstring ps = L"Shaders/TexturePixelShader.hlsl");
-	Quad(wstring file, Vector2 halfSize, wstring vs = L"Shaders/TextureVertexShader.hlsl", wstring ps = L"Shaders/TexturePixelShader.hlsl");
+	Quad(wstring file, Vector2 size, wstring vs = L"Shaders/TextureVertexShader.hlsl", wstring ps = L"Shaders/TexturePixelShader.hlsl");
 	~Quad();
 
 	virtual void Update();
@@ -15,6 +15,9 @@ public:
 	Vector2 GetHalfSize();
 	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
 	void SetTexture(shared_ptr<Texture> texture) { _texture = texture; }
+
+	Vector2 LeftBottom();
+	Vector2 RightTop();
 
 protected:
 	Quad() {}

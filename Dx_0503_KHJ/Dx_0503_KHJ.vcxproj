@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\UI\MiniMap.h" />
     <ClInclude Include="Object\Maple\ObjectPoolingManager.h" />
     <ClInclude Include="Object\Maple\Monsters.h" />
     <ClInclude Include="Object\Maple\Cursors.h" />
@@ -223,6 +224,7 @@
     <ClInclude Include="Scene\XmlLoadScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\UI\MiniMap.cpp" />
     <ClCompile Include="Object\Maple\ObjectPoolingManager.cpp" />
     <ClCompile Include="Object\Maple\Monsters.cpp" />
     <ClCompile Include="Object\Maple\Cursors.cpp" />

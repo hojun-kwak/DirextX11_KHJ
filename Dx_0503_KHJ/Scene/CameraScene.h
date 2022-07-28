@@ -21,10 +21,6 @@ private:
 
 	shared_ptr<Button> _button;
 
-	// Render Target
-	shared_ptr<RenderTarget> _rtv;
-	shared_ptr<Quad> _targetTexture;
-
-	shared_ptr<Quad> _miniPlayer;
+	shared_ptr<MiniMap> _miniMap;
 };
 

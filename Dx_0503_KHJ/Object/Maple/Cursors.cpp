@@ -34,15 +34,15 @@ void Cursors::Render()
 	_sprite->Render();
 }
 
-void Cursors::PostRender()
+void Cursors::DebugRender()
 {
 	_col->Render();
 }
 
 void Cursors::SetPosition(Vector2 mousePos)
 {
-	_sprite->GetTransform()->GetPos() = CENTER;
-	_mousePos = CENTER;
+	_sprite->GetTransform()->GetPos() = mousePos;
+	_mousePos = mousePos;
 }
 
 void Cursors::SetAnimation(State aniState)

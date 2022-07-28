@@ -9,9 +9,7 @@ public:
 	void Render();
 
 private:
+	bool _OnOff = false;
 	shared_ptr<Scene> _scene;
-
-	/*shared_ptr<MatrixBuffer> _viewBuffer;
-	shared_ptr<MatrixBuffer> _projectionBuffer;*/
 };
 

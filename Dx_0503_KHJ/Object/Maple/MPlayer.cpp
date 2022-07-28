@@ -36,10 +36,10 @@ void MPlayer::Render()
 	_sprite->Render();
 }
 
-void MPlayer::PostRender()
+void MPlayer::DebugRender()
 {
 	_col->Render();
-	ImGui::Text("AniState : %", _aniState);
+	ImGui::Text("AniState : %c", _aniState);
 }
 
 void MPlayer::SetPosition(float x, float y)
@@ -168,6 +168,12 @@ void MPlayer::Operation()
 			temp = _aniState;
 			return;
 		}
+		if (KEY_PRESS(VK_SPACE))
+		{
+			Jumpimg();
+			this->SetAnimation(MPlayer::State::L_JUMP);
+			return;
+		}
 	}
 	{
 		if (KEY_UP(VK_LEFT))
@@ -178,5 +184,28 @@ void MPlayer::Operation()
 			this->SetAnimation(MPlayer::State::L_IDLE);
 		if(KEY_UP(VK_DOWN))
 			this->SetAnimation(MPlayer::State::L_IDLE);
+		if (KEY_UP(VK_SPACE))
+			this->SetAnimation(MPlayer::State::L_IDLE);
+	}
+}
+
+void MPlayer::Jumpimg()
+{
+	/*if (!Jumpimg)
+		return;*/
+
+	_playerPos.y += 100.0f * DELTA_TIME;
+}
+
+void MPlayer::SetPositioning(shared_ptr<class Tiles> tile)
+{
+	if (_col->IsCollision(tile->GetColl(),false))
+	{
+		//_playerPos.y = tile->GetPos().y;
+		_col->SetRed();
+	}
+	else
+	{
+		_col->SetGreen();
 	}
 }

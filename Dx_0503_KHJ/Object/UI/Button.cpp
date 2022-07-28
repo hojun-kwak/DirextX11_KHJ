@@ -6,7 +6,6 @@ Button::Button()
 	_state = Button::ButtonState::NONE;
 
 	_quad = make_shared<Quad>(L"Resource/UI/Button.png", L"Shaders/TextureVertexShader.hlsl", L"Shaders/ButtonPixelShader.hlsl");
-	_quad->SetParent(Camera::GetInstance()->GetTransform());
 
 	_col = make_shared<RectCollider>(_quad->GetHalfSize());
 	_col->SetParent(_quad->GetTransform());
@@ -85,7 +84,7 @@ void Button::SetText(string text)
 
 void Button::SetState()
 {
-	if (_col->IsCollision(MOUSE_WOLRD_POS))
+	if (_col->IsCollision(MOUSE_POS))
 	{
 		_state = HOVER;
 

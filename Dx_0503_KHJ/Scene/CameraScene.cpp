@@ -4,7 +4,8 @@
 CameraScene::CameraScene()
 {
 	_background = make_shared<Quad>(L"Resource/LostArk.png");
-	//_background->GetTransform()->GetScale() *= 5.0f;
+	_background->GetTransform()->GetPos().x += _background->GetTransform()->GetPos().x;
+	_background->GetTransform()->GetPos().y += _background->GetTransform()->GetPos().y;
 
 	_zelda = make_shared<Zelda>();
 
@@ -16,8 +17,8 @@ CameraScene::CameraScene()
 
 	Camera::GetInstance()->SetTarget(_zeldaFollow);
 
-	Vector2 LeftBottom = { -_background->GetHalfSize().x, -_background->GetHalfSize().y };
-	Vector2 RightTop = { _background->GetHalfSize().x, _background->GetHalfSize().y };
+	Vector2 LeftBottom = { 0,0 };
+	Vector2 RightTop = { _background->GetHalfSize().x * 2.0f, _background->GetHalfSize().y * 2.0f };
 	Camera::GetInstance()->SetLeftBottom(LeftBottom);
 	Camera::GetInstance()->SetRightTop(RightTop);
 
@@ -28,15 +29,10 @@ CameraScene::CameraScene()
 	_button->SetEvent(std::bind(&CameraScene::SavePos, this));
 	_button->SetEventParam(std::bind(&CameraScene::Test, this, placeholders::_1), 5);
 
-	// Render Target
-	_rtv = make_shared<RenderTarget>(WIN_WIDTH, WIN_HEIGHT);
-	_targetTexture = make_shared<Quad>(L"RTV", _background->GetHalfSize());
-	shared_ptr<Texture> texture = Texture::Add(L"test", _rtv->GetSRV());
-	_targetTexture->SetTexture(texture);
-	_targetTexture->GetTransform()->GetPos() = { 0,0 };
-	_targetTexture->GetTransform()->GetScale() *= 0.1f;
-
-	_miniPlayer = make_shared<Quad>(L"Resource/cs.png");
+	_miniMap = make_shared<MiniMap>(_background->GetHalfSize() * 0.2f);
+	_miniMap->SetBackGround(LeftBottom, RightTop);
+	_miniMap->SetPlayerPos(&_zelda->GetTransForm()->GetPos());
+	
 }
 
 CameraScene::~CameraScene()
@@ -56,15 +52,6 @@ void CameraScene::Update()
 
 	_button->Update();
 
-	// Render Target
-	_targetTexture->Update();
-	_targetTexture->GetTransform()->GetPos() = Camera::GetInstance()->GetTransform()->GetPos()
-		+ Vector2(WIN_WIDTH - _targetTexture->GetHalfSize().x - 300, WIN_HEIGHT - _targetTexture->GetHalfSize().y - 300);
-	Vector2 ratio;
-	{
-		//ratio.x = 
-	}
-
 	Vector2 mP = Camera::GetInstance()->GetMouseWorldPos();
 	if (_button->GetRectCollider()->IsCollision(mP))
 	{
@@ -74,37 +61,25 @@ void CameraScene::Update()
 	{
 		_button->GetRectCollider()->SetGreen();
 	}
-
-	_miniPlayer->Update();
+	_miniMap->Update();
 }
 
 void CameraScene::Render()
 {
 	_background->Render();
 	_zelda->Render();
-
-	// Render Target
-	_targetTexture->Render();
 }
 
 void CameraScene::PreRender()
 {
-	// Render Target
-	_rtv->Set();
-	_miniPlayer->Render();	
 }
 
 void CameraScene::PostRender()
 {
 	_zelda->PostRender();
-	/*if (ImGui::Button("Save",{ 50, 50 }))
-		SavePos();*/
-		/*if (_button->GetRectCollider()->IsCollision(MOUSE_WOLRD_POS))
-		{
-			SavePos();
-		}*/
 
 	_button->PostRender();
+	_miniMap->PostRender();
 }
 
 void CameraScene::SavePos()

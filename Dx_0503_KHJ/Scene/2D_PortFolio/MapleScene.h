@@ -10,10 +10,9 @@ public:
 	virtual void Render() override;
 
 	virtual void PostRender() override;
+	virtual void DebugRender() override;
 
 private:
-	bool _OnOff = false;
-
 	shared_ptr<Quad> _background;
 
 	shared_ptr<Tiles> _mainTiles;
