@@ -69,6 +69,7 @@ void MapleScene::Render()
 
 void MapleScene::PostRender()
 {
+	_player->PostRender();
 }
 
 void MapleScene::DebugRender()

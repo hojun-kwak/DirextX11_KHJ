@@ -19,7 +19,6 @@ MPlayer::~MPlayer()
 void MPlayer::Update()
 {
 	_sprite->Update();
-	Operation();
 
 	for (auto& action : _actions)
 	{
@@ -29,11 +28,19 @@ void MPlayer::Update()
 		_sprite->SetClipToActionBuffer(action->GetCurClip());
 	}
 	_col->Update();
+
+	Operation();
+	Jumpimg();
 }
 
 void MPlayer::Render()
 {
 	_sprite->Render();
+}
+
+void MPlayer::PostRender()
+{
+	ImGui::Text("PlayerX : %.1f, PlayerY : %.1f", _playerPos.x, _playerPos.y);
 }
 
 void MPlayer::DebugRender()
@@ -170,8 +177,7 @@ void MPlayer::Operation()
 		}
 		if (KEY_PRESS(VK_SPACE))
 		{
-			Jumpimg();
-			this->SetAnimation(MPlayer::State::L_JUMP);
+			_isJumping = true;
 			return;
 		}
 	}
@@ -184,17 +190,56 @@ void MPlayer::Operation()
 			this->SetAnimation(MPlayer::State::L_IDLE);
 		if(KEY_UP(VK_DOWN))
 			this->SetAnimation(MPlayer::State::L_IDLE);
-		if (KEY_UP(VK_SPACE))
-			this->SetAnimation(MPlayer::State::L_IDLE);
 	}
 }
 
 void MPlayer::Jumpimg()
 {
-	/*if (!Jumpimg)
-		return;*/
+	if (_isJumping == false)
+		return;
 
-	_playerPos.y += 100.0f * DELTA_TIME;
+	this->SetAnimation(MPlayer::State::L_JUMP);
+
+	_playerPos.y += 10.0f * DELTA_TIME;
+	if (_playerPos.y >= 50.0f)
+	{
+		_isJumping = false;
+		this->SetAnimation(MPlayer::State::L_IDLE);
+	}
+
+	//float time = 0.0f;
+	//float power = 50.0f;
+	//float hight = 0.0f;
+
+	//hight = (time * time - 50.0f * time) / 4.0f;
+	//time += 0.01f;
+
+	////_playerPos.y += 150.0f * DELTA_TIME;
+
+	//if (time > 50.0f)
+	//{
+	//	time = 0.0f;
+	//	hight = 0.0f;
+	//}
+	//_playerPos.y += hight;
+	
+
+	/*if (!_jumpPress)
+		return;*/
+	
+	//Vector2 temp = _playerPos;
+	/*temp.x += cos(0.5) * 0.01f;
+	temp.x += -sin(0.8) * 0.01f;*/
+
+	/*float g = 0.0f;
+	g += 9.8 * DELTA_TIME;
+	temp.y += g;
+
+	_playerPos = temp;*/
+
+	//Vector2 temp = _playerPos;
+	
+
 }
 
 void MPlayer::SetPositioning(shared_ptr<class Tiles> tile)

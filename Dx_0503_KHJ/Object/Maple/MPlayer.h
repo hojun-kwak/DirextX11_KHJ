@@ -22,6 +22,7 @@ public:
 
 	void Update();
 	void Render();
+	void PostRender();
 	void DebugRender();
 
 	void SetPosition(float x, float y);
@@ -37,7 +38,7 @@ public:
 	void SetPositioning(shared_ptr<class Tiles> tile);
 
 private:
-	bool _jumpPress = false;
+	bool _isJumping = false;
 
 	State _aniState = L_IDLE;
 
