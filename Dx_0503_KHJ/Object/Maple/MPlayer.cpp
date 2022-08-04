@@ -200,11 +200,11 @@ void MPlayer::Jumpimg()
 	if (_isJumping == false)
 		return;
 
-	if (_playerPos.y < 150.0f && _jumpState == UP)
+	if (_playerPos.y < 100.0f && _jumpState == UP)
 	{
 		_playerPos.y += 9.8 * 0.01f;
 		this->SetAnimation(MPlayer::State::L_JUMP);
-		if (_playerPos.y >= 150.0f)
+		if (_playerPos.y >= 100.0f)
 		{
 			_jumpState = DOWN;
 			return;
@@ -213,11 +213,11 @@ void MPlayer::Jumpimg()
 	if (_jumpState == DOWN)
 	{
 		_playerPos.y -= 9.8 * 0.01f;
-		this->SetAnimation(MPlayer::State::L_IDLE);
 		if (_playerPos.y <= 0.0f)
 		{
-			_jumpState = NONE;
-			_playerPos.y = _tile->GetColl()->Top() + 10.0f;
+			_jumpState = NONE; 
+			_playerPos.y = _playerPos.y + (19.5f * 2);
+			this->SetAnimation(MPlayer::State::L_IDLE);
 			return;
 		}
 	}
