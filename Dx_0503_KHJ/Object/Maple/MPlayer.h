@@ -16,6 +16,13 @@ public:
 
 		CLIMBING
 	};
+
+	enum JumpingState
+	{
+		NONE,
+		UP,
+		DOWN
+	};
 	
 	MPlayer();
 	~MPlayer();
@@ -41,10 +48,17 @@ private:
 	bool _isJumping = false;
 
 	State _aniState = L_IDLE;
+	JumpingState _jumpState = NONE;
 
 	Vector2 _playerPos = { 0,0 };
 	shared_ptr<Sprite> _sprite;
 	vector<shared_ptr<Action>> _actions;
 	shared_ptr<Collider> _col;
+
+	shared_ptr<class Tiles> _tile;
+
+	float _jumpTime = 0.0f;
+	//float _jumpHeight = _playerPos.y + 50.0f;
+	float _jumpPower = 50.0f;
 };
 

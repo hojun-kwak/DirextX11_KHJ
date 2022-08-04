@@ -4,12 +4,12 @@
 MPlayer::MPlayer()
 {
 	_sprite = make_shared<Sprite>(MAPLE_1,Vector2(4,5));
-	//_sprite = make_shared<Sprite>(L"Resource/zelda.png", Vector2(10, 8));
-	//_sprite->GetTransform()->GetPos() = Vector2(WIN_WIDTH, WIN_HEIGHT) * 0.5f;
 	_col = make_shared<RectCollider>(_sprite->GetHalfFrameSize());
 	_col->SetParent(_sprite->GetTransform());
 
 	CreateData();
+
+	_tile = make_shared<class Tiles>();
 }
 
 MPlayer::~MPlayer()
@@ -31,6 +31,7 @@ void MPlayer::Update()
 
 	Operation();
 	Jumpimg();
+
 }
 
 void MPlayer::Render()
@@ -178,6 +179,7 @@ void MPlayer::Operation()
 		if (KEY_PRESS(VK_SPACE))
 		{
 			_isJumping = true;
+			_jumpState = UP;
 			return;
 		}
 	}
@@ -198,47 +200,27 @@ void MPlayer::Jumpimg()
 	if (_isJumping == false)
 		return;
 
-	this->SetAnimation(MPlayer::State::L_JUMP);
-
-	_playerPos.y += 10.0f * DELTA_TIME;
-	if (_playerPos.y >= 50.0f)
+	if (_playerPos.y < 150.0f && _jumpState == UP)
 	{
-		_isJumping = false;
-		this->SetAnimation(MPlayer::State::L_IDLE);
+		_playerPos.y += 9.8 * 0.01f;
+		this->SetAnimation(MPlayer::State::L_JUMP);
+		if (_playerPos.y >= 150.0f)
+		{
+			_jumpState = DOWN;
+			return;
+		}
 	}
-
-	//float time = 0.0f;
-	//float power = 50.0f;
-	//float hight = 0.0f;
-
-	//hight = (time * time - 50.0f * time) / 4.0f;
-	//time += 0.01f;
-
-	////_playerPos.y += 150.0f * DELTA_TIME;
-
-	//if (time > 50.0f)
-	//{
-	//	time = 0.0f;
-	//	hight = 0.0f;
-	//}
-	//_playerPos.y += hight;
-	
-
-	/*if (!_jumpPress)
-		return;*/
-	
-	//Vector2 temp = _playerPos;
-	/*temp.x += cos(0.5) * 0.01f;
-	temp.x += -sin(0.8) * 0.01f;*/
-
-	/*float g = 0.0f;
-	g += 9.8 * DELTA_TIME;
-	temp.y += g;
-
-	_playerPos = temp;*/
-
-	//Vector2 temp = _playerPos;
-	
+	if (_jumpState == DOWN)
+	{
+		_playerPos.y -= 9.8 * 0.01f;
+		this->SetAnimation(MPlayer::State::L_IDLE);
+		if (_playerPos.y <= 0.0f)
+		{
+			_jumpState = NONE;
+			_playerPos.y = _tile->GetColl()->Top() + 10.0f;
+			return;
+		}
+	}
 
 }
 
@@ -246,7 +228,6 @@ void MPlayer::SetPositioning(shared_ptr<class Tiles> tile)
 {
 	if (_col->IsCollision(tile->GetColl(),false))
 	{
-		//_playerPos.y = tile->GetPos().y;
 		_col->SetRed();
 	}
 	else

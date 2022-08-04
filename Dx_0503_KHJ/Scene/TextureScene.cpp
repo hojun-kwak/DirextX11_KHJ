@@ -6,8 +6,8 @@ TextureScene::TextureScene()
     _quad = make_shared<Quad>(L"Resource/VRising.png", L"Shaders/TextureVertexShader.hlsl", L"Shaders/LeftRightPixelShader.hlsl");
     _quad->GetTransform()->GetPos() = CENTER;
 
-    _filterBuffer = make_shared<FilterBuffer>();
-    _filterBuffer->data.selected = 1; // ¿ŞÂÊ
+    _filterBuffer = make_shared<FilterBuffer>(1);
+    //_filterBuffer->data.selected = 1; // ¿ŞÂÊ
 }
 
 TextureScene::~TextureScene()

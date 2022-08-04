@@ -20,13 +20,13 @@ public:
 	void SetPosition(Vector2 pos) { pos = _tilePos; }
 	Vector2 GetPos() { return _tilePos; }
 	shared_ptr<Transform> GetTransform() { return _quad->GetTransform(); }
-	shared_ptr<Collider> GetColl() { return _col; }
+	shared_ptr<RectCollider> GetColl() { return _col; }
 
 private:
 	Vector2 _tilePos = { 0,0 };
 
 	shared_ptr<Quad> _quad;
-	shared_ptr<Collider> _col;
+	shared_ptr<RectCollider> _col;
 
 };
 

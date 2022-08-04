@@ -103,6 +103,12 @@ public:
 		: ConstantBuffer(&data, sizeof(Data))
 	{
 	}
+
+	FilterBuffer(int a)
+		: ConstantBuffer(&data, sizeof(Data))
+	{
+		data.selected = a;
+	}
 };
 
 class IMGSizeBuffer : public ConstantBuffer
