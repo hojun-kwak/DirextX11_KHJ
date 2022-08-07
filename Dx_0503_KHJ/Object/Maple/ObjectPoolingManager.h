@@ -26,7 +26,13 @@ public:
 		return nullptr;
 	}
 
+	void Update();
+	void Render();
+	void PostRender();
+	void DebugRender();
+
 private:
 	static ObjectPoolingManager* _instance;
+	shared_ptr<Tiles> _tiles;
 };
 

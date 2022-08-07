@@ -108,6 +108,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ShaderManager::Create();
     DirectWrite::Create();
     EffectManager::Create();
+    ObjectPoolingManager::Create();
     Camera::Create();
 
     srand(static_cast<UINT>(time(nullptr)));
@@ -140,6 +141,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 삭제.
     Camera::Delete();
+    ObjectPoolingManager::Delete();
     EffectManager::Delete();
     DirectWrite::Delete();
     ShaderManager::Delete();

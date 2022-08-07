@@ -35,14 +35,17 @@ public:
 	void SetPosition(float x, float y);
 	void SetAnimation(State aniState);
 
+	void SetTile(shared_ptr<class Tiles>tile) { _tile = tile; }
+
 	void CreateData();
 
 	void Operation();
 	void Jumpimg();
 
+	void IsCollision();
+
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
 	shared_ptr<Collider> GetCol() { return _col; }
-	void SetPositioning(shared_ptr<class Tiles> tile);
 
 private:
 	bool _isJumping = false;

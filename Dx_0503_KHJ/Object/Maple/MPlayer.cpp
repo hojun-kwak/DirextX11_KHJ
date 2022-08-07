@@ -9,7 +9,6 @@ MPlayer::MPlayer()
 
 	CreateData();
 
-	_tile = make_shared<class Tiles>();
 }
 
 MPlayer::~MPlayer()
@@ -31,7 +30,7 @@ void MPlayer::Update()
 
 	Operation();
 	Jumpimg();
-
+	IsCollision();
 }
 
 void MPlayer::Render()
@@ -213,6 +212,7 @@ void MPlayer::Jumpimg()
 	if (_jumpState == DOWN)
 	{
 		_playerPos.y -= 9.8 * 0.01f;
+		//if(_col->IsCollision(_tile->GetColl(),false))
 		if (_playerPos.y <= 0.0f)
 		{
 			_jumpState = NONE; 
@@ -224,11 +224,16 @@ void MPlayer::Jumpimg()
 
 }
 
-void MPlayer::SetPositioning(shared_ptr<class Tiles> tile)
+void MPlayer::IsCollision()
 {
-	if (_col->IsCollision(tile->GetColl(),false))
+	if (_col->IsCollision(_tile->GetColl(), false))
 	{
 		_col->SetRed();
+		// 여기에 충돌 체크와 자리 바꾸는거 해놓기
+		if (_col->IsCollision(_tile->GetColl(), false))
+		{
+
+		}
 	}
 	else
 	{

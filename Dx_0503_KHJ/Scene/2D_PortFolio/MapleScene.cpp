@@ -9,6 +9,7 @@ MapleScene::MapleScene()
 	_mainTiles->SetPosition(Vector2{ 0,0 });
 
 	_player = make_shared<MPlayer>();
+	_player->SetTile(_mainTiles);
 
 	_playerFollow = make_shared<Transform>();
 	_playerFollow->GetPos() = _player->GetTransForm()->GetPos();
@@ -33,15 +34,6 @@ void MapleScene::Update()
 {
 	_background->Update();
 	_mainTiles->Update();
-
-	//_player->SetPositioning(_mainTiles);
-	if (_player->GetCol()->IsCollision(_mainTiles->GetColl(),false))
-	{
-		_player->GetCol()->SetRed();
-	}
-	else
-		_player->GetCol()->SetGreen();
-
 	_player->Update();
 	_monsters->Update();
 
