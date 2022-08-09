@@ -8,6 +8,7 @@ MapleScene::MapleScene()
 	_mainTiles = make_shared<Tiles>();
 	_mainTiles->SetPosition(Vector2{ 0,0 });
 
+
 	_player = make_shared<MPlayer>();
 	_player->SetTile(_mainTiles);
 
@@ -46,6 +47,7 @@ void MapleScene::Update()
 		_playerFollow->GetPos() = LERP(_playerFollow->GetPos(), _player->GetTransForm()->GetPos(), 0.001f);
 	}
 
+	ObjectPoolingManager::GetInstance()->Update();
 	
 }
 
@@ -57,6 +59,9 @@ void MapleScene::Render()
 	_monsters->Render();
 
 	_cursor->Render();
+
+	ObjectPoolingManager::GetInstance()->Render();
+
 }
 
 void MapleScene::PostRender()
@@ -70,5 +75,7 @@ void MapleScene::DebugRender()
 	_player->DebugRender();
 	_cursor->DebugRender();
 	_monsters->DebugRender();
+
+	ObjectPoolingManager::GetInstance()->DebugRender();
 	
 }

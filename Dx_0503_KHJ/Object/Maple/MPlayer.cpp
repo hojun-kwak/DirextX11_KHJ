@@ -19,6 +19,7 @@ void MPlayer::Update()
 {
 	_sprite->Update();
 
+
 	for (auto& action : _actions)
 	{
 		action->Update();
@@ -30,7 +31,6 @@ void MPlayer::Update()
 
 	Operation();
 	Jumpimg();
-	IsCollision();
 }
 
 void MPlayer::Render()
@@ -147,19 +147,22 @@ void MPlayer::Operation()
 	State temp = L_IDLE;
 
 	{
-		if (KEY_PRESS(VK_LEFT))
+		if (_col->IsCollision(_tile->GetColl(), false))
 		{
-			_playerPos.x -= 150.0f * DELTA_TIME;
-			this->SetAnimation(MPlayer::State::L_RUN);
-			temp = L_IDLE;
-			return;
-		}
-		if (KEY_PRESS(VK_RIGHT))
-		{
-			_playerPos.x += 150.0f * DELTA_TIME;
-			this->SetAnimation(MPlayer::State::R_RUN);
-			temp = R_IDLE;
-			return;
+			if (KEY_PRESS(VK_LEFT))
+			{
+				_playerPos.x -= 150.0f * DELTA_TIME;
+				this->SetAnimation(MPlayer::State::L_RUN);
+				temp = L_IDLE;
+				return;
+			}
+			if (KEY_PRESS(VK_RIGHT))
+			{
+				_playerPos.x += 150.0f * DELTA_TIME;
+				this->SetAnimation(MPlayer::State::R_RUN);
+				temp = R_IDLE;
+				return;
+			}
 		}
 		if (KEY_PRESS(VK_DOWN))
 		{
@@ -175,11 +178,14 @@ void MPlayer::Operation()
 			temp = _aniState;
 			return;
 		}
-		if (KEY_PRESS(VK_SPACE))
+		if (_isJumping == false)
 		{
-			_isJumping = true;
-			_jumpState = UP;
-			return;
+			if (KEY_PRESS(VK_SPACE))
+			{
+				_isJumping = true;
+				_jumpState = UP;
+				return;
+			}
 		}
 	}
 	{
@@ -201,7 +207,7 @@ void MPlayer::Jumpimg()
 
 	if (_playerPos.y < 100.0f && _jumpState == UP)
 	{
-		_playerPos.y += 9.8 * 0.01f;
+		_playerPos.y += 9.8 * 0.1f;
 		this->SetAnimation(MPlayer::State::L_JUMP);
 		if (_playerPos.y >= 100.0f)
 		{
@@ -211,32 +217,18 @@ void MPlayer::Jumpimg()
 	}
 	if (_jumpState == DOWN)
 	{
-		_playerPos.y -= 9.8 * 0.01f;
-		//if(_col->IsCollision(_tile->GetColl(),false))
-		if (_playerPos.y <= 0.0f)
+		_playerPos.y -= 9.8 * 0.1f;
+		if(_col->IsCollision(_tile->GetColl(),false))
 		{
+			_col->SetRed();
 			_jumpState = NONE; 
-			_playerPos.y = _playerPos.y + (19.5f * 2);
+			_playerPos.y = _tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y;
+			_isJumping = false;
 			this->SetAnimation(MPlayer::State::L_IDLE);
-			return;
 		}
-	}
-
-}
-
-void MPlayer::IsCollision()
-{
-	if (_col->IsCollision(_tile->GetColl(), false))
-	{
-		_col->SetRed();
-		// 여기에 충돌 체크와 자리 바꾸는거 해놓기
-		if (_col->IsCollision(_tile->GetColl(), false))
+		else
 		{
-
+			_col->SetGreen();
 		}
-	}
-	else
-	{
-		_col->SetGreen();
 	}
 }

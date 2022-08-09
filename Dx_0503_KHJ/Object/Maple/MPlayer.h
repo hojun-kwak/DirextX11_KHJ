@@ -42,8 +42,6 @@ public:
 	void Operation();
 	void Jumpimg();
 
-	void IsCollision();
-
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
 	shared_ptr<Collider> GetCol() { return _col; }
 
@@ -59,9 +57,5 @@ private:
 	shared_ptr<Collider> _col;
 
 	shared_ptr<class Tiles> _tile;
-
-	float _jumpTime = 0.0f;
-	//float _jumpHeight = _playerPos.y + 50.0f;
-	float _jumpPower = 50.0f;
 };
 

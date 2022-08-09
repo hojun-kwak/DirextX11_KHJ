@@ -33,6 +33,9 @@ public:
 
 private:
 	static ObjectPoolingManager* _instance;
-	shared_ptr<Tiles> _tiles;
+
+	UINT _tileCount = 6;
+
+	vector<shared_ptr<Tiles>> _tiles;
 };
 
