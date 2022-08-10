@@ -18,17 +18,26 @@ Tiles::~Tiles()
 
 void Tiles::Update()
 {
+	if (_isActive == false)
+		return;
+
 	_quad->Update();
 	_col->Update();
 }
 
 void Tiles::Render()
 {
+	if (_isActive == false)
+		return;
+
 	_quad->Render();
 }
 
 void Tiles::DebugRender()
 {
+	if (_isActive == false)
+		return;
+
 	_col->Render();
 }
 

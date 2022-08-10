@@ -24,11 +24,13 @@ public:
 	shared_ptr<Quad> GetQuad() { return _quad; }
 	shared_ptr<RectCollider> GetColl() { return _col; }
 
+	bool _isActive = false;
 private:
 	Vector2 _tilePos = { 0,0 };
 
 	shared_ptr<Quad> _quad;
 	shared_ptr<RectCollider> _col;
+
 
 };
 

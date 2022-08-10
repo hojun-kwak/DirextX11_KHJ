@@ -44,6 +44,7 @@ public:
 
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
 	shared_ptr<Collider> GetCol() { return _col; }
+	shared_ptr<Sprite> GetSprite() { return _sprite; }
 
 private:
 	bool _isJumping = false;

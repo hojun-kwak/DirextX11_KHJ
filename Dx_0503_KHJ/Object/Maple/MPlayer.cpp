@@ -8,7 +8,6 @@ MPlayer::MPlayer()
 	_col->SetParent(_sprite->GetTransform());
 
 	CreateData();
-
 }
 
 MPlayer::~MPlayer()
