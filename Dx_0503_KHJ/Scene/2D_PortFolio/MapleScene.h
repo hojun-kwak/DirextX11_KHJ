@@ -14,15 +14,9 @@ public:
 
 private:
 	shared_ptr<Quad> _background;
-
-	shared_ptr<Tiles> _mainTiles;
-
 	shared_ptr<MPlayer> _player;
-
 	shared_ptr<Transform> _playerFollow;
-
 	shared_ptr<Monsters> _monsters;
-
 	shared_ptr<Cursors> _cursor;
 };
 

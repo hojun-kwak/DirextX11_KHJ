@@ -35,7 +35,7 @@ public:
 	void SetPosition(float x, float y);
 	void SetAnimation(State aniState);
 
-	void SetTile(shared_ptr<class Tiles>tile) { _tile = tile; }
+	void SetTile(vector<shared_ptr<class Tiles>> tile) { _tile = tile; }
 
 	void CreateData();
 
@@ -56,6 +56,6 @@ private:
 	vector<shared_ptr<Action>> _actions;
 	shared_ptr<Collider> _col;
 
-	shared_ptr<class Tiles> _tile;
+	vector<shared_ptr<class Tiles>> _tile;
 };
 

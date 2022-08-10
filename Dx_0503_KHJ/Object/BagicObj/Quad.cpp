@@ -65,6 +65,22 @@ void Quad::Render()
     DEVICE_CONTEXT->DrawIndexed(_indicies.size(), 0, 0);
 }
 
+void Quad::SetRender()
+{
+    _vertexBuffer->IASet(0);
+    _indexBuffer->IASet();
+
+    IASetPT();
+
+    // Texture - srv...
+    _texture->Set(0);
+    SAMPLER_STATE->PSSet(0);
+
+    _vertexShader->Set();
+    _pixelShader->Set();
+
+}
+
 void Quad::CreateData()
 {
     {

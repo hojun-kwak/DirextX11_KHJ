@@ -2,6 +2,7 @@
 #include "Player.h"
 
 Player::Player()
+	: _state(GROUND)
 {
 	_quad = make_shared<Quad>(L"Resource/ezreal.png");
 	_quad->GetTransform()->GetScale() = { 0.5f,0.5f };
@@ -24,7 +25,7 @@ Player::Player()
 		_bullets.emplace_back(temp);
 	}
 
-	_collider = make_shared<RectCollider>(Vector2(100, 100));
+	_collider = make_shared<RectCollider>(_quad->GetHalfSize() * 2.0f);
 	_collider->SetParent(_quad->GetTransform());
 
 }
@@ -38,6 +39,7 @@ void Player::Update()
 	Move();
 	Aimming();
 	Fire();
+	Jump();
 
 	//if (_bullet->GetCollider()->IsCollision(_mons->GetCollider(), false))
 	//{
@@ -54,6 +56,10 @@ void Player::Update()
 	if (KEY_PRESS(VK_ADD))
 	{
 		Reset();
+	}
+	if (KEY_PRESS(VK_SPACE))
+	{
+		_state = JUMPING;
 	}
 
 	_quad->Update();
@@ -138,6 +144,24 @@ void Player::MonsAttack(vector<shared_ptr<class Monster>> monster)
 			if(mons->_monster_isActive == true)
 				mons->MonsAttacked(bullet);
 		}
+	}
+}
+
+void Player::Jump()
+{
+	if (_state != JUMPING)
+		return;
+
+	Vector2 temp;
+	_jumpPower -= _gravity * DELTA_TIME;
+
+	temp.y = _jumpPower;
+	_quad->GetTransform()->GetPos() += temp * DELTA_TIME;
+
+	if (_quad->GetTransform()->GetPos().y < 0)
+	{
+		_jumpPower = 300.0f;
+		_state = GROUND;
 	}
 }
 

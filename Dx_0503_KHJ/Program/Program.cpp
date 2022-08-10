@@ -12,9 +12,12 @@
 #include "../Scene/CameraScene.h"
 #include "../Scene/2D_PortFolio/MapleScene.h"
 #include "../Scene/XmlLoadScene.h"
+#include "../Scene/InstancingScene.h"
 
 Program::Program()
 {
+	//_scene = make_shared<DunGridScene>();
+	srand(static_cast<unsigned int>(time(nullptr)));
 	_scene = make_shared<MapleScene>();
 }
 

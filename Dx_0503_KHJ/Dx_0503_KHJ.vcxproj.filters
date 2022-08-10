@@ -216,6 +216,12 @@
     <ClInclude Include="Object\UI\MiniMap.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Utillity\MathUtillity.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\InstancingScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -401,6 +407,12 @@
     <ClCompile Include="Object\UI\MiniMap.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Utillity\MathUtillity.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\InstancingScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -492,9 +504,6 @@
     <Image Include="Resource\Maple\BlueCave_Tile.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\Maple\tiles.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="Resource\Maple\charactorNormal.png">
       <Filter>리소스 파일</Filter>
     </Image>
@@ -510,6 +519,9 @@
     <Image Include="Resource\Maple\MainTile.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Maple\tile.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />
@@ -522,6 +534,8 @@
     <FxCompile Include="Shaders\FillterShader\FilterShader.hlsl" />
     <FxCompile Include="Shaders\LeftRightPixelShader.hlsl" />
     <FxCompile Include="Shaders\ButtonPixelShader.hlsl" />
+    <FxCompile Include="Shaders\InstancingVertexShader.hlsl" />
+    <FxCompile Include="Shaders\InstancingPixelShader.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resource\XML\ItemData.xml" />

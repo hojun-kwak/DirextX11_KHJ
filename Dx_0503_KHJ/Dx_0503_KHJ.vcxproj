@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Utillity\MathUtillity.h" />
+    <ClInclude Include="Scene\InstancingScene.h" />
     <ClInclude Include="Object\UI\MiniMap.h" />
     <ClInclude Include="Object\Maple\ObjectPoolingManager.h" />
     <ClInclude Include="Object\Maple\Monsters.h" />
@@ -225,6 +227,8 @@
     <ClInclude Include="Scene\XmlLoadScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Utillity\MathUtillity.cpp" />
+    <ClCompile Include="Scene\InstancingScene.cpp" />
     <ClCompile Include="Object\UI\MiniMap.cpp" />
     <ClCompile Include="Object\Maple\ObjectPoolingManager.cpp" />
     <ClCompile Include="Object\Maple\Monsters.cpp" />
@@ -319,7 +323,7 @@
     <Image Include="Resource\Maple\MainTile.png" />
     <Image Include="Resource\Maple\Red_snail.png" />
     <Image Include="Resource\Maple\test.png" />
-    <Image Include="Resource\Maple\tiles.png" />
+    <Image Include="Resource\Maple\tile.png" />
     <Image Include="Resource\moon.png" />
     <Image Include="Resource\mousePointer.png" />
     <Image Include="Resource\mysticShot.png" />
@@ -392,6 +396,22 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PS</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shaders\InstancingPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PS</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shaders\InstancingVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="Shaders\LeftRightPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>

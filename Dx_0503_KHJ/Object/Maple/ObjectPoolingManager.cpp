@@ -9,7 +9,22 @@ ObjectPoolingManager::ObjectPoolingManager()
 	for (int i = 0; i < _tileCount; i++)
 	{
 		shared_ptr<Tiles> temp = make_shared<Tiles>();
-		temp->SetPosition(Vector2(0, i * 100.0f));
+		
+		switch (i)
+		{
+		case 0:
+			for (int j = 0; j < 2; j++)
+			{
+				// 이거 숫자 수정
+				//temp->SetPosition(Vector2(i * -(temp->GetQuad()->GetHalfSize().x * 2.0f), -360));
+				temp->SetPosition(Vector2(0,0));
+			}
+			break;
+		default:
+			temp->SetPosition(Vector2(0,0));
+			break;
+		}
+		
 		_tiles.emplace_back(temp);
 	}
 }

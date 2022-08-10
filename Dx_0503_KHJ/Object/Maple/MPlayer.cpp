@@ -145,39 +145,46 @@ void MPlayer::Operation()
 {
 	this->SetPosition(_playerPos.x, _playerPos.y);
 	State temp = L_IDLE;
-
+	
 	{
-		if (_col->IsCollision(_tile->GetColl(), false))
+		for (auto& _tile : _tile)
 		{
-			if (KEY_PRESS(VK_LEFT))
+			if (_col->IsCollision(_tile->GetColl(), false))
 			{
-				_playerPos.x -= 150.0f * DELTA_TIME;
-				this->SetAnimation(MPlayer::State::L_RUN);
-				temp = L_IDLE;
+				if (KEY_PRESS(VK_LEFT))
+				{
+					_playerPos.x -= 150.0f * DELTA_TIME;
+					this->SetAnimation(MPlayer::State::L_RUN);
+					temp = L_IDLE;
+					return;
+				}
+				if (KEY_PRESS(VK_RIGHT))
+				{
+					_playerPos.x += 150.0f * DELTA_TIME;
+					this->SetAnimation(MPlayer::State::R_RUN);
+					temp = R_IDLE;
+					return;
+				}
+			}
+		}
+
+		{
+			if (KEY_PRESS(VK_DOWN))
+			{
+				_playerPos.y -= 150.0f * DELTA_TIME;
+				this->SetAnimation(MPlayer::State::CLIMBING);
+				temp = _aniState;
 				return;
 			}
-			if (KEY_PRESS(VK_RIGHT))
+			if (KEY_PRESS(VK_UP))
 			{
-				_playerPos.x += 150.0f * DELTA_TIME;
-				this->SetAnimation(MPlayer::State::R_RUN);
-				temp = R_IDLE;
+				_playerPos.y += 150.0f * DELTA_TIME;
+				this->SetAnimation(MPlayer::State::CLIMBING);
+				temp = _aniState;
 				return;
 			}
 		}
-		if (KEY_PRESS(VK_DOWN))
-		{
-			_playerPos.y -= 150.0f * DELTA_TIME;
-			this->SetAnimation(MPlayer::State::CLIMBING);
-			temp = _aniState;
-			return;
-		}
-		if (KEY_PRESS(VK_UP))
-		{
-			_playerPos.y += 150.0f * DELTA_TIME;
-			this->SetAnimation(MPlayer::State::CLIMBING);
-			temp = _aniState;
-			return;
-		}
+
 		if (_isJumping == false)
 		{
 			if (KEY_PRESS(VK_SPACE))
@@ -207,7 +214,7 @@ void MPlayer::Jumpimg()
 
 	if (_playerPos.y < 100.0f && _jumpState == UP)
 	{
-		_playerPos.y += 9.8 * 0.1f;
+		_playerPos.y += 9.8 * 0.01f;
 		this->SetAnimation(MPlayer::State::L_JUMP);
 		if (_playerPos.y >= 100.0f)
 		{
@@ -217,18 +224,23 @@ void MPlayer::Jumpimg()
 	}
 	if (_jumpState == DOWN)
 	{
-		_playerPos.y -= 9.8 * 0.1f;
-		if(_col->IsCollision(_tile->GetColl(),false))
+		_playerPos.y -= 9.8 * 0.01f;
+
+		for (auto& _tile : _tile)
 		{
-			_col->SetRed();
-			_jumpState = NONE; 
-			_playerPos.y = _tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y;
-			_isJumping = false;
-			this->SetAnimation(MPlayer::State::L_IDLE);
-		}
-		else
-		{
-			_col->SetGreen();
+			if (_col->IsCollision(_tile->GetColl(), false))
+			{
+				_col->SetRed();
+				_jumpState = NONE;
+				_playerPos.y = _tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y;
+				_isJumping = false;
+				this->SetAnimation(MPlayer::State::L_IDLE);
+				return;
+			}
+			else
+			{
+				_col->SetGreen();
+			}
 		}
 	}
 }

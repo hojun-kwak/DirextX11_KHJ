@@ -81,6 +81,7 @@ using namespace std;
 #include "Framework/Utillity/BinaryReader.h"
 #include "Framework/Utillity/DirectWrite.h"
 #include "Framework/Utillity/tinyxml2.h"
+#include "Framework/Utillity/MathUtillity.h"
 
 // Camera
 #include "Framework/Camera/Camera.h"

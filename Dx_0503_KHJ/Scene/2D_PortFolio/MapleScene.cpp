@@ -5,17 +5,15 @@ MapleScene::MapleScene()
 {
 	_background = make_shared<Quad>(L"Resource/Maple/background2.png");
 
-	_mainTiles = make_shared<Tiles>();
-	_mainTiles->SetPosition(Vector2{ 0,0 });
-
-
 	_player = make_shared<MPlayer>();
-	_player->SetTile(_mainTiles);
+	_player->SetTile(ObjectPoolingManager::GetInstance()->GetTiles());
+
 
 	_playerFollow = make_shared<Transform>();
 	_playerFollow->GetPos() = _player->GetTransForm()->GetPos();
 
 	_monsters = make_shared<Monsters>();
+
 
 	Camera::GetInstance()->SetTarget(_player->GetTransForm());
 	Vector2 LeftBottom = { -_background->GetHalfSize().x, -_background->GetHalfSize().y };
@@ -34,7 +32,7 @@ MapleScene::~MapleScene()
 void MapleScene::Update()
 {
 	_background->Update();
-	_mainTiles->Update();
+	ObjectPoolingManager::GetInstance()->Update();
 	_player->Update();
 	_monsters->Update();
 
@@ -47,21 +45,18 @@ void MapleScene::Update()
 		_playerFollow->GetPos() = LERP(_playerFollow->GetPos(), _player->GetTransForm()->GetPos(), 0.001f);
 	}
 
-	ObjectPoolingManager::GetInstance()->Update();
+	
 	
 }
 
 void MapleScene::Render()
 {
 	_background->Render();
-	_mainTiles->Render();
+	ObjectPoolingManager::GetInstance()->Render();
 	_player->Render();
 	_monsters->Render();
 
 	_cursor->Render();
-
-	ObjectPoolingManager::GetInstance()->Render();
-
 }
 
 void MapleScene::PostRender()
@@ -71,11 +66,10 @@ void MapleScene::PostRender()
 
 void MapleScene::DebugRender()
 {
-	_mainTiles->DebugRender();
+	ObjectPoolingManager::GetInstance()->DebugRender();
 	_player->DebugRender();
 	_cursor->DebugRender();
 	_monsters->DebugRender();
 
-	ObjectPoolingManager::GetInstance()->DebugRender();
 	
 }

@@ -31,10 +31,12 @@ public:
 	void PostRender();
 	void DebugRender();
 
+	vector<shared_ptr<Tiles>> GetTiles() { return _tiles; }
+
 private:
 	static ObjectPoolingManager* _instance;
 
-	UINT _tileCount = 6;
+	UINT _tileCount = 2;
 
 	vector<shared_ptr<Tiles>> _tiles;
 };

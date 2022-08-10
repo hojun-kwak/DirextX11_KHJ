@@ -17,9 +17,11 @@ public:
 
 	void CreateData();
 
-	void SetPosition(Vector2 pos) { pos = _tilePos; }
+	void SetPosition(Vector2 pos);
 	Vector2 GetPos() { return _tilePos; }
+
 	shared_ptr<Transform> GetTransform() { return _quad->GetTransform(); }
+	shared_ptr<Quad> GetQuad() { return _quad; }
 	shared_ptr<RectCollider> GetColl() { return _col; }
 
 private:

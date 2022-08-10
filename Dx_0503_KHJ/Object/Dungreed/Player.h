@@ -2,6 +2,12 @@
 class Player
 {
 public:
+	enum State
+	{
+		GROUND,
+		JUMPING,
+		ATTACK
+	};
 	Player();
 	~Player();
 
@@ -16,6 +22,7 @@ private:
 	void Move();
 	void Aimming();
 	void Fire();
+	void Jump();
 	void Reset();
 
 
@@ -33,5 +40,9 @@ private:
 	shared_ptr<Collider> _collider;
 
 	vector<shared_ptr<class Monster>> _mons;
+
+	float _jumpPower = 300.0f;
+	float _gravity = 100.0f;
+	State _state = GROUND;
 };
 
