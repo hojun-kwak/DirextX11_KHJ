@@ -110,6 +110,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     EffectManager::Create();
     ObjectPoolingManager::Create();
     Camera::Create();
+    Audio::Create();
 
     srand(static_cast<UINT>(time(nullptr)));
     shared_ptr<Program> program = make_shared<Program>();
@@ -133,6 +134,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             //Render();
             Timer::GetInstance()->Update();
             InputManager::GetInstance()->Update();
+
+            Audio::GetInstance()->Update();
+
+
             program->Update();
             program->Render();
             
@@ -140,6 +145,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 삭제.
+    Audio::Delete();
     Camera::Delete();
     ObjectPoolingManager::Delete();
     EffectManager::Delete();

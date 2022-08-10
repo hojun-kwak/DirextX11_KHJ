@@ -35,6 +35,11 @@ InstancingScene::InstancingScene()
 	}
 
 	_instanceBuffer = make_shared<VertexBuffer>(_instancingDataes.data(), sizeof(InstanceData), _poolCount);
+
+	SOUND->Add("BGM_1", "Resource/Sound/BGM.wav");
+	SOUND->Add("ATTACK", "Resource/Sound/attack.wav");
+
+	SOUND->Play("BGM_1");
 }
 
 InstancingScene::~InstancingScene()
@@ -43,6 +48,8 @@ InstancingScene::~InstancingScene()
 
 void InstancingScene::Update()
 {
+	if (KEY_DOWN(VK_SPACE))
+		SOUND->Play("ATTACK");
 }
 
 void InstancingScene::Render()

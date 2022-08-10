@@ -49,6 +49,9 @@ using namespace std;
 #include "../ImGui/imgui_impl_dx11.h"
 #include "../ImGui/imgui_impl_win32.h"
 
+#include "Libary/FMOD/inc/fmod.hpp"
+#pragma comment(lib,"Libary/FMOD/fmod_vc.lib")
+
 // Types
 #include "TypeDef.h"
 
@@ -82,6 +85,7 @@ using namespace std;
 #include "Framework/Utillity/DirectWrite.h"
 #include "Framework/Utillity/tinyxml2.h"
 #include "Framework/Utillity/MathUtillity.h"
+#include "Framework/Utillity/Audio.h"
 
 // Camera
 #include "Framework/Camera/Camera.h"

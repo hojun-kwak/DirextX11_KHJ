@@ -152,7 +152,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Utillity\Audio.h" />
     <ClInclude Include="Framework\Utillity\MathUtillity.h" />
+    <ClInclude Include="Libary\FMOD\inc\fmod.h" />
+    <ClInclude Include="Libary\FMOD\inc\fmod.hpp" />
+    <ClInclude Include="Libary\FMOD\inc\fmod_codec.h" />
+    <ClInclude Include="Libary\FMOD\inc\fmod_common.h" />
+    <ClInclude Include="Libary\FMOD\inc\fmod_dsp.h" />
+    <ClInclude Include="Libary\FMOD\inc\fmod_dsp_effects.h" />
+    <ClInclude Include="Libary\FMOD\inc\fmod_errors.h" />
+    <ClInclude Include="Libary\FMOD\inc\fmod_output.h" />
     <ClInclude Include="Scene\InstancingScene.h" />
     <ClInclude Include="Object\UI\MiniMap.h" />
     <ClInclude Include="Object\Maple\ObjectPoolingManager.h" />
@@ -227,6 +236,7 @@
     <ClInclude Include="Scene\XmlLoadScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Utillity\Audio.cpp" />
     <ClCompile Include="Framework\Utillity\MathUtillity.cpp" />
     <ClCompile Include="Scene\InstancingScene.cpp" />
     <ClCompile Include="Object\UI\MiniMap.cpp" />
@@ -488,6 +498,21 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resource\XML\ItemData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resource\Sound\attack.wav" />
+    <Media Include="Resource\Sound\BGM.wav" />
+    <Media Include="Resource\Sound\jump.wav" />
+    <Media Include="Resource\Sound\MapleLeaf.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fmod.dll" />
+    <None Include="Libary\FMOD\inc\fmod.cs" />
+    <None Include="Libary\FMOD\inc\fmod_dsp.cs" />
+    <None Include="Libary\FMOD\inc\fmod_errors.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Libary\FMOD\fmod_vc.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

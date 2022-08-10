@@ -22,6 +22,8 @@
 #define BLEND_STATE			StateManager::GetInstance()->GetBlendState()
 #define CULL_MODE_STATE		StateManager::GetInstance()->GetRasterizerState()
 
+#define SOUND				Audio::GetInstance()
+
 #define PI 3.141592
 
 #define RED XMFLOAT4(1,0,0,1)
