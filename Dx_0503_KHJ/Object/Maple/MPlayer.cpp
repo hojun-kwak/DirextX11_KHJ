@@ -231,7 +231,7 @@ void MPlayer::Jumpimg()
 			{
 				_col->SetRed();
 				_jumpState = NONE;
-				_playerPos.y = _tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y;
+				_playerPos.y = _tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y - 5.0f;
 				_isJumping = false;
 				this->SetAnimation(MPlayer::State::L_IDLE);
 				return;
