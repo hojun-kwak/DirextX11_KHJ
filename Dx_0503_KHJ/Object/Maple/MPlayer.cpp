@@ -208,14 +208,17 @@ void MPlayer::Operation()
 
 void MPlayer::Jumpimg()
 {
-	if (_isJumping == false)
-		return;
+	//if (_playerPos.y < 100.0f && _jumpState == UP)
+	float* temp = &_playerPos.y;
+	*temp += 50.0f;
 
-	if (_playerPos.y < 100.0f && _jumpState == UP)
+	float test = *temp;
+	if (_jumpState == UP)
 	{
-		_playerPos.y += 9.8 * 0.01f;
+		_jumTime += 10.0f;
+		_playerPos.y += _gravity * DELTA_TIME;
 		this->SetAnimation(MPlayer::State::L_JUMP);
-		if (_playerPos.y >= 100.0f)
+		if (_jumpPower > _jumTime)
 		{
 			_jumpState = DOWN;
 			return;
@@ -223,7 +226,7 @@ void MPlayer::Jumpimg()
 	}
 	if (_jumpState == DOWN)
 	{
-		_playerPos.y -= 9.8 * 0.01f;
+		_playerPos.y -= _gravity * DELTA_TIME;
 
 		for (auto& _tile : _tile)
 		{

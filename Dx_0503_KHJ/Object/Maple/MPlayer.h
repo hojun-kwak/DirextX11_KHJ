@@ -47,10 +47,7 @@ public:
 	shared_ptr<Sprite> GetSprite() { return _sprite; }
 
 private:
-	bool _isJumping = false;
-
 	State _aniState = L_IDLE;
-	JumpingState _jumpState = NONE;
 
 	Vector2 _playerPos = { 0,0 };
 	shared_ptr<Sprite> _sprite;
@@ -58,5 +55,11 @@ private:
 	shared_ptr<Collider> _col;
 
 	vector<shared_ptr<class Tiles>> _tile;
+
+	JumpingState _jumpState = NONE;
+	bool _isJumping = false;
+	float _jumpPower = 50.0f;
+	float _jumTime = 0.0f;
+	float _gravity = 100.0f;
 };
 
