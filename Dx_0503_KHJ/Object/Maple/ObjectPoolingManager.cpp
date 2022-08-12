@@ -5,6 +5,43 @@ ObjectPoolingManager* ObjectPoolingManager::_instance = nullptr;
 
 ObjectPoolingManager::ObjectPoolingManager()
 {
+	// 이createTiles를 여러번 생성하는것은 가능할까?
+	CreateTiles();
+
+	for (int i = 0; i < _floor; i++)
+	{
+		vector<shared_ptr<Tiles>> temp = make_shared<Tiles>();
+	}
+}
+
+ObjectPoolingManager::~ObjectPoolingManager()
+{
+}
+
+void ObjectPoolingManager::Update()
+{
+	for (auto& tile : _tiles)
+		tile->Update();
+}
+
+void ObjectPoolingManager::Render()
+{
+	for (auto& tile : _tiles)
+		tile->Render();
+}
+
+void ObjectPoolingManager::PostRender()
+{
+}
+
+void ObjectPoolingManager::DebugRender()
+{
+	for (auto& tile : _tiles)
+		tile->DebugRender();
+}
+
+void ObjectPoolingManager::CreateTiles()
+{
 	_tiles.reserve(_tileCount);
 	for (int i = 0; i < _tileCount; i++)
 	{
@@ -40,37 +77,9 @@ ObjectPoolingManager::ObjectPoolingManager()
 			temp->_isActive = true;
 			break;
 		default:
-			//temp->SetPosition(Vector2(i * -(temp->GetQuad()->GetHalfSize().x * 2.0f),-360.0f));
 			break;
 		}
 
 		_tiles.emplace_back(temp);
-		
 	}
-}
-
-ObjectPoolingManager::~ObjectPoolingManager()
-{
-}
-
-void ObjectPoolingManager::Update()
-{
-	for (auto& tile : _tiles)
-		tile->Update();
-}
-
-void ObjectPoolingManager::Render()
-{
-	for (auto& tile : _tiles)
-		tile->Render();
-}
-
-void ObjectPoolingManager::PostRender()
-{
-}
-
-void ObjectPoolingManager::DebugRender()
-{
-	for (auto& tile : _tiles)
-		tile->DebugRender();
 }

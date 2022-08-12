@@ -42,7 +42,7 @@ private:
 	vector<shared_ptr<class Monster>> _mons;
 
 	float _jumpPower = 300.0f;
-	float _gravity = 100.0f;
+	float _gravity = 30.0f;
 	State _state = GROUND;
 };
 

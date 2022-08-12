@@ -17,13 +17,6 @@ public:
 		CLIMBING
 	};
 
-	enum JumpingState
-	{
-		NONE,
-		UP,
-		DOWN
-	};
-	
 	MPlayer();
 	~MPlayer();
 
@@ -56,10 +49,8 @@ private:
 
 	vector<shared_ptr<class Tiles>> _tile;
 
-	JumpingState _jumpState = NONE;
 	bool _isJumping = false;
-	float _jumpPower = 50.0f;
-	float _jumTime = 0.0f;
-	float _gravity = 100.0f;
+	float _jumpPower = 150.0f;
+	float _gravity = 15.0f;
 };
 

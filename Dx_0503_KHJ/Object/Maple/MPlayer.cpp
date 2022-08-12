@@ -6,7 +6,7 @@ MPlayer::MPlayer()
 	_sprite = make_shared<Sprite>(MAPLE_1,Vector2(4,5));
 	_col = make_shared<RectCollider>(_sprite->GetHalfFrameSize());
 	_col->SetParent(_sprite->GetTransform());
-
+	
 	CreateData();
 }
 
@@ -16,6 +16,9 @@ MPlayer::~MPlayer()
 
 void MPlayer::Update()
 {
+	Operation();
+	Jumpimg();
+
 	_sprite->Update();
 
 
@@ -27,9 +30,6 @@ void MPlayer::Update()
 		_sprite->SetClipToActionBuffer(action->GetCurClip());
 	}
 	_col->Update();
-
-	Operation();
-	Jumpimg();
 }
 
 void MPlayer::Render()
@@ -146,10 +146,12 @@ void MPlayer::Operation()
 	State temp = L_IDLE;
 	
 	{
-		for (auto& _tile : _tile)
+		for (auto& tile : _tile)
 		{
-			if (_col->IsCollision(_tile->GetColl(), false))
+			if (_col->IsCollision(tile->GetColl(), false))
 			{
+				_col->SetRed();
+				tile->GetColl()->SetRed();
 				if (KEY_PRESS(VK_LEFT))
 				{
 					_playerPos.x -= 150.0f * DELTA_TIME;
@@ -165,8 +167,14 @@ void MPlayer::Operation()
 					return;
 				}
 			}
+			else
+			{
+				_col->SetGreen();
+				tile->GetColl()->SetGreen();
+			}
 		}
 
+		// 사다리의 충돌시만 발생하게 할예정
 		{
 			if (KEY_PRESS(VK_DOWN))
 			{
@@ -189,7 +197,6 @@ void MPlayer::Operation()
 			if (KEY_PRESS(VK_SPACE))
 			{
 				_isJumping = true;
-				_jumpState = UP;
 				return;
 			}
 		}
@@ -208,41 +215,27 @@ void MPlayer::Operation()
 
 void MPlayer::Jumpimg()
 {
-	//if (_playerPos.y < 100.0f && _jumpState == UP)
-	float* temp = &_playerPos.y;
-	*temp += 50.0f;
+	if (_isJumping == false)
+		return;
 
-	float test = *temp;
-	if (_jumpState == UP)
-	{
-		_jumTime += 10.0f;
-		_playerPos.y += _gravity * DELTA_TIME;
-		this->SetAnimation(MPlayer::State::L_JUMP);
-		if (_jumpPower > _jumTime)
-		{
-			_jumpState = DOWN;
-			return;
-		}
-	}
-	if (_jumpState == DOWN)
-	{
-		_playerPos.y -= _gravity * DELTA_TIME;
+	Vector2 temp;
+	_jumpPower -= (float)pow(_gravity, 2) * DELTA_TIME;
 
-		for (auto& _tile : _tile)
+	temp.y = _jumpPower;
+	_playerPos += temp * DELTA_TIME;
+	this->SetAnimation(MPlayer::State::L_JUMP);
+	
+	for (auto& tile : _tile)
+	{
+		if (_col->IsCollision(tile->GetColl(), false))
 		{
-			if (_col->IsCollision(_tile->GetColl(), false))
+			if (_playerPos.y <= tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y - 5.0f)
 			{
-				_col->SetRed();
-				_jumpState = NONE;
-				_playerPos.y = _tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y - 5.0f;
-				_isJumping = false;
 				this->SetAnimation(MPlayer::State::L_IDLE);
-				return;
-			}
-			else
-			{
-				_col->SetGreen();
+				_jumpPower = 150.0f;
+				_isJumping = false;
 			}
 		}
 	}
+	
 }

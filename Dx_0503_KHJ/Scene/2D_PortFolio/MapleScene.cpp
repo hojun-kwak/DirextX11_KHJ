@@ -73,6 +73,4 @@ void MapleScene::DebugRender()
 	_player->DebugRender();
 	_cursor->DebugRender();
 	_monsters->DebugRender();
-
-	
 }

@@ -153,14 +153,14 @@ void Player::Jump()
 		return;
 
 	Vector2 temp;
-	_jumpPower -= _gravity * DELTA_TIME;
+	_jumpPower -= (float)pow(_gravity,2) * DELTA_TIME;
 
 	temp.y = _jumpPower;
 	_quad->GetTransform()->GetPos() += temp * DELTA_TIME;
 
 	if (_quad->GetTransform()->GetPos().y < 0)
 	{
-		_jumpPower = 300.0f;
+		_jumpPower = 500.0f;
 		_state = GROUND;
 	}
 }
