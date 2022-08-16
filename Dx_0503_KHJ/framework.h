@@ -130,6 +130,7 @@ using namespace std;
 #include "Object/Maple/Tiles.h"
 #include "Object/Maple/Cursors.h"
 #include "Object/Maple/Monsters.h"
+#include "Object/Maple/Rope.h"
 #include "Object/Maple/ObjectPoolingManager.h"
 
 // Scene

@@ -249,6 +249,9 @@
     <ClInclude Include="Framework\Utillity\Audio.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\Maple\Rope.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -443,6 +446,9 @@
     <ClCompile Include="Framework\Utillity\Audio.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\Maple\Rope.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc">
@@ -531,9 +537,6 @@
     <Image Include="Resource\Maple\background2.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\Maple\BlueCave_Tile.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="Resource\Maple\charactorNormal.png">
       <Filter>리소스 파일</Filter>
     </Image>
@@ -546,10 +549,10 @@
     <Image Include="Resource\Maple\Red_snail.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\Maple\MainTile.png">
+    <Image Include="Resource\Maple\tile.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Resource\Maple\tile.png">
+    <Image Include="Resource\Maple\rope.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

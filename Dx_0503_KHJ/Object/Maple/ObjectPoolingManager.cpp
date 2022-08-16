@@ -5,13 +5,8 @@ ObjectPoolingManager* ObjectPoolingManager::_instance = nullptr;
 
 ObjectPoolingManager::ObjectPoolingManager()
 {
-	// 이createTiles를 여러번 생성하는것은 가능할까?
 	CreateTiles();
-
-	CreateData();
-	_test.emplace_back(_1floorTiles);
-	_test.emplace_back(_2floorTiles);
-	_test.emplace_back(_3floorTiles);
+	CreateRopes();
 }
 
 ObjectPoolingManager::~ObjectPoolingManager()
@@ -20,37 +15,22 @@ ObjectPoolingManager::~ObjectPoolingManager()
 
 void ObjectPoolingManager::Update()
 {
-	for (auto& tile : _tiles)
-		tile->Update();
+	for (auto& floorTiles : _tiles)
+		for (auto& tiles : floorTiles)
+			tiles->Update();
 
-	/*for (auto& tile1 : _1floorTiles)
-		tile1->Update();
-
-	for (auto& tile2 : _2floorTiles)
-		tile2->Update();
-
-	for (auto& tile3 : _3floorTiles)
-		tile3->Update();
-
-	for (int i = 0; i < _test.size(); i++)
-	{
-		_test[0][i]->Update();
-	}*/
+	for (auto& rope : _ropes)
+		rope->Update();
 }
 
 void ObjectPoolingManager::Render()
 {
-	for (auto& tile : _tiles)
-		tile->Render();
+	for (auto& floorTiles : _tiles)
+		for (auto& tiles : floorTiles)
+			tiles->Render();
 
-	/*for (auto& tile1 : _1floorTiles)
-		tile1->Render();
-
-	for (auto& tile2 : _2floorTiles)
-		tile2->Render();
-
-	for (auto& tile3 : _3floorTiles)
-		tile3->Render();*/
+	for (auto& rope : _ropes)
+		rope->Render();
 }
 
 void ObjectPoolingManager::PostRender()
@@ -59,101 +39,53 @@ void ObjectPoolingManager::PostRender()
 
 void ObjectPoolingManager::DebugRender()
 {
-	for (auto& tile : _tiles)
-		tile->DebugRender();
+	for (auto& floorTiles : _tiles)
+		for (auto& tiles : floorTiles)
+			tiles->DebugRender();
 
-	/*for (auto& tile1 : _1floorTiles)
-		tile1->DebugRender();
-
-	for (auto& tile2 : _2floorTiles)
-		tile2->DebugRender();
-
-	for (auto& tile3 : _3floorTiles)
-		tile3->DebugRender();*/
+	for (auto& rope : _ropes)
+		rope->DebugRender();
 }
 
 void ObjectPoolingManager::CreateTiles()
 {
-	_tiles.reserve(_tileCount);
-	for (int i = 0; i < _tileCount; i++)
-	{
-		shared_ptr<Tiles> temp = make_shared<Tiles>();
-		switch (i)
-		{
-		case 0:
-			temp->SetPosition(Vector2(-640.0f + temp->GetQuad()->GetHalfSize().x + 10.0f, -360.0f));
-			temp->_isActive = true;
-			break;
-		case 1:
-			temp->SetPosition(Vector2(-640.0f + (temp->GetQuad()->GetHalfSize().x * 3.0f), -360.0f));
-			temp->_isActive = true;
-			break;
-		case 2:
-			temp->SetPosition(Vector2(-640.0f + (temp->GetQuad()->GetHalfSize().x * 6.0f), -360.0f));
-			temp->_isActive = true;
-			break;
-		case 3:
-			temp->SetPosition(Vector2(-640.0f + (temp->GetQuad()->GetHalfSize().x * 6.5f), -360.0f));
-			temp->_isActive = true;
-			break;
-		case 4:
-			temp->SetPosition(Vector2(-640.0f + (temp->GetQuad()->GetHalfSize().x * 8.5f), -360.0f));
-			temp->_isActive = true;
-			break;
-		case 5:
-			temp->SetPosition(Vector2(-640.0f + (temp->GetQuad()->GetHalfSize().x * 10.5f), -360.0f));
-			temp->_isActive = true;
-			break;
-		case 6:
-			temp->SetPosition(Vector2(-640.0f + (temp->GetQuad()->GetHalfSize().x * 12.5f), -360.0f));
-			temp->_isActive = true;
-			break;
-		default:
-			break;
-		}
-
-		_tiles.emplace_back(temp);
-	}
-}
-
-void ObjectPoolingManager::CreateData()
-{
-
+	float y = 0;
 	// 1층
 	{
 		_1floorTiles.reserve(_tileCount);
+		y = -360.0f;
 		for (int i = 0; i < _tileCount; i++)
 		{
 			shared_ptr<Tiles> temp1 = make_shared<Tiles>();
 			switch (i)
 			{
 			case 0:
-				temp1->SetPosition(Vector2(-640.0f + temp1->GetQuad()->GetHalfSize().x + 10.0f, -360.0f));
-				temp1->_isActive = true;
+				temp1->SetPosition(Vector2(-640.0f + temp1->GetQuad()->GetHalfSize().x + 10.0f, y));
+				temp1->SetIsActive(true);
 				break;
 			case 1:
-				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 3.0f), -360.0f));
-				temp1->_isActive = true;
+				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 3.0f), y));
+				temp1->SetIsActive(true);
 				break;
 			case 2:
-				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 5.0f) - 10.0f, -360.0f));
-				temp1->_isActive = true;
+				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 5.0f) - 10.0f, y));
+				temp1->SetIsActive(true);
 				break;
 			case 3:
-				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 7.0f) - 20.0f, -360.0f));
-				temp1->_isActive = true;
+				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 7.0f) - 20.0f, y));
+				temp1->SetIsActive(true);
 				break;
 			case 4:
-				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 9.0f) - 30.0f, -360.0f));
-				temp1->_isActive = true;
+				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 9.0f) - 30.0f, y));
+				temp1->SetIsActive(true);
 				break;
 			case 5:
-				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 11.0f) - 40.0f, -360.0f));
-				temp1->_isActive = true;
+				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 11.0f) - 40.0f, y));
+				temp1->SetIsActive(true);
 				break;
 			case 6:
-				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 13.0f) - 200.0f, -360.0f));
-				temp1->_isActive = true;
+				temp1->SetPosition(Vector2(-640.0f + (temp1->GetQuad()->GetHalfSize().x * 13.0f) - 200.0f, y));
+				temp1->SetIsActive(true);
 				break;
 			default:
 				break;
@@ -165,38 +97,39 @@ void ObjectPoolingManager::CreateData()
 	// 2층
 	{
 		_2floorTiles.reserve(_tileCount);
+		y = -150.0f;
 		for (int i = 0; i < _tileCount; i++)
 		{
 			shared_ptr<Tiles> temp2 = make_shared<Tiles>();
 			switch (i)
 			{
 			case 0:
-				temp2->SetPosition(Vector2(-640.0f + temp2->GetQuad()->GetHalfSize().x + 10.0f, 0.0f));
-				temp2->_isActive = true;
+				temp2->SetPosition(Vector2(-640.0f + temp2->GetQuad()->GetHalfSize().x + 10.0f, y));
+				temp2->SetIsActive(true);
 				break;
 			case 1:
-				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 3.0f), 0.0f));
-				temp2->_isActive = true;
+				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 3.0f), y));
+				temp2->SetIsActive(true);
 				break;
 			case 2:
-				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 5.0f) - 10.0f, 0.0f));
-				temp2->_isActive = true;
+				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 5.0f) - 10.0f, y));
+				temp2->SetIsActive(true);
 				break;
 			case 3:
-				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 7.0f) - 20.0f, 0.0f));
-				temp2->_isActive = true;
+				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 7.0f) - 20.0f, y));
+				temp2->SetIsActive(true);
 				break;
 			case 4:
-				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 9.0f) - 30.0f, 0.0f));
-				temp2->_isActive = true;
+				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 9.0f) - 30.0f, y));
+				temp2->SetIsActive(true);
 				break;
 			case 5:
-				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 11.0f) - 40.0f, 0.0f));
-				temp2->_isActive = true;
+				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 11.0f) - 40.0f, y));
+				temp2->SetIsActive(true);
 				break;
 			case 6:
-				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 13.0f) - 200.0f, 0.0f));
-				temp2->_isActive = true;
+				temp2->SetPosition(Vector2(-640.0f + (temp2->GetQuad()->GetHalfSize().x * 13.0f) - 200.0f, y));
+				temp2->SetIsActive(true);
 				break;
 			default:
 				break;
@@ -208,43 +141,91 @@ void ObjectPoolingManager::CreateData()
 	// 3층
 	{
 		_3floorTiles.reserve(_tileCount);
+		y = 100.0f;
 		for (int i = 0; i < _tileCount; i++)
 		{
 			shared_ptr<Tiles> temp3 = make_shared<Tiles>();
 			switch (i)
 			{
 			case 0:
-				temp3->SetPosition(Vector2(-640.0f + temp3->GetQuad()->GetHalfSize().x + 10.0f, 180.0f));
-				temp3->_isActive = true;
+				temp3->SetPosition(Vector2(-640.0f + temp3->GetQuad()->GetHalfSize().x + 10.0f, y));
+				temp3->SetIsActive(true);
 				break;
 			case 1:
-				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 3.0f), 180.0f));
-				temp3->_isActive = true;
+				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 3.0f), y));
+				temp3->SetIsActive(true);
 				break;
 			case 2:
-				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 5.0f) - 10.0f, 180.0f));
-				temp3->_isActive = true;
+				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 5.0f) - 10.0f, y));
+				temp3->SetIsActive(true);
 				break;
 			case 3:
-				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 7.0f) - 20.0f, -180.0f));
-				temp3->_isActive = true;
+				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 7.0f) - 20.0f, y));
+				temp3->SetIsActive(true);
 				break;
 			case 4:
-				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 9.0f) - 30.0f, -180.0f));
-				temp3->_isActive = true;
+				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 9.0f) - 30.0f, y));
+				temp3->SetIsActive(true);
 				break;
 			case 5:
-				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 11.0f) - 40.0f, -180.0f));
-				temp3->_isActive = true;
+				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 11.0f) - 40.0f, y));
+				temp3->SetIsActive(true);
 				break;
 			case 6:
-				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 13.0f) - 200.0f, -180.0f));
-				temp3->_isActive = true;
+				temp3->SetPosition(Vector2(-640.0f + (temp3->GetQuad()->GetHalfSize().x * 13.0f) - 200.0f, y));
+				temp3->SetIsActive(true);
 				break;
 			default:
 				break;
 			}
 			_3floorTiles.emplace_back(temp3);
+		}
+	}
+
+	_tiles.emplace_back(_1floorTiles);
+	_tiles.emplace_back(_2floorTiles);
+	_tiles.emplace_back(_3floorTiles);
+}
+
+void ObjectPoolingManager::CreateRopes()
+{
+	{
+		_ropes.reserve(_ropeCount);
+		for (int i = 0; i < _ropeCount; i++)
+		{
+			shared_ptr<Rope> temp = make_shared<Rope>();
+			switch (i % 2)
+			{
+			case 0:
+				switch (i)
+				{
+				case 0:
+					temp->SetPosition(Vector2(-440.0f, -150.0f));
+					break;
+				case 2:
+					temp->SetPosition(Vector2(-440.0f, -100.0f));
+					break;
+				default:
+					break;
+				}
+				break;
+			case 1:
+				switch (i)
+				{
+				case 1:
+					temp->SetPosition(Vector2(440.0f, -150.0f));
+					break;
+				case 3:
+					temp->SetPosition(Vector2(440.0f, -100.0f));
+					break;
+				default:
+					break;
+				}
+				break;
+			default:
+				break;
+			}
+			_ropes.emplace_back(temp);
 		}
 	}
 }

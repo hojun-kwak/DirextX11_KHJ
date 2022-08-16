@@ -6,10 +6,8 @@ MapleScene::MapleScene()
 	_background = make_shared<Quad>(L"Resource/Maple/background2.png");
 
 	_player = make_shared<MPlayer>();
-	vector<shared_ptr<Tiles>> tiles = ObjectPoolingManager::GetInstance()->GetTiles();
+	vector<vector<shared_ptr<Tiles>>> tiles = ObjectPoolingManager::GetInstance()->GetTiles();
 	_player->SetTile(tiles);
-	// 맨아래 타일의 y값을 가져온다
-	//_player->SetPosition(-525.0f, tiles[1]->GetPos().y + (_player->GetSprite()->GetHalfFrameSize().y )); 
 	_player->SetPosition(-525.0f, -318.0f); 
 
 	_playerFollow = make_shared<Transform>();

@@ -28,7 +28,7 @@ public:
 	void SetPosition(float x, float y);
 	void SetAnimation(State aniState);
 
-	void SetTile(vector<shared_ptr<class Tiles>> tile) { _tile = tile; }
+	void SetTile(vector<vector<shared_ptr<class Tiles>>> tiles) { _tiles = tiles; }
 
 	void CreateData();
 
@@ -47,7 +47,7 @@ private:
 	vector<shared_ptr<Action>> _actions;
 	shared_ptr<Collider> _col;
 
-	vector<shared_ptr<class Tiles>> _tile;
+	vector<vector<shared_ptr<class Tiles>>> _tiles;
 
 	bool _isJumping = false;
 	float _jumpPower = 150.0f;

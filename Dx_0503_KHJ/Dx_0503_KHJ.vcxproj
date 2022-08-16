@@ -162,6 +162,7 @@
     <ClInclude Include="Libary\FMOD\inc\fmod_dsp_effects.h" />
     <ClInclude Include="Libary\FMOD\inc\fmod_errors.h" />
     <ClInclude Include="Libary\FMOD\inc\fmod_output.h" />
+    <ClInclude Include="Object\Maple\Rope.h" />
     <ClInclude Include="Scene\InstancingScene.h" />
     <ClInclude Include="Object\UI\MiniMap.h" />
     <ClInclude Include="Object\Maple\ObjectPoolingManager.h" />
@@ -238,6 +239,7 @@
   <ItemGroup>
     <ClCompile Include="Framework\Utillity\Audio.cpp" />
     <ClCompile Include="Framework\Utillity\MathUtillity.cpp" />
+    <ClCompile Include="Object\Maple\Rope.cpp" />
     <ClCompile Include="Scene\InstancingScene.cpp" />
     <ClCompile Include="Object\UI\MiniMap.cpp" />
     <ClCompile Include="Object\Maple\ObjectPoolingManager.cpp" />
@@ -327,11 +329,10 @@
     <Image Include="Resource\LostArk.png" />
     <Image Include="Resource\Maple\background.png" />
     <Image Include="Resource\Maple\background2.png" />
-    <Image Include="Resource\Maple\BlueCave_Tile.png" />
     <Image Include="Resource\Maple\charactorNormal.png" />
     <Image Include="Resource\Maple\Cursor.png" />
-    <Image Include="Resource\Maple\MainTile.png" />
     <Image Include="Resource\Maple\Red_snail.png" />
+    <Image Include="Resource\Maple\rope.png" />
     <Image Include="Resource\Maple\test.png" />
     <Image Include="Resource\Maple\tile.png" />
     <Image Include="Resource\moon.png" />

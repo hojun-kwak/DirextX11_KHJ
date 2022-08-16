@@ -146,32 +146,33 @@ void MPlayer::Operation()
 	State temp = L_IDLE;
 	
 	{
-		for (auto& tile : _tile)
-		{
-			if (_col->IsCollision(tile->GetColl(), false))
+		for(auto& floorTiles : _tiles)
+			for (auto& tile : floorTiles)
 			{
-				_col->SetRed();
-				tile->GetColl()->SetRed();
-				if (KEY_PRESS(VK_LEFT))
+				if (_col->IsCollision(tile->GetColl(), false))
 				{
-					_playerPos.x -= 150.0f * DELTA_TIME;
-					this->SetAnimation(MPlayer::State::L_RUN);
-					temp = L_IDLE;
-					return;
+					_col->SetRed();
+					tile->GetColl()->SetRed();
+					if (KEY_PRESS(VK_LEFT))
+					{
+						_playerPos.x -= 150.0f * DELTA_TIME;
+						this->SetAnimation(MPlayer::State::L_RUN);
+						temp = L_IDLE;
+						return;
+					}
+					if (KEY_PRESS(VK_RIGHT))
+					{
+						_playerPos.x += 150.0f * DELTA_TIME;
+						this->SetAnimation(MPlayer::State::R_RUN);
+						temp = R_IDLE;
+						return;
+					}
 				}
-				if (KEY_PRESS(VK_RIGHT))
+				else
 				{
-					_playerPos.x += 150.0f * DELTA_TIME;
-					this->SetAnimation(MPlayer::State::R_RUN);
-					temp = R_IDLE;
-					return;
+					_col->SetGreen();
+					tile->GetColl()->SetGreen();
 				}
-			}
-			else
-			{
-				_col->SetGreen();
-				tile->GetColl()->SetGreen();
-			}
 		}
 
 		// 사다리의 충돌시만 발생하게 할예정
@@ -225,17 +226,18 @@ void MPlayer::Jumpimg()
 	_playerPos += temp * DELTA_TIME;
 	this->SetAnimation(MPlayer::State::L_JUMP);
 	
-	for (auto& tile : _tile)
-	{
-		if (_col->IsCollision(tile->GetColl(), false))
+	for (auto& floorTiles : _tiles)
+		for (auto& tile : floorTiles)
 		{
-			if (_playerPos.y <= tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y - 5.0f)
+			if (_col->IsCollision(tile->GetColl(), false))
 			{
-				this->SetAnimation(MPlayer::State::L_IDLE);
-				_jumpPower = 150.0f;
-				_isJumping = false;
+				if (_playerPos.y <= tile->GetColl()->Top() + _sprite->GetHalfFrameSize().y - 5.0f)
+				{
+					this->SetAnimation(MPlayer::State::L_IDLE);
+					_jumpPower = 150.0f;
+					_isJumping = false;
+				}
 			}
 		}
-	}
 	
 }
