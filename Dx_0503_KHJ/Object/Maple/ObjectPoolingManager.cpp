@@ -194,16 +194,18 @@ void ObjectPoolingManager::CreateRopes()
 		for (int i = 0; i < _ropeCount; i++)
 		{
 			shared_ptr<Rope> temp = make_shared<Rope>();
+			temp->GetTransform()->GetScale() *= 0.3f;
+			float ropeYSize = temp->GetQuad()->GetHalfSize().y;
 			switch (i % 2)
 			{
 			case 0:
 				switch (i)
 				{
 				case 0:
-					temp->SetPosition(Vector2(-440.0f, -150.0f));
+					temp->SetPosition(Vector2(-440.0f, (-150.0f - ropeYSize)));
 					break;
 				case 2:
-					temp->SetPosition(Vector2(-440.0f, -100.0f));
+					temp->SetPosition(Vector2(-440.0f, (100.0f - ropeYSize)));
 					break;
 				default:
 					break;
@@ -213,10 +215,10 @@ void ObjectPoolingManager::CreateRopes()
 				switch (i)
 				{
 				case 1:
-					temp->SetPosition(Vector2(440.0f, -150.0f));
+					temp->SetPosition(Vector2(440.0f, (-150.0f - ropeYSize)));
 					break;
 				case 3:
-					temp->SetPosition(Vector2(440.0f, -100.0f));
+					temp->SetPosition(Vector2(440.0f, (100.0f - ropeYSize)));
 					break;
 				default:
 					break;

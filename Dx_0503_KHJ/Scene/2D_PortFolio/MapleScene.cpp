@@ -46,8 +46,6 @@ void MapleScene::Update()
 		_playerFollow->GetPos() = LERP(_playerFollow->GetPos(), _player->GetTransForm()->GetPos(), 0.001f);
 	}
 
-	
-	
 }
 
 void MapleScene::Render()

@@ -4,7 +4,6 @@
 Rope::Rope()
 {
 	_quad = make_shared<Quad>(L"Resource/Maple/Rope.png");
-	_quad->GetTransform()->GetScale() *= 0.3f;
 	_col = make_shared<RectCollider>(_quad->GetHalfSize());
 	_col->SetParent(_quad->GetTransform());
 }
