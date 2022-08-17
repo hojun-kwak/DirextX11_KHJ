@@ -6,6 +6,8 @@ MPlayer::MPlayer()
 	_sprite = make_shared<Sprite>(MAPLE_1,Vector2(4,5));
 	_col = make_shared<RectCollider>(_sprite->GetHalfFrameSize());
 	_col->SetParent(_sprite->GetTransform());
+	_ropeCol = make_shared<RectCollider>(_sprite->GetHalfFrameSize() * 0.5f);
+	_ropeCol->SetParent(_sprite->GetTransform());
 	
 	CreateData();
 }
@@ -30,6 +32,7 @@ void MPlayer::Update()
 		_sprite->SetClipToActionBuffer(action->GetCurClip());
 	}
 	_col->Update();
+	_ropeCol->Update();
 }
 
 void MPlayer::Render()
@@ -45,6 +48,7 @@ void MPlayer::PostRender()
 void MPlayer::DebugRender()
 {
 	_col->Render();
+	_ropeCol->Render();
 	ImGui::Text("AniState : %c", _aniState);
 }
 
@@ -126,6 +130,13 @@ void MPlayer::CreateData()
 	clips.clear();
 
 	y = maple_player1_depth * (4.0f / 5.0f);
+
+	{
+		clips.emplace_back(0, y, w, h, Texture::Add(MAPLE_1));
+	}
+	_actions.push_back(make_shared<Action>(clips, "CLIMBING_IDLE"));
+	clips.clear();
+
 	{
 		clips.emplace_back(0, y, w, h, Texture::Add(MAPLE_1));
 		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_1));
@@ -143,7 +154,6 @@ void MPlayer::CreateData()
 void MPlayer::Operation()
 {
 	this->SetPosition(_playerPos.x, _playerPos.y);
-	State temp = L_IDLE;
 	
 	{
 		for(auto& floorTiles : _tiles)
@@ -157,14 +167,12 @@ void MPlayer::Operation()
 					{
 						_playerPos.x -= 150.0f * DELTA_TIME;
 						this->SetAnimation(MPlayer::State::L_RUN);
-						temp = L_IDLE;
 						return;
 					}
 					if (KEY_PRESS(VK_RIGHT))
 					{
 						_playerPos.x += 150.0f * DELTA_TIME;
 						this->SetAnimation(MPlayer::State::R_RUN);
-						temp = R_IDLE;
 						return;
 					}
 				}
@@ -176,22 +184,67 @@ void MPlayer::Operation()
 		}
 
 		// 사다리의 충돌시만 발생하게 할예정
+		for (auto& rope : _ropes)
 		{
-			if (KEY_PRESS(VK_DOWN))
+			if (_ropeCol->IsCollision(rope->GetColl(), false))
 			{
-				_playerPos.y -= 150.0f * DELTA_TIME;
-				this->SetAnimation(MPlayer::State::CLIMBING);
-				temp = _aniState;
-				return;
+				_col->SetRed();
+				_ropeCol->SetRed();
+				rope->GetColl()->SetRed();
+				if (KEY_PRESS(VK_DOWN))
+				{
+					_playerPos.x = rope->GetRopePos().x;
+					_playerPos.y -= 150.0f * DELTA_TIME;
+					this->SetAnimation(MPlayer::State::CLIMBING);
+					// 만약 로프의 top의 사이즈만큼 올라왔다면? 우선 멈추자
+					if (_playerPos.y < rope->GetColl()->Bottom())
+					//if (_playerPos.y < -301.5f)
+					{
+						_playerPos.x = rope->GetRopePos().x;
+						_playerPos.y -= 10.0f;
+						for(auto& FloorTiles : _tiles)
+							for (auto& tile : FloorTiles)
+							{
+								if (_col->IsCollision(tile->GetColl(), false))
+								{
+									_playerPos.y = tile->GetColl()->Top() + tile->GetQuad()->GetHalfSize().y;
+									this->SetAnimation(MPlayer::State::L_IDLE);
+								}
+							}
+						return;
+					}
+					return;
+				}
+				if (KEY_PRESS(VK_UP))
+				{
+					_playerPos.x = rope->GetRopePos().x;
+					_playerPos.y += 150.0f * DELTA_TIME;
+					this->SetAnimation(MPlayer::State::CLIMBING);
+					if (_playerPos.y >= rope->GetColl()->Top())
+					{
+						for(auto& floorTiles : _tiles)
+							for (auto& tile : floorTiles)
+							{
+								if (_col->IsCollision(tile->GetColl(), false))
+								{
+									_playerPos.x = rope->GetRopePos().x;
+									_playerPos.y = tile->GetColl()->Top() + tile->GetQuad()->GetHalfSize().y;
+									this->SetAnimation(MPlayer::State::L_IDLE);
+									return;
+								}
+							}
+					}
+					return;
+				}
 			}
-			if (KEY_PRESS(VK_UP))
+			else
 			{
-				_playerPos.y += 150.0f * DELTA_TIME;
-				this->SetAnimation(MPlayer::State::CLIMBING);
-				temp = _aniState;
-				return;
+				_col->SetGreen();
+				_ropeCol->SetGreen();
+				rope->GetColl()->SetGreen();
 			}
 		}
+		
 
 		if (_isJumping == false)
 		{
@@ -208,9 +261,9 @@ void MPlayer::Operation()
 		if (KEY_UP(VK_RIGHT))
 			this->SetAnimation(MPlayer::State::R_IDLE);
 		if (KEY_UP(VK_UP))
-			this->SetAnimation(MPlayer::State::L_IDLE);
+			this->SetAnimation(MPlayer::State::CLIMBING_IDLE);
 		if(KEY_UP(VK_DOWN))
-			this->SetAnimation(MPlayer::State::L_IDLE);
+			this->SetAnimation(MPlayer::State::CLIMBING_IDLE);
 	}
 }
 

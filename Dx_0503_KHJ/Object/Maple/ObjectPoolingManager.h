@@ -35,6 +35,7 @@ public:
 	void CreateRopes();
 
 	vector<vector<shared_ptr<Tiles>>> GetTiles() { return _tiles; }
+	vector<shared_ptr<Rope>> GetRopes() { return _ropes; }
 
 private:
 	static ObjectPoolingManager* _instance;

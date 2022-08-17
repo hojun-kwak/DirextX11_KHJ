@@ -14,6 +14,7 @@ public:
 		L_JUMP,
 		R_JUMP,
 
+		CLIMBING_IDLE,
 		CLIMBING
 	};
 
@@ -29,6 +30,7 @@ public:
 	void SetAnimation(State aniState);
 
 	void SetTile(vector<vector<shared_ptr<class Tiles>>> tiles) { _tiles = tiles; }
+	void SetRope(vector<shared_ptr<class Rope>> ropes) { _ropes = ropes; }
 
 	void CreateData();
 
@@ -45,9 +47,12 @@ private:
 	Vector2 _playerPos = { 0,0 };
 	shared_ptr<Sprite> _sprite;
 	vector<shared_ptr<Action>> _actions;
-	shared_ptr<Collider> _col;
+	shared_ptr<RectCollider> _col;
+	shared_ptr<RectCollider> _ropeCol;
 
 	vector<vector<shared_ptr<class Tiles>>> _tiles;
+
+	vector<shared_ptr<class Rope>> _ropes;
 
 	bool _isJumping = false;
 	float _jumpPower = 150.0f;

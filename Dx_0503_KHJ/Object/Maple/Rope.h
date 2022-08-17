@@ -15,6 +15,8 @@ public:
 	shared_ptr<Quad> GetQuad() { return _quad; }
 	shared_ptr<RectCollider> GetColl() { return _col; }
 
+	Vector2 GetRopePos() { return _ropePos; }
+
 private:
 	Vector2 _ropePos = { 0,0 };
 	shared_ptr<Quad> _quad;
