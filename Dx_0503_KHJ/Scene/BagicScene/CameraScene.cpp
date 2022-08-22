@@ -51,16 +51,6 @@ void CameraScene::Update()
 	}
 
 	_button->Update();
-
-	Vector2 mP = Camera::GetInstance()->GetMouseWorldPos();
-	if (_button->GetRectCollider()->IsCollision(mP))
-	{
-		_button->GetRectCollider()->SetRed();
-	}
-	else
-	{
-		_button->GetRectCollider()->SetGreen();
-	}
 	_miniMap->Update();
 }
 

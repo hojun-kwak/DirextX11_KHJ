@@ -34,6 +34,14 @@ Player::~Player()
 {
 }
 
+void Player::Init()
+{
+	_quad->GetTransform()->GetPos() = { 0.0f,0.0f };
+
+	for (auto& bullet : _bullets)
+		bullet->_isActive = false;
+}
+
 void Player::Update()
 {
 	Move();

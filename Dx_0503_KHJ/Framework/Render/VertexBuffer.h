@@ -10,9 +10,12 @@ public:
 
 private:
 	void CreateVertexBuffer(void* data);
+	void Update();
 
 	Microsoft::WRL::ComPtr<ID3D11Buffer> _vertexBuffer;
+	D3D11_MAPPED_SUBRESOURCE _subResource;
 
+	void* _data;
 	UINT _count;
 	UINT _stride;
 	UINT _offset;

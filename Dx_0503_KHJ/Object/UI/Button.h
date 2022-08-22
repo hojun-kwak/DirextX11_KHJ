@@ -27,8 +27,6 @@ public:
 		_param = param;
 	}
 
-	shared_ptr<RectCollider> GetRectCollider() { return _col; }
-
 private:
 	ButtonState _state;
 

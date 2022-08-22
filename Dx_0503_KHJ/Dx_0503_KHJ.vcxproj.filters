@@ -57,7 +57,7 @@
     <ClInclude Include="Scene\Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\TextureScene.h">
+    <ClInclude Include="Scene\BagicScene\TextureScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Render\IndexBuffer.h">
@@ -69,10 +69,10 @@
     <ClInclude Include="Framework\Render\GlobalBuffer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\TextureWVPScene.h">
+    <ClInclude Include="Scene\BagicScene\TextureWVPScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\SolaSystemScene.h">
+    <ClInclude Include="Scene\BagicScene\SolaSystemScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Math\Vector2.h">
@@ -96,7 +96,7 @@
     <ClInclude Include="Framework\Component\Transform.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\DunGridScene.h">
+    <ClInclude Include="Scene\BagicScene\DunGridScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Dungreed\Player.h">
@@ -117,7 +117,7 @@
     <ClInclude Include="Framework\Collider\Collider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\ColliderScene.h">
+    <ClInclude Include="Scene\BagicScene\ColliderScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Collider\CircleCollider.h">
@@ -147,10 +147,10 @@
     <ClInclude Include="Object\Zelda\Zelda.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\ZeldaScene.h">
+    <ClInclude Include="Scene\BagicScene\ZeldaScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\FilterScene.h">
+    <ClInclude Include="Scene\BagicScene\FilterScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\BagicObj\Effect.h">
@@ -159,7 +159,7 @@
     <ClInclude Include="Framework\Utillity\Utillity.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\EffectScene.h">
+    <ClInclude Include="Scene\BagicScene\EffectScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\BagicObj\EffectManager.h">
@@ -168,7 +168,7 @@
     <ClInclude Include="Framework\Camera\Camera.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\CameraScene.h">
+    <ClInclude Include="Scene\BagicScene\CameraScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Utillity\BinaryReader.h">
@@ -198,7 +198,7 @@
     <ClInclude Include="Object\Zelda\ItemDataes.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\XmlLoadScene.h">
+    <ClInclude Include="Scene\BagicScene\XmlLoadScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object\Maple\Cursors.h">
@@ -219,7 +219,7 @@
     <ClInclude Include="Framework\Utillity\MathUtillity.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\InstancingScene.h">
+    <ClInclude Include="Scene\BagicScene\InstancingScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Libary\FMOD\inc\fmod.h">
@@ -252,6 +252,21 @@
     <ClInclude Include="Object\Maple\Rope.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\UI\Inventory.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Dungreed\Item.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\UI\ItemIcon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\BagicScene\InventoryScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dx_0503_KHJ.cpp">
@@ -281,7 +296,7 @@
     <ClCompile Include="Scene\Scene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\TextureScene.cpp">
+    <ClCompile Include="Scene\BagicScene\TextureScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Render\IndexBuffer.cpp">
@@ -290,10 +305,10 @@
     <ClCompile Include="Framework\Render\ConstantBuffer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\TextureWVPScene.cpp">
+    <ClCompile Include="Scene\BagicScene\TextureWVPScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\SolaSystemScene.cpp">
+    <ClCompile Include="Scene\BagicScene\SolaSystemScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Math\Vector2.cpp">
@@ -317,7 +332,7 @@
     <ClCompile Include="Framework\Component\Transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\DunGridScene.cpp">
+    <ClCompile Include="Scene\BagicScene\DunGridScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Dungreed\Player.cpp">
@@ -338,7 +353,7 @@
     <ClCompile Include="Framework\Collider\Collider.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\ColliderScene.cpp">
+    <ClCompile Include="Scene\BagicScene\ColliderScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Collider\CircleCollider.cpp">
@@ -368,10 +383,10 @@
     <ClCompile Include="Object\Zelda\Zelda.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\ZeldaScene.cpp">
+    <ClCompile Include="Scene\BagicScene\ZeldaScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\FilterScene.cpp">
+    <ClCompile Include="Scene\BagicScene\FilterScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\BagicObj\Effect.cpp">
@@ -380,7 +395,7 @@
     <ClCompile Include="Framework\Utillity\Utillity.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\EffectScene.cpp">
+    <ClCompile Include="Scene\BagicScene\EffectScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\BagicObj\EffectManager.cpp">
@@ -389,7 +404,7 @@
     <ClCompile Include="Framework\Camera\Camera.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\CameraScene.cpp">
+    <ClCompile Include="Scene\BagicScene\CameraScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Utillity\BinaryReader.cpp">
@@ -419,7 +434,7 @@
     <ClCompile Include="Object\Zelda\ItemDataes.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\XmlLoadScene.cpp">
+    <ClCompile Include="Scene\BagicScene\XmlLoadScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Maple\Cursors.cpp">
@@ -440,13 +455,28 @@
     <ClCompile Include="Framework\Utillity\MathUtillity.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\InstancingScene.cpp">
+    <ClCompile Include="Scene\BagicScene\InstancingScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Utillity\Audio.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Object\Maple\Rope.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\UI\Inventory.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Dungreed\Item.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\UI\ItemIcon.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\BagicScene\InventoryScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -553,6 +583,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\Maple\rope.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Item.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

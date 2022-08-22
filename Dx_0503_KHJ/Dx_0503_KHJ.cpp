@@ -111,6 +111,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectPoolingManager::Create();
     Camera::Create();
     Audio::Create();
+    SceneManager::Create();
 
     srand(static_cast<UINT>(time(nullptr)));
     shared_ptr<Program> program = make_shared<Program>();
@@ -145,6 +146,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // 삭제.
+    SceneManager::Delete();
     Audio::Delete();
     Camera::Delete();
     ObjectPoolingManager::Delete();

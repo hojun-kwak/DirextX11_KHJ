@@ -14,6 +14,7 @@ public:
 	void SetDirection(Vector2 dir);
 	void SetPosition(Vector2 pos) { _quad->GetTransform()->GetPos() = pos; }
 	void SetAngle(float angle) { _quad->GetTransform()->GetAngle() = angle; }
+
 	bool _isActive = false;
 
 private:

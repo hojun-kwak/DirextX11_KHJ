@@ -40,6 +40,11 @@ InstancingScene::InstancingScene()
 	SOUND->Add("ATTACK", "Resource/Sound/attack.wav");
 
 	SOUND->Play("BGM_1");
+
+	_transform = make_shared<Transform>();
+	_transform->GetScale() = { 0.1f,0.1f };
+	_transform->GetPos() = CENTER;
+	_transform->UpdateWorldBuffer();
 }
 
 InstancingScene::~InstancingScene()
@@ -48,8 +53,16 @@ InstancingScene::~InstancingScene()
 
 void InstancingScene::Update()
 {
+	_transform->UpdateWorldBuffer();
+
+	for (auto& m : _instancingDataes)
+		m.matrix = XMMatrixTranspose(_transform->GetMatrix());
+
 	if (KEY_DOWN(VK_SPACE))
 		SOUND->Play("ATTACK");
+
+	if (KEY_PRESS(VK_SPACE))
+		_transform->GetPos().x += DELTA_TIME * 1000.0f;
 }
 
 void InstancingScene::Render()

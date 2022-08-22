@@ -20,6 +20,7 @@ private:
 
 	vector<InstanceData> _instancingDataes;
 	shared_ptr<VertexBuffer> _instanceBuffer;
+	shared_ptr<Transform> _transform;
 
 	UINT _poolCount = 50;
 };

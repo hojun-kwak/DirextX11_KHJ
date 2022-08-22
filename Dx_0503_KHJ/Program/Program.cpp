@@ -1,24 +1,11 @@
 #include "framework.h"
 #include "Program.h"
 
-#include "../Scene/TextureScene.h"
-#include "../Scene/TextureWVPScene.h"
-#include "../Scene/SolaSystemScene.h"
-#include "../Scene/DunGridScene.h"
-#include "../Scene/ColliderScene.h"
-#include "../Scene/ZeldaScene.h"
-#include "../Scene/FilterScene.h"
-#include "../Scene/EffectScene.h"
-#include "../Scene/CameraScene.h"
-#include "../Scene/2D_PortFolio/MapleScene.h"
-#include "../Scene/XmlLoadScene.h"
-#include "../Scene/InstancingScene.h"
 
 Program::Program()
 {
 	//_scene = make_shared<DunGridScene>();
 	srand(static_cast<unsigned int>(time(nullptr)));
-	_scene = make_shared<MapleScene>();
 }
 
 Program::~Program()
@@ -29,13 +16,14 @@ void Program::Update()
 {
 	EffectManager::GetInstance()->Update();
 	Camera::GetInstance()->Update();
-	_scene->Update();
+
+	SCENE->Update();
 }
 
 void Program::Render()
 {
 	// 傈贸府 开开
-	_scene->PreRender();
+	SCENE->PreRender();
 
 	Device::GetInstance()->SetRenderTarget();
 	Device::GetInstance()->Clear(184.0f, 248.0f, 251.0f);
@@ -49,7 +37,7 @@ void Program::Render()
 	Camera::GetInstance()->SetViewPort();
 	Camera::GetInstance()->SetProjectionBuffer();
 
-	_scene->Render();
+	SCENE->Render();
 	if (KEY_DOWN(VK_F1))
 	{
 		if (_OnOff == false)
@@ -73,7 +61,7 @@ void Program::Render()
 
 	Camera::GetInstance()->PostRender();
 	Camera::GetInstance()->SetUIBuffer();
-	_scene->PostRender();
+	SCENE->PostRender();
 
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

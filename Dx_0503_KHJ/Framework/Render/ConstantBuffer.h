@@ -4,7 +4,7 @@ class ConstantBuffer
 {
 public:
 	// 포인터 data가 가리키는 변수에 저장된 값이 정수형
-	ConstantBuffer(void* data, UINT count);
+	ConstantBuffer(void* data, UINT dataSize);
 	~ConstantBuffer();
 
 	
@@ -17,7 +17,7 @@ private:
 	D3D11_MAPPED_SUBRESOURCE _subResource;
 
 	void* _data;
-	UINT _count;
+	UINT _dataSize;
 
 };
 

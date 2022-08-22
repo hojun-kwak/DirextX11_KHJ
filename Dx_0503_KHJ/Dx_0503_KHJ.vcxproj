@@ -154,6 +154,10 @@
   <ItemGroup>
     <ClInclude Include="Framework\Utillity\Audio.h" />
     <ClInclude Include="Framework\Utillity\MathUtillity.h" />
+    <ClInclude Include="Scene\BagicScene\InventoryScene.h" />
+    <ClInclude Include="Object\Dungreed\Item.h" />
+    <ClInclude Include="Object\UI\ItemIcon.h" />
+    <ClInclude Include="Object\UI\Inventory.h" />
     <ClInclude Include="Libary\FMOD\inc\fmod.h" />
     <ClInclude Include="Libary\FMOD\inc\fmod.hpp" />
     <ClInclude Include="Libary\FMOD\inc\fmod_codec.h" />
@@ -163,7 +167,8 @@
     <ClInclude Include="Libary\FMOD\inc\fmod_errors.h" />
     <ClInclude Include="Libary\FMOD\inc\fmod_output.h" />
     <ClInclude Include="Object\Maple\Rope.h" />
-    <ClInclude Include="Scene\InstancingScene.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Scene\BagicScene\InstancingScene.h" />
     <ClInclude Include="Object\UI\MiniMap.h" />
     <ClInclude Include="Object\Maple\ObjectPoolingManager.h" />
     <ClInclude Include="Object\Maple\Monsters.h" />
@@ -176,17 +181,17 @@
     <ClInclude Include="Framework\Render\RenderTarget.h" />
     <ClInclude Include="Scene\2D_PortFolio\MapleScene.h" />
     <ClInclude Include="Object\UI\Button.h" />
-    <ClInclude Include="Scene\CameraScene.h" />
+    <ClInclude Include="Scene\BagicScene\CameraScene.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
     <ClInclude Include="Object\BagicObj\EffectManager.h" />
-    <ClInclude Include="Scene\EffectScene.h" />
+    <ClInclude Include="Scene\BagicScene\EffectScene.h" />
     <ClInclude Include="Object\BagicObj\Effect.h" />
-    <ClInclude Include="Scene\FilterScene.h" />
+    <ClInclude Include="Scene\BagicScene\FilterScene.h" />
     <ClInclude Include="Framework\Animation\Action.h" />
     <ClInclude Include="Framework\Collider\CircleCollider.h" />
     <ClInclude Include="Object\Dungreed\Monster.h" />
     <ClInclude Include="Object\BagicObj\Quad.h" />
-    <ClInclude Include="Scene\ColliderScene.h" />
+    <ClInclude Include="Scene\BagicScene\ColliderScene.h" />
     <ClInclude Include="Framework\Collider\Collider.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -197,7 +202,7 @@
     <ClInclude Include="Framework\Collider\RectCollider.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Scene\DunGridScene.h" />
+    <ClInclude Include="Scene\BagicScene\DunGridScene.h" />
     <ClInclude Include="Framework\Math\Vector2.h" />
     <ClInclude Include="Framework\Render\ConstantBuffer.h" />
     <ClInclude Include="Framework\Device\Device.h" />
@@ -217,30 +222,35 @@
     <ClInclude Include="Framework\Texture\SamplerState.h" />
     <ClInclude Include="Framework\Texture\SRV.h" />
     <ClInclude Include="Scene\Scene.h" />
-    <ClInclude Include="Scene\SolaSystemScene.h" />
+    <ClInclude Include="Scene\BagicScene\SolaSystemScene.h" />
     <ClInclude Include="Framework\Render\ShaderManager.h" />
     <ClInclude Include="Framework\Render\Shader.h" />
     <ClInclude Include="Object\BagicObj\Sprite.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Framework\Render\VertexBuffer.h" />
     <ClInclude Include="Framework\Render\VertexShader.h" />
-    <ClInclude Include="Scene\TextureScene.h" />
-    <ClInclude Include="Scene\TextureWVPScene.h" />
+    <ClInclude Include="Scene\BagicScene\TextureScene.h" />
+    <ClInclude Include="Scene\BagicScene\TextureWVPScene.h" />
     <ClInclude Include="Framework\Component\Transform.h" />
     <ClInclude Include="Framework\Texture\Texture.h" />
     <ClInclude Include="Object\Maple\Tiles.h" />
     <ClInclude Include="Framework\Utillity\tinyxml2.h" />
     <ClInclude Include="TypeDef.h" />
     <ClInclude Include="Object\Zelda\Zelda.h" />
-    <ClInclude Include="Scene\ZeldaScene.h" />
+    <ClInclude Include="Scene\BagicScene\ZeldaScene.h" />
     <ClInclude Include="Framework\Utillity\Utillity.h" />
-    <ClInclude Include="Scene\XmlLoadScene.h" />
+    <ClInclude Include="Scene\BagicScene\XmlLoadScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Utillity\Audio.cpp" />
     <ClCompile Include="Framework\Utillity\MathUtillity.cpp" />
+    <ClCompile Include="Scene\BagicScene\InventoryScene.cpp" />
+    <ClCompile Include="Object\Dungreed\Item.cpp" />
+    <ClCompile Include="Object\UI\ItemIcon.cpp" />
+    <ClCompile Include="Object\UI\Inventory.cpp" />
     <ClCompile Include="Object\Maple\Rope.cpp" />
-    <ClCompile Include="Scene\InstancingScene.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Scene\BagicScene\InstancingScene.cpp" />
     <ClCompile Include="Object\UI\MiniMap.cpp" />
     <ClCompile Include="Object\Maple\ObjectPoolingManager.cpp" />
     <ClCompile Include="Object\Maple\Monsters.cpp" />
@@ -253,17 +263,17 @@
     <ClCompile Include="Framework\Render\RenderTarget.cpp" />
     <ClCompile Include="Scene\2D_PortFolio\MapleScene.cpp" />
     <ClCompile Include="Object\UI\Button.cpp" />
-    <ClCompile Include="Scene\CameraScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\CameraScene.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Object\BagicObj\EffectManager.cpp" />
-    <ClCompile Include="Scene\EffectScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\EffectScene.cpp" />
     <ClCompile Include="Object\BagicObj\Effect.cpp" />
-    <ClCompile Include="Scene\FilterScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\FilterScene.cpp" />
     <ClCompile Include="Framework\Animation\Action.cpp" />
     <ClCompile Include="Framework\Collider\CircleCollider.cpp" />
     <ClCompile Include="Object\Dungreed\Monster.cpp" />
     <ClCompile Include="Object\BagicObj\Quad.cpp" />
-    <ClCompile Include="Scene\ColliderScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\ColliderScene.cpp" />
     <ClCompile Include="Framework\Collider\Collider.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -274,7 +284,7 @@
     <ClCompile Include="Framework\Collider\RectCollider.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Scene\DunGridScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\DunGridScene.cpp" />
     <ClCompile Include="Framework\Math\Vector2.cpp" />
     <ClCompile Include="Framework\Render\ConstantBuffer.cpp" />
     <ClCompile Include="Framework\Device\Device.cpp" />
@@ -292,20 +302,20 @@
     <ClCompile Include="Framework\Utillity\Timer.cpp" />
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
-    <ClCompile Include="Scene\TextureScene.cpp" />
-    <ClCompile Include="Scene\TextureWVPScene.cpp" />
-    <ClCompile Include="Scene\SolaSystemScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\TextureScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\TextureWVPScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\SolaSystemScene.cpp" />
     <ClCompile Include="Framework\Component\Transform.cpp" />
     <ClCompile Include="Framework\Render\ShaderManager.cpp" />
     <ClCompile Include="Framework\Render\Shader.cpp" />
     <ClCompile Include="Framework\Texture\Texture.cpp" />
     <ClCompile Include="Object\BagicObj\Sprite.cpp" />
     <ClCompile Include="Object\Zelda\Zelda.cpp" />
-    <ClCompile Include="Scene\ZeldaScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\ZeldaScene.cpp" />
     <ClCompile Include="Framework\Utillity\Utillity.cpp" />
     <ClCompile Include="Object\Maple\Tiles.cpp" />
     <ClCompile Include="Framework\Utillity\tinyxml2.cpp" />
-    <ClCompile Include="Scene\XmlLoadScene.cpp" />
+    <ClCompile Include="Scene\BagicScene\XmlLoadScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />
@@ -325,6 +335,7 @@
     <Image Include="Resource\Effects\smoke_4x4.png" />
     <Image Include="Resource\Effects\thunder_core_4x4.png" />
     <Image Include="Resource\ezreal.png" />
+    <Image Include="Resource\Item.png" />
     <Image Include="Resource\kar_98k.png" />
     <Image Include="Resource\LostArk.png" />
     <Image Include="Resource\Maple\background.png" />

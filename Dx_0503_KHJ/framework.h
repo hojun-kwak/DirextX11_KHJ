@@ -115,6 +115,8 @@ using namespace std;
 // UI
 #include "Object/UI/Button.h"
 #include "Object/UI/MiniMap.h"
+#include "Object/UI/ItemIcon.h"
+#include "Object/UI/Inventory.h"
 
 // Dungreed
 #include "Object/Dungreed/Player.h"
@@ -135,6 +137,7 @@ using namespace std;
 
 // Scene
 #include "Scene/Scene.h"
+#include "Scene/SceneManager.h"
 
 // Program
 #include "Program/Program.h"

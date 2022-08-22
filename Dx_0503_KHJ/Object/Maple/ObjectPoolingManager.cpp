@@ -141,7 +141,7 @@ void ObjectPoolingManager::CreateTiles()
 	// 3Ãþ
 	{
 		_3floorTiles.reserve(_tileCount);
-		y = 100.0f;
+		y = 60.0f;
 		for (int i = 0; i < _tileCount; i++)
 		{
 			shared_ptr<Tiles> temp3 = make_shared<Tiles>();
@@ -205,7 +205,7 @@ void ObjectPoolingManager::CreateRopes()
 					temp->SetPosition(Vector2(-440.0f, (-150.0f - ropeYSize)));
 					break;
 				case 2:
-					temp->SetPosition(Vector2(-440.0f, (100.0f - ropeYSize)));
+					temp->SetPosition(Vector2(-440.0f, (60.0f - ropeYSize)));
 					break;
 				default:
 					break;
@@ -218,7 +218,7 @@ void ObjectPoolingManager::CreateRopes()
 					temp->SetPosition(Vector2(440.0f, (-150.0f - ropeYSize)));
 					break;
 				case 3:
-					temp->SetPosition(Vector2(440.0f, (100.0f - ropeYSize)));
+					temp->SetPosition(Vector2(440.0f, (60.0f - ropeYSize)));
 					break;
 				default:
 					break;
