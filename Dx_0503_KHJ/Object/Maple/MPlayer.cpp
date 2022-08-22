@@ -6,7 +6,7 @@ MPlayer::MPlayer()
 	_sprite = make_shared<Sprite>(MAPLE_1,Vector2(4,5));
 	_col = make_shared<RectCollider>(_sprite->GetHalfFrameSize());
 	_col->SetParent(_sprite->GetTransform());
-	_ropeCol = make_shared<RectCollider>(_sprite->GetHalfFrameSize() * 0.5f);
+	_ropeCol = make_shared<RectCollider>(_sprite->GetHalfFrameSize() * 0.7f);
 	_ropeCol->SetParent(_sprite->GetTransform());
 	
 	CreateData();

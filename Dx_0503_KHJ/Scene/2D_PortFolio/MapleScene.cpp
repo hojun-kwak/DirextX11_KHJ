@@ -11,7 +11,7 @@ MapleScene::MapleScene()
 	_player->SetTile(tiles);
 	_player->SetRope(ropes);
 	//tiles[0][0]->GetColl()->Top() + tiles[0][0]->GetQuad()->GetHalfSize().y
-	_player->SetPosition(tiles[0][0]->GetPos().x , tiles[0][0]->GetPos().y + 50.0f);
+	_player->SetPosition(tiles[0][0]->GetPos().x , tiles[0][0]->GetPos().y + tiles[0][0]->GetQuad()->GetHalfSize().y * 2.0f);
 
 	_playerFollow = make_shared<Transform>();
 	_playerFollow->GetPos() = _player->GetTransForm()->GetPos();
