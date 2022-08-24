@@ -1,8 +1,7 @@
 #pragma once
-class MPlayer
+class _2D_Player
 {
 public:
-
 	enum State
 	{
 		L_IDLE,
@@ -18,8 +17,8 @@ public:
 		CLIMBING
 	};
 
-	MPlayer();
-	~MPlayer();
+	_2D_Player();
+	~_2D_Player();
 
 	void Update();
 	void Render();
@@ -29,17 +28,9 @@ public:
 	void SetPosition(float x, float y);
 	void SetAnimation(State aniState);
 
-	/*void SetTile(vector<vector<shared_ptr<class Tiles>>> tiles) { _tiles = tiles; }
-	void SetRope(vector<shared_ptr<class Rope>> ropes) { _ropes = ropes; }*/
-
 	void CreateData();
 
-	/*void Operation();
-	void Jumpimg();*/
-
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
-	shared_ptr<Collider> GetCol() { return _col; }
-	shared_ptr<Sprite> GetSprite() { return _sprite; }
 
 private:
 	State _aniState = L_IDLE;
@@ -48,11 +39,6 @@ private:
 	shared_ptr<Sprite> _sprite;
 	vector<shared_ptr<Action>> _actions;
 	shared_ptr<RectCollider> _col;
-	shared_ptr<RectCollider> _ropeCol;
-
-	vector<vector<shared_ptr<class Tiles>>> _tiles;
-
-	vector<shared_ptr<class Rope>> _ropes;
 
 	bool _isJumping = false;
 	float _jumpPower = 150.0f;

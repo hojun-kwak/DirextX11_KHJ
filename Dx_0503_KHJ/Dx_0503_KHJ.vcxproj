@@ -240,6 +240,10 @@
     <ClInclude Include="Scene\BagicScene\ZeldaScene.h" />
     <ClInclude Include="Framework\Utillity\Utillity.h" />
     <ClInclude Include="Scene\BagicScene\XmlLoadScene.h" />
+    <ClInclude Include="Object\2D_PortFolio\_2D_Player.h" />
+    <ClInclude Include="Scene\2D_PortFolio\_2D_Scene.h" />
+    <ClInclude Include="Object\2D_PortFolio\_2D_Tile.h" />
+    <ClInclude Include="Object\2D_PortFolio\_2D_ObjPManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Utillity\Audio.cpp" />
@@ -316,6 +320,10 @@
     <ClCompile Include="Object\Maple\Tiles.cpp" />
     <ClCompile Include="Framework\Utillity\tinyxml2.cpp" />
     <ClCompile Include="Scene\BagicScene\XmlLoadScene.cpp" />
+    <ClCompile Include="Object\2D_PortFolio\_2D_Player.cpp" />
+    <ClCompile Include="Scene\2D_PortFolio\_2D_Scene.cpp" />
+    <ClCompile Include="Object\2D_PortFolio\_2D_Tile.cpp" />
+    <ClCompile Include="Object\2D_PortFolio\_2D_ObjPManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />

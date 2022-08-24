@@ -127,13 +127,19 @@ using namespace std;
 #include "Object/Zelda/Zelda.h"
 #include "Object/Zelda/ItemDataes.h"
 
+// 2D_PortFolio
+#include "Object/2D_PortFolio/_2D_ObjPManager.h"
+#include "Object/2D_PortFolio/_2D_Player.h"
+#include "Object/2D_PortFolio/_2D_Tile.h"
+
 // Maple
 #include "Object/Maple/MPlayer.h"
 #include "Object/Maple/Tiles.h"
 #include "Object/Maple/Cursors.h"
 #include "Object/Maple/Monsters.h"
 #include "Object/Maple/Rope.h"
-#include "Object/Maple/ObjectPoolingManager.h"
+//#include "Object/Maple/ObjPManager.h"
+//#include "Object/Maple/ObjectPoolingManager.h"
 
 // Scene
 #include "Scene/Scene.h"

@@ -6,12 +6,13 @@ MapleScene::MapleScene()
 	_background = make_shared<Quad>(L"Resource/Maple/background2.png");
 
 	_player = make_shared<MPlayer>();
-	vector<vector<shared_ptr<Tiles>>> tiles = ObjectPoolingManager::GetInstance()->GetTiles();
+	/*vector<vector<shared_ptr<Tiles>>> tiles = ObjectPoolingManager::GetInstance()->GetTiles();
 	vector<shared_ptr<Rope>> ropes = ObjectPoolingManager::GetInstance()->GetRopes();
 	_player->SetTile(tiles);
 	_player->SetRope(ropes);
-	//tiles[0][0]->GetColl()->Top() + tiles[0][0]->GetQuad()->GetHalfSize().y
-	_player->SetPosition(tiles[0][0]->GetPos().x , tiles[0][0]->GetPos().y + tiles[0][0]->GetQuad()->GetHalfSize().y * 2.0f);
+	_player->SetPosition(tiles[0][0]->GetPos().x , tiles[0][0]->GetPos().y + tiles[0][0]->GetQuad()->GetHalfSize().y * 2.0f);*/
+
+	_player->SetPosition(CENTER.x, CENTER.y);
 
 	_playerFollow = make_shared<Transform>();
 	_playerFollow->GetPos() = _player->GetTransForm()->GetPos();
@@ -27,6 +28,9 @@ MapleScene::MapleScene()
 
 	_cursor = make_shared<Cursors>();
 	_cursor->SetPosition(CENTER);
+
+	/*_tile = make_shared<Tiles>();
+	_tile->SetPosition(CENTER);*/
 }
 
 MapleScene::~MapleScene()
@@ -36,7 +40,8 @@ MapleScene::~MapleScene()
 void MapleScene::Update()
 {
 	_background->Update();
-	ObjectPoolingManager::GetInstance()->Update();
+	//ObjPManger->Update();
+	//ObjectPoolingManager::GetInstance()->Update();
 	_player->Update();
 	_monsters->Update();
 
@@ -48,17 +53,19 @@ void MapleScene::Update()
 	{
 		_playerFollow->GetPos() = LERP(_playerFollow->GetPos(), _player->GetTransForm()->GetPos(), 0.001f);
 	}
-
+	//_tile->Update();
 }
 
 void MapleScene::Render()
 {
 	_background->Render();
-	ObjectPoolingManager::GetInstance()->Render();
+	//ObjectPoolingManager::GetInstance()->Render();
+	//ObjPManger->Render();
 	_player->Render();
 	_monsters->Render();
 
 	_cursor->Render();
+	//_tile->Render();
 }
 
 void MapleScene::PostRender()
@@ -68,8 +75,10 @@ void MapleScene::PostRender()
 
 void MapleScene::DebugRender()
 {
-	ObjectPoolingManager::GetInstance()->DebugRender();
+	//ObjectPoolingManager::GetInstance()->DebugRender();
+	//ObjPManger->DebugRender();
 	_player->DebugRender();
 	_cursor->DebugRender();
 	_monsters->DebugRender();
+	//_tile->DebugRender();
 }

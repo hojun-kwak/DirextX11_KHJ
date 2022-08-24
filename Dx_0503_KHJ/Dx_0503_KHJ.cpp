@@ -108,9 +108,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ShaderManager::Create();
     DirectWrite::Create();
     EffectManager::Create();
-    ObjectPoolingManager::Create();
     Camera::Create();
     Audio::Create();
+    _2D_ObjPManager::Create();
+    //ObjectPoolingManager::Create();
+    //ObjPManager::Create();
     SceneManager::Create();
 
     srand(static_cast<UINT>(time(nullptr)));
@@ -147,9 +149,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 삭제.
     SceneManager::Delete();
+    _2D_ObjPManager::Delete();
+    //ObjPManager::Delete();
+    //ObjectPoolingManager::Delete();
     Audio::Delete();
     Camera::Delete();
-    ObjectPoolingManager::Delete();
     EffectManager::Delete();
     DirectWrite::Delete();
     ShaderManager::Delete();

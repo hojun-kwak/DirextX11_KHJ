@@ -1,9 +1,9 @@
 #pragma once
-class MapleScene : public Scene
+class _2D_Scene : public Scene
 {
 public:
-	MapleScene();
-	virtual ~MapleScene();
+	_2D_Scene();
+	virtual ~_2D_Scene();
 
 	// Scene을(를) 통해 상속됨
 	virtual void Update() override;
@@ -12,12 +12,11 @@ public:
 	virtual void PostRender() override;
 	virtual void DebugRender() override;
 
+	void CameraSetting();
+
 private:
 	shared_ptr<Quad> _background;
-	shared_ptr<MPlayer> _player;
+	shared_ptr<_2D_Player> _player;
 	shared_ptr<Transform> _playerFollow;
-	shared_ptr<Monsters> _monsters;
-	shared_ptr<Cursors> _cursor;
-	//shared_ptr<Tiles> _tile;
 };
 

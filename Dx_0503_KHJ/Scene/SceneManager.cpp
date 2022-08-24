@@ -15,18 +15,21 @@
 #include "../Scene/BagicScene/InventoryScene.h"
 
 #include "../Scene/2D_PortFolio/MapleScene.h"
+#include "../Scene/2D_PortFolio/_2D_Scene.h"
 
 SceneManager* SceneManager::_instance = nullptr;
 
 SceneManager::SceneManager()
 {
-	/*_sceneTable["DunGreed"] = make_shared<DunGridScene>();
-	_sceneTable["Zelda"] = make_shared<ZeldaScene>();
-	_sceneTable["Texture"] = make_shared<TextureScene>();*/
+	//_sceneTable["DunGreed"] = make_shared<DunGridScene>();
+	//_sceneTable["Zelda"] = make_shared<ZeldaScene>();
+	//_sceneTable["Texture"] = make_shared<TextureScene>();
 	//_sceneTable["InstancingScene"] = make_shared<InstancingScene>();
-	_sceneTable["Inventory"] = make_shared<InventoryScene>();
+	//_sceneTable["Inventory"] = make_shared<InventoryScene>();
+	_sceneTable["Maple"] = make_shared<MapleScene>();
+	_sceneTable["2D"] = make_shared<_2D_Scene>();
 
-	_curScene = _sceneTable["Inventory"];
+	_curScene = _sceneTable["2D"];
 	assert(!_curScene.expired());
 }
 
