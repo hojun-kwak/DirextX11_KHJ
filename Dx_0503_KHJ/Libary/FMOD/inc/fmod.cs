@@ -568,7 +568,7 @@ namespace FMOD
         INT,
         FLOAT,
         STRING,
-        STRING_UTF16,
+        STRING_UT6,
         STRING_UTF16BE,
         STRING_UTF8,
 

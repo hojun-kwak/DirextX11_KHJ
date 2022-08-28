@@ -1,5 +1,7 @@
 #pragma once
 class _2D_Tile;
+class _2D_Rope;
+class _2D_Monster;
 
 class _2D_ObjPManager
 {
@@ -35,16 +37,24 @@ public:
 	void DebugRender();
 
 	void CreateTiles();
+	void CreateRopes();
+	void CreateMonster();
+
+	vector<vector<shared_ptr<_2D_Tile>>> GetTiles() { return _tiles; }
+	vector<shared_ptr<_2D_Rope>> GetRopes() { return _ropes; }
 
 private:
 	static _2D_ObjPManager* _instance;
 
-	float _tileFloors[3] = {-360.0f, -150.0f, 60.0f};
+	vector<float> _tileFloor = { -360.0f, -150.0f, 60.0f };
 
-	UINT _tileFloor = 3;
 	UINT _tileCount = 6;
-
 	vector<vector<shared_ptr<_2D_Tile>>> _tiles;
-	vector<shared_ptr<_2D_Tile>> _tile;
+
+	UINT _ropeCount = 4;
+	vector<shared_ptr<_2D_Rope>> _ropes;
+
+	shared_ptr<_2D_Monster> _mons;
+	
 };
 

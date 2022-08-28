@@ -40,8 +40,7 @@ MapleScene::~MapleScene()
 void MapleScene::Update()
 {
 	_background->Update();
-	//ObjPManger->Update();
-	//ObjectPoolingManager::GetInstance()->Update();
+	ObjectPoolingManager::GetInstance()->Update();
 	_player->Update();
 	_monsters->Update();
 
@@ -53,19 +52,16 @@ void MapleScene::Update()
 	{
 		_playerFollow->GetPos() = LERP(_playerFollow->GetPos(), _player->GetTransForm()->GetPos(), 0.001f);
 	}
-	//_tile->Update();
 }
 
 void MapleScene::Render()
 {
 	_background->Render();
-	//ObjectPoolingManager::GetInstance()->Render();
-	//ObjPManger->Render();
+	ObjectPoolingManager::GetInstance()->Render();
 	_player->Render();
 	_monsters->Render();
 
 	_cursor->Render();
-	//_tile->Render();
 }
 
 void MapleScene::PostRender()
@@ -75,10 +71,8 @@ void MapleScene::PostRender()
 
 void MapleScene::DebugRender()
 {
-	//ObjectPoolingManager::GetInstance()->DebugRender();
-	//ObjPManger->DebugRender();
+	ObjectPoolingManager::GetInstance()->DebugRender();
 	_player->DebugRender();
 	_cursor->DebugRender();
 	_monsters->DebugRender();
-	//_tile->DebugRender();
 }

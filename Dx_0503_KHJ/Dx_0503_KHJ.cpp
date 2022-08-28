@@ -112,7 +112,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Audio::Create();
     _2D_ObjPManager::Create();
     //ObjectPoolingManager::Create();
-    //ObjPManager::Create();
     SceneManager::Create();
 
     srand(static_cast<UINT>(time(nullptr)));
@@ -150,7 +149,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // 삭제.
     SceneManager::Delete();
     _2D_ObjPManager::Delete();
-    //ObjPManager::Delete();
     //ObjectPoolingManager::Delete();
     Audio::Delete();
     Camera::Delete();
@@ -246,6 +244,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
         return true;
 
+    ShowCursor(false); // 마우스 커서 안보이게
+
     switch (message)
     {
     case WM_COMMAND:
@@ -265,6 +265,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+    case WM_SETCURSOR:
+        
+        break;
     case WM_MOUSEMOVE:
     {
         MOUSE_POS.x = (float)LOWORD(lParam);
@@ -279,11 +282,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             EndPaint(hWnd, &ps);
         }
         break;
-    case WM_SETCURSOR:
-    {
-        SetCursor(NULL);
-    }
-    break;
     case WM_DESTROY:
     {
         PostQuitMessage(0);

@@ -24,6 +24,7 @@ public:
 	void Render();
 	void PreRender();
 	void PostRender();
+	void DebugRender();
 
 	void SetScene(string name);
 

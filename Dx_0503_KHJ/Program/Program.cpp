@@ -40,15 +40,14 @@ void Program::Render()
 	SCENE->Render();
 	if (KEY_DOWN(VK_F1))
 	{
-		if (_OnOff == false)
-			_OnOff = true;
+		if (_IsLookingDebug == false)
+			_IsLookingDebug = true;
 		else
-			_OnOff = false;
+			_IsLookingDebug = false;
 	}
-	if (_OnOff == true)
+	if (_IsLookingDebug == true)
 	{
-		_scene->DebugRender();
-
+		SCENE->DebugRender();
 	}
 	EffectManager::GetInstance()->Render();
 

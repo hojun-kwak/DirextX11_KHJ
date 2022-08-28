@@ -29,13 +29,13 @@ public:
 	void SetPosition(float x, float y);
 	void SetAnimation(State aniState);
 
-	/*void SetTile(vector<vector<shared_ptr<class Tiles>>> tiles) { _tiles = tiles; }
-	void SetRope(vector<shared_ptr<class Rope>> ropes) { _ropes = ropes; }*/
+	void SetTile(vector<vector<shared_ptr<class Tiles>>> tiles) { _tiles = tiles; }
+	void SetRope(vector<shared_ptr<class Rope>> ropes) { _ropes = ropes; }
 
 	void CreateData();
 
-	/*void Operation();
-	void Jumpimg();*/
+	void Operation();
+	void Jumpimg();
 
 	shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }
 	shared_ptr<Collider> GetCol() { return _col; }

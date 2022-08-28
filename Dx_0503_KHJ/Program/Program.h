@@ -9,7 +9,7 @@ public:
 	void Render();
 
 private:
-	bool _OnOff = false;
+	bool _IsLookingDebug = false;
 	shared_ptr<Scene> _scene;
 };
 

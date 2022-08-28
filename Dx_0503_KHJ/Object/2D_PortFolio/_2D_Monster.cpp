@@ -1,23 +1,26 @@
 #include "framework.h"
-#include "Monsters.h"
+#include "_2D_Monster.h"
 
-Monsters::Monsters()
+_2D_Monster::_2D_Monster()
 {
-	_sprite = make_shared<Sprite>(MAPLE_RED_SNAIL, Vector2(3,6));
+	_sprite = make_shared<Sprite>(MAPLE_RED_SNAIL, Vector2(3, 6));
 	_col = make_shared<RectCollider>(_sprite->GetHalfFrameSize());
+	_col = make_shared<RectCollider>(Vector2(_sprite->GetHalfFrameSize().x - 8.0f, _sprite->GetHalfFrameSize().y));
 	_col->SetParent(_sprite->GetTransform());
 
 	CreateData();
 }
 
-Monsters::~Monsters()
+_2D_Monster::~_2D_Monster()
 {
 }
 
-void Monsters::Update()
+void _2D_Monster::Update()
 {
+	if (_isActive == false)
+		return;
+
 	_sprite->Update();
-	Move();
 	for (auto& action : _actions)
 	{
 		action->Update();
@@ -28,23 +31,29 @@ void Monsters::Update()
 	_col->Update();
 }
 
-void Monsters::Render()
+void _2D_Monster::Render()
 {
+	if (_isActive == false)
+		return;
+
 	_sprite->Render();
 }
 
-void Monsters::DebugRender()
+void _2D_Monster::DebugRender()
 {
+	if (_isActive == false)
+		return;
+
 	_col->Render();
 }
 
-void Monsters::SetPosition(float x, float y)
+void _2D_Monster::SetPosition(float x, float y)
 {
 	_sprite->GetTransform()->GetPos() = { x,y };
 	_monsterPos = { x,y };
 }
 
-void Monsters::SetAnimation(State aniState)
+void _2D_Monster::SetAnimation(State aniState)
 {
 	if (_actions[aniState]->IsPlay() && _actions[aniState]->GetAniType() == Action::LOOP)
 		return;
@@ -61,7 +70,7 @@ void Monsters::SetAnimation(State aniState)
 	_aniState = aniState;
 }
 
-void Monsters::CreateData()
+void _2D_Monster::CreateData()
 {
 	// 176 360
 	float maple_monster_depth = 273.0f;
@@ -84,37 +93,6 @@ void Monsters::CreateData()
 	_actions[State::L_IDLE]->Play();
 }
 
-void Monsters::Move()
+void _2D_Monster::AutoMove()
 {
-	this->SetPosition(_monsterPos.x, _monsterPos.y);
-
-	if (_dir == Monsters::Direction::LEFT)
-	{
-		if (_monsterPos.x >= -500.0f)
-		{
-			_monsterPos.x -= 100.0f * DELTA_TIME;
-			this->SetAnimation(Monsters::State::L_IDLE);
-			return;
-		}
-		else
-		{
-			_dir = Monsters::Direction::RIGHT;
-			return;
-		}
-	}
-	if (_dir == Monsters::Direction::RIGHT)
-	{
-		if (_monsterPos.x <= +500.0f)
-		{
-			_monsterPos.x += 100.0f * DELTA_TIME;
-			this->SetAnimation(Monsters::State::L_IDLE);
-			return;
-		}
-		else
-		{
-			_dir = Monsters::Direction::LEFT;
-			return;
-		}
-	}
-	
 }

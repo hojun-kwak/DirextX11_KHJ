@@ -26,6 +26,7 @@ SceneManager::SceneManager()
 	//_sceneTable["Texture"] = make_shared<TextureScene>();
 	//_sceneTable["InstancingScene"] = make_shared<InstancingScene>();
 	//_sceneTable["Inventory"] = make_shared<InventoryScene>();
+	_sceneTable["Col"] = make_shared<ColliderScene>();
 	_sceneTable["Maple"] = make_shared<MapleScene>();
 	_sceneTable["2D"] = make_shared<_2D_Scene>();
 
@@ -59,6 +60,12 @@ void SceneManager::PostRender()
 {
 	assert(!_curScene.expired());
 		_curScene.lock()->PostRender();
+}
+
+void SceneManager::DebugRender()
+{
+	assert(!_curScene.expired());
+		_curScene.lock()->DebugRender();
 }
 
 void SceneManager::SetScene(string name)

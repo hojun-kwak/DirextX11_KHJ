@@ -10,6 +10,11 @@ public:
 	void DebugRender();
 
 	void SetPosition(float x, float y);
+	Vector2 GetPos() { return _tilePos; }
+
+	shared_ptr<Quad> GetQuad() { return _quad; }
+	shared_ptr<RectCollider> GetColl() { return _col; }
+	bool _isActive = false;
 private:
 	Vector2 _tilePos = { 0,0 };
 

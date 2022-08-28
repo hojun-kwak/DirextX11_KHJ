@@ -129,8 +129,11 @@ using namespace std;
 
 // 2D_PortFolio
 #include "Object/2D_PortFolio/_2D_ObjPManager.h"
+#include "Object/2D_PortFolio/_2D_Cursor.h"
 #include "Object/2D_PortFolio/_2D_Player.h"
 #include "Object/2D_PortFolio/_2D_Tile.h"
+#include "Object/2D_PortFolio/_2D_Rope.h"
+#include "Object/2D_PortFolio/_2D_Monster.h"
 
 // Maple
 #include "Object/Maple/MPlayer.h"
@@ -138,8 +141,7 @@ using namespace std;
 #include "Object/Maple/Cursors.h"
 #include "Object/Maple/Monsters.h"
 #include "Object/Maple/Rope.h"
-//#include "Object/Maple/ObjPManager.h"
-//#include "Object/Maple/ObjectPoolingManager.h"
+#include "Object/Maple/ObjectPoolingManager.h"
 
 // Scene
 #include "Scene/Scene.h"

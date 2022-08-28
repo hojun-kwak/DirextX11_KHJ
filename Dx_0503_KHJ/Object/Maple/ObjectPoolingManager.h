@@ -26,22 +26,22 @@ public:
 		return nullptr;
 	}
 
-	/*void Update();
+	void Update();
 	void Render();
 	void PostRender();
 	void DebugRender();
 
 	void CreateTiles();
-	void CreateRopes();*/
+	void CreateRopes();
 
-	/*vector<vector<shared_ptr<Tiles>>> GetTiles() { return _tiles; }
-	vector<shared_ptr<Rope>> GetRopes() { return _ropes; }*/
+	vector<vector<shared_ptr<Tiles>>> GetTiles() { return _tiles; }
+	vector<shared_ptr<Rope>> GetRopes() { return _ropes; }
 
 private:
 	static ObjectPoolingManager* _instance;
 
 	
-	/*UINT _tileCount = 6;
+	UINT _tileCount = 6;
 
 	vector<shared_ptr<Tiles>> _1floorTiles;
 	vector<shared_ptr<Tiles>> _2floorTiles;
@@ -50,6 +50,6 @@ private:
 	vector<vector<shared_ptr<Tiles>>> _tiles;
 	
 	UINT _ropeCount = 4;
-	vector<shared_ptr<Rope>> _ropes;*/
+	vector<shared_ptr<Rope>> _ropes;
 };
 

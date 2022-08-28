@@ -14,17 +14,25 @@ _2D_Tile::~_2D_Tile()
 
 void _2D_Tile::Update()
 {
+	if (_isActive == false)
+		return;
+
 	_quad->Update();
 	_col->Update();
 }
 
 void _2D_Tile::Render()
 {
+	if (_isActive == false)
+		return;
 	_quad->Render();
 }
 
 void _2D_Tile::DebugRender()
 {
+	if (_isActive == false)
+		return;
+
 	_col->Render();
 }
 

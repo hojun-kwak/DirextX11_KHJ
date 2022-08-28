@@ -15,8 +15,11 @@ public:
 	void CameraSetting();
 
 private:
+	bool _IsLookingDebug = true;
+
 	shared_ptr<Quad> _background;
 	shared_ptr<_2D_Player> _player;
 	shared_ptr<Transform> _playerFollow;
+	shared_ptr<_2D_Cursor> _cursor;
 };
 

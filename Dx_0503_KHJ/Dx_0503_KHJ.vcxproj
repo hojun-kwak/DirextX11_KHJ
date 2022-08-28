@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -244,6 +244,9 @@
     <ClInclude Include="Scene\2D_PortFolio\_2D_Scene.h" />
     <ClInclude Include="Object\2D_PortFolio\_2D_Tile.h" />
     <ClInclude Include="Object\2D_PortFolio\_2D_ObjPManager.h" />
+    <ClInclude Include="Object\2D_PortFolio\_2D_Rope.h" />
+    <ClInclude Include="Object\2D_PortFolio\_2D_Cursor.h" />
+    <ClInclude Include="Object\2D_PortFolio\_2D_Monster.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Utillity\Audio.cpp" />
@@ -324,6 +327,9 @@
     <ClCompile Include="Scene\2D_PortFolio\_2D_Scene.cpp" />
     <ClCompile Include="Object\2D_PortFolio\_2D_Tile.cpp" />
     <ClCompile Include="Object\2D_PortFolio\_2D_ObjPManager.cpp" />
+    <ClCompile Include="Object\2D_PortFolio\_2D_Rope.cpp" />
+    <ClCompile Include="Object\2D_PortFolio\_2D_Cursor.cpp" />
+    <ClCompile Include="Object\2D_PortFolio\_2D_Monster.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx_0503_KHJ.rc" />

@@ -36,6 +36,7 @@ public:
 
 	void SetRed() { _colorBuffer->SetColor(RED); }
 	void SetGreen() { _colorBuffer->SetColor(GREEN); }
+	void SetBlue() { _colorBuffer->SetColor(BLUE); }
 
 	void SetParent(shared_ptr<Transform> parent) { _transform->SetParent(parent); }
 	shared_ptr<Transform> GetParent() { return _transform->GetParent(); }
