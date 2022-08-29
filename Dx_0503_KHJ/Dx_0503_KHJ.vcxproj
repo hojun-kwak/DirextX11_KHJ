@@ -354,6 +354,7 @@
     <Image Include="Resource\LostArk.png" />
     <Image Include="Resource\Maple\background.png" />
     <Image Include="Resource\Maple\background2.png" />
+    <Image Include="Resource\Maple\charactorAtack.png" />
     <Image Include="Resource\Maple\charactorNormal.png" />
     <Image Include="Resource\Maple\Cursor.png" />
     <Image Include="Resource\Maple\Red_snail.png" />

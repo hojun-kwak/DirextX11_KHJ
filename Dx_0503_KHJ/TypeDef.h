@@ -42,6 +42,7 @@
 //#define LERP(s,e,t) { s * (1 - t)+ e * t }
 
 #define MAPLE_MOVE L"Resource/Maple/charactorNormal.png"
+#define MAPLE_ATACK L"Resource/Maple/charactorAtack.png"
 #define MAPLE_RED_SNAIL L"Resource/Maple/Red_snail.png"
 
 #define MAPLE_MOUSE_CURSOR L"Resource/Maple/Cursor.png"

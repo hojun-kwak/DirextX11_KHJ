@@ -113,4 +113,5 @@ void _2D_ObjPManager::CreateMonster()
 	_mons = make_shared<_2D_Monster>();
 	_mons->SetPosition(0,0);
 	_mons->_isActive = true;
+	_mons->SetTile(_tiles);
 }
