@@ -58,3 +58,10 @@ void Effect::Play(Vector2 pos)
 	_sprite->GetTransform()->GetPos() = pos;
 	_action->Play();
 }
+
+void Effect::Stop(Vector2 pos)
+{
+	_isActive = false;
+	_sprite->GetTransform()->GetPos() = pos;
+	_action->Stop();
+}

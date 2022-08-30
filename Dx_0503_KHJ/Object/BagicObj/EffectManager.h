@@ -25,6 +25,7 @@ public:
 	void Add(wstring effectFile, Vector2 maxframe, float speed, UINT poolCount = 10); // effectMap에 추가
 
 	void Play(string effect, Vector2 pos); // effectMap에서 꺼져있는 애 찾아서 플레이
+	void Stop(string effect, Vector2 pos);
 
 	void Update();
 	void Render();

@@ -308,8 +308,8 @@ void _2D_Player::CreateAttackData()
 		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_ATACK));
 		clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(MAPLE_ATACK));
 	}
-	shared_ptr<Action> Lattack = make_shared<Action>(clips, "L_ATTACK", Action::LOOP, 1.0f);
-	Lattack->SetEndEvent();
+	shared_ptr<Action> Lattack = make_shared<Action>(clips, "L_ATTACK", Action::LOOP);
+	Lattack->SetEndEvent(std::bind(&_2D_Player::AttackEnd,this));
 	_actions.push_back(Lattack);
 	clips.clear();
 
@@ -319,7 +319,8 @@ void _2D_Player::CreateAttackData()
 		clips.emplace_back(0 + w, y, w, h, Texture::Add(MAPLE_ATACK));
 		clips.emplace_back(0 + w * 2, y, w, h, Texture::Add(MAPLE_ATACK));
 	}
-	shared_ptr<Action> Rattack = make_shared<Action>(clips, "R_ATTACK", Action::LOOP, 1.0f);
+	shared_ptr<Action> Rattack = make_shared<Action>(clips, "R_ATTACK", Action::LOOP);
+	Lattack->SetEndEvent(std::bind(&_2D_Player::AttackEnd, this));
 	_actions.push_back(Rattack);
 	clips.clear();
 
@@ -426,7 +427,7 @@ void _2D_Player::Operation()
 
 	// 공격
 	// 한번 눌렀을 때 실행되게 해보자
-	if (_isAttack == false)
+	/*if (_isAttack == false)
 	{
 		if (KEY_PRESS(VK_CONTROL))
 		{
@@ -434,8 +435,14 @@ void _2D_Player::Operation()
 			_situ = _2D_Player::Situation::ATTACK;
 			return;
 		}
-	}
+	}*/
 
+	if (KEY_DOWN(VK_CONTROL))
+	{
+		// 공격모션 후에 _isAttack이 false 로 바뀜
+		_situ = _2D_Player::Situation::ATTACK;
+		_isAttack = true;
+	}
 
 	{
 		if (KEY_UP(VK_LEFT))
@@ -503,18 +510,7 @@ void _2D_Player::Attacking()
 	if (_isAttack == false)
 		return;
 
+	
+	this->SetAnimation(_2D_Player::State::R_ATTACK);
 	// 어떤 조건절이 들어갔을때 어떠한 상황을 만들게 할것인가?
-	if (_situ == _2D_Player::Situation::ATTACK)
-	{
-		this->SetAnimation(_2D_Player::State::R_ATTACK);
-		_situ = _2D_Player::Situation::NONE;
-		return;
-	}
-	if (_situ == _2D_Player::Situation::NONE)
-	{
-		this->SetAnimation(_2D_Player::State::L_IDLE);
-		_isAttack = false;
-		return;
-	}
-
 }

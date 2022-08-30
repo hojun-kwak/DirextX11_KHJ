@@ -10,6 +10,7 @@ public:
 
 	void CreateAction(wstring file, float speed);
 	void Play(Vector2 pos);
+	void Stop(Vector2 pos);
 
 	void End() { _isActive = false; }
 

@@ -47,6 +47,21 @@ void EffectManager::Play(string effect, Vector2 pos)
 	}
 }
 
+void EffectManager::Stop(string effect, Vector2 pos)
+{
+	if (_effectMap.count(effect) == 0)
+		return;
+
+	for (auto& effect : _effectMap[effect])
+	{
+		if (effect->_isActive == false)
+		{
+			effect->Stop(pos);
+			return;
+		}
+	}
+}
+
 void EffectManager::Update()
 {
 	for (auto& effects : _effectMap)

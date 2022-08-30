@@ -50,6 +50,8 @@ public:
 	void Jumpimg();
 	void Attacking();
 
+	void AttackEnd() { _isAttack = false; }
+
 	/*shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }*/
 
 	shared_ptr<Transform> GetTransForm()
