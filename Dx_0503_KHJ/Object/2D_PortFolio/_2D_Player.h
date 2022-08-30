@@ -24,6 +24,8 @@ public:
 	{
 		NONE,
 		MOVE,
+		CLIMB,
+		JUMP,
 		ATTACK
 	};
 
@@ -46,6 +48,7 @@ public:
 	void Operation();
 
 	void Jumpimg();
+	void Attacking();
 
 	/*shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }*/
 
@@ -59,6 +62,7 @@ public:
 
 private:
 	State _aniState = _2D_Player::State::L_IDLE;
+	Situation _situ = _2D_Player::Situation::NONE;
 
 	Vector2 _playerPos = { 0,0 };
 
@@ -85,5 +89,7 @@ private:
 	bool _isJumping = false;
 	float _jumpPower = 150.0f;
 	float _gravity = 15.0f;
+
+	bool _isAttack = false;
 };
 
