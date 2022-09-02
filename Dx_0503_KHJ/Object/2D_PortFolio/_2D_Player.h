@@ -49,18 +49,17 @@ public:
 
 	void Jumpimg();
 	void Attacking();
+	void KnockBack();
 
-	void AttackEnd() { _isAttack = false; }
-
-	/*shared_ptr<Transform> GetTransForm() { return _sprite->GetTransform(); }*/
+	void AttackEnd() {
+		_isAttack = false;
+	}
 
 	shared_ptr<Transform> GetTransForm()
 	{
 		for (auto& sprites : _sprites)
 			return sprites.second->GetTransform();
 	}
-	void SetTile(vector<vector<shared_ptr<class _2D_Tile>>> tiles) { _tiles = tiles; }
-	void SetRope(vector<shared_ptr<class _2D_Rope>> ropes) { _ropes = ropes; }
 
 private:
 	State _aniState = _2D_Player::State::L_IDLE;
@@ -69,7 +68,6 @@ private:
 	Vector2 _playerPos = { 0,0 };
 
 	vector<Action::Clip> clips;
-
 
 	vector<shared_ptr<Action>> _actions;
 
@@ -87,6 +85,7 @@ private:
 
 	vector<vector<shared_ptr<class _2D_Tile>>> _tiles;
 	vector<shared_ptr<_2D_Rope>> _ropes;
+	vector<shared_ptr<_2D_Monster>> _mons;
 
 	bool _isJumping = false;
 	float _jumpPower = 150.0f;

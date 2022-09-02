@@ -40,9 +40,9 @@ public:
 	Type GetAniType() { return _repeatType; }
 
 private:
+	bool _isPlay = true;
 	vector<Clip> _clips;
 	Type _repeatType;
-	bool _isPlay = true;
 
 	UINT _curClipNum = 0;
 

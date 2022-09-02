@@ -38,7 +38,6 @@ public:
 	bool AABB(shared_ptr<class CircleCollider> circle);
 	bool OBB(shared_ptr<class CircleCollider> circle);
 
-
 	float SeoareatAxis(Vector2 separate, Vector2 e1, Vector2 e2);
 
 private:

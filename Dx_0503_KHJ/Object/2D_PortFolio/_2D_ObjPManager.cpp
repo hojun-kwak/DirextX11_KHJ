@@ -5,6 +5,7 @@ _2D_ObjPManager* _2D_ObjPManager::_instance = nullptr;
 
 _2D_ObjPManager::_2D_ObjPManager()
 {
+	//srand(static_cast<float>(time(nullptr)));
 	CreateTiles();
 	CreateRopes();
 	CreateMonster();
@@ -23,7 +24,8 @@ void _2D_ObjPManager::Update()
 	for (auto& ropes : _ropes)
 		ropes->Update();
 
-	_mons->Update();
+	for (auto& mons : _mons)
+		mons->Update();
 }
 
 void _2D_ObjPManager::Render()
@@ -35,7 +37,8 @@ void _2D_ObjPManager::Render()
 	for (auto& ropes : _ropes)
 		ropes->Render();
 
-	_mons->Render();
+	for (auto& mons : _mons)
+		mons->Render();
 }
 
 void _2D_ObjPManager::PostRender()
@@ -51,7 +54,8 @@ void _2D_ObjPManager::DebugRender()
 	for (auto& ropes : _ropes)
 		ropes->DebugRender();
 
-	_mons->DebugRender();
+	for (auto& mons : _mons)
+		mons->DebugRender();
 }
 
 void _2D_ObjPManager::CreateTiles()
@@ -110,8 +114,30 @@ void _2D_ObjPManager::CreateRopes()
 
 void _2D_ObjPManager::CreateMonster()
 {
-	_mons = make_shared<_2D_Monster>();
-	_mons->SetPosition(0,0);
-	_mons->_isActive = true;
-	_mons->SetTile(_tiles);
+	for (int i = 0, j = 0; i < _monsCount; i++, j++)
+	{
+		shared_ptr<_2D_Monster> temp = make_shared<_2D_Monster>();
+		if (i % 3 ==0)
+			j = 0;
+
+		if (i < 3)
+		{
+			temp->SetPosition(_tiles[1][j+1]->GetPos().x, _tileFloor[1] + _tiles[0][0]->GetQuad()->GetHalfSize().y * 1.5f);
+			temp->_isActive = true;
+			temp->SetTile(_tiles[1]);
+		}
+		else
+		{
+			temp->SetPosition(_tiles[2][j+1]->GetPos().x, _tileFloor[2] + _tiles[0][0]->GetQuad()->GetHalfSize().y * 1.5f);
+			temp->_isActive = true;
+			temp->SetTile(_tiles[2]);
+		}
+
+		if (i % 2 == 0)
+			temp->SetDir(_2D_Monster::Direction::RIGHT);
+		else
+			temp->SetDir(_2D_Monster::Direction::LEFT);
+
+		_mons.emplace_back(temp);
+	}
 }

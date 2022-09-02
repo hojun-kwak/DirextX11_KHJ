@@ -21,7 +21,5 @@ private:
 	Vector2 _ropePos = { 0,0 };
 	shared_ptr<Quad> _quad;
 	shared_ptr<RectCollider> _col;
-	//shared_ptr<RectCollider> _ropeCol;
-
 };
 

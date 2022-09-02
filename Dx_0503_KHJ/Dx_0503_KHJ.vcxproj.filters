@@ -633,6 +633,9 @@
     <Image Include="Resource\Maple\charactorAtack.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Maple\Red_snail_die.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />

@@ -42,11 +42,12 @@ public:
 
 	vector<vector<shared_ptr<_2D_Tile>>> GetTiles() { return _tiles; }
 	vector<shared_ptr<_2D_Rope>> GetRopes() { return _ropes; }
+	vector<shared_ptr<_2D_Monster>> GetMons() { return _mons; }
 
 private:
 	static _2D_ObjPManager* _instance;
 
-	vector<float> _tileFloor = { -360.0f, -150.0f, 60.0f };
+	vector<float> _tileFloor = { -360.0f, -150.0f, 65.0f };
 
 	UINT _tileCount = 6;
 	vector<vector<shared_ptr<_2D_Tile>>> _tiles;
@@ -54,7 +55,8 @@ private:
 	UINT _ropeCount = 4;
 	vector<shared_ptr<_2D_Rope>> _ropes;
 
-	shared_ptr<_2D_Monster> _mons;
+	UINT _monsCount = 6;
+	vector<shared_ptr<_2D_Monster>> _mons;
 	
 };
 

@@ -358,6 +358,7 @@
     <Image Include="Resource\Maple\charactorNormal.png" />
     <Image Include="Resource\Maple\Cursor.png" />
     <Image Include="Resource\Maple\Red_snail.png" />
+    <Image Include="Resource\Maple\Red_snail_die.png" />
     <Image Include="Resource\Maple\rope.png" />
     <Image Include="Resource\Maple\test.png" />
     <Image Include="Resource\Maple\tile.png" />

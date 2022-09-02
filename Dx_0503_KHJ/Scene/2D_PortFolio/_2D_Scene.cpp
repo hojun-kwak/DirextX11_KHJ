@@ -6,18 +6,13 @@ _2D_Scene::_2D_Scene()
 	_background = make_shared<Quad>(L"Resource/Maple/background2.png");
 	_player = make_shared<_2D_Player>();
 	
-	vector<vector<shared_ptr<_2D_Tile>>> tiles = _2D_ObjPManager::GetInstance()->GetTiles();
-	vector<shared_ptr<_2D_Rope>> ropes = _2D_ObjPManager::GetInstance()->GetRopes();
-	_player->SetTile(tiles);
-	_player->SetRope(ropes);
-	_player->SetPosition(tiles[0][0]->GetPos().x, tiles[0][0]->GetPos().y + 4.0f +  tiles[0][0]->GetQuad()->GetHalfSize().y * 2.0f);
-
 	_playerFollow = make_shared<Transform>();
 	_playerFollow->GetPos() = _player->GetTransForm()->GetPos();
 
 	CameraSetting();
 
 	SOUND->Add("BGM_1", "Resource/Sound/BGM.wav");
+	SOUND->Add("Jump", "Resource/Sound/jump.wav");
 	//SOUND->Play("BGM_1", 0.1f);
 
 	_cursor = make_shared<_2D_Cursor>();
