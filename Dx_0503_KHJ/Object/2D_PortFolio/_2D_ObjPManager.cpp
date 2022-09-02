@@ -98,11 +98,11 @@ void _2D_ObjPManager::CreateRopes()
 			temp->_isActive = true;
 			break;
 		case 2:
-			temp->SetPosition(Vector2(_tiles[2][0]->GetPos().x, _tileFloor[2] + y));
+			temp->SetPosition(Vector2(_tiles[2][1]->GetPos().x, _tileFloor[2] + y));
 			temp->_isActive = true;
 			break;
 		case 3:
-			temp->SetPosition(Vector2(_tiles[2][5]->GetPos().x, _tileFloor[2] + y));
+			temp->SetPosition(Vector2(_tiles[2][4]->GetPos().x, _tileFloor[2] + y));
 			temp->_isActive = true;
 			break;
 		default:

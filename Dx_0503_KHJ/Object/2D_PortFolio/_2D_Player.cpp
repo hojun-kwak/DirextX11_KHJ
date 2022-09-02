@@ -387,12 +387,33 @@ void _2D_Player::Operation()
 					this->SetAnimation(_2D_Player::State::CLIMBING);
 					_situ = _2D_Player::Situation::CLIMB;
 
+					/*for (auto& floorTiles : _tiles)
+						for (auto& tile : floorTiles)
+						{
+							if (col.second->Top() >= rope->GetCol()->Top())
+							{
+								for (auto& floorTiles : _tiles)
+									for (auto& tile : floorTiles)
+									{
+										if (rope->GetCol()->IsCollision(tile->GetColl(), false))
+										{
+											_playerPos.x = tile->GetPos().x;
+											_playerPos.y = tile->GetPos().y + tile->GetQuad()->GetHalfSize().y * 2.0f;
+											this->SetAnimation(_2D_Player::State::L_IDLE);
+											_situ = _2D_Player::Situation::NONE;
+											return;
+										}
+									}
+							}
+						}*/
+
 					for (auto& floorTiles : _tiles)
 						for (auto& tile : floorTiles)
 						{
 							if (col.second->IsCollision(tile->GetColl(), false))
 							{
-								if(_playerPos.y >= rope->GetCol()->Top())
+								// 이부분을 수정해야지만...
+								if(_ropeCol->Top() >= rope->GetCol()->Top())
 								{
 									_playerPos.x = tile->GetPos().x;
 									_playerPos.y = tile->GetPos().y + tile->GetQuad()->GetHalfSize().y * 2.0f;
