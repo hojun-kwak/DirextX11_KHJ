@@ -86,7 +86,9 @@ void _2D_ObjPManager::CreateRopes()
 	for (int i = 0; i < _ropeCount; i++)
 	{
 		shared_ptr<_2D_Rope> temp = make_shared<_2D_Rope>();
-		float y = -temp->GetQuad()->GetHalfSize().y + _tiles[0][0]->GetQuad()->GetHalfSize().y - 10.0f;
+		//float y = -temp->GetQuad()->GetHalfSize().y + _tiles[0][0]->GetQuad()->GetHalfSize().y - 10.0f;
+		//float y = -temp->GetQuad()->GetHalfSize().y + _tiles[0][0]->GetQuad()->GetHalfSize().y;
+		float y = -temp->GetQuad()->GetHalfSize().y;
 		switch (i)
 		{
 		case 0:

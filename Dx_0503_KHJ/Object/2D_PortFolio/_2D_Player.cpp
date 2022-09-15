@@ -7,7 +7,7 @@ _2D_Player::_2D_Player()
 	_MoveC = make_shared<RectCollider>(_MoveS->GetHalfFrameSize());
 	_MoveC->SetParent(_MoveS->GetTransform());
 
-	_ropeCol = make_shared<RectCollider>(Vector2(_MoveS->GetHalfFrameSize().x - 10.0f, _MoveS->GetHalfFrameSize().y + 10.0f));
+	_ropeCol = make_shared<RectCollider>(Vector2(_MoveS->GetHalfFrameSize().x - 10.0f, _MoveS->GetHalfFrameSize().y + 15.0f));
 	_ropeCol->SetParent(_MoveS->GetTransform());
 	_ropeCol->SetBlue();
 
@@ -33,6 +33,10 @@ void _2D_Player::Update()
 	this->SetPosition(_playerPos.x, _playerPos.y);
 
 	Operation();
+	Revert();
+
+	Move();
+	Attacking();
 	Jumpimg();
 	
 	KnockBack();
@@ -231,7 +235,7 @@ void _2D_Player::CreateData()
 	for (auto& action : _actions)
 		action->Pause();
 
-	_actions[State::L_IDLE]->Play();
+	_actions[State::R_IDLE]->Play();
 }
 
 void _2D_Player::CreateMoveData()
@@ -336,175 +340,171 @@ void _2D_Player::CreateAttackData()
 
 void _2D_Player::Operation()
 {
-	// 좌우 이동
-	if (_isJumping == false)
+	if (KEY_PRESS(VK_LEFT))
 	{
-		for (auto& floorTiles : _tiles)
-		{
-			for (auto& tile : floorTiles)
-			{
-				for (auto& col : _cols)
-				{
-					if (col.second->IsCollision(tile->GetColl(), false))
-					{
-						if (KEY_PRESS(VK_LEFT))
-						{
-							if (tile->GetColl()->Left() < col.second->Left())
-							{
-								_playerPos.x -= 150.0f * DELTA_TIME;
-								_situ = _2D_Player::Situation::MOVE;
-								this->SetAnimation(_2D_Player::State::L_RUN);
-								return;
-							}
-						}
-						if (KEY_PRESS(VK_RIGHT))
-						{
-							if (tile->GetColl()->Right() > col.second->Right())
-							{
-								_playerPos.x += 150.0f * DELTA_TIME;
-								_situ = _2D_Player::Situation::MOVE;
-								this->SetAnimation(_2D_Player::State::R_RUN);
-								return;
-							}
-						}
-					}
-				}
-			}
-		}
+		_situ = _2D_Player::Situation::MOVE;
+		_dir = _2D_Player::Direction::LEFT;
+		this->SetAnimation(_2D_Player::State::L_RUN);
 	}
-
-	// 위아래
-	for (auto& rope : _ropes)
+	if (KEY_PRESS(VK_RIGHT))
 	{
-		for (auto& col : _cols)
-		{
-			if (KEY_PRESS(VK_UP))
-			{
-				_playerPos.y += 150.0f * DELTA_TIME;
-				this->SetAnimation(_2D_Player::State::CLIMBING);
-				_situ = _2D_Player::Situation::CLIMB;
-
-				if (_ropeCol->IsCollision(rope->GetCol(), false))
-				{
-					//_playerPos.x = rope->GetRopePos().x;
-					//for (auto& floorTiles : _tiles)
-					//	for (auto& tile : floorTiles)
-					//	{
-					//		//if (col.second->Top() >= rope->GetCol()->Top())
-					//		{
-					//			for (auto& floorTiles : _tiles)
-					//				for (auto& tile : floorTiles)
-					//				{
-					//					if (rope->GetCol()->IsCollision(tile->GetColl(), false))
-					//					{
-					//						_playerPos.x = tile->GetPos().x;
-					//						_playerPos.y = tile->GetPos().y + tile->GetQuad()->GetHalfSize().y * 2.0f;
-					//						this->SetAnimation(_2D_Player::State::L_IDLE);
-					//						_situ = _2D_Player::Situation::NONE;
-					//						return;
-					//					}
-					//				}
-					//		}
-					//	}
-				}
-				return;
-			}
-			if (KEY_PRESS(VK_DOWN))
-			{
-				if (_ropeCol->IsCollision(rope->GetCol(), false))
-				{
-					_playerPos.x = rope->GetRopePos().x;
-					_playerPos.y -= 150.0f * DELTA_TIME;
-					this->SetAnimation(_2D_Player::State::CLIMBING);
-					_situ = _2D_Player::Situation::CLIMB;
-					/*if (col.second->Bottom() < rope->GetCol()->Bottom())
-					{
-						for (auto& floorTiles : _tiles)
-							for (auto& tile : floorTiles)
-							{
-								if (col.second->IsCollision(tile->GetColl(), false))
-								{
-									_playerPos.x = tile->GetPos().x;
-									_playerPos.y = tile->GetPos().y  + tile->GetQuad()->GetHalfSize().y * 2.0f;
-									this->SetAnimation(_2D_Player::State::L_IDLE);
-									_situ = _2D_Player::Situation::NONE;
-									return;
-								}
-							}
-					}*/
-				}
-				return;
-			}
-		}
+		_situ = _2D_Player::Situation::MOVE;
+		_dir = _2D_Player::Direction::RIGHT;
+		this->SetAnimation(_2D_Player::State::R_RUN);
+	}
+	if (KEY_PRESS(VK_UP))
+	{
+		_dir = _2D_Player::Direction::UP;
+		_situ = _2D_Player::Situation::CLIMB;
+		this->SetAnimation(_2D_Player::State::CLIMBING);
+	}
+	if (KEY_PRESS(VK_DOWN))
+	{
+		_situ = _2D_Player::Situation::CLIMB;
+		_dir = _2D_Player::Direction::DOWN;
+		this->SetAnimation(_2D_Player::State::CLIMBING);
 	}
 	
 	// 점프
-	if (_isJumping == false)
+
+	if (KEY_PRESS(VK_SPACE))
 	{
-		if (KEY_PRESS(VK_SPACE))
+		if (_isJumping == false)
 		{
 			_isJumping = true;
 			_situ = _2D_Player::Situation::JUMP;
 			SOUND->Play("Jump", 0.1f);
-			/*if (KEY_PRESS(VK_UP))
-			{
-				for (auto& rope : _ropes)
-				{
-					if (_ropeCol->IsCollision(rope->GetCol(),false))
-					{
-						_playerPos.x = rope->GetRopePos().x;
-						_playerPos.y -= 150.0f * DELTA_TIME;
-						this->SetAnimation(_2D_Player::State::CLIMBING);
-						_situ = _2D_Player::Situation::CLIMB;
-					}
-				}
-			}*/
-			return;
 		}
 	}
 
 	// 공격
-	if (_situ == _2D_Player::Situation::NONE)
+	if (KEY_PRESS(VK_RBUTTON) || KEY_PRESS(VK_CONTROL))
 	{
-		if (KEY_PRESS(VK_CONTROL))
+		_isAttack = true;
+		_situ = _2D_Player::Situation::ATTACK;
+		
+		return;
+	}
+}
+
+void _2D_Player::Revert()
+{
+	if (KEY_UP(VK_LEFT))
+	{
+		_situ = _2D_Player::Situation::NONE;
+		this->SetAnimation(_2D_Player::State::L_IDLE);
+	}
+	if (KEY_UP(VK_RIGHT))
+	{
+		_situ = _2D_Player::Situation::NONE;
+		this->SetAnimation(_2D_Player::State::R_IDLE);
+	}
+	if (KEY_UP(VK_UP) || KEY_UP(VK_DOWN))
+	{
+		_dir = _2D_Player::Direction::DIR_NONE;
+		if (_situ == _2D_Player::Situation::CLIMB)
 		{
-			_isAttack = true;
-			_situ = _2D_Player::Situation::ATTACK;
-			Attacking();
-			return;
+			this->SetAnimation(_2D_Player::State::CLIMBING_IDLE);
+		}
+		if (_situ == _2D_Player::Situation::NONE)
+		{
+			_situ = _2D_Player::Situation::NONE;
+			this->SetAnimation(_2D_Player::State::L_IDLE);
+		}
+	}
+	if (KEY_UP(VK_RBUTTON) || KEY_UP(VK_CONTROL))
+	{
+		this->SetAnimation(_2D_Player::State::L_IDLE);
+		_isAttack = false;
+		_situ = _2D_Player::Situation::NONE;
+	}
+}
+
+void _2D_Player::Move()
+{
+	if (_situ == _2D_Player::Situation::MOVE)
+	{
+		if (_dir == _2D_Player::Direction::LEFT)
+		{
+			for (auto& floorTiles : _tiles)
+				for (auto& tile : floorTiles)
+				{
+					if (_ropeCol->IsCollision(tile->GetColl(), false))
+					{
+						if (_ropeCol->Left() > tile->GetColl()->Left())
+							_playerPos.x -= 150.0f * DELTA_TIME;
+					}
+				}
+		}
+		if (_dir == _2D_Player::Direction::RIGHT)
+		{
+			for (auto& floorTiles : _tiles)
+				for (auto& tile : floorTiles)
+				{
+					if (_ropeCol->IsCollision(tile->GetColl(), false))
+					{
+						if (_ropeCol->Right() < tile->GetColl()->Right())
+							_playerPos.x += 150.0f * DELTA_TIME;
+					}
+				}
+		}
+	}
+	if (_situ == _2D_Player::Situation::CLIMB)
+	{
+		if (_dir == _2D_Player::Direction::UP)
+		{
+			for (auto& rope : _ropes)
+				if (_ropeCol->IsCollision(rope->GetCol(), false))
+				{
+					_playerPos.x = rope->GetRopePos().x;
+					_playerPos.y += 150.0f * DELTA_TIME;
+					if (_playerPos.y >= rope->GetCol()->Top())
+					{
+						_dir = _2D_Player::Direction::DIR_NONE;
+						_situ = _2D_Player::Situation::NONE;
+						this->SetAnimation(_2D_Player::State::L_IDLE);
+
+						for (auto& floorTiles : _tiles)
+							for (auto& tile : floorTiles)
+								for (auto& col : _cols)
+									if (col.second->IsCollision(tile->GetColl(), false))
+									{
+										_playerPos.x = tile->GetPos().x;
+										_playerPos.y = tile->GetPos().y + tile->GetQuad()->GetHalfSize().y * 2.0f;
+									}
+					}
+				}
+		}
+		if (_dir == _2D_Player::Direction::DOWN)
+		{
+			for (auto& rope : _ropes)
+				if (_ropeCol->IsCollision(rope->GetCol(), false))
+				{
+					_playerPos.x = rope->GetRopePos().x;
+					_playerPos.y -= 150.0f * DELTA_TIME;
+
+					if (_playerPos.y + 10.0f <= rope->GetCol()->Bottom())
+					{
+						_dir = _2D_Player::Direction::DIR_NONE;
+						_situ = _2D_Player::Situation::NONE;
+						this->SetAnimation(_2D_Player::State::L_IDLE);
+
+						for (auto& floorTiles : _tiles)
+							for (auto& tile : floorTiles)
+								for (auto& col : _cols)
+								{
+									if (col.second->IsCollision(tile->GetColl(), false))
+									{
+										_playerPos.x = tile->GetPos().x;
+										_playerPos.y = tile->GetPos().y + tile->GetQuad()->GetHalfSize().y * 2.0f;
+									}
+								}
+
+					}
+				}
 		}
 	}
 	
-
-	{
-		if (KEY_UP(VK_LEFT))
-		{
-			this->SetAnimation(_2D_Player::State::L_IDLE);
-			_situ = _2D_Player::Situation::NONE;
-		}
-		if (KEY_UP(VK_RIGHT))
-		{
-			this->SetAnimation(_2D_Player::State::R_IDLE);
-			_situ = _2D_Player::Situation::NONE;
-		}
-		/*if (KEY_UP(VK_UP) || KEY_UP(VK_DOWN))
-		{
-			if (_situ == _2D_Player::Situation::CLIMB)
-			{
-				this->SetAnimation(_2D_Player::State::CLIMBING_IDLE);
-			}
-			if (_situ == _2D_Player::Situation::NONE)
-			{
-				this->SetAnimation(_2D_Player::State::L_IDLE);
-				_situ = _2D_Player::Situation::NONE;
-			}
-		}*/
-		if (KEY_UP(VK_CONTROL))
-		{
-			this->SetAnimation(_2D_Player::State::L_IDLE);
-			_situ = _2D_Player::Situation::NONE;
-		}
-	}
 }
 
 void _2D_Player::Jumpimg()
@@ -517,7 +517,11 @@ void _2D_Player::Jumpimg()
 
 	temp.y = _jumpPower;
 	_playerPos += temp * DELTA_TIME;
-	this->SetAnimation(_2D_Player::State::L_JUMP);
+
+	if (_dir == _2D_Player::Direction::LEFT)
+		this->SetAnimation(_2D_Player::State::L_JUMP);
+	if (_dir == _2D_Player::Direction::RIGHT)
+		this->SetAnimation(_2D_Player::State::R_JUMP);
 
 	for (auto& floorTiles : _tiles)
 		for (auto& tile : floorTiles)
@@ -530,7 +534,11 @@ void _2D_Player::Jumpimg()
 					{
 						if (_playerPos.y <= tile->GetPos().y + tile->GetQuad()->GetHalfSize().y * 2.0f)
 						{
-							this->SetAnimation(_2D_Player::State::L_IDLE);
+							if (_dir == _2D_Player::Direction::LEFT)
+								this->SetAnimation(_2D_Player::State::L_IDLE);
+							if (_dir == _2D_Player::Direction::RIGHT)
+								this->SetAnimation(_2D_Player::State::R_IDLE);
+
 							_jumpPower = 150.0f;
 							_isJumping = false;
 						}
@@ -545,14 +553,11 @@ void _2D_Player::Attacking()
 		return;
 	
 	if (_aniState == _2D_Player::State::L_IDLE)
-	{
 		this->SetAnimation(_2D_Player::State::R_ATTACK);
-	}
 	if (_aniState == _2D_Player::State::R_IDLE)
-	{
 		this->SetAnimation(_2D_Player::State::L_ATTACK);
-	}
-	_isAttack = false;
+
+	
 	// 공격 모션이면서 
 	for (auto& mons : _mons)
 	{
@@ -560,7 +565,6 @@ void _2D_Player::Attacking()
 		{
 			mons->_isActive = false;
 			mons->Attacked();
-			
 			return;
 		}
 	}
@@ -571,11 +575,13 @@ void _2D_Player::Attacking()
 
 void _2D_Player::KnockBack()
 {
-	/*for(auto& tiles : _tiles)
+	float knockbackSize = 20.0f;
+	for(auto& tiles : _tiles)
 		for (auto& mons : _mons)
 			if (_ropeCol->IsCollision(mons->GetCol(),false))
 			{
-				float temp = 50.0f;
-				_playerPos.x += temp * DELTA_TIME;
-			}*/
+				/*float temp = 5.0f;
+				_playerPos.x += temp * DELTA_TIME;*/
+				_playerPos.x = _tiles[1][0]->GetQuad()->GetTransform()->GetPos().x;
+			}
 }

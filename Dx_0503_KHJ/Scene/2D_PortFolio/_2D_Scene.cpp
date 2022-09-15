@@ -13,7 +13,7 @@ _2D_Scene::_2D_Scene()
 
 	SOUND->Add("BGM_1", "Resource/Sound/BGM.wav");
 	SOUND->Add("Jump", "Resource/Sound/jump.wav");
-	SOUND->Play("BGM_1", 0.1f);
+	//SOUND->Play("BGM_1", 0.1f);
 
 	_cursor = make_shared<_2D_Cursor>();
 

@@ -195,7 +195,8 @@ void ObjectPoolingManager::CreateRopes()
 		{
 			shared_ptr<Rope> temp = make_shared<Rope>();
 			temp->GetTransform()->GetScale() *= 0.3f;
-			float ropeYSize = temp->GetQuad()->GetHalfSize().y;
+			/*float ropeYSize = temp->GetQuad()->GetHalfSize().y;*/
+			float ropeYSize = 0.0f;
 			switch (i % 2)
 			{
 			case 0:

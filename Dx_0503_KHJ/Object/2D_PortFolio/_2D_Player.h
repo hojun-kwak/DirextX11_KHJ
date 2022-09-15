@@ -29,6 +29,15 @@ public:
 		ATTACK
 	};
 
+	enum Direction
+	{
+		DIR_NONE,
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN
+	};
+
 	_2D_Player();
 	~_2D_Player();
 
@@ -46,7 +55,9 @@ public:
 	void CreateAttackData();
 
 	void Operation();
+	void Revert();
 
+	void Move();
 	void Jumpimg();
 	void Attacking();
 	void KnockBack();
@@ -64,6 +75,7 @@ public:
 private:
 	State _aniState = _2D_Player::State::L_IDLE;
 	Situation _situ = _2D_Player::Situation::NONE;
+	Direction _dir = _2D_Player::Direction::DIR_NONE;
 
 	Vector2 _playerPos = { 0,0 };
 
