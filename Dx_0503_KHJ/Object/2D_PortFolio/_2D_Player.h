@@ -88,6 +88,8 @@ private:
 
 	shared_ptr<Sprite> _AttackS;
 	shared_ptr<RectCollider> _AttackC;
+	shared_ptr<RectCollider> _leftAttackC;
+	shared_ptr<RectCollider> _rightAttackC;
 
 	shared_ptr<RectCollider> _ropeCol;
 

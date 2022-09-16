@@ -40,6 +40,8 @@ public:
 
 	float SeoareatAxis(Vector2 separate, Vector2 e1, Vector2 e2);
 
+	Vector2 GetCenter() { return _center; }
+
 private:
 	Vector2 _halfSize = { 0,0 };
 	Vector2 _center;
