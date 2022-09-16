@@ -437,7 +437,11 @@ void _2D_Player::Revert()
 	{
 		if (KEY_UP(VK_RBUTTON) || KEY_UP(VK_CONTROL))
 		{
-			this->SetAnimation(_2D_Player::State::L_IDLE);
+			if(_dir == _2D_Player::Direction::LEFT)
+				this->SetAnimation(_2D_Player::State::L_IDLE);
+			if (_dir == _2D_Player::Direction::RIGHT)
+				this->SetAnimation(_2D_Player::State::R_IDLE);
+
 			_isAttack = false;
 			_situ = _2D_Player::Situation::NONE;
 		}
@@ -592,19 +596,21 @@ void _2D_Player::Attacking()
 	{
 		if (_aniState == _2D_Player::State::L_ATTACK)
 		{
-			if (_leftAttackC->IsCollision(mons->GetCol(), false))
+			if (_rightAttackC->IsCollision(mons->GetCol(), false))
 			{
 				mons->_isActive = false;
 				mons->Attacked();
+				_dir = _2D_Player::Direction::LEFT;
 				return;
 			}
 		}
 		if (_aniState == _2D_Player::State::R_ATTACK)
 		{
-			if (_rightAttackC->IsCollision(mons->GetCol(), false))
+			if (_leftAttackC->IsCollision(mons->GetCol(), false))
 			{
 				mons->_isActive = false;
 				mons->Attacked();
+				_dir = _2D_Player::Direction::RIGHT;
 				return;
 			}
 		}
